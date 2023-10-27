@@ -1,0 +1,18 @@
+//변수선언
+$lightGray: #f8f8f8;
+$black: #2F2F2F;
+
+//mixin
+
+//전역스타일
+body{
+    background-color: $lightGray;
+}
+.container{
+    width: 100%;
+}
+.inner{
+    width: 1400px;
+    min-width: 1400px;
+    margin: 0 auto;
+}

@@ -1,0 +1,10 @@
+@use '../../common.scss' as var;
+
+.menu{
+    svg{
+        circle, path{
+            stroke: var.$black;
+
+    }
+}
+}
