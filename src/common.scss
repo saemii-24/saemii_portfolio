@@ -16,3 +16,7 @@ body{
     min-width: 1400px;
     margin: 0 auto;
 }
+//splitType 흔들림 방지
+.type{
+    font-kerning: none;
+}

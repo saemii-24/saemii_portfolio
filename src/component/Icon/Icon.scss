@@ -1,0 +1,127 @@
+//Up animation
+@keyframes upAnimation1 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes upAnimation2 {
+    0% {
+        transform: translateY(50px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.up {
+    svg {
+        .upPath2 {
+            transform: translateY(50px);
+        }
+    }
+
+    &:hover {
+        svg {
+            .upPath1 {
+                animation: upAnimation1 1.5s ease infinite;
+            }
+
+            .upPath2 {
+                animation: upAnimation2 1.5s ease infinite;
+            }
+        }
+    }
+}
+
+//questionMark animation
+@keyframes questionMarkAnimation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.questionMark {
+    &:hover {
+        svg {
+            .questionMarkPath {
+                transform-origin: 50% 50%;
+                animation: questionMarkAnimation 1.5s ease infinite;
+            }
+
+        }
+    }
+}
+
+//menu animation
+@keyframes menuOpacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes menuMoveAnimation1 {
+    0%{
+        transform: translate(0px);
+    }
+    100%{
+        transform: translate(50px);
+    }
+}
+@keyframes menuMoveAnimation2 {
+    0%{
+        transform: translate(-50px);
+    }
+    100%{
+        transform: translate(0px);
+    }
+}
+
+.menu {
+    animation: menuOpacityAnimation 1s ease;
+
+    &:hover {
+        svg {
+            .menuPath1 {
+                animation: menuMoveAnimation1 1s ease ;
+            }
+            .menuPath2 {
+                animation: menuMoveAnimation1 1s 0.1s ease ;
+            }
+            .menuPath3 {
+                animation: menuMoveAnimation1 1s 0.2s ease ;
+            }
+            .menuPath4 {
+                animation: menuMoveAnimation2 1s ease ;
+            }
+            .menuPath5 {
+                animation: menuMoveAnimation2 1s 0.1s ease ;
+            }
+            .menuPath6 {
+                animation: menuMoveAnimation2 1s 0.2s ease ;
+            }
+
+        }
+    }
+
+}
