@@ -1,22 +1,23 @@
 //변수선언
 $lightGray: #f8f8f8;
-$black: #2F2F2F;
+$black: #2f2f2f;
 
 //mixin
 
 //전역스타일
-body{
-    background-color: $lightGray;
+body {
+  background-color: $lightGray;
+  overflow-x: hidden;
 }
-.container{
-    width: 100%;
+.container {
+  width: 100%;
 }
-.inner{
-    width: 1400px;
-    min-width: 1400px;
-    margin: 0 auto;
+.inner {
+  width: 1400px;
+  min-width: 1400px;
+  margin: 0 auto;
 }
 //splitType 흔들림 방지
-.type{
-    font-kerning: none;
+.type {
+  font-kerning: none;
 }

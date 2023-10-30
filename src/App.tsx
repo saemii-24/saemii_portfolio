@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./page/Home/Home";
+import Main from "./page/Main/Main";
 import NotFound from "./page/NotFound/NotFound";
 import GlobalStyle from "GlobalStyle";
 import "./common.scss";
@@ -10,7 +10,7 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Main />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
