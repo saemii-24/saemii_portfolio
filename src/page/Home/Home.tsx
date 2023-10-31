@@ -7,7 +7,9 @@ import Up from "component/Icon/Up";
 import QuestionMark from "component/Icon/QuestionMark";
 import { gsap } from "gsap";
 import SplitType from "split-type";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import "./Home.scss";
+gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
   useEffect(() => {
@@ -90,6 +92,19 @@ const Main = () => {
         ease: "power1.in",
       }
     );
+
+    const tl: gsap.core.Timeline = gsap.timeline();
+    tl.to(".homeCover", {
+      // duration: 1,
+      ease: "power1.Out",
+      clipPath: "polygon(0 0, 100% 0, 100% 0%, 75% 0%, 75% 100%, 0 100%)",
+    });
+
+    ScrollTrigger.create({
+      trigger: ".home",
+      start: "top top",
+      animation: tl,
+    });
   }, []);
 
   return (
@@ -141,13 +156,13 @@ const Main = () => {
           </div>
         </BottomText>
       </div>
-      <HomeCover />
+      <HomeCover className="homeCover" />
     </StyledHome>
   );
 };
 
 const StyledHome = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   position: relative;
   flex-shrink: 0;
