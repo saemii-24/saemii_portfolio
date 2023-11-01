@@ -7,21 +7,21 @@ gsap.registerPlugin(ScrollTrigger);
 const Introduce = () => {
   return (
     <StyledIntroduce className="introduce">
-      <StyledHorizontalLine
-        width="168"
-        height="2"
-        viewBox="0 0 168 2"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <StyledHorizontalPath
-          d="M0.39209 1.10425C115.42 1.10425 159.415 1.10425 167.034 1.10425"
-          stroke="black"
-          className="introducePath"
-        />
-      </StyledHorizontalLine>
       <StyledIntroduceWhite>
         <TextBoxAlign className="textAlign">
+          <StyledHorizontalLine
+            width="168"
+            height="2"
+            viewBox="0 0 168 2"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <StyledHorizontalPath
+              d="M0.39209 1.10425C115.42 1.10425 159.415 1.10425 167.034 1.10425"
+              stroke="black"
+              className="introducePath"
+            />
+          </StyledHorizontalLine>
           <TextBox>
             <IntroduceTitle className="introduce__title type">
               <div>안녕하세요 새미입니다.</div>
@@ -65,8 +65,8 @@ const StyledIntroduceWhite = styled.div`
 `;
 const StyledHorizontalLine = styled.svg`
   position: absolute;
-  top: 25%;
-  left: calc(40vw - 120px);
+  top: 25px;
+  left: -17%;
 `;
 const StyledHorizontalPath = styled.path`
   stroke-dasharray: 500;
@@ -89,11 +89,11 @@ const TextBoxAlign = styled.div`
   position: absolute;
   padding-left: 95px;
   display: flex;
-  height: 100%;
   gap: 100px;
-  margin-top: -50px;
   flex-direction: column;
-  justify-content: center;
-  width: 38%;
+  top: 50%;
+  transform: translateY(-50%);
+  /* width: 33%; */
+  min-width: 530px;
 `;
 export default Introduce;

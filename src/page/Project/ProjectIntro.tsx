@@ -43,8 +43,8 @@ const StyledProjectIntro = styled.div`
   width: 100vw;
   display: flex;
   background-color: #f8f8f8;
-  padding: 8rem;
-  gap: 10rem;
+  padding: 10vh;
+  justify-content: space-between;
 `;
 
 const StyledTitle = styled.div`
@@ -59,6 +59,7 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  width: 60%;
 `;
 const StyledProjectNumber = styled.h6`
   font-size: 1.2rem;
@@ -99,7 +100,6 @@ const StyledMainTitle = styled.div`
   font-weight: 400;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
-  width: 24vw;
   margin-left: 5px;
   div {
     color: #f8f8f8;
