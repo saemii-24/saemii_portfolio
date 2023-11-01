@@ -1,22 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 const Introduce = () => {
-  useEffect(() => {
-    gsap.to(".textBox p", {
-      x: 10,
-      color: "red",
-      ease: "none",
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".introducePath",
-      },
-    });
-  }, []);
-
   return (
     <StyledIntroduce className="introduce">
       <StyledHorizontalLine
@@ -33,24 +21,28 @@ const Introduce = () => {
         />
       </StyledHorizontalLine>
       <StyledIntroduceWhite>
-        <TextBoxAlign className="textBox">
+        <TextBoxAlign className="textAlign">
           <TextBox>
-            <IntroduceTitle>안녕하세요 새미입니다.</IntroduceTitle>
-            <p>
+            <IntroduceTitle className="introduce__title type">
+              <div>안녕하세요 새미입니다.</div>
+            </IntroduceTitle>
+            <IntroduceContent className="introduce__content">
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-            </p>
+            </IntroduceContent>
           </TextBox>
           <TextBox>
-            <IntroduceTitle>이런 기술을 사용합니다.</IntroduceTitle>
-            <p>
+            <IntroduceTitle className="introduce__title type">
+              <div>이런 기술을 사용합니다.</div>
+            </IntroduceTitle>
+            <IntroduceContent className="introduce__content">
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
               html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-            </p>
+            </IntroduceContent>
           </TextBox>
         </TextBoxAlign>
       </StyledIntroduceWhite>
@@ -80,13 +72,18 @@ const StyledHorizontalPath = styled.path`
   stroke-dasharray: 500;
   stroke-dashoffset: 500;
 `;
-const IntroduceTitle = styled.h4`
+const IntroduceTitle = styled.div`
   font-size: 2.2rem;
   font-weight: 400;
   margin-bottom: 24px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+`;
+const IntroduceContent = styled.div`
+  width: fit-content;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 `;
 const TextBox = styled.div`
-  width: 50%;
+  width: 100%;
 `;
 const TextBoxAlign = styled.div`
   position: absolute;
@@ -97,5 +94,6 @@ const TextBoxAlign = styled.div`
   margin-top: -50px;
   flex-direction: column;
   justify-content: center;
+  width: 38%;
 `;
 export default Introduce;
