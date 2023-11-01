@@ -6,7 +6,7 @@ const Background = () => {
     <StyledVideoBox className="container">
       <StyledVideo autoPlay muted loop>
         <source
-          src={process.env.PUBLIC_URL + "./image/test.mp4"}
+          src={process.env.PUBLIC_URL + "/image/test.mp4"}
           type="video/mp4"
         />
       </StyledVideo>

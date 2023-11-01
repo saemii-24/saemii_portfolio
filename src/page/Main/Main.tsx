@@ -4,6 +4,7 @@ import Background from "../Home/Background";
 import Introduce from "../Introduce/Introduce";
 import Project from "../Project/Project";
 import ProjectIntro from "page/Project/ProjectIntro";
+import ProjectBg from "page/Home/ProjectBg";
 import styled from "styled-components";
 import "./Main.scss";
 import { ReactLenis } from "@studio-freight/react-lenis";
@@ -85,7 +86,7 @@ const Main = () => {
     });
 
     //project 애니메이션
-    //배경 색 전환
+    //배경 색 전환 (진입)
     gsap.to(".projectIntro", {
       backgroundColor: "#2f2f2f",
       duration: 1,
@@ -124,20 +125,21 @@ const Main = () => {
         { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
         "-=50%"
       );
-
-    // .fromTo(".introMainTitle div", { y: 250 }, { y: 0 });
-
-    // animationLines(".introSubTitle div", {
-    //   trigger: ".introSubTitle",
-    //   containerAnimation: pin,
-    //   start: "top 90%",
-    // });
-    // animationLines(".introMainTitle div", {
-    //   trigger: ".introSubTitle",
-    //   containerAnimation: pin,
-    //   start: "top 90%",
-    // });
-
+    //배경 색 전환
+    gsap.fromTo(
+      ".projectIntro",
+      { backgroundColor: "#2F2F2F" },
+      {
+        backgroundColor: "#f8f8f8",
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".projectImg1",
+          containerAnimation: pin,
+          start: "top 60%",
+        },
+      }
+    );
     return () => {
       pin.kill();
     };
@@ -160,9 +162,7 @@ const Main = () => {
             <Project />
           </div>
         </StyledMain>
-        {/* <div>
-          <img src="https://img.seoul.co.kr/img/upload/2021/09/17/SSI_20210917150355.jpg" />
-        </div> */}
+        <ProjectBg />
         <Background />
       </div>
     </ReactLenis>
