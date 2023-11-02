@@ -38,6 +38,28 @@ export function animationLines(
   );
 }
 
+export function animationChars(
+  target: string,
+  triggerOption: object,
+  stagger: number = 0.1,
+  duration: number = 1,
+  ease: string = "power4.out"
+) {
+  return gsap.fromTo(
+    target,
+    {
+      y: 250,
+    },
+    {
+      y: 0,
+      stagger: stagger,
+      duration: duration,
+      ease: ease,
+      scrollTrigger: triggerOption,
+    }
+  );
+}
+
 // export function wrapLines(target: string) {
 //   const targetDom = document.querySelectorAll(
 //     target

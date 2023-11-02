@@ -125,3 +125,57 @@
     }
 
 }
+
+//github Icon
+@keyframes githubCatAnimation {
+    0%{
+        transform: translate(-0.5px, 4px);
+    }
+    20%{
+        transform: translate(-0.5px, 4px);
+    }
+    50%{
+        transform: translate(-0.5px, 2px);
+    }
+    70%{
+        transform: translate(-0.5px, 30px);
+    }
+    100%{
+        transform: translate(-0.5px, 4px);
+    }
+}
+
+.github{
+    &:hover{
+        .githubCat{
+            animation: githubCatAnimation 2s  ease infinite ;
+        }
+
+    }
+}
+
+//mailIcon
+@keyframes mailPaperPathAnimation {
+    0%{
+        stroke-dashoffset: 100;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+.mail{
+&:hover{
+    .mailPath1{
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: mailPaperPathAnimation 2.5s ease infinite ;
+
+    }
+    .mailPath2{
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: mailPaperPathAnimation 2.5s ease infinite ;
+    }
+}
+}

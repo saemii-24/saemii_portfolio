@@ -22,17 +22,22 @@ const Project = ({
   allWidth,
   previousWidth,
   nowHeight,
+  nowWidth,
 }: {
   allWidth: number;
   previousWidth: number;
   nowHeight: number;
+  nowWidth: number;
 }) => {
   const dispatch = useDispatch();
 
   const data = useSelector((state: RootState) => state.projectBgSlice);
+  console.log(allWidth);
+  console.log(previousWidth);
+  console.log(nowHeight);
 
-  const movePX: number = previousWidth / allWidth; //전체길이와 이전의 요소 길이를 이용해 비율계산
-  const scrollPX: number = nowHeight * movePX; //세로기준와 비율을 이용해 스크롤 위치 계산
+  // const movePX: number = previousWidth / allWidth; //전체길이와 이전의 요소 길이를 이용해 비율계산
+  // const scrollPX: number = nowHeight * movePX; //세로기준와 비율을 이용해 스크롤 위치 계산
   const projectRef = useRef<HTMLDivElement | null>(null);
   const [projectWidth, setProjectWidth] = useState<number>(0);
   const navigate = useNavigate();
@@ -41,23 +46,30 @@ const Project = ({
     setProjectWidth(projectRef.current!.offsetWidth);
   }, []);
 
+  console.log(
+    (previousWidth * nowHeight) / allWidth +
+      (nowWidth * nowHeight) / allWidth / 2 +
+      ((projectWidth * nowHeight) / allWidth) * 2
+  );
+  console.log(((projectWidth * nowHeight) / allWidth) * 2);
+
   const clickMove = (index: number) => {
-    // console.log(index);
-    // console.log(index * projectWidth * movePX);
-    // console.log(scrollPX + movePX * 10);
     window.scroll({
       /*스크롤 위치를 계산한다. 스크롤 전체 길이는 nowHeight이며
       전체 project까지의 스크롤 위치(즉 0번 인덱스가 left:0 위치) = scrollPX + (movePX * 10 //오차) 
       인덱스별 스크롤 추가 스크롤 위치 = (indx* projectWidth * nowHeight) / allWidth
       */
       top:
-        scrollPX + movePX * 10 + (index * projectWidth * nowHeight) / allWidth,
+        (previousWidth * nowHeight) / allWidth +
+        (nowWidth * nowHeight) / allWidth / 2 +
+        // ((projectWidth * nowHeight) / allWidth) * index,
+
+        16 +
+        36 * index,
       behavior: "smooth",
     });
 
-    setTimeout(() => {
-      dispatch(mouseClick(index));
-    }, 1000);
+    dispatch(mouseClick(index));
   };
 
   return (
@@ -100,8 +112,7 @@ const Project = ({
 };
 
 const StyledProject = styled.div`
-  /* margin-left: 60vw; */
-  /* width: calc(22vw * 6); */
+  /* margin-right: 100vw; */
   height: 100vh;
   flex-shrink: 0;
   /* background-color: #f8f8f8; */
@@ -114,9 +125,23 @@ const StyledProjectOne = styled.div`
   border-right: 1px solid #c0c0c0;
   position: relative;
   cursor: pointer;
-  transition: width 800ms ease-out;
+  transition: width 800ms ease-out 1s;
   &.click {
     width: 110vw;
+    &::after {
+      content: "";
+      transition: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      background-color: transparent;
+    }
+    &:hover::after {
+      opacity: 0;
+      transition: none;
+    }
   }
   &::after {
     content: "";

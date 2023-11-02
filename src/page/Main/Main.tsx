@@ -1,16 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
 import Home from "./Home/Home";
 import Background from "./Home/Background";
-import Introduce from "../Introduce/Introduce";
+import Introduce from "./Introduce/Introduce";
 import Project from "./Project/Project";
 import ProjectIntro from "page/Main/Project/ProjectIntro";
 import ProjectBg from "page/Main/Home/ProjectBg";
+import Contact from "./Contact/Contact";
 import styled from "styled-components";
 import "./Main.scss";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { splitLines, splitChars, animationLines } from "./animation";
+import {
+  splitLines,
+  splitChars,
+  animationLines,
+  animationChars,
+} from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -18,7 +24,8 @@ import { RootState } from "../../redux/store";
 const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
-  const sectionRef = useRef<HTMLDivElement[] | null[]>([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  // const sectionRef = useRef<HTMLDivElement[] | null[]>([]);
   const bgActive = useSelector((state: RootState) => state.projectBgSlice);
   const now = bgActive.every((bg) => bg.active === false);
   console.log(now);
@@ -27,12 +34,12 @@ const Main = () => {
   const [allWidth, setAllWidth] = useState<number>(0);
   const [previousWidth, setPreviousWidth] = useState<number>(0);
   const [nowHeight, setNowHeight] = useState<number>(0);
+  const [nowWidth, setNowWidth] = useState<number>(0);
   useEffect(() => {
     setAllWidth(sectionRefs.current!.offsetWidth);
-    setPreviousWidth(
-      triggerRef.current!.offsetWidth * 2 + sectionRef.current[2]!.offsetWidth
-    );
+    setPreviousWidth(sectionRef.current!.offsetWidth);
     setNowHeight(triggerRef.current!.offsetHeight);
+    setNowWidth(triggerRef.current!.offsetWidth);
     //가로 스크롤 애니메이션
     // const pin = gsap.fromTo(
     //   sectionRefs.current,
@@ -55,8 +62,7 @@ const Main = () => {
       sectionRefs.current,
       { x: 0 },
       {
-        x: -sectionRefs.current!.offsetWidth,
-        // +triggerRef.current!.offsetWidth,
+        x: -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
         ease: "none",
         scrollTrigger: {
           trigger: triggerRef.current,
@@ -67,7 +73,6 @@ const Main = () => {
         },
       }
     );
-
     //introduce 애니메이션
     gsap.to(".introducePath", {
       strokeDashoffset: 0,
@@ -144,10 +149,34 @@ const Main = () => {
         scrollTrigger: {
           trigger: ".projectImg1",
           containerAnimation: pin,
-          start: "top 30%",
+          start: "top 20%",
         },
       }
     );
+    //contact Animation
+
+    splitChars("contactTitle");
+    animationChars(
+      ".contactTitle div",
+      {
+        trigger: ".contactTitle",
+        containerAnimation: pin,
+        start: "top 90%",
+      },
+      0.05,
+      2,
+      "power4.out"
+    );
+    gsap.to(".contactLine", {
+      strokeDashoffset: 0,
+      duration: 4,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".contact",
+        containerAnimation: pin,
+        start: "top 20%",
+      },
+    });
     return () => {
       pin.kill();
     };
@@ -158,22 +187,29 @@ const Main = () => {
       <ReactLenis root>
         <div className="main" ref={triggerRef}>
           <StyledMain ref={sectionRefs}>
-            <div ref={(el) => (sectionRef.current[0] = el)}>
-              <Home />
+            <div style={{ display: "flex" }} ref={sectionRef}>
+              <div>
+                <Home />
+              </div>
+              <div>
+                <Introduce />
+              </div>
+              <div>
+                <ProjectIntro />
+              </div>
             </div>
-            <div ref={(el) => (sectionRef.current[1] = el)}>
-              <Introduce />
-            </div>
-            <div ref={(el) => (sectionRef.current[2] = el)}>
-              <ProjectIntro />
-            </div>
-            <div ref={(el) => (sectionRef.current[3] = el)}>
+            <div>
               <Project
                 allWidth={allWidth}
                 previousWidth={previousWidth}
                 nowHeight={nowHeight}
+                nowWidth={nowWidth}
               />
             </div>
+            <StyledContactText>
+              <h4>rkskekfkakqktkdk</h4>
+              <Contact />
+            </StyledContactText>
           </StyledMain>
           <ProjectBg />
           <Background />
@@ -186,6 +222,17 @@ const Main = () => {
 const StyledMain = styled.div`
   display: flex;
   width: max-content;
+`;
+
+const StyledContactText = styled.div`
+  position: relative;
+  h4 {
+    position: absolute;
+    top: 45%;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background: red;
+  }
 `;
 
 export default Main;

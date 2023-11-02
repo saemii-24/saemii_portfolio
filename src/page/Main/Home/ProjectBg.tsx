@@ -9,26 +9,33 @@ type S$ImageProps = {
 const imageUrl: string = process.env.PUBLIC_URL;
 
 const ProjectBg = () => {
-  const bgActive = useSelector((state: RootState) => state.projectBgSlice);
-  //const [nowBgActive, setNowBgActive] = useState<boolean>(false);
-  console.log(bgActive);
-  const [previewImg, setPreviewImg] = useState<string>("");
+  /*
+  사용자가 hover만 하고 있을 때 -> hover 기준 이미지
+  사용자가 click을 했을 때 -> click 기준 이미지
+  */
 
+  const data = useSelector((state: RootState) => state.projectBgSlice);
+  // console.log(data);
+
+  //이미지 경로
+  const [previewImg, setPreviewImg] = useState<string>("");
+  //click 하고 있는지 확인
+  data.every((data) => data);
   useEffect(() => {
-    bgActive.forEach((bg) => {
+    data.forEach((bg) => {
       if (bg.active === true) {
         setPreviewImg(bg.previewImg);
         console.log(previewImg);
       }
     });
     //모든 이미지가 false인지 체크한다.
-    const everyBgCheck = bgActive.every((bg) => {
+    const everyBgCheck = data.every((bg) => {
       bg.active === false;
     });
     if (everyBgCheck) {
       setPreviewImg("");
     }
-  }, [bgActive]);
+  }, [data]);
 
   return (
     <StyledProjectBg
