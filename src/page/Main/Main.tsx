@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
-import Home from "../Home/Home";
-import Background from "../Home/Background";
+import React, { useRef, useEffect, useState } from "react";
+import Home from "./Home/Home";
+import Background from "./Home/Background";
 import Introduce from "../Introduce/Introduce";
-import Project from "../Project/Project";
-import ProjectIntro from "page/Project/ProjectIntro";
-import ProjectBg from "page/Home/ProjectBg";
+import Project from "./Project/Project";
+import ProjectIntro from "page/Main/Project/ProjectIntro";
+import ProjectBg from "page/Main/Home/ProjectBg";
 import styled from "styled-components";
 import "./Main.scss";
 import { ReactLenis } from "@studio-freight/react-lenis";
@@ -24,8 +24,15 @@ const Main = () => {
   console.log(now);
   //재활용할 gsap 함수
   //등장 함수
-
+  const [allWidth, setAllWidth] = useState<number>(0);
+  const [previousWidth, setPreviousWidth] = useState<number>(0);
+  const [nowHeight, setNowHeight] = useState<number>(0);
   useEffect(() => {
+    setAllWidth(sectionRefs.current!.offsetWidth);
+    setPreviousWidth(
+      triggerRef.current!.offsetWidth * 2 + sectionRef.current[2]!.offsetWidth
+    );
+    setNowHeight(triggerRef.current!.offsetHeight);
     //가로 스크롤 애니메이션
     // const pin = gsap.fromTo(
     //   sectionRefs.current,
@@ -48,12 +55,13 @@ const Main = () => {
       sectionRefs.current,
       { x: 0 },
       {
-        x: -10000,
+        x: -sectionRefs.current!.offsetWidth,
+        // +triggerRef.current!.offsetWidth,
         ease: "none",
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "2000 top",
+          // end: "2000 top",
           scrub: 1,
           pin: true,
         },
@@ -136,7 +144,7 @@ const Main = () => {
         scrollTrigger: {
           trigger: ".projectImg1",
           containerAnimation: pin,
-          start: "top 60%",
+          start: "top 30%",
         },
       }
     );
@@ -146,26 +154,32 @@ const Main = () => {
   }, []);
 
   return (
-    <ReactLenis root>
-      <div className="main" ref={triggerRef}>
-        <StyledMain ref={sectionRefs}>
-          <div ref={(el) => (sectionRef.current[0] = el)}>
-            <Home />
-          </div>
-          <div ref={(el) => (sectionRef.current[1] = el)}>
-            <Introduce />
-          </div>
-          <div ref={(el) => (sectionRef.current[2] = el)}>
-            <ProjectIntro />
-          </div>
-          <div ref={(el) => (sectionRef.current[3] = el)}>
-            <Project />
-          </div>
-        </StyledMain>
-        <ProjectBg />
-        <Background />
-      </div>
-    </ReactLenis>
+    <div>
+      <ReactLenis root>
+        <div className="main" ref={triggerRef}>
+          <StyledMain ref={sectionRefs}>
+            <div ref={(el) => (sectionRef.current[0] = el)}>
+              <Home />
+            </div>
+            <div ref={(el) => (sectionRef.current[1] = el)}>
+              <Introduce />
+            </div>
+            <div ref={(el) => (sectionRef.current[2] = el)}>
+              <ProjectIntro />
+            </div>
+            <div ref={(el) => (sectionRef.current[3] = el)}>
+              <Project
+                allWidth={allWidth}
+                previousWidth={previousWidth}
+                nowHeight={nowHeight}
+              />
+            </div>
+          </StyledMain>
+          <ProjectBg />
+          <Background />
+        </div>
+      </ReactLenis>
+    </div>
   );
 };
 

@@ -18,8 +18,19 @@ const projectBgSlice = createSlice({
       newValue[action.payload].active = false;
       state = newValue;
     },
+    mouseClick: (state: DataType[], action: PayloadAction<number>) => {
+      const newValue = [...state];
+      newValue[action.payload].click = true;
+      state = newValue;
+    },
+    resetData: (state: DataType[], action: PayloadAction<number>) => {
+      const newValue = [...state];
+      newValue[action.payload].click = false;
+      state = newValue;
+    },
   },
 });
 
-export const { mouseEnterActive, mouseLeaveActive } = projectBgSlice.actions;
+export const { mouseEnterActive, mouseLeaveActive, mouseClick, resetData } =
+  projectBgSlice.actions;
 export default projectBgSlice.reducer;

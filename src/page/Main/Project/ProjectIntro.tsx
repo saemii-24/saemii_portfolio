@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { data, DataType } from "../../data/data";
+import { data, DataType } from "../../../data/data";
 
 const ProjectIntro = () => {
   const sortData: DataType[] = [...data].sort(function (

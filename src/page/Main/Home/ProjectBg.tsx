@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { RootState } from "../../redux/store";
-
+import { RootState } from "../../../redux/store";
+import "./Home.scss";
 type S$ImageProps = {
   $previewImg: string;
 };
@@ -13,6 +13,7 @@ const ProjectBg = () => {
   //const [nowBgActive, setNowBgActive] = useState<boolean>(false);
   console.log(bgActive);
   const [previewImg, setPreviewImg] = useState<string>("");
+
   useEffect(() => {
     bgActive.forEach((bg) => {
       if (bg.active === true) {
@@ -29,14 +30,10 @@ const ProjectBg = () => {
     }
   }, [bgActive]);
 
-  // const activeCheck = bgActive.every((bg) => bg.active === false);
-  // // setNowBgActive(!activeCheck);
-  // console.log(activeCheck);
-
   return (
     <StyledProjectBg
       $previewImg={imageUrl + previewImg}
-      // style={{ backgroundImage: `url(${process.env.PUBLIC_URL + previewImg})` }}
+      className="projectBg"
     ></StyledProjectBg>
   );
 };
@@ -61,4 +58,5 @@ const StyledProjectBg = styled.div<S$ImageProps>`
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   }
 `;
+
 export default ProjectBg;
