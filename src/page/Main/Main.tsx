@@ -16,6 +16,7 @@ import {
   splitChars,
   animationLines,
   animationChars,
+  animationOpacity,
 } from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
@@ -108,6 +109,7 @@ const Main = () => {
         trigger: ".projectIntro",
         containerAnimation: pin,
         start: "top 90%",
+        toggleActions: "restart play restart restart",
       },
     });
     //타임라인
@@ -176,6 +178,16 @@ const Main = () => {
         containerAnimation: pin,
         start: "top 20%",
       },
+    });
+    animationOpacity(".mail", {
+      trigger: ".mail",
+      containerAnimation: pin,
+      start: "top 80%",
+    });
+    animationOpacity(".github", {
+      trigger: ".github",
+      containerAnimation: pin,
+      start: "top 80%",
     });
     return () => {
       pin.kill();

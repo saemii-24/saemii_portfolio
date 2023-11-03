@@ -179,3 +179,21 @@
     }
 }
 }
+
+//logoIcon
+@keyframes logoStarAnimation{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.logo{
+    &:hover{
+       .logoStar{
+        animation: logoStarAnimation 2s ease infinite ;
+        transform-origin: 51% 51%;
+       } 
+    }
+}

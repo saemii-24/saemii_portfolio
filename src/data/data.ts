@@ -5,6 +5,8 @@ export interface DataType {
   previewImg: string;
   active: boolean;
   click: boolean;
+  previewPage?: object[];
+  language?: object[];
 }
 
 export const data: DataType[] = [
@@ -16,6 +18,22 @@ export const data: DataType[] = [
     previewImg: "/image/project01.jpg",
     active: false,
     click: false,
+    previewPage: [
+      { 메인: "/image/project01_main_01.png" },
+      { 서브1: "/image/project01_main_02.png" },
+      { 서브2: "/image/project01_main_03.png" },
+    ],
+    language: [
+      {
+        HTML: "HTML, CSS, JavaScript, jQuery를 활용해 제작한 반응형 웹 사이트입니다. 스크롤 이벤트를 활용해 보다 동적인 사이트를 제작하고자 했습니다",
+      },
+      {
+        CSS: "HTML, CSS, JavaScript, jQuery를 활용해 제작한 반응형 웹 사이트입니다. 스크롤 이벤트를 활용해 보다 동적인 사이트를 제작하고자 했습니다",
+      },
+      {
+        JS: "HTML, CSS, JavaScript, jQuery를 활용해 제작한 반응형 웹 사이트입니다. 스크롤 이벤트를 활용해 보다 동적인 사이트를 제작하고자 했습니다",
+      },
+    ],
   },
   {
     id: 2,

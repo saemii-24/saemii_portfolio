@@ -23,23 +23,19 @@ const Contact = () => {
         <ContactTitle className="type contactTitle">CONTACT</ContactTitle>
 
         <BottomText>
-          <div className="about">
+          <div className="mail">
             <SmallTitle className="smallTitle__parent">
-              <div className="smallTitle__child">
-                <Mail />
-              </div>
+              <Mail />
             </SmallTitle>
-            <AboutText className="about smallTitle__text">
+            <AboutText className="mail smallTitle__text">
               hims2419@gmail.com
             </AboutText>
           </div>
-          <div className="update">
+          <div className="github">
             <SmallTitle className="smallTitle__parent">
-              <div className="smallTitle__child">
-                <Github />
-              </div>
+              <Github />
             </SmallTitle>
-            <div className="update smallTitle__text">@saemii-24</div>
+            <div className="github smallTitle__text">@saemii-24</div>
           </div>
         </BottomText>
       </div>

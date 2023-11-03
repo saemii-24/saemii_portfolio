@@ -60,16 +60,22 @@ export function animationChars(
   );
 }
 
-// export function wrapLines(target: string) {
-//   const targetDom = document.querySelectorAll(
-//     target
-//   ) as NodeListOf<HTMLElement>;
-
-//   targetDom.forEach((dom: HTMLElement) => {
-//     const text = dom.innerText;
-//     const makeSpan = document.createElement("span");
-//     makeSpan.textContent = text;
-//     dom.innerText = "";
-//     dom.append(makeSpan);
-//   });
-// }
+export function animationOpacity(
+  target: string,
+  triggerOption: object,
+  duration: number = 1.2,
+  ease: string = "power4.out"
+) {
+  return gsap.fromTo(
+    target,
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.05,
+      duration: duration,
+      ease: ease,
+      scrollTrigger: triggerOption,
+    }
+  );
+}
