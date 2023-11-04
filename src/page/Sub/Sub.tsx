@@ -2,9 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import SubTop from "./SubTop/SubTop";
-import SubBottom from "./SubBottom/SubBottom";
-import SubPreview from "./SubMiddle/SubPreview";
 import SubTopText from "./SubTop/SubTopText";
+import SubPreview from "./SubMiddle/SubPreview";
+import SubDetail from "./SubMiddle/SubDetail";
+import SubBottom from "./SubBottom/SubBottom";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 // import { gsap } from "gsap";
 // import ScrollTrigger from "gsap/ScrollTrigger";
@@ -28,10 +30,13 @@ const Sub = () => {
 
   return (
     <div>
-      <SubTop thisData={thisData} />
-      <SubTopText thisData={thisData} />
-      <SubPreview thisData={thisData} />
-      <SubBottom thisData={thisData} />
+      <ReactLenis root>
+        <SubTop thisData={thisData} />
+        <SubTopText thisData={thisData} />
+        <SubPreview thisData={thisData} />
+        <SubDetail thisData={thisData} />
+        <SubBottom idNum={idNum} />
+      </ReactLenis>
     </div>
   );
 };

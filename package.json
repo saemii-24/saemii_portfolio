@@ -26,6 +26,7 @@
     "split-type": "^0.3.4",
     "strip-ansi": "^7.1.0",
     "styled-components": "^6.1.0",
+    "swiper": "^11.0.3",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },

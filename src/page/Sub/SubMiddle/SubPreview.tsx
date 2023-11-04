@@ -64,7 +64,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
         </StyledPagination>
       </StyledContainer>
 
-      <StyledContainer>
+      <StyledContainer style={{ height: "fit-content" }}>
         <StyledComment>
           <div>
             {thisData.language!.map((data, index) => {
