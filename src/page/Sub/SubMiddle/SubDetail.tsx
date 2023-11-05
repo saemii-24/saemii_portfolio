@@ -5,43 +5,17 @@ import { DataType } from "../../../data/data";
 const SubDetail = ({ thisData }: { thisData: DataType }) => {
   return (
     <StyledSubDetail>
-      <div
-        style={{
-          margin: "0 auto",
-          display: "inline-block",
-          textAlign: "center",
-          borderBottom: " 1px solid black",
-          fontWeight: "300",
-          fontSize: "2rem",
-        }}
+      <StyledSubDetailTitle>DETAIL</StyledSubDetailTitle>
+      <svg
+        width="100%"
+        style={{ marginBottom: "12vh" }}
+        height="194"
+        viewBox="0 0 2 194"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        DETAIL
-      </div>
-      {/* <StyledSubCircleTitle>
-        <div className="circle">
-          <svg
-            width="166"
-            height="166"
-            viewBox="0 0 166 166"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="83.0001" cy="82.8419" r="82.1686" stroke="#2f2f2f" />
-          </svg>
-          <StyledSubDetailTitle>DETAIL</StyledSubDetailTitle>
-        </div>
-        <svg
-          width="2"
-          height="268"
-          viewBox="0 0 2 268"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="circleLine"
-        >
-          <path d="M1 0.384277L0.999988 267.64" stroke="#2f2f2f" />
-        </svg>
-      </StyledSubCircleTitle> */}
-
+        <path d="M1 0L1.00001 194" stroke="#2F2F2F" />
+      </svg>
       <div>
         {thisData.detail!.map((data, index) => {
           return (
@@ -63,17 +37,21 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
                 ></div>
               </div>
               <StyledSubDetailLineBox>
-                {index !== thisData.detail!.length - 1 && (
-                  <svg
-                    width="100%"
-                    height="253"
-                    viewBox="0 0 2 253"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M1 0.0195312L1.00001 252.719" stroke="#2F2F2F" />
-                  </svg>
-                )}
+                <svg
+                  width="100%"
+                  height="194"
+                  viewBox="0 0 2 194"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  style={{
+                    margin:
+                      index === thisData.detail!.length - 1
+                        ? "12vh 0 5vh 0"
+                        : "12vh 0",
+                  }}
+                >
+                  <path d="M1 0L1.00001 194" stroke="#2F2F2F" />
+                </svg>
               </StyledSubDetailLineBox>
             </StyledSubDetailBox>
           );
@@ -86,6 +64,14 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
 const StyledSubDetail = styled.div`
   width: 100%;
   margin-top: 25vh;
+`;
+
+const StyledSubDetailTitle = styled.div`
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 5vh;
 `;
 
 const StyledSubDetailBox = styled.div`
@@ -136,7 +122,6 @@ const StyledSubDetailBoxTitle = styled.div`
 
 const StyledSubDetailLineBox = styled.div`
   width: 100%;
-  margin: 15vh 0;
 `;
 
 // const StyledSubDetailTitle = styled.div`

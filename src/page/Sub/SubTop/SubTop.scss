@@ -1,63 +1,93 @@
 @keyframes animationSubTop {
-    0% {
-        width: 100vw;
-        height: 100vh;
-    }
+  0% {
+    width: 100vw;
+    height: 100vh;
+  }
 
-    100% {
-        width: 70vw;
-        height: 85vh;
-    }
+  100% {
+    width: 70vw;
+    height: 85vh;
+  }
 }
 
 .subTop {
-    position: relative;
+  position: relative;
 
-    .mainPic {
-        animation: animationSubTop 1000ms 1s ease;
-        animation-fill-mode: forwards;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
+  .mainPic {
+    animation: animationSubTop 1000ms 1s ease;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 //atag 호버 애니메이션
 
 //goIcon
 @keyframes goIconArrow1 {
-    0% {
-        transform: translate(0);
-    }
+  0% {
+    transform: translate(0);
+  }
 
-    100% {
-        transform: translate(50px);
-    }
+  100% {
+    transform: translate(50px);
+  }
 }
 
 @keyframes goIconArrow2 {
-    0% {
-        transform: translate(-50px);
-    }
+  0% {
+    transform: translate(-50px);
+  }
 
-    100% {
-        transform: translate(0);
-    }
+  100% {
+    transform: translate(0);
+  }
 }
 
 .linkPage {
+  .arrow2 {
+    transform: translate(-50px);
+  }
+
+  &:hover {
+    .arrow1 {
+      animation: goIconArrow1 1.2s ease infinite;
+    }
+
     .arrow2 {
-        transform: translate(-50px);
+      animation: goIconArrow2 1.2s ease infinite;
+    }
+  }
+}
+
+.prev {
+  .arrow2 {
+    transform: translate(-50px);
+  }
+
+  &:hover {
+    .arrow1 {
+      animation: goIconArrow1 1.2s ease infinite;
     }
 
-    &:hover {
-        .arrow1 {
-            animation: goIconArrow1 1.2s ease infinite;
-        }
-
-        .arrow2 {
-            animation: goIconArrow2 1.2s ease infinite;
-        }
+    .arrow2 {
+      animation: goIconArrow2 1.2s ease infinite;
     }
+  }
+}
+.next {
+  .arrow2 {
+    transform: translate(-50px);
+  }
+
+  &:hover {
+    .arrow1 {
+      animation: goIconArrow1 1.2s ease infinite;
+    }
+
+    .arrow2 {
+      animation: goIconArrow2 1.2s ease infinite;
+    }
+  }
 }
