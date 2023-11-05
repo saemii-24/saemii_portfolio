@@ -5,6 +5,7 @@ import Introduce from "./Introduce/Introduce";
 import Project from "./Project/Project";
 import ProjectIntro from "page/Main/Project/ProjectIntro";
 import ProjectBg from "page/Main/Home/ProjectBg";
+import Prepare from "./Contact/Prepare";
 import Contact from "./Contact/Contact";
 import styled from "styled-components";
 import "./Main.scss";
@@ -218,10 +219,8 @@ const Main = () => {
                 nowWidth={nowWidth}
               />
             </div>
-            <StyledContactText>
-              <h4>rkskekfkakqktkdk</h4>
-              <Contact />
-            </StyledContactText>
+            <Prepare />
+            <Contact />
           </StyledMain>
           <ProjectBg />
           <Background />
@@ -234,17 +233,6 @@ const Main = () => {
 const StyledMain = styled.div`
   display: flex;
   width: max-content;
-`;
-
-const StyledContactText = styled.div`
-  position: relative;
-  h4 {
-    position: absolute;
-    top: 45%;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-    background: red;
-  }
 `;
 
 export default Main;

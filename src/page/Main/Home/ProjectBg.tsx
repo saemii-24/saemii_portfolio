@@ -19,8 +19,9 @@ const ProjectBg = () => {
 
   //이미지 경로
   const [previewImg, setPreviewImg] = useState<string>("");
-  //click 하고 있는지 확인
-  data.every((data) => data);
+  const [isHoverNow, setIsHoverNow] = useState<boolean>(false);
+  const [isClickNow, setIsClickNow] = useState<boolean>(false);
+
   useEffect(() => {
     data.forEach((bg) => {
       if (bg.active === true) {
@@ -28,19 +29,21 @@ const ProjectBg = () => {
         console.log(previewImg);
       }
     });
-    //모든 이미지가 false인지 체크한다.
-    const everyBgCheck = data.every((bg) => {
-      bg.active === false;
-    });
-    if (everyBgCheck) {
-      setPreviewImg("");
-    }
+    //hover 하고 있는지 확인
+    const checkIsHoverNow = data.every((project) => project.active === false);
+    //click 되었는지 확인
+    const checkIsClickNow = data.every((project) => project.click === false);
+    setIsHoverNow(!checkIsHoverNow);
+    setIsClickNow(!checkIsClickNow);
   }, [data]);
 
   return (
     <StyledProjectBg
       $previewImg={imageUrl + previewImg}
       className="projectBg"
+      style={{
+        opacity: isHoverNow === false && isClickNow === false ? 0 : 1,
+      }}
     ></StyledProjectBg>
   );
 };
@@ -53,17 +56,17 @@ const StyledProjectBg = styled.div<S$ImageProps>`
   background-size: cover;
   background-image: url(${(props) => props.$previewImg});
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
-  &::before {
+  /* &::before {
     content: "";
     width: 100vw;
     height: 40vh;
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 0;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  }
+  } */
 `;
 
 export default ProjectBg;

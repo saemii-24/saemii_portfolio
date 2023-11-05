@@ -26,6 +26,7 @@ const projectBgSlice = createSlice({
     resetData: (state: DataType[], action: PayloadAction<number>) => {
       const newValue = [...state];
       newValue[action.payload].click = false;
+      newValue[action.payload].active = false;
       state = newValue;
     },
   },

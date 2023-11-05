@@ -44,6 +44,8 @@ const Project = ({
 
   useEffect(() => {
     setProjectWidth(projectRef.current!.offsetWidth);
+    previousWidth + nowWidth;
+    console.log(projectWidth);
   }, []);
 
   console.log(
@@ -51,26 +53,27 @@ const Project = ({
       (nowWidth * nowHeight) / allWidth / 2 +
       ((projectWidth * nowHeight) / allWidth) * 2
   );
-  console.log(((projectWidth * nowHeight) / allWidth) * 2);
+  console.log(((previousWidth + nowWidth) / allWidth) * nowHeight);
 
   const clickMove = (index: number) => {
     window.scroll({
-      /*스크롤 위치를 계산한다. 스크롤 전체 길이는 nowHeight이며
-      전체 project까지의 스크롤 위치(즉 0번 인덱스가 left:0 위치) = scrollPX + (movePX * 10 //오차) 
-      인덱스별 스크롤 추가 스크롤 위치 = (indx* projectWidth * nowHeight) / allWidth
-      */
+      /*스크롤 값은 100vw 이상부터 시작되므로, (전체길이 - 현재 화면크기)를 기준점으로 계산한다.*/
       top:
-        (previousWidth * nowHeight) / allWidth +
-        (nowWidth * nowHeight) / allWidth / 2 +
-        // ((projectWidth * nowHeight) / allWidth) * index,
-
-        16 +
-        36 * index,
+        (previousWidth / (allWidth - nowWidth)) * nowHeight +
+        (index * (projectWidth * nowHeight)) / (allWidth - nowWidth) +
+        1,
       behavior: "smooth",
     });
 
     dispatch(mouseClick(index));
   };
+
+  // (previousWidth * nowHeight) / allWidth +
+  // (nowWidth * nowHeight) / allWidth / 2 +
+  // // ((projectWidth * nowHeight) / allWidth) * index,
+
+  // 16 +
+  // 36 * index,
 
   return (
     <StyledProject className="project">

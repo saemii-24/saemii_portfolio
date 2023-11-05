@@ -45,7 +45,6 @@ const Contact = () => {
 };
 
 const StyledContact = styled.div`
-  margin-left: 100vw;
   /* position: absolute; */
   right: 0;
   width: 100vw;

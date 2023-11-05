@@ -47,7 +47,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
                 >
                   <path
                     d="M0.677734 9.15723H67.4536"
-                    stroke={slide === index ? "#AA8C5A" : "#2f2f2f"}
+                    stroke={slide === index ? "#AA8C5A" : "#f8f8f8"}
                   />
                   {slide === index && (
                     <circle
@@ -70,8 +70,10 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
-                  <div className="languageTitle">{Object.keys(data)[0]}</div>
-                  <div className="languageDetail" key={index}>
+                  <div className="languageTitle" style={{ color: "#f8f8f8" }}>
+                    {Object.keys(data)[0]}
+                  </div>
+                  <div className="languageDetail " style={{ color: "#f8f8f8" }}>
                     {Object.values(data)[0]}
                   </div>
                 </div>
@@ -94,6 +96,12 @@ opacity:1}
 `;
 const StyledSubPreview = styled.div`
   width: 100%;
+  width: 100%;
+  padding-top: 25vh;
+  padding-bottom: 25vh;
+  margin-top: 25vh;
+  background-color: #2f2f2f;
+  position: relative;
 `;
 const StyledContainer = styled.div`
   width: 1400px;
@@ -142,7 +150,7 @@ const StyledPagination = styled.div`
   .pagination {
     font-weight: 500;
     cursor: pointer;
-    color: #2f2f2f;
+    color: #f8f8f8;
     display: flex;
     gap: 1rem;
     &.active {

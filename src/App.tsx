@@ -5,10 +5,13 @@ import Sub from "page/Sub/Sub";
 import NotFound from "./page/NotFound/NotFound";
 import GlobalStyle from "GlobalStyle";
 import "./common.scss";
+import ScrollToTop from "./ScrollToTop";
+
 function App() {
   console.log();
   return (
     <>
+      <ScrollToTop />
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Main />} />

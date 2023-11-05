@@ -14,87 +14,90 @@ import { useNavigate } from "react-router-dom";
 const SubBottom = ({ idNum }: { idNum: number }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(navigate(idNum));
 
   const projectData = useSelector((state: RootState) => state.projectBgSlice);
-  // console.log(projectData);
-
-  // const handleSwiperOnClick = (projectId: number) => {
-  //   window.scrollTo({
-  //     top: document.body.scrollHeight,
-  //     behavior: "smooth",
-  //   });
-  //   console.log(projectId);
-  //   console.log(projectData[projectId - 1].click);
-  //   dispatch(mouseClick(projectId - idNum));
-  //   setTimeout(() => {
-  //     navigate(`/project/${projectId}`);
-  //     dispatch(resetData(projectId - 1));
-  //   }, 2000);
-  // };
-  // onSlideChange
-  // useEffect(() => {
-  //   const swiperWrapper = document.querySelector(
-  //     ".swiper-wrapper"
-  //   ) as HTMLElement;
-
-  //   swiperWrapper.addEventListener("change", () => {
-  //     const transformStyle = getComputedStyle(swiperWrapper).transform;
-  //     console.log(transformStyle);
-  //   });
-  // }, []);
 
   return (
-    <StyledSubBottom>
-      <Swiper slidesPerView={"auto"} freeMode={true} className="mySwiper">
-        {projectData.map((project, index) => {
-          console.log(project);
-          if (project.id !== idNum) {
-            return (
-              <SwiperSlide
-                onClick={() => {
-                  window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: "smooth",
-                  });
-                  dispatch(mouseClick(project.id - 1));
-                  console.log(project);
-                  setTimeout(() => {
-                    navigate(`/project/${project.id}`);
-                    dispatch(resetData(project.id - 1));
-                  }, 2000);
-                }}
-                key={project.id}
-                style={{
-                  width: "22vw",
-                  height: "100vh",
-                  flexBasis: projectData[project.id - 1].click
-                    ? "100vw"
-                    : "22vw",
-                  // transform: projectData[project.id - 1].click
-                  //   ? `translateX(-${22 * index}vw)`
-                  //   : `translateX(0)`,
-                  transition: "all 1s",
-                }}
-              >
-                <StyledSwiperBox
+    <div>
+      <StyledSubCircleTitle>
+        <div className="circle">
+          <svg
+            width="166"
+            height="166"
+            viewBox="0 0 166 166"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="83.0001" cy="82.8419" r="82.1686" stroke="#2f2f2f" />
+          </svg>
+          <StyledSubDetailTitle>NEXT</StyledSubDetailTitle>
+        </div>
+        <svg
+          width="2"
+          height="268"
+          viewBox="0 0 2 268"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="circleLine"
+        >
+          <path d="M1 0.384277L0.999988 267.64" stroke="#2f2f2f" />
+        </svg>
+      </StyledSubCircleTitle>
+      <StyledSubBottom>
+        <Swiper
+          slidesPerView={"auto"}
+          freeMode={true}
+          className="mySwiper"
+          onClick={() => {
+            window.scroll({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
+        >
+          {projectData.map((project, index) => {
+            console.log(project);
+            if (project.id !== idNum) {
+              return (
+                <SwiperSlide
+                  onClick={() => {
+                    dispatch(mouseClick(project.id - 1));
+                    console.log(project);
+                    setTimeout(() => {
+                      navigate(`/project/${project.id}`);
+                      dispatch(resetData(project.id - 1));
+                    }, 2000);
+                  }}
+                  key={project.id}
                   style={{
-                    backgroundImage: `url(${
-                      process.env.PUBLIC_URL + project.previewImg
-                    })`,
+                    width: "25vw",
+                    height: "100vh",
+                    flexBasis: projectData[project.id - 1].click
+                      ? "100vw"
+                      : "25vw",
+                    transition: "all 1s",
+                    overflow: "hidden",
                   }}
                 >
-                  <StyledProejctSubTitle>
-                    PROJECT {project.id < 10 ? "0" + project.id : project.id}
-                  </StyledProejctSubTitle>
-                  <StyledProjectTitle>{project.subTitle}</StyledProjectTitle>
-                </StyledSwiperBox>
-              </SwiperSlide>
-            );
-          }
-        })}
-      </Swiper>
-    </StyledSubBottom>
+                  <StyledSwiperBox
+                    style={{
+                      backgroundImage: `url(${
+                        process.env.PUBLIC_URL + project.previewImg
+                      })`,
+                    }}
+                  >
+                    <StyledProejctSubTitle>
+                      PROJECT {project.id < 10 ? "0" + project.id : project.id}
+                    </StyledProejctSubTitle>
+                    <StyledProjectTitle>{project.subTitle}</StyledProjectTitle>
+                  </StyledSwiperBox>
+                </SwiperSlide>
+              );
+            }
+          })}
+        </Swiper>
+      </StyledSubBottom>
+    </div>
   );
 };
 
@@ -136,5 +139,37 @@ const StyledSwiperBox = styled.div`
   background-size: cover;
   // border: 1px solid #c0c0c0;
   border-right: none;
+`;
+
+const StyledSubDetailTitle = styled.div`
+  font-size: 1.5rem;
+  font-weight: 400;
+`;
+
+const StyledSubCircleTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  .circle {
+    position: relative;
+    width: 166px;
+    height: 166px;
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+    }
+    svg {
+      position: absolute;
+    }
+  }
+  .circleLine {
+    transform: translateY(-40px);
+  }
 `;
 export default SubBottom;

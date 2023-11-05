@@ -1,13 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { resetData } from "redux/projectBgSlice";
+import { useParams } from "react-router-dom";
 
 const Logo = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  //Home을 클릭하면 data가 reset 되어야 한다. 이때 resetData함수는 id값을 받아야한다.
+  const { id } = useParams();
+  let idNum = 0;
+
+  if (id && typeof id === "string") {
+    idNum = parseInt(id);
+  } else {
+    idNum = 0;
+  }
+
   return (
     <StyledLogo
       onClick={() => {
         navigate("/");
+        dispatch(resetData(idNum));
       }}
       className="logo"
     >
@@ -46,6 +61,7 @@ const StyledLogo = styled.div`
   align-items: center;
   margin-top: 8vh;
   cursor: pointer;
+  width: fit-content;
 `;
 
 const StyledLogoIcon = styled.div`
