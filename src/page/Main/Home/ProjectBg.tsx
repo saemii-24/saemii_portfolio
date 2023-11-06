@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "../../../redux/store";
+import { DataType } from "../../../data/data";
 import "./Home.scss";
 type S$ImageProps = {
   $previewImg: string;
@@ -14,8 +15,9 @@ const ProjectBg = () => {
   사용자가 click을 했을 때 -> click 기준 이미지
   */
 
-  const data = useSelector((state: RootState) => state.projectBgSlice);
-  // console.log(data);
+  const data: DataType[] = useSelector(
+    (state: RootState) => state.projectBgSlice
+  );
 
   //이미지 경로
   const [previewImg, setPreviewImg] = useState<string>("");
@@ -24,9 +26,9 @@ const ProjectBg = () => {
 
   useEffect(() => {
     data.forEach((bg) => {
+      console.log(bg);
       if (bg.active === true) {
         setPreviewImg(bg.previewImg);
-        console.log(previewImg);
       }
     });
     //hover 하고 있는지 확인

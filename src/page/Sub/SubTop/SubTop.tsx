@@ -34,7 +34,9 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
         <div style={{ marginBottom: "auto" }} className="subLogo">
           <Logo />
         </div>
-        <StyledSubTitle>{thisData.subTitle}</StyledSubTitle>
+        <StyledSubTitle className="subTopTitle">
+          <div>{thisData.subTitle}</div>
+        </StyledSubTitle>
         <StyledAtagBox>
           <StyledAtag
             href="/"
@@ -42,8 +44,10 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            PAGE
-            <Go />
+            <div className="atagChild">
+              PAGE
+              <Go />
+            </div>
           </StyledAtag>
 
           <StyledAtag
@@ -52,8 +56,10 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            GITHUB
-            <Go />
+            <div className="atagChild">
+              GITHUB
+              <Go />
+            </div>
           </StyledAtag>
           <StyledAtag
             href="/"
@@ -61,8 +67,10 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            DOCUMENT
-            <Go />
+            <div className="atagChild">
+              DOCUMENT
+              <Go />
+            </div>
           </StyledAtag>
         </StyledAtagBox>
       </StyledContainer>
@@ -86,24 +94,27 @@ const StyledContainer = styled.div`
   width: 1400px;
   left: 50%;
   transform: translateX(-50%);
-  /* background-color: red; */
   height: 85vh;
   display: flex;
   flex-direction: column;
 `;
 
 const StyledSubTitle = styled.div`
-  font-size: 5rem;
-  font-weight: 200;
-  margin-bottom: 1rem;
-  color: transparent;
-  background: linear-gradient(
-    to right,
-    #2f2f2f calc(30vw - ((100vw - 1400px - -17px) / 2)),
-    rgba(248, 248, 248, 10) calc(30vw - ((100vw - 1400px - -17px) / 2))
-  );
-  -webkit-background-clip: text;
-  background-blend-mode: screen;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+  div {
+    font-size: 5rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+    color: transparent;
+    background: linear-gradient(
+      to right,
+      #2f2f2f calc(30vw - ((100vw - 1400px - -17px) / 2)),
+      rgb(248, 248, 248) calc(30vw - ((100vw - 1400px - -17px) / 2))
+    );
+    -webkit-background-clip: text;
+    background-blend-mode: screen;
+  }
 `;
 const StyledAtag = styled.a`
   font-size: 1.5rem;
@@ -116,6 +127,8 @@ const StyledAtag = styled.a`
   align-items: center;
   justify-content: space-between;
   position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
   &::after {
     content: "";
     position: absolute;
@@ -127,6 +140,13 @@ const StyledAtag = styled.a`
   &:hover::after {
     width: 100%;
     transition: all 500ms ease;
+  }
+
+  .atagChild {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `;
 const StyledAtagBox = styled.div`

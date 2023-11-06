@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Go from "../../../component/Icon/Go";
 import styled from "styled-components";
-import { data } from "../../../data/data";
+import { data, DataType } from "../../../data/data";
 import "../SubTop/SubTop.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -22,24 +22,32 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
   const [prevNum, setPrevNum] = useState<number>(0);
   const [nextNum, setNextNum] = useState<number>(0);
 
+  //현재 data 역방향이지만, 여기선 정방향으로 재정렬한다.
+  const sortData: DataType[] = [...data].sort(function (
+    a: DataType,
+    b: DataType
+  ) {
+    return a.id - b.id;
+  });
+
   const handlePrevImg = () => {
     let bgImg = "";
     if (idNum === 0) {
-      bgImg = data[data.length - 1].previewImg;
-      setPrevNum(data.length - 1);
+      bgImg = sortData[sortData.length - 1].previewImg;
+      setPrevNum(sortData.length - 1);
     } else {
-      bgImg = data[idNum - 1].previewImg;
+      bgImg = sortData[idNum - 1].previewImg;
       setPrevNum(idNum - 1);
     }
     setPrevImg(bgImg);
   };
   const handleNextImg = () => {
     let bgImg = "";
-    if (idNum === data.length - 1) {
-      bgImg = data[0].previewImg;
+    if (idNum === sortData.length - 1) {
+      bgImg = sortData[0].previewImg;
       setNextNum(0);
     } else {
-      bgImg = data[idNum + 1].previewImg;
+      bgImg = sortData[idNum + 1].previewImg;
       setNextNum(idNum + 1);
     }
     setNextImg(bgImg);
@@ -67,8 +75,8 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
 
   return (
     <StyledSubBottom>
-      <div className="moreProject">MORE PROJECTS</div>
-      <StyledSubNav>
+      <div className="moreProject subBottomNav">MORE PROJECTS</div>
+      <StyledSubNav className="subBottomNav">
         <div
           className="prev"
           onMouseEnter={() => {
@@ -122,11 +130,13 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           <StyledTitleBox>
             <StyledProejctSubTitle>
               PROJECT{" "}
-              {data[prevNum].id + 1 < 10
-                ? "0" + (data[prevNum].id + 1)
-                : data[prevNum].id + 1}
+              {sortData[prevNum].id + 1 < 10
+                ? "0" + (sortData[prevNum].id + 1)
+                : sortData[prevNum].id + 1}
             </StyledProejctSubTitle>
-            <StyledProjectTitle>{data[prevNum].subTitle}</StyledProjectTitle>
+            <StyledProjectTitle>
+              {sortData[prevNum].subTitle}
+            </StyledProjectTitle>
           </StyledTitleBox>
         </StyledSubBg>
 
@@ -158,11 +168,13 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           <StyledTitleBox>
             <StyledProejctSubTitle>
               PROJECT{" "}
-              {data[nextNum].id + 1 < 10
-                ? "0" + (data[nextNum].id + 1)
-                : data[nextNum].id + 1}
+              {sortData[nextNum].id + 1 < 10
+                ? "0" + (sortData[nextNum].id + 1)
+                : sortData[nextNum].id + 1}
             </StyledProejctSubTitle>
-            <StyledProjectTitle>{data[nextNum].subTitle}</StyledProjectTitle>
+            <StyledProjectTitle>
+              {sortData[nextNum].subTitle}
+            </StyledProjectTitle>
           </StyledTitleBox>
         </StyledSubBg>
       </StyledBottomBg>

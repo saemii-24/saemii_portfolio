@@ -9,9 +9,15 @@ const SubTopText = ({ thisData }: { thisData: DataType }) => {
       <div>
         {thisData.develop!.map((data, index) => {
           return (
-            <div key={index}>
-              <StyledTextTitle>{Object.keys(data)[0]}</StyledTextTitle>
-              <StyledContentTitle>{Object.values(data)[0]}</StyledContentTitle>
+            <div key={index} className="subTextBox">
+              <div>
+                <StyledTextTitle className="subTextTitle">
+                  {Object.keys(data)[0]}
+                </StyledTextTitle>
+                <StyledContentTitle className="subTextContent">
+                  {Object.values(data)[0]}
+                </StyledContentTitle>
+              </div>
             </div>
           );
         })}
@@ -32,6 +38,10 @@ const StyledTextContainer = styled.div`
     position: relative;
     right: 0;
   }
+  .subTextBox {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
+  }
 `;
 
 const StyledTextTitle = styled.h3`
@@ -39,6 +49,11 @@ const StyledTextTitle = styled.h3`
   font-size: 1.2rem;
   color: #aa8c5a;
   font-weight: 400;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+  div {
+    color: inherit;
+  }
 `;
 
 const StyledContentTitle = styled.p`
@@ -47,5 +62,10 @@ const StyledContentTitle = styled.p`
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.5;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+  div {
+    color: inherit;
+  }
 `;
 export default SubTopText;

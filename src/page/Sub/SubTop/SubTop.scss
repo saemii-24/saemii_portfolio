@@ -1,3 +1,4 @@
+//subTop Image
 @keyframes animationSubTop {
   0% {
     width: 100vw;
@@ -26,9 +27,24 @@
 
   }
 }
+//SubTop Logo
+@keyframes animationSubLogo {
+0%{
+  opacity:0
+}
+100%{
+  opacity:1
+}
+}
+  
+.subLogo{
+  animation: animationSubLogo 600ms 500ms ease-out;
+  animation-fill-mode: both;
+}
+
+
 
 //atag 호버 애니메이션
-
 //goIcon
 @keyframes goIconArrow1 {
   0% {

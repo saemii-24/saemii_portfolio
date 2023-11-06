@@ -4,8 +4,10 @@ import { DataType } from "../../../data/data";
 
 const SubDetail = ({ thisData }: { thisData: DataType }) => {
   return (
-    <StyledSubDetail>
-      <StyledSubDetailTitle>DETAIL</StyledSubDetailTitle>
+    <StyledSubDetail className="subDetail">
+      <StyledSubDetailTitle className="subDetailTitle">
+        <div>DETAIL</div>
+      </StyledSubDetailTitle>
       <svg
         width="100%"
         style={{ marginBottom: "12vh" }}
@@ -14,7 +16,11 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M1 0L1.00001 194" stroke="#2F2F2F" />
+        <path
+          d="M1 0L1.00001 194"
+          stroke="#2F2F2F"
+          className="line1 subVerticalLine"
+        />
       </svg>
       <div>
         {thisData.detail!.map((data, index) => {
@@ -22,13 +28,17 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
             <StyledSubDetailBox key={index}>
               <div className="detailText">
                 <div className="detailContent">
-                  <StyledSubDetailBoxTitle className="detailName">
+                  <StyledSubDetailBoxTitle
+                    className={"detailName " + `detailName${index + 1}`}
+                  >
                     {data.name}
                   </StyledSubDetailBoxTitle>
-                  <div>{data.content}</div>
+                  <div className={`detailBoxContent${index + 1}`}>
+                    {data.content}
+                  </div>
                 </div>
                 <div
-                  className="detailImg"
+                  className={"detailImg " + `detailImg${index + 1}`}
                   style={{
                     backgroundImage: `url(${
                       process.env.PUBLIC_URL + data.image
@@ -50,7 +60,11 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
                         : "12vh 0",
                   }}
                 >
-                  <path d="M1 0L1.00001 194" stroke="#2F2F2F" />
+                  <path
+                    d="M1 0L1.00001 194"
+                    stroke="#2F2F2F"
+                    className={"line" + (index + 2) + " " + "subVerticalLine"}
+                  />
                 </svg>
               </StyledSubDetailLineBox>
             </StyledSubDetailBox>
@@ -72,6 +86,8 @@ const StyledSubDetailTitle = styled.div`
   font-weight: 300;
   font-size: 2rem;
   margin-bottom: 5vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 `;
 
 const StyledSubDetailBox = styled.div`
@@ -91,6 +107,8 @@ const StyledSubDetailBox = styled.div`
     .detailImg {
       width: 40vw;
       height: calc(40vw * 9 / 16);
+      background-position: center 0;
+      background-size: cover;
     }
   }
   &:nth-of-type(2n) {
@@ -118,40 +136,16 @@ const StyledSubDetailBoxTitle = styled.div`
   font-size: 3rem;
   font-weight: 300;
   margin-bottom: 0.5rem;
+  color: transparent;
+
+  width: fit-content;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  background-blend-mode: screen;
 `;
 
 const StyledSubDetailLineBox = styled.div`
   width: 100%;
 `;
 
-// const StyledSubDetailTitle = styled.div`
-//   font-size: 1.5rem;
-//   font-weight: 400;
-// `;
-
-// const StyledSubCircleTitle = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin-bottom: 10vh;
-//   .circle {
-//     position: relative;
-//     width: 166px;
-//     height: 166px;
-//     div {
-//       position: absolute;
-//       top: 50%;
-//       left: 50%;
-//       transform: translate(-50%, -50%);
-//       width: 100%;
-//       text-align: center;
-//     }
-//     svg {
-//       position: absolute;
-//     }
-//   }
-//   .circleLine {
-//     transform: translateY(-40px);
-//   }
-//`;
 export default SubDetail;

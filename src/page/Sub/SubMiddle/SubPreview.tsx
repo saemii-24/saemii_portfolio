@@ -70,11 +70,16 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
-                  <div className="languageTitle" style={{ color: "#f8f8f8" }}>
-                    {Object.keys(data)[0]}
-                  </div>
-                  <div className="languageDetail " style={{ color: "#f8f8f8" }}>
-                    {Object.values(data)[0]}
+                  <div>
+                    <div className="languageTitle" style={{ color: "#f8f8f8" }}>
+                      {Object.keys(data)[0]}
+                    </div>
+                    <div
+                      className="languageDetail "
+                      style={{ color: "#f8f8f8" }}
+                    >
+                      {Object.values(data)[0]}
+                    </div>
                   </div>
                 </div>
               );
@@ -100,7 +105,7 @@ const StyledSubPreview = styled.div`
   padding-top: 25vh;
   padding-bottom: 25vh;
   margin-top: 25vh;
-  background-color: #2f2f2f;
+  background-color: #f8f8f8;
   position: relative;
 `;
 const StyledContainer = styled.div`
@@ -162,7 +167,7 @@ const StyledPagination = styled.div`
     &.active {
       z-index: 0;
       path {
-        animation: ${paginationLineAnimation} 1.5s ease;
+        animation: ${paginationLineAnimation} 1s ease;
       }
       circle {
         transform: rotate(180deg);
@@ -182,10 +187,14 @@ const StyledComment = styled.div`
   /* background-color: orange; */
   margin-top: 3rem;
   .language {
-    display: flex;
-    gap: 10%;
     font-size: 1.2rem;
     margin-top: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
+    & > div {
+      display: flex;
+      gap: 10%;
+    }
     .languageTitle {
       min-width: 10%;
       font-size: 2.4rem;

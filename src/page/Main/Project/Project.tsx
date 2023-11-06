@@ -12,12 +12,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
-/*TODO
-클릭하면 22vw -> 100vw 로 늘어나며,
-click이벤트,
-마우스 이벤트 추가
-*/
-
 const Project = ({
   allWidth,
   previousWidth,
@@ -32,6 +26,13 @@ const Project = ({
   const dispatch = useDispatch();
 
   const data = useSelector((state: RootState) => state.projectBgSlice);
+  const sortData: DataType[] = [...data].sort(function (
+    a: DataType,
+    b: DataType
+  ) {
+    return b.id - a.id;
+  });
+
   console.log(allWidth);
   console.log(previousWidth);
   console.log(nowHeight);
@@ -68,16 +69,9 @@ const Project = ({
     dispatch(mouseClick(index));
   };
 
-  // (previousWidth * nowHeight) / allWidth +
-  // (nowWidth * nowHeight) / allWidth / 2 +
-  // // ((projectWidth * nowHeight) / allWidth) * index,
-
-  // 16 +
-  // 36 * index,
-
   return (
     <StyledProject className="project">
-      {data.map((project: DataType, index: number) => {
+      {sortData.map((project: DataType, index: number) => {
         return (
           <StyledProjectOne
             key={project.id}

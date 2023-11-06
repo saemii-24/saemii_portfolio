@@ -42,24 +42,7 @@ const Main = () => {
     setPreviousWidth(sectionRef.current!.offsetWidth);
     setNowHeight(triggerRef.current!.offsetHeight);
     setNowWidth(triggerRef.current!.offsetWidth);
-    //가로 스크롤 애니메이션
-    // const pin = gsap.fromTo(
-    //   sectionRefs.current,
-    //   { x: 0 },
-    //   {
-    //     x:
-    //       -(triggerRef.current!.offsetWidth + 17) *
-    //       (sectionRef.current.length - 1),
-    //     ease: "none",
-    //     scrollTrigger: {
-    //       trigger: triggerRef.current,
-    //       start: "top top",
-    //       end: "2000 top",
-    //       scrub: 1,
-    //       pin: true,
-    //     },
-    //   }
-    // );
+
     const pin = gsap.fromTo(
       sectionRefs.current,
       { x: 0 },

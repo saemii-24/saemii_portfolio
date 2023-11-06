@@ -66,7 +66,7 @@ const StyledIntroduceWhite = styled.div`
 const StyledHorizontalLine = styled.svg`
   position: absolute;
   top: 25px;
-  left: -17%;
+  left: -10%;
 `;
 const StyledHorizontalPath = styled.path`
   stroke-dasharray: 500;

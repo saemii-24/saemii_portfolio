@@ -12,7 +12,7 @@ export interface DataType {
   link?: object[];
 }
 
-export const data: DataType[] = [
+const originData: DataType[] = [
   {
     id: 0,
     subTitle: "식물 쇼핑몰",
@@ -299,3 +299,12 @@ export const data: DataType[] = [
     ],
   },
 ];
+
+const data: DataType[] = [...originData].sort(function (
+  a: DataType,
+  b: DataType
+) {
+  return b.id - a.id;
+});
+
+export { data };
