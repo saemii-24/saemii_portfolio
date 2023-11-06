@@ -33,36 +33,28 @@ const Project = ({
     return b.id - a.id;
   });
 
-  console.log(allWidth);
-  console.log(previousWidth);
-  console.log(nowHeight);
-
-  // const movePX: number = previousWidth / allWidth; //전체길이와 이전의 요소 길이를 이용해 비율계산
-  // const scrollPX: number = nowHeight * movePX; //세로기준와 비율을 이용해 스크롤 위치 계산
+  //props로 받아오는 값들을 제외하고, project 1개의 width값이 필요하다.
   const projectRef = useRef<HTMLDivElement | null>(null);
   const [projectWidth, setProjectWidth] = useState<number>(0);
+
+  //click 할 경우 project의 title과 subTitle opacity를 0으로 변경한다.
+  const [isClick, setIsClick] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setProjectWidth(projectRef.current!.offsetWidth);
     previousWidth + nowWidth;
-    console.log(projectWidth);
   }, []);
 
-  console.log(
-    (previousWidth * nowHeight) / allWidth +
-      (nowWidth * nowHeight) / allWidth / 2 +
-      ((projectWidth * nowHeight) / allWidth) * 2
-  );
-  console.log(((previousWidth + nowWidth) / allWidth) * nowHeight);
-
   const clickMove = (index: number) => {
+    setIsClick(true);
     window.scroll({
       /*스크롤 값은 100vw 이상부터 시작되므로, (전체길이 - 현재 화면크기)를 기준점으로 계산한다.*/
       top:
         (previousWidth / (allWidth - nowWidth)) * nowHeight +
         (index * (projectWidth * nowHeight)) / (allWidth - nowWidth) +
-        1,
+        1, //약간의 오차에 대비해 1을 더한다.
       behavior: "smooth",
     });
 
@@ -92,10 +84,14 @@ const Project = ({
               setTimeout(() => {
                 navigate(`/project/${project.id}`);
                 dispatch(resetData(index));
+                // project의 title과 subTitle opacity를 1로 변경.
+                setIsClick(false);
               }, 3000);
             }}
           >
-            <StyledTitleBox>
+            <StyledTitleBox
+              style={{ opacity: isClick && project.click === true ? 0 : 1 }}
+            >
               <StyledProejctSubTitle>
                 PROJECT{" "}
                 {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
@@ -110,12 +106,9 @@ const Project = ({
 };
 
 const StyledProject = styled.div`
-  /* margin-right: 100vw; */
   height: 100vh;
   flex-shrink: 0;
-  /* background-color: #f8f8f8; */
   display: flex;
-  /* justify-content: space-between; */
 `;
 const StyledProjectOne = styled.div`
   width: 22vw;
@@ -169,6 +162,8 @@ const StyledTitleBox = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  transition: all 800ms;
+  transition-delay: 300ms;
 `;
 const StyledProjectTitle = styled.h4`
   font-size: 4rem;

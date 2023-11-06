@@ -9,7 +9,6 @@ import { useLocation } from "react-router-dom";
 const Sub = ({ thisData }: { thisData: DataType }) => {
   type IsRender = "" | "render";
   const [isRender, setIsRender] = useState<IsRender>("render");
-
   const location = useLocation();
 
   useEffect(() => {

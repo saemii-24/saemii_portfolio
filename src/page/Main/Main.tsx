@@ -43,138 +43,141 @@ const Main = () => {
     setNowHeight(triggerRef.current!.offsetHeight);
     setNowWidth(triggerRef.current!.offsetWidth);
 
-    const pin = gsap.fromTo(
-      sectionRefs.current,
-      { x: 0 },
-      {
-        x: -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          // end: "2000 top",
-          scrub: 1,
-          pin: true,
-        },
-      }
-    );
-    //introduce 애니메이션
-    gsap.to(".introducePath", {
-      strokeDashoffset: 0,
-      duration: 3,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: ".introducePath",
-        containerAnimation: pin,
-        start: "top 90%",
-      },
-    });
-
-    animationLines(".introduce__title div", {
-      trigger: ".introduce__title div",
-      containerAnimation: pin,
-      start: "top 90%",
-    });
-
-    splitLines("introduce__content");
-    animationLines(".introduce__content--child", {
-      trigger: ".introduce__content--child",
-      containerAnimation: pin,
-      start: "top 90%",
-    });
-
-    //project 애니메이션
-    //배경 색 전환 (진입)
-    gsap.to(".projectIntro", {
-      backgroundColor: "#2f2f2f",
-      duration: 1,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: ".projectIntro",
-        containerAnimation: pin,
-        start: "top 90%",
-        toggleActions: "restart play restart restart",
-      },
-    });
-    //타임라인
-    const introTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".projectIntro",
-        containerAnimation: pin,
-        start: "top bottom",
-      },
-    });
-    splitChars("introMainTitle");
-
-    introTimeline
-      .fromTo(
-        ".introSubTitle div",
-        { y: 30 },
-        { y: 0, duration: 1, ease: "power1.out" }
-      )
-      .fromTo(
-        ".introMainTitle div",
-        { y: 130 },
-        { y: 0, stagger: 0.05, duration: 1, ease: "power4.out" },
-        "-=50%"
-      )
-      .fromTo(
-        ".introPreview",
-        { y: 50, opacity: 0 },
-        { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
-        "-=50%"
+    const ctx = gsap.context(() => {
+      const pin = gsap.fromTo(
+        sectionRefs.current,
+        { x: 0 },
+        {
+          x:
+            -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
+          ease: "none",
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top top",
+            // end: "2000 top",
+            scrub: 1,
+            pin: true,
+          },
+        }
       );
-    //배경 색 전환
-    gsap.fromTo(
-      ".projectIntro",
-      { backgroundColor: "#2F2F2F" },
-      {
-        backgroundColor: "#f8f8f8",
+      //introduce 애니메이션
+      gsap.to(".introducePath", {
+        strokeDashoffset: 0,
+        duration: 3,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: ".introducePath",
+          containerAnimation: pin,
+          start: "top 90%",
+        },
+      });
+
+      animationLines(".introduce__title div", {
+        trigger: ".introduce__title div",
+        containerAnimation: pin,
+        start: "top 90%",
+      });
+
+      splitLines("introduce__content");
+      animationLines(".introduce__content--child", {
+        trigger: ".introduce__content--child",
+        containerAnimation: pin,
+        start: "top 90%",
+      });
+
+      //project 애니메이션
+      //배경 색 전환 (진입)
+      gsap.to(".projectIntro", {
+        backgroundColor: "#2f2f2f",
         duration: 1,
         ease: "power4.out",
         scrollTrigger: {
-          trigger: ".projectImg1",
+          trigger: ".projectIntro",
+          containerAnimation: pin,
+          start: "top 90%",
+          toggleActions: "restart play restart restart",
+        },
+      });
+      //타임라인
+      const introTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".projectIntro",
+          containerAnimation: pin,
+          start: "top bottom",
+        },
+      });
+      splitChars("introMainTitle");
+
+      introTimeline
+        .fromTo(
+          ".introSubTitle div",
+          { y: 30 },
+          { y: 0, duration: 1, ease: "power1.out" }
+        )
+        .fromTo(
+          ".introMainTitle div",
+          { y: 130 },
+          { y: 0, stagger: 0.05, duration: 1, ease: "power4.out" },
+          "-=50%"
+        )
+        .fromTo(
+          ".introPreview",
+          { y: 50, opacity: 0 },
+          { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
+          "-=50%"
+        );
+      //배경 색 전환
+      gsap.fromTo(
+        ".projectIntro",
+        { backgroundColor: "#2F2F2F" },
+        {
+          backgroundColor: "#f8f8f8",
+          duration: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: ".projectImg1",
+            containerAnimation: pin,
+            start: "top 20%",
+          },
+        }
+      );
+      //contact Animation
+
+      splitChars("contactTitle");
+      animationChars(
+        ".contactTitle div",
+        {
+          trigger: ".contactTitle",
+          containerAnimation: pin,
+          start: "top 90%",
+        },
+        0.05,
+        2,
+        "power4.out"
+      );
+      gsap.to(".contactLine", {
+        strokeDashoffset: 0,
+        duration: 4,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: ".contact",
           containerAnimation: pin,
           start: "top 20%",
         },
-      }
-    );
-    //contact Animation
-
-    splitChars("contactTitle");
-    animationChars(
-      ".contactTitle div",
-      {
-        trigger: ".contactTitle",
+      });
+      animationOpacity(".mail", {
+        trigger: ".mail",
         containerAnimation: pin,
-        start: "top 90%",
-      },
-      0.05,
-      2,
-      "power4.out"
-    );
-    gsap.to(".contactLine", {
-      strokeDashoffset: 0,
-      duration: 4,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: ".contact",
+        start: "top 80%",
+      });
+      animationOpacity(".github", {
+        trigger: ".github",
         containerAnimation: pin,
-        start: "top 20%",
-      },
-    });
-    animationOpacity(".mail", {
-      trigger: ".mail",
-      containerAnimation: pin,
-      start: "top 80%",
-    });
-    animationOpacity(".github", {
-      trigger: ".github",
-      containerAnimation: pin,
-      start: "top 80%",
+        start: "top 80%",
+      });
     });
     return () => {
-      pin.kill();
+      ctx.revert();
     };
   }, []);
 

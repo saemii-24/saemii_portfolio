@@ -26,7 +26,8 @@ const ProjectIntro = () => {
               className="introPreview type"
             >
               <StyledProjectNumber>
-                PROJECT {project.id < 10 ? "0" + project.id : project.id}
+                PROJECT{" "}
+                {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
               </StyledProjectNumber>
               <StyledProjectContent>{project.preview}</StyledProjectContent>
             </StyledProjectPreivew>
