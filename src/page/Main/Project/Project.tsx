@@ -81,7 +81,7 @@ const Project = ({
         return (
           <StyledProjectOne
             key={project.id}
-            className={classNames(`projectImg${index + 1} projectImg`, {
+            className={classNames(`projectImg${index} projectImg`, {
               click: data[index].click === true,
             })}
             // className={`projectImg${index + 1} projectImg`}
@@ -98,12 +98,13 @@ const Project = ({
               setTimeout(() => {
                 navigate(`/project/${project.id}`);
                 dispatch(resetData(index));
-              }, 4000);
+              }, 3000);
             }}
           >
             <StyledTitleBox>
               <StyledProejctSubTitle>
-                PROJECT {project.id < 10 ? "0" + project.id : project.id}
+                PROJECT{" "}
+                {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
               </StyledProejctSubTitle>
               <StyledProjectTitle>{project.subTitle}</StyledProjectTitle>
             </StyledTitleBox>

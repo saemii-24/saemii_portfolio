@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
 import "./SubTop.scss";
 import { DataType } from "../../../data/data";
+import { useLocation } from "react-router-dom";
 
 const Sub = ({ thisData }: { thisData: DataType }) => {
+  type IsRender = "" | "render";
+  const [isRender, setIsRender] = useState<IsRender>("render");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(isRender);
+    setIsRender("render");
+    setTimeout(() => {
+      setIsRender("");
+    }, 1000);
+  }, [location]);
+
   return (
     <StyledTop className="subTop">
       <StyledMainPic
-        className="mainPic"
+        className={"mainPic " + isRender}
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + thisData.previewImg

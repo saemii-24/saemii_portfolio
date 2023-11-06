@@ -12,7 +12,8 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
 
   //어떤 것을 click했는지 관리
   type ClickSelect = "prevClick" | "nextClick" | "";
-  const [click, setClick] = useState<ClickSelect>("");
+  const [nextClick, setNextClick] = useState<ClickSelect>("");
+  const [prevClick, setPrevClick] = useState<ClickSelect>("");
 
   //prev, next img state로 관리
   const firstBg = data[0].previewImg;
@@ -22,24 +23,24 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
   const [nextNum, setNextNum] = useState<number>(0);
 
   const handlePrevImg = () => {
-    setPrevNum(idNum - 2);
     let bgImg = "";
-    if (idNum === 1) {
+    if (idNum === 0) {
       bgImg = data[data.length - 1].previewImg;
       setPrevNum(data.length - 1);
     } else {
-      bgImg = data[idNum - 2].previewImg;
+      bgImg = data[idNum - 1].previewImg;
+      setPrevNum(idNum - 1);
     }
     setPrevImg(bgImg);
   };
   const handleNextImg = () => {
     let bgImg = "";
-    setNextNum(idNum);
-    if (idNum === data.length) {
+    if (idNum === data.length - 1) {
       bgImg = data[0].previewImg;
       setNextNum(0);
     } else {
-      bgImg = data[idNum].previewImg;
+      bgImg = data[idNum + 1].previewImg;
+      setNextNum(idNum + 1);
     }
     setNextImg(bgImg);
   };
@@ -49,15 +50,18 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
 
   const handleBg = (clickWhat: ClickSelect) => {
     window.scroll({ top: 10000, behavior: "smooth" });
-    setClick(clickWhat);
     if (clickWhat === "prevClick") {
+      setPrevClick("prevClick");
       setTimeout(() => {
         navigate(`/project/${prevNum}`);
-      }, 600);
+        setPrevClick("");
+      }, 1200);
     } else if (clickWhat === "nextClick") {
+      setNextClick("nextClick");
       setTimeout(() => {
         navigate(`/project/${nextNum}`);
-      }, 600);
+        setNextClick("");
+      }, 1200);
     }
   };
 
@@ -108,6 +112,7 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
       </StyledSubNav>
       <StyledBottomBg>
         <StyledSubBg
+          className={prevClick}
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL + prevImg})`,
             opacity: select === "prev" ? 1 : 0,
@@ -117,9 +122,9 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           <StyledTitleBox>
             <StyledProejctSubTitle>
               PROJECT{" "}
-              {data[prevNum].id < 10
-                ? "0" + data[prevNum].id
-                : data[prevNum].id}
+              {data[prevNum].id + 1 < 10
+                ? "0" + (data[prevNum].id + 1)
+                : data[prevNum].id + 1}
             </StyledProejctSubTitle>
             <StyledProjectTitle>{data[prevNum].subTitle}</StyledProjectTitle>
           </StyledTitleBox>
@@ -144,7 +149,7 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
         </StyledVideoBox>
 
         <StyledSubBg
-          className={click}
+          className={nextClick}
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL + nextImg})`,
             opacity: select === "next" ? 1 : 0,
@@ -153,9 +158,9 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           <StyledTitleBox>
             <StyledProejctSubTitle>
               PROJECT{" "}
-              {data[nextNum].id < 10
-                ? "0" + data[nextNum].id
-                : data[nextNum].id}
+              {data[nextNum].id + 1 < 10
+                ? "0" + (data[nextNum].id + 1)
+                : data[nextNum].id + 1}
             </StyledProejctSubTitle>
             <StyledProjectTitle>{data[nextNum].subTitle}</StyledProjectTitle>
           </StyledTitleBox>
@@ -237,7 +242,8 @@ const StyledSubBg = styled.div`
       opacity 0s;
     z-index: -3;
   }
-  &.nextClick {
+  &.nextClick,
+  &.prevClick {
     &::after {
       content: "";
       visibility: visible;
@@ -267,8 +273,7 @@ const StyledVideo = styled.video`
   object-fit: cover;
   position: relative;
   width: 100%;
-
-  bottom: 100%;
+  top: -50%;
 `;
 
 const StyledBottomBg = styled.div`

@@ -22,8 +22,7 @@ const StyledPrepare = styled.div`
     top: 50%;
     left: 50vw;
     transform: translate(-50%, -50%);
-    /* background: red; */
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #f8f8f8;
   }
