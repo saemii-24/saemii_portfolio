@@ -47,7 +47,7 @@ const Project = ({
     previousWidth + nowWidth;
   }, []);
 
-  const clickMove = (index: number) => {
+  const clickMove = (index: number): void => {
     setIsClick(true);
     window.scroll({
       /*스크롤 값은 100vw 이상부터 시작되므로, (전체길이 - 현재 화면크기)를 기준점으로 계산한다.*/

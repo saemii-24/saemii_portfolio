@@ -7,11 +7,11 @@ import SubTopText from "./SubTop/SubTopText";
 import SubPreview from "./SubMiddle/SubPreview";
 import SubDetail from "./SubMiddle/SubDetail";
 import SubBottom from "./SubBottom/SubBottom";
+import Scroll from "../../component/Scroll/Scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { animationLines, splitLines } from "../Main/animation";
 
 const Sub = () => {
   const { id } = useParams();
@@ -204,13 +204,14 @@ const Sub = () => {
     );
   }, [location]);
   return (
-    <div ref={subRef}>
+    <div ref={subRef} className="sub">
       <ReactLenis root>
         <SubTop thisData={thisData} />
         <SubTopText thisData={thisData} />
         <SubPreview thisData={thisData} />
         <SubDetail thisData={thisData} />
         <SubBottom idNum={idNum} subRefHeight={subRefHeight} />
+        {/* <Scroll pageNow={"sub"} pageHeight={subRefHeight} /> */}
       </ReactLenis>
     </div>
   );

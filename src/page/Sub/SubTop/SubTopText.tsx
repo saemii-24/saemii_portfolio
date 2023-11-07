@@ -64,6 +64,7 @@ const StyledContentTitle = styled.p`
   line-height: 1.5;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
+  word-break: keep-all;
   div {
     color: inherit;
   }
