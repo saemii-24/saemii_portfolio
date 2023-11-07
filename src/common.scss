@@ -22,3 +22,17 @@ body {
   font-kerning: none;
 }
 
+// ::-webkit-scrollbar : 스크롤바 전체
+// ::-webkit-scrollbar-thumb : 스크롤 막대
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+  border-radius: 10px;
+  width:3px;
+  border: 3px solid #f8f8f8;
+}
+

@@ -316,7 +316,7 @@ const StyledSubBg = styled.div`
   background-size: cover;
   background-position: center;
   position: absolute;
-  transition: opacity 500ms ease;
+  transition: opacity 600ms ease;
   &::after {
     content: "";
     visibility: hidden;
@@ -359,7 +359,7 @@ const StyledVideoBox = styled.div`
   position: relative;
   overflow: hidden;
   position: absolute;
-  transition: opacity 500ms ease;
+  transition: opacity 600ms ease;
 `;
 const StyledVideo = styled.video`
   object-fit: cover;
