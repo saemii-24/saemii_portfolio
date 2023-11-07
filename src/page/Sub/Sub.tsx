@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import SubTop from "./SubTop/SubTop";
@@ -25,6 +25,16 @@ const Sub = () => {
   }
   const thisData = data.filter((originData) => originData.id === idNum)[0];
   const location = useLocation();
+
+  //subBottom으로 내려 줄 ref
+  const subRef = useRef<HTMLDivElement>(null);
+  const [subRefHeight, setSubRefHeight] = useState<number>(0);
+
+  useEffect(() => {
+    if (subRef.current) {
+      setSubRefHeight(subRef.current.offsetHeight);
+    }
+  }, []);
 
   //gsap Animation
   useEffect(() => {
@@ -85,8 +95,8 @@ const Sub = () => {
         ease: "power4.out",
         stagger: 0.1,
         scrollTrigger: {
-          trigger: ".language",
-          start: "top 90%",
+          trigger: ".subPreview",
+          start: "top 30%",
         },
       }
     );
@@ -194,13 +204,13 @@ const Sub = () => {
     );
   }, [location]);
   return (
-    <div>
+    <div ref={subRef}>
       <ReactLenis root>
         <SubTop thisData={thisData} />
         <SubTopText thisData={thisData} />
         <SubPreview thisData={thisData} />
         <SubDetail thisData={thisData} />
-        <SubBottom idNum={idNum} />
+        <SubBottom idNum={idNum} subRefHeight={subRefHeight} />
       </ReactLenis>
     </div>
   );

@@ -9,14 +9,18 @@ import { useLocation } from "react-router-dom";
 const Sub = ({ thisData }: { thisData: DataType }) => {
   type IsRender = "" | "render";
   const [isRender, setIsRender] = useState<IsRender>("render");
+
   const location = useLocation();
 
   useEffect(() => {
-    console.log(isRender);
     setIsRender("render");
-    setTimeout(() => {
+    const renderTimeout = setTimeout(() => {
       setIsRender("");
     }, 1000);
+
+    return () => {
+      clearTimeout(renderTimeout);
+    };
   }, [location]);
 
   return (
@@ -30,7 +34,7 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
         }}
       ></StyledMainPic>
       <StyledContainer>
-        <div style={{ marginBottom: "auto" }} className="subLogo">
+        <div style={{ marginBottom: "auto" }} className={`subLogo ` + isRender}>
           <Logo />
         </div>
         <StyledSubTitle className="subTopTitle">

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Go from "../../../component/Icon/Go";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { data, DataType } from "../../../data/data";
 import "../SubTop/SubTop.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const SubBottom = ({ idNum }: { idNum: number }) => {
+const SubBottom = ({
+  idNum,
+  subRefHeight,
+}: {
+  idNum: number;
+  subRefHeight: number;
+}) => {
   //어떤 것을 hover했는지 관리
   type HoverSelect = "prev" | "home" | "next";
   const [select, setSelect] = useState<HoverSelect>("home");
@@ -30,48 +36,84 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
     return a.id - b.id;
   });
 
+  //이전/다음 이미지와 id번호를 관리한다.
   const handlePrevImg = () => {
-    let bgImg = "";
     if (idNum === 0) {
-      bgImg = sortData[sortData.length - 1].previewImg;
+      const bgImg = sortData[sortData.length - 1].previewImg;
+      setPrevImg(bgImg);
       setPrevNum(sortData.length - 1);
     } else {
-      bgImg = sortData[idNum - 1].previewImg;
+      const bgImg = sortData[idNum - 1].previewImg;
+      setPrevImg(bgImg);
       setPrevNum(idNum - 1);
     }
-    setPrevImg(bgImg);
   };
   const handleNextImg = () => {
-    let bgImg = "";
     if (idNum === sortData.length - 1) {
-      bgImg = sortData[0].previewImg;
+      const bgImg = sortData[0].previewImg;
       setNextNum(0);
+      setNextImg(bgImg);
     } else {
-      bgImg = sortData[idNum + 1].previewImg;
+      const bgImg = sortData[idNum + 1].previewImg;
       setNextNum(idNum + 1);
+      setNextImg(bgImg);
     }
-    setNextImg(bgImg);
   };
 
-  //click하면 이동한다
+  //click하면 주소를 이동한다
   const navigate = useNavigate();
 
-  const handleBg = (clickWhat: ClickSelect) => {
-    window.scroll({ top: 10000, behavior: "smooth" });
+  //hover / click 하면 스크롤을 최하단으로 이동한다
+  //전체 화면 길이 = subRefHeight
+  //현재 뷰포트 = viewPortHeight
+  const viewPortHeight = window.innerHeight;
+  const scrollToBottom = subRefHeight - viewPortHeight;
+
+  const goBottom = (): void => {
+    window.scroll({ top: scrollToBottom, behavior: "smooth" });
+  };
+
+  //className 컨트롤, 페이지 이동
+  const handleBg = (clickWhat: ClickSelect): void => {
     if (clickWhat === "prevClick") {
-      setPrevClick("prevClick");
+      setPrevClick("prevClick"); //className을 컨트롤
       setTimeout(() => {
-        navigate(`/project/${prevNum}`);
+        navigate(`/project/${prevNum}`); //이동
         setPrevClick("");
       }, 1200);
     } else if (clickWhat === "nextClick") {
-      setNextClick("nextClick");
+      setNextClick("nextClick"); //className을 컨트롤
       setTimeout(() => {
-        navigate(`/project/${nextNum}`);
+        navigate(`/project/${nextNum}`); //이동
         setNextClick("");
       }, 1200);
     }
+    setIsMouseEnter(false);
   };
+
+  //페이지 바뀔때마다 bottom 이미지는 기본적으로 "home"이어야 한다
+  const location = useLocation();
+  useEffect(() => {
+    setSelect("home");
+    setIsMouseEnter(false);
+  }, [location]);
+
+  //hover시 마우스 변경
+  const [isMouseEnter, setIsMouseEnter] = useState<boolean>(false); //마우스 모양 렌더링을 위한 state
+  const [mouseLocation, setMouseLocation] = useState<number[]>([0, 0]); //마우스 위치
+
+  const handleMouse = (event: MouseEvent) => {
+    const clientX = event.clientX - 50; //어긋나는 지점 보정
+    const clientY = event.clientY - 50; //어긋나는 지점 보정
+    setMouseLocation([clientX, clientY]);
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouse);
+    return () => {
+      window.removeEventListener("mousemove", handleMouse);
+    };
+  }, []);
 
   return (
     <StyledSubBottom>
@@ -84,6 +126,7 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
             handlePrevImg();
           }}
           onClick={() => {
+            goBottom();
             handleBg("prevClick");
           }}
         >
@@ -98,7 +141,7 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
             setSelect("home");
           }}
           onClick={() => {
-            window.scroll({ top: 10000, behavior: "smooth" });
+            goBottom();
             navigate("/");
           }}
         >
@@ -111,6 +154,7 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
             handleNextImg();
           }}
           onClick={() => {
+            goBottom();
             handleBg("nextClick");
           }}
         >
@@ -118,12 +162,39 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           <Go />
         </div>
       </StyledSubNav>
-      <StyledBottomBg>
+      <StyledBottomBg
+        onMouseEnter={() => {
+          setIsMouseEnter(true);
+        }}
+        onMouseLeave={() => {
+          setIsMouseEnter(false);
+        }}
+      >
+        {isMouseEnter && (
+          <StyledMouse //마우스 커서
+            style={{
+              left: mouseLocation[0],
+              top: mouseLocation[1],
+              pointerEvents: "none",
+            }}
+          >
+            CLICK
+          </StyledMouse>
+        )}
         <StyledSubBg
           className={prevClick}
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL + prevImg})`,
             opacity: select === "prev" ? 1 : 0,
+            visibility: select === "prev" ? "visible" : "hidden",
+          }}
+          onMouseEnter={() => {
+            setSelect("prev");
+            handlePrevImg();
+          }}
+          onClick={() => {
+            goBottom();
+            handleBg("prevClick");
           }}
         >
           {" "}
@@ -142,12 +213,12 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
 
         <StyledVideoBox
           onClick={() => {
-            // window.scroll({ top: 10000, behavior: "smooth" });
-            // navigate("/");
-            console.log("click");
+            goBottom();
+            navigate("/");
           }}
           style={{
             opacity: select === "home" ? 1 : 0,
+            visibility: select === "home" ? "visible" : "hidden",
           }}
         >
           <StyledVideo autoPlay muted loop>
@@ -163,6 +234,15 @@ const SubBottom = ({ idNum }: { idNum: number }) => {
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL + nextImg})`,
             opacity: select === "next" ? 1 : 0,
+            visibility: select === "next" ? "visible" : "hidden",
+          }}
+          onMouseEnter={() => {
+            setSelect("next");
+            handleNextImg();
+          }}
+          onClick={() => {
+            goBottom();
+            handleBg("nextClick");
           }}
         >
           <StyledTitleBox>
@@ -293,6 +373,7 @@ const StyledBottomBg = styled.div`
   width: 90vw;
   height: 50vh;
   margin: 6vh auto 10vh;
+  cursor: none;
 `;
 
 const StyledTitleBox = styled.div`
@@ -321,6 +402,33 @@ const StyledProejctSubTitle = styled.h6`
   font-size: 1rem;
   margin-right: 5px;
   margin-bottom: 5px;
+`;
+
+const mouseHoverAnimation = keyframes`
+  0%{
+    width:0;
+    height:0;
+    font-size:0;
+  line-height: 0px;
+  }100%{
+    width:100px;
+    height:100px;
+    font-size:1rem;
+  line-height: 100px;
+  }
+`;
+
+const StyledMouse = styled.div`
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1.5px solid #f8f8f8;
+  z-index: 100;
+  color: #f8f8f8;
+  text-align: center;
+  line-height: 100px;
+  animation: ${mouseHoverAnimation} 300ms ease-out;
 `;
 
 export default SubBottom;

@@ -124,7 +124,7 @@ const Main = () => {
           ".introPreview",
           { y: 50, opacity: 0 },
           { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
-          "-=50%"
+          "-=80%"
         );
       //배경 색 전환
       gsap.fromTo(
