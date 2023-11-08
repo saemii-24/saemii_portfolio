@@ -115,25 +115,26 @@ const Sub = () => {
         },
       }
     );
-    //lineAnimation을 위해 line갯수 세기
-    const verticalLineCount = thisData.detail!.length + 1;
-    for (let i = 0; i < verticalLineCount; i++) {
-      gsap.fromTo(
-        `.subVerticalLine.line${i + 1}`,
-        { strokeDasharray: 200, strokeDashoffset: 200 },
-        {
-          strokeDashoffset: 0,
-          scrollTrigger: {
-            trigger: `.subVerticalLine.line${i + 1}`,
-            start: "top 60%",
-            scrub: 1,
-            toggleActions: "restart play restart restart",
-          },
-        }
-      );
-    }
+    const detailCount = data[idNum].detail.length;
+
+    //svg line animation
+
+    gsap.fromTo(
+      `.subVerticalLine`,
+      { strokeDasharray: 200, strokeDashoffset: 200 },
+      {
+        strokeDashoffset: 0,
+        scrollTrigger: {
+          trigger: `.subVerticalLine`,
+          start: "top 60%",
+          scrub: 1,
+          toggleActions: "restart play restart restart",
+        },
+      }
+    );
+
     //title컬러 채워지는 animation
-    for (let i = 1; i < verticalLineCount; i++) {
+    for (let i = 1; i <= detailCount; i++) {
       gsap.fromTo(
         `.detailName${i}`,
         {
@@ -151,27 +152,9 @@ const Sub = () => {
         }
       );
     }
-    //svg line animation
-    for (let i = 1; i < verticalLineCount; i++) {
-      gsap.fromTo(
-        `.detailBoxContent${i}`,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: `.detailBoxContent${i}`,
-            start: "top 80%",
-          },
-        }
-      );
-    }
+
     //background animation
-    for (let i = 1; i < verticalLineCount; i++) {
+    for (let i = 1; i < detailCount; i++) {
       gsap.fromTo(
         `.detailImg${i}`,
         {

@@ -66,6 +66,10 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
       <StyledContainer style={{ height: "fit-content" }}>
         <StyledComment>
           <div>
+            <StyledLanguageTitles>
+              <div>language/library</div>
+              <div>사용 이유</div>
+            </StyledLanguageTitles>
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
@@ -195,13 +199,26 @@ const StyledComment = styled.div`
       gap: 10%;
     }
     .languageTitle {
-      min-width: 10%;
-      font-size: 2.4rem;
+      width: 8rem;
+      font-size: 1rem;
       font-weight: 300;
     }
     .languageDetail {
       font-weight: 300;
     }
+  }
+`;
+
+const StyledLanguageTitles = styled.div`
+  color: #f8f8f8;
+  width: 100%;
+  display: flex;
+  gap: 10%;
+  div:nth-child(1) {
+    width: 8rem;
+  }
+  div {
+    color: #aa8c5a;
   }
 `;
 export default SubPreview;

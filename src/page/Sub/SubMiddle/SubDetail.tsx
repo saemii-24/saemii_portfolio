@@ -8,21 +8,7 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
       <StyledSubDetailTitle className="subDetailTitle">
         <div>DETAIL</div>
       </StyledSubDetailTitle>
-      <svg
-        width="100%"
-        style={{ marginBottom: "12vh" }}
-        height="194"
-        viewBox="0 0 2 194"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M1 0L1.00001 194"
-          stroke="#2F2F2F"
-          className="line1 subVerticalLine"
-        />
-      </svg>
-      <div>
+      <div className="allDetailBox">
         {thisData.detail!.map((data, index) => {
           return (
             <StyledSubDetailBox key={index}>
@@ -69,6 +55,10 @@ const StyledSubDetailTitle = styled.div`
   margin-bottom: 5vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
+  div {
+    font-size: 5rem;
+    font-weight: 200;
+  }
 `;
 
 const StyledSubDetailBox = styled.div`
@@ -76,14 +66,14 @@ const StyledSubDetailBox = styled.div`
   margin: 0 auto;
   .detailText {
     display: flex;
+    padding: 10vh 0;
+    border-top: 1px solid #2f2f2f;
     .detailContent {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
       font-weight: 300;
       font-size: 1.2rem;
-      line-height: 1.5;
     }
     .detailImg {
       width: 40vw;
@@ -96,40 +86,22 @@ const StyledSubDetailBox = styled.div`
     .detailBoxContent {
       width: 70%;
       word-break: keep-all;
-    }
-  }
-  &:nth-of-type(2n) {
-    .detailText {
-      .detailContent {
-        padding-right: 3rem;
-        font-size: 1.2rem;
-        line-height: 1.5;
-        text-align: end;
-        align-items: flex-end;
-        .detailName {
-          align-self: flex-end;
-        }
-      }
-    }
-  }
-  &:nth-of-type(2n + 1) {
-    .detailContent {
-      order: 1;
-      padding-left: 3rem;
+      line-height: 155%;
     }
   }
 `;
 
 const StyledSubDetailBoxTitle = styled.div`
-  font-size: 3rem;
-  font-weight: 300;
   margin-bottom: 0.5rem;
   color: transparent;
-
   width: fit-content;
   background-clip: text !important;
   -webkit-background-clip: text !important;
   background-blend-mode: screen;
+  font-weight: 600;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  word-break: keep-all;
 `;
 
 export default SubDetail;
