@@ -12,13 +12,7 @@ import "./Main.scss";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import {
-  splitLines,
-  splitChars,
-  animationLines,
-  animationChars,
-  animationOpacity,
-} from "./animation";
+import { splitChars, animationChars, animationOpacity } from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -72,18 +66,19 @@ const Main = () => {
         },
       });
 
-      animationLines(".introduce__title div", {
-        trigger: ".introduce__title div",
-        containerAnimation: pin,
-        start: "top 90%",
-      });
-
-      splitLines("introduce__content");
-      animationLines(".introduce__content--child", {
-        trigger: ".introduce__content--child",
-        containerAnimation: pin,
-        start: "top 90%",
-      });
+      gsap.fromTo(
+        ".introduce__content",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.7,
+          scrollTrigger: {
+            trigger: ".introduce__content",
+            containerAnimation: pin,
+            start: "top 90%",
+          },
+        }
+      );
 
       //project 애니메이션
       //배경 색 전환 (진입)

@@ -33,7 +33,9 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
                   >
                     {data.name}
                   </StyledSubDetailBoxTitle>
-                  <div className={`detailBoxContent${index + 1}`}>
+                  <div
+                    className={`detailBoxContent detailBoxContent${index + 1}`}
+                  >
                     {data.content}
                   </div>
                 </div>
@@ -109,6 +111,11 @@ const StyledSubDetailBox = styled.div`
       height: calc(40vw * 9 / 16);
       background-position: center 0;
       background-size: cover;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.02);
+    }
+    .detailBoxContent {
+      width: 70%;
+      word-break: keep-all;
     }
   }
   &:nth-of-type(2n) {
@@ -118,6 +125,8 @@ const StyledSubDetailBox = styled.div`
         padding-right: 3rem;
         font-size: 1.2rem;
         line-height: 1.5;
+        text-align: end;
+        align-items: flex-end;
         .detailName {
           align-self: flex-end;
         }

@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
-gsap.registerPlugin(ScrollTrigger);
+import { languageLogo, stateLogo, designLogo } from "../../../data/language";
 
 const Introduce = () => {
   return (
@@ -24,24 +22,73 @@ const Introduce = () => {
           </StyledHorizontalLine>
           <TextBox>
             <IntroduceTitle className="introduce__title type">
-              <div>안녕하세요 새미입니다.</div>
+              <div>안녕하세요! 새미입니다.</div>
             </IntroduceTitle>
             <IntroduceContent className="introduce__content">
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
+              안녕하세요! 끈기 있는 프론트엔드 개발자 박새힘입니다.
+              <br /> &#39;스스로 몰두한 만큼 해낼 수 있는&#39; 정직한 프론트엔드
+              분야를 좋아합니다.
+              <br />
+              <br /> 새로운 것을 좋아해요. 새로운 기술을 이해하고 습득하는 건
+              <br />
+              분명 어려운 일이지만, &#39;우리 한번 친해져 보자!&#39;라는 열린
+              마음으로
+              <br /> 늘 새로운 트렌드가 탄생하는 프론트엔드를 공부하고 있습니다.
+              <br />
+              <br />
+              사용자와의 첫인상을 담당하는 프론트엔드 개발자로서, 다양한 직군의
+              동료와 함께
+              <br /> 만나게 될 사용자를 공감하며 긍정적인 인상을 남길 수 있는
+              개발자가 되겠습니다.
             </IntroduceContent>
           </TextBox>
           <TextBox>
             <IntroduceTitle className="introduce__title type">
-              <div>이런 기술을 사용합니다.</div>
+              <div>이런 기술을 사용할 수 있어요.</div>
             </IntroduceTitle>
             <IntroduceContent className="introduce__content">
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
-              html과 css, 약간의 자바스크립트를 이용한 쇼핑몰 사이트입니다.
+              <StyledLogoData>
+                {languageLogo.map((logo, index) => {
+                  console.log(Object.keys(logo)[0]);
+                  return (
+                    <StyledLogo
+                      key={index}
+                      src={process.env.PUBLIC_URL + Object.values(logo)[0]}
+                      alt={
+                        process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
+                      }
+                    />
+                  );
+                })}
+              </StyledLogoData>
+              <StyledLogoData>
+                {designLogo.map((logo, index) => {
+                  console.log(Object.keys(logo)[0]);
+                  return (
+                    <StyledLogo
+                      key={index}
+                      src={process.env.PUBLIC_URL + Object.values(logo)[0]}
+                      alt={
+                        process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
+                      }
+                    />
+                  );
+                })}
+              </StyledLogoData>
+              <StyledLogoData>
+                {stateLogo.map((logo, index) => {
+                  console.log(Object.keys(logo)[0]);
+                  return (
+                    <StyledLogo
+                      key={index}
+                      src={process.env.PUBLIC_URL + Object.values(logo)[0]}
+                      alt={
+                        process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
+                      }
+                    />
+                  );
+                })}
+              </StyledLogoData>
             </IntroduceContent>
           </TextBox>
         </TextBoxAlign>
@@ -56,9 +103,9 @@ const StyledIntroduce = styled.div`
   position: relative;
 `;
 const StyledIntroduceWhite = styled.div`
-  margin-left: 40vw;
+  margin-left: 50vw;
   flex-shrink: 0;
-  width: 60vw;
+  width: 50vw;
   min-width: 1000px;
   height: 100vh;
   background-color: #f8f8f8;
@@ -66,7 +113,7 @@ const StyledIntroduceWhite = styled.div`
 const StyledHorizontalLine = styled.svg`
   position: absolute;
   top: 25px;
-  left: -10%;
+  left: -4.5vw;
 `;
 const StyledHorizontalPath = styled.path`
   stroke-dasharray: 500;
@@ -79,6 +126,7 @@ const IntroduceTitle = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 `;
 const IntroduceContent = styled.div`
+  color: #2f2f2f;
   width: fit-content;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 `;
@@ -87,13 +135,25 @@ const TextBox = styled.div`
 `;
 const TextBoxAlign = styled.div`
   position: absolute;
-  padding-left: 95px;
+  padding-left: 7vw;
   display: flex;
-  gap: 100px;
+  gap: 7vh;
+
   flex-direction: column;
   top: 50%;
   transform: translateY(-50%);
   /* width: 33%; */
   min-width: 530px;
+`;
+
+const StyledLogoData = styled.div`
+  display: flex;
+  gap: 0.5vw;
+  margin-top: 0.5vw;
+`;
+const StyledLogo = styled.img`
+  display: inline-block;
+  width: 2.5vw;
+  border-radius: 0.3vw;
 `;
 export default Introduce;
