@@ -5,19 +5,19 @@ export interface DataType {
   previewImg: string;
   active: boolean;
   click: boolean;
-  previewPage?: object[];
-  develop?: object[];
-  language?: object[];
-  detail?: { name: string; content: string; image: string }[];
-  link?: object[];
+  previewPage: object[];
+  develop: object[];
+  language: object[];
+  detail: { name: string; content: string; image: string }[];
+  link: object[];
 }
 
 const originData: DataType[] = [
   {
     id: 0,
-    subTitle: "식물 쇼핑몰",
+    subTitle: "식물 \n\n\n\n\n 쇼핑몰",
     preview:
-      "'반려식물'을 주제로 한 가상의 식물 쇼핑몰입니다.  HTML과 CSS, JavaScript를 활용하였고, 웹표준을 지켜 제작했습니다.",
+      "'반려식물'을 주제로 한 가상의 식물 쇼핑몰입니다. HTML과 CSS, JavaScript를 활용하였고, 웹표준을 지켜 제작했습니다.",
     previewImg: "/image/project01.jpg",
     active: false,
     click: false,
@@ -184,6 +184,11 @@ const originData: DataType[] = [
       { 서브1: "/image/project01_main_02.png" },
       { 서브2: "/image/project01_main_03.png" },
     ],
+    link: [
+      { page: "https://saemii-24.github.io/project_1/" },
+      { github: "https://github.com/saemii-24/project_1" },
+      { document: "https://saemii-24.github.io/project_1/" },
+    ],
     develop: [
       { 작업기간: "23.08.21 - 23.08.30" },
       { 기여도: "3인 팀 작업/35%(메인페이지 담당)" },
@@ -241,6 +246,11 @@ const originData: DataType[] = [
     preview:
       "HTML, CSS, JAVASCIPT, jQuery, AJAX를 활용해 제작한 교보문고 Ebook의 클론코딩 사이트입니다. 책의 이미지는 모두 API를 활용해 제작하였으며, 메인, 서브, 서브2(미리보기)의 세 가지 페이지를 제작했습니다",
     previewImg: "/image/project04.jpg",
+    link: [
+      { page: "https://saemii-24.github.io/project_1/" },
+      { github: "https://github.com/saemii-24/project_1" },
+      { document: "https://saemii-24.github.io/project_1/" },
+    ],
     active: false,
     click: false,
     previewPage: [
@@ -256,7 +266,7 @@ const originData: DataType[] = [
       },
       {
         "주요 기능":
-          "swiper를 이용한 다양한 슬라이더, 데이터 활용 리뷰 정렬, localStorage를 이용한 최근 찾아본 책, 미리보기 글자 크기 변경",
+          "swiper를 이용한 다양한 슬라이더, 데이터 활용 리뷰 정렬, localStorage를 이용한 최근본 책, 미리보기 글자 크기 변경",
       },
       {
         "개발 비화":
@@ -286,7 +296,7 @@ const originData: DataType[] = [
         image: "/image/projectDetail/project04-reviewSort.png",
       },
       {
-        name: "최근 찾아본 책",
+        name: "최근본 책",
         content:
           "페이지가 변경되어도 최근본 상품을 유지할 수 있도록 localStorage를 이용했습니다. 메인/서브 페이지에 표시되어있는 책을 클릭하면 해당 책의 제목이 최대 5개까지 localStorage에 저장됩니다.",
         image: "/image/projectDetail/project04-localStorage.png",
@@ -305,6 +315,11 @@ const originData: DataType[] = [
     preview:
       "React와 Redux를 이용해 제작한 체크카드 검색 사이트 입니다. 스크롤 이벤트에는 GSAP을 활용했습니다.",
     previewImg: "/image/project05.jpg",
+    link: [
+      { page: "https://saemii-24.github.io/project_1/" },
+      { github: "https://github.com/saemii-24/project_1" },
+      { document: "https://saemii-24.github.io/project_1/" },
+    ],
     active: false,
     click: false,
     previewPage: [

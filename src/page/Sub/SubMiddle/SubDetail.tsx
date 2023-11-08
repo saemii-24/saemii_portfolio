@@ -48,27 +48,6 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
                   }}
                 ></div>
               </div>
-              <StyledSubDetailLineBox>
-                <svg
-                  width="100%"
-                  height="194"
-                  viewBox="0 0 2 194"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    margin:
-                      index === thisData.detail!.length - 1
-                        ? "12vh 0 5vh 0"
-                        : "12vh 0",
-                  }}
-                >
-                  <path
-                    d="M1 0L1.00001 194"
-                    stroke="#2F2F2F"
-                    className={"line" + (index + 2) + " " + "subVerticalLine"}
-                  />
-                </svg>
-              </StyledSubDetailLineBox>
             </StyledSubDetailBox>
           );
         })}
@@ -93,15 +72,15 @@ const StyledSubDetailTitle = styled.div`
 `;
 
 const StyledSubDetailBox = styled.div`
-  width: 100%;
+  width: 1400px;
+  margin: 0 auto;
   .detailText {
     display: flex;
-    width: 80vw;
     .detailContent {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40vw;
+
       font-weight: 300;
       font-size: 1.2rem;
       line-height: 1.5;
@@ -112,6 +91,7 @@ const StyledSubDetailBox = styled.div`
       background-position: center 0;
       background-size: cover;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.02);
+      flex-shrink: 0;
     }
     .detailBoxContent {
       width: 70%;
@@ -120,7 +100,6 @@ const StyledSubDetailBox = styled.div`
   }
   &:nth-of-type(2n) {
     .detailText {
-      margin-left: 20vw;
       .detailContent {
         padding-right: 3rem;
         font-size: 1.2rem;
@@ -151,10 +130,6 @@ const StyledSubDetailBoxTitle = styled.div`
   background-clip: text !important;
   -webkit-background-clip: text !important;
   background-blend-mode: screen;
-`;
-
-const StyledSubDetailLineBox = styled.div`
-  width: 100%;
 `;
 
 export default SubDetail;

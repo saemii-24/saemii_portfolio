@@ -7,7 +7,6 @@ import SubTopText from "./SubTop/SubTopText";
 import SubPreview from "./SubMiddle/SubPreview";
 import SubDetail from "./SubMiddle/SubDetail";
 import SubBottom from "./SubBottom/SubBottom";
-import Scroll from "../../component/Scroll/Scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -202,7 +201,7 @@ const Sub = () => {
         },
       }
     );
-  }, [location]);
+  }, [id]);
   return (
     <div ref={subRef} className="sub">
       <ReactLenis root>

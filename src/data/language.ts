@@ -19,7 +19,7 @@ export const designLogo: object[] = [
   { Figma: "/image/language/FIGMA.jpg" },
   { XD: "/image/language/XD.jpg" },
   { Photoshop: "/image/language/PS.jpg" },
-  { Lightroom: "/image/language/Lr.jpg" },
+  { Lightroom: "/image/language/LR.jpg" },
   { Illustrator: "/image/language/AI.jpg" },
   { Indesign: "/image/language/ID.jpg" },
   { Premiere: "/image/language/PR.jpg" },

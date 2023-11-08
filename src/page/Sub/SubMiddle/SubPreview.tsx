@@ -19,7 +19,6 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
           }}
         ></div>
         <StyledPagination>
-          {/* !나중에 제거하기 */}
           {thisData.previewPage!.map((data, index) => {
             return (
               <div
