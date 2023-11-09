@@ -5,19 +5,22 @@ import classNames from "classnames";
 
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
+  console.log(slide);
+  console.log(Object.keys(thisData.previewPage[slide]));
 
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>
-        <div
-          className="mainImage"
-          style={{
-            backgroundImage: `url(${
+        <div className="mainImage">
+          <img
+            style={{ width: "100%" }}
+            src={
               process.env.PUBLIC_URL +
-              Object.values(thisData.previewPage![slide])
-            })`,
-          }}
-        ></div>
+              Object.values(thisData.previewPage[slide])
+            }
+            alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
+          ></img>
+        </div>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
             return (
@@ -118,7 +121,7 @@ const StyledContainer = styled.div`
   position: relative;
   .mainImage {
     width: calc(1400px * 0.8);
-    padding-bottom: calc(1400px * 0.8 * 9 / 16);
+    height: calc(1400px * 0.8 * 9 / 16);
     margin: 0 auto;
     background-size: cover;
     background-position: center;
@@ -126,6 +129,7 @@ const StyledContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     animation: ${MainImageAnimation} 1s;
+    overflow: auto;
   }
 `;
 
@@ -196,15 +200,16 @@ const StyledComment = styled.div`
     overflow: hidden;
     & > div {
       display: flex;
-      gap: 10%;
+      width: 100%;
+      justify-content: space-between;
     }
     .languageTitle {
-      width: 8rem;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 300;
     }
     .languageDetail {
       font-weight: 300;
+      width: 80%;
     }
   }
 `;
@@ -213,9 +218,9 @@ const StyledLanguageTitles = styled.div`
   color: #f8f8f8;
   width: 100%;
   display: flex;
-  gap: 10%;
-  div:nth-child(1) {
-    width: 8rem;
+  justify-content: space-between;
+  div:nth-child(2) {
+    width: 80%;
   }
   div {
     color: #aa8c5a;

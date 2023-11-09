@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import SubTop from "./SubTop/SubTop";
 import SubTopText from "./SubTop/SubTopText";
 import SubPreview from "./SubMiddle/SubPreview";
 import SubDetail from "./SubMiddle/SubDetail";
 import SubBottom from "./SubBottom/SubBottom";
+// import Scroll from "../../component/Scroll/Scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -23,7 +23,6 @@ const Sub = () => {
     idNum = 0;
   }
   const thisData = data.filter((originData) => originData.id === idNum)[0];
-  const location = useLocation();
 
   //subBottom으로 내려 줄 ref
   const subRef = useRef<HTMLDivElement>(null);
@@ -116,23 +115,8 @@ const Sub = () => {
       }
     );
     const detailCount = data[idNum].detail.length;
-
-    //svg line animation
-
-    gsap.fromTo(
-      `.subVerticalLine`,
-      { strokeDasharray: 200, strokeDashoffset: 200 },
-      {
-        strokeDashoffset: 0,
-        scrollTrigger: {
-          trigger: `.subVerticalLine`,
-          start: "top 60%",
-          scrub: 1,
-          toggleActions: "restart play restart restart",
-        },
-      }
-    );
-
+    console.log(idNum);
+    console.log(detailCount);
     //title컬러 채워지는 animation
     for (let i = 1; i <= detailCount; i++) {
       gsap.fromTo(
@@ -153,23 +137,6 @@ const Sub = () => {
       );
     }
 
-    //background animation
-    for (let i = 1; i < detailCount; i++) {
-      gsap.fromTo(
-        `.detailImg${i}`,
-        {
-          backgroundPosition: "center 0%",
-        },
-        {
-          backgroundPosition: "center 100%",
-          scrollTrigger: {
-            trigger: `.detailImg${i}`,
-            start: "top 80%",
-            scrub: 1,
-          },
-        }
-      );
-    }
     //subBottom animation
     gsap.fromTo(
       ".subBottomNav",
@@ -179,8 +146,8 @@ const Sub = () => {
         opacity: 1,
         duration: 1,
         scrollTrigger: {
-          trigger: ".subBottomNav",
-          start: "top 60%",
+          trigger: ".subBottomBg",
+          start: "top 50%",
         },
       }
     );
@@ -188,7 +155,7 @@ const Sub = () => {
   return (
     <div ref={subRef} className="sub">
       <ReactLenis root>
-        <SubTop thisData={thisData} />
+        <SubTop thisData={thisData} idNum={idNum} />
         <SubTopText thisData={thisData} />
         <SubPreview thisData={thisData} />
         <SubDetail thisData={thisData} />

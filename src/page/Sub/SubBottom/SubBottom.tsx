@@ -163,6 +163,7 @@ const SubBottom = ({
         </div>
       </StyledSubNav>
       <StyledBottomBg
+        className="subBottomBg"
         onMouseEnter={() => {
           setIsMouseEnter(true);
         }}
@@ -330,7 +331,7 @@ const StyledSubBg = styled.div`
     width: 90vw;
     height: 50vh;
     transition:
-      all 500ms ease-out,
+      all 400ms ease-out,
       opacity 0s;
     z-index: -3;
   }

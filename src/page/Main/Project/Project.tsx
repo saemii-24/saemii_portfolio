@@ -15,12 +15,12 @@ import classNames from "classnames";
 const Project = ({
   allWidth,
   previousWidth,
-  nowHeight,
+
   nowWidth,
 }: {
   allWidth: number;
   previousWidth: number;
-  nowHeight: number;
+
   nowWidth: number;
 }) => {
   const dispatch = useDispatch();
@@ -52,8 +52,8 @@ const Project = ({
     window.scroll({
       /*스크롤 값은 100vw 이상부터 시작되므로, (전체길이 - 현재 화면크기)를 기준점으로 계산한다.*/
       top:
-        (previousWidth / (allWidth - nowWidth)) * nowHeight +
-        (index * (projectWidth * nowHeight)) / (allWidth - nowWidth) +
+        (previousWidth / (allWidth - nowWidth)) * 6000 +
+        (index * (projectWidth * 6000)) / (allWidth - nowWidth) +
         1, //약간의 오차에 대비해 1을 더한다.
       behavior: "smooth",
     });
@@ -96,7 +96,13 @@ const Project = ({
                 PROJECT{" "}
                 {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
               </StyledProejctSubTitle>
-              <StyledProjectTitle>{project.subTitle}</StyledProjectTitle>
+              <StyledProjectTitle>
+                {project.subTitle.split("\n").map((line: string) => (
+                  <>
+                    {line} <br />
+                  </>
+                ))}
+              </StyledProjectTitle>
             </StyledTitleBox>
           </StyledProjectOne>
         );

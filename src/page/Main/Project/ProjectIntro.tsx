@@ -29,7 +29,13 @@ const ProjectIntro = () => {
                 PROJECT{" "}
                 {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
               </StyledProjectNumber>
-              <StyledProjectContent>{project.preview}</StyledProjectContent>
+              <StyledProjectContent>
+                {project.preview.split("\n").map((line: string) => (
+                  <>
+                    {line} <br />
+                  </>
+                ))}
+              </StyledProjectContent>
             </StyledProjectPreivew>
           );
         })}

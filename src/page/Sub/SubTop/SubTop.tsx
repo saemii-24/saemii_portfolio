@@ -4,13 +4,10 @@ import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
 import "./SubTop.scss";
 import { DataType } from "../../../data/data";
-import { useLocation } from "react-router-dom";
 
-const Sub = ({ thisData }: { thisData: DataType }) => {
+const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type IsRender = "" | "render";
   const [isRender, setIsRender] = useState<IsRender>("render");
-
-  const location = useLocation();
 
   useEffect(() => {
     setIsRender("render");
@@ -21,7 +18,7 @@ const Sub = ({ thisData }: { thisData: DataType }) => {
     return () => {
       clearTimeout(renderTimeout);
     };
-  }, [location]);
+  }, [idNum]);
 
   return (
     <StyledTop className="subTop">

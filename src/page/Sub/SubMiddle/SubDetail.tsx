@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DataType } from "../../../data/data";
+import classNames from "classnames";
 
 const SubDetail = ({ thisData }: { thisData: DataType }) => {
   return (
@@ -12,17 +13,33 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
         {thisData.detail!.map((data, index) => {
           return (
             <StyledSubDetailBox key={index}>
-              <div className="detailText">
+              <StyledSubPage>{data.page} page</StyledSubPage>
+              <div
+                className={classNames("detailText", {
+                  lastDetailBox: index === thisData.detail.length - 1,
+                })}
+              >
                 <div className="detailContent">
-                  <StyledSubDetailBoxTitle
-                    className={"detailName " + `detailName${index + 1}`}
-                  >
-                    {data.name}
-                  </StyledSubDetailBoxTitle>
+                  {data.name
+                    .split("\n")
+                    .map((line: string, thisIndex: number) => (
+                      <StyledSubDetailBoxTitle
+                        key={thisIndex}
+                        className={"detailName " + `detailName${index + 1}`}
+                      >
+                        {line} <br />
+                      </StyledSubDetailBoxTitle>
+                    ))}
                   <div
                     className={`detailBoxContent detailBoxContent${index + 1}`}
                   >
-                    {data.content}
+                    {data.content
+                      .split("\n")
+                      .map((line: string, index: number) => (
+                        <span key={index}>
+                          {line} <br />
+                        </span>
+                      ))}
                   </div>
                 </div>
                 <div
@@ -45,6 +62,7 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
 const StyledSubDetail = styled.div`
   width: 100%;
   margin-top: 25vh;
+  margin-bottom: 25vh;
 `;
 
 const StyledSubDetailTitle = styled.div`
@@ -64,6 +82,7 @@ const StyledSubDetailTitle = styled.div`
 const StyledSubDetailBox = styled.div`
   width: 1400px;
   margin: 0 auto;
+  position: relative;
   .detailText {
     display: flex;
     padding: 10vh 0;
@@ -89,6 +108,9 @@ const StyledSubDetailBox = styled.div`
       line-height: 155%;
     }
   }
+  .lastDetailBox {
+    border-bottom: 1px solid #2f2f2f;
+  }
 `;
 
 const StyledSubDetailBoxTitle = styled.div`
@@ -104,4 +126,11 @@ const StyledSubDetailBoxTitle = styled.div`
   word-break: keep-all;
 `;
 
+const StyledSubPage = styled.h6`
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: inline-block;
+  position: absolute;
+  top: 1.5vh;
+`;
 export default SubDetail;

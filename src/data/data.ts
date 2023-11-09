@@ -8,14 +8,14 @@ export interface DataType {
   previewPage: object[];
   develop: object[];
   language: object[];
-  detail: { name: string; content: string; image: string }[];
+  detail: { page?: string; name: string; content: string; image: string }[];
   link: object[];
 }
 
 const originData: DataType[] = [
   {
     id: 0,
-    subTitle: "식물 \n\n\n\n\n 쇼핑몰",
+    subTitle: "식물\n 쇼핑몰",
     preview:
       "'반려식물'을 주제로 한 가상의 식물 쇼핑몰입니다. HTML과 CSS, JavaScript를 활용하였고, 웹표준을 지켜 제작했습니다.",
     previewImg: "/image/project01.jpg",
@@ -40,7 +40,7 @@ const originData: DataType[] = [
       },
       {
         "개발 비화":
-          "처음으로 제작한 웹사이트입니다. 레이아웃 디자인을 할 때 '이런 기능을 표현할 수 있었으면 좋겠다'라는 생각으로 디자인했고, 자바스크립트를 통해 실제로 구현하며 뿌듯함을 느낄 수 있었습니다. 한편으로는 스스로가 자바스크립트로 구현할 수 있는 정도가 한정되어 있어, 더 많은 기능을 생각하지 못한 것은 아닌지 아쉬움도 남는 프로젝트였습니다. 덕분에 더 멋진 웹을 위해 자바스크립트와 친해져야겠다는 목표를 세울 수 있었습니다.",
+          "처음으로 제작한 웹사이트입니다. 레이아웃 디자인을 할 때 '이런 기능을 표현할 수 있었으면 좋겠다'라는 생각으로 디자인했고, 자바스크립트를 통해 실제로 구현하며 뿌듯함을 느낄 수 있었습니다.\n 한편으로는 스스로가 자바스크립트로 구현할 수 있는 정도가 한정되어 있어, 더 많은 기능을 생각하지 못한 것은 아닌지 아쉬움도 남는 프로젝트였습니다. 덕분에 더 멋진 웹을 위해 자바스크립트와 친해져야겠다는 목표를 세울 수 있었습니다.",
       },
     ],
     language: [
@@ -54,36 +54,42 @@ const originData: DataType[] = [
     ],
     detail: [
       {
+        page: "main",
         name: "hover 애니메이션",
         content:
           "오브젝트에 호버할 시 사용자가 해당 오브젝트에 접근할 수 있거나, 바르게 접근했다는 것을 알 수 있도록 다양한 hover 애니메이션을 주었습니다. ",
         image: "/image/projectDetail/project01-hover.png",
       },
       {
+        page: "sub",
         name: "제품 선택 버튼",
         content:
           "상세페이지 상단에 찜버튼과 꽃잎 색상 버튼을 만들고, 사용자가 클릭했을 때 class를 이용해 반응할 수 있도록 구현했습니다. 배송방법의 경우 툴팁을 만들어 hover 한 경우 관련 내용이 등장하도록 했습니다.",
         image: "/image/projectDetail/project01-subTop.png",
       },
       {
+        page: "sub",
         name: "가격·상품 카운트",
         content:
           "꽃잎 색상을 선택하면 구매 수량을 선택할 수 있는 박스가 등장합니다. 변동 된 가격은 주문금액 우측에 나타나며, 가격 정보 박스의 X버튼을 누를 경우  박스는 사라지며 색상 선택과 수량, 값은 초기화 됩니다.",
         image: "/image/projectDetail/project01-calculate.png",
       },
       {
+        page: "sub",
         name: "장바구니 모달",
         content:
           "장바구니 버튼을 클릭하면, 장바구니로 이동할 수 있는 모달이 표시 됩니다. 쇼핑 계속하기 혹은 X버튼을 클릭하면 모달이 닫힙니다.",
         image: "/image/projectDetail/project01-modal.png",
       },
       {
+        page: "sub",
         name: "버튼 클릭 후 이미지 변경",
         content:
           "상세페이지 하단에서 사용자가 원하는 꽃잎 색상의 사진을 선택해서 볼 수 있도록 색상 버튼을 만들어, 꽃잎 색상을 선택하면 해당 색상의 이미지를 보여줄 수 있도록 구현했습니다.",
         image: "/image/projectDetail/project01-selectColor.png",
       },
       {
+        page: "sub",
         name: "내비게이션",
         content:
           "사용자가 현재 뷰포트를 통해 보고 있는 페이지의 위치를 파악하고, 내비게이션에서 표시합니다. 사용자가 클릭하거나, 스크롤 해도 동일하게 작동합니다.",

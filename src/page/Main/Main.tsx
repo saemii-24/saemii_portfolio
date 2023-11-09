@@ -9,13 +9,13 @@ import Prepare from "./Contact/Prepare";
 import Contact from "./Contact/Contact";
 import styled from "styled-components";
 import "./Main.scss";
-import { ReactLenis } from "@studio-freight/react-lenis";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import { splitChars, animationChars, animationOpacity } from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
@@ -29,12 +29,11 @@ const Main = () => {
   //등장 함수
   const [allWidth, setAllWidth] = useState<number>(0);
   const [previousWidth, setPreviousWidth] = useState<number>(0);
-  const [nowHeight, setNowHeight] = useState<number>(0);
   const [nowWidth, setNowWidth] = useState<number>(0);
+
   useEffect(() => {
     setAllWidth(sectionRefs.current!.offsetWidth);
     setPreviousWidth(sectionRef.current!.offsetWidth);
-    setNowHeight(triggerRef.current!.offsetHeight);
     setNowWidth(triggerRef.current!.offsetWidth);
 
     const ctx = gsap.context(() => {
@@ -48,7 +47,7 @@ const Main = () => {
           scrollTrigger: {
             trigger: triggerRef.current,
             start: "top top",
-            // end: "2000 top",
+            end: "+=6000",
             scrub: 1,
             pin: true,
           },
@@ -178,7 +177,7 @@ const Main = () => {
 
   return (
     <div>
-      <ReactLenis root>
+      <ReactLenis root lerp={0.000005}>
         <div className="main" ref={triggerRef}>
           <StyledMain ref={sectionRefs}>
             <div style={{ display: "flex" }} ref={sectionRef}>
@@ -196,7 +195,6 @@ const Main = () => {
               <Project
                 allWidth={allWidth}
                 previousWidth={previousWidth}
-                nowHeight={nowHeight}
                 nowWidth={nowWidth}
               />
             </div>
