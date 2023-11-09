@@ -166,6 +166,8 @@ const StyledHome = styled.div`
   height: 100vh;
   position: relative;
   flex-shrink: 0;
+  min-width: 1400px;
+  min-height: 700px;
 `;
 const HomeCover = styled.div`
   width: 100%;

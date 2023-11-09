@@ -60,15 +60,8 @@ const StyledProjectBg = styled.div<S$ImageProps>`
   position: fixed;
   right: 0;
   top: 0;
-  /* &::before {
-    content: "";
-    width: 100vw;
-    height: 40vh;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  } */
+  min-width: 1400px;
+  min-height: 700px;
 `;
 
 export default ProjectBg;

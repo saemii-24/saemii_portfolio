@@ -101,6 +101,7 @@ const StyledSubDetailBox = styled.div`
       background-size: cover;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.02);
       flex-shrink: 0;
+      border-radius: 13px;
     }
     .detailBoxContent {
       width: 70%;

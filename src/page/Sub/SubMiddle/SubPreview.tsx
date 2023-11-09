@@ -8,40 +8,13 @@ import classNames from "classnames";
 // import "swiper/css/scrollbar";
 // import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
 import { ReactLenis } from "@studio-freight/react-lenis";
-
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
 
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>
-        {/* <Swiper
-          direction={"vertical"}
-          slidesPerView={"auto"}
-          freeMode={true}
-          scrollbar={true}
-          mousewheel={true}
-          modules={[FreeMode, Scrollbar, Mousewheel]}
-          className="mySwiper"
-          style={{
-            width: "calc(1400px * 0.8)",
-            height: "calc(1400px * 0.8 * 9 / 16)",
-            margin: "0 auto",
-          }}
-        >
-          <SwiperSlide>
-            <img
-              style={{ width: "100%" }}
-              src={
-                process.env.PUBLIC_URL +
-                Object.values(thisData.previewPage[slide])
-              }
-              alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
-            ></img>
-          </SwiperSlide>
-        </Swiper> */}
         <ReactLenis className="mainImage">
-          {/* <div className="mainImage"> */}
           <img
             style={{ width: "100%" }}
             src={
@@ -160,7 +133,16 @@ const StyledContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     animation: ${MainImageAnimation} 1s;
-    overflow: auto;
+    overflow: overlay;
+  }
+
+  .mainImage::-webkit-scrollbar {
+    width: 20px;
+  }
+  .mainImage::-webkit-scrollbar-thumb {
+    background-color: #f8f8f8;
+    border-radius: 100px;
+    border: 8px solid #2f2f2f;
   }
 `;
 

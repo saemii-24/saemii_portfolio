@@ -115,10 +115,14 @@ const StyledProject = styled.div`
   height: 100vh;
   flex-shrink: 0;
   display: flex;
+  min-width: calc(300px * 5);
+  min-height: 700px;
 `;
 const StyledProjectOne = styled.div`
   width: 22vw;
   height: 100vh;
+  min-width: 300px;
+  min-height: 700px;
   border-right: 1px solid #c0c0c0;
   position: relative;
   cursor: pointer;
@@ -144,6 +148,8 @@ const StyledProjectOne = styled.div`
     content: "";
     height: 100vh;
     width: 22vw;
+    min-width: 300px;
+    min-height: 700px;
     background-color: #f8f8f8;
     position: fixed;
     top: 0;

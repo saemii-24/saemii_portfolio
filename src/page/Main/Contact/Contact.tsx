@@ -51,6 +51,8 @@ const StyledContact = styled.div`
   height: 100vh;
   background-color: #f8f8f8;
   position: relative;
+  min-width: 1400px;
+  min-height: 700px;
 `;
 
 const HomeCover = styled.div`

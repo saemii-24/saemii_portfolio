@@ -51,13 +51,17 @@ const Introduce = () => {
                 {languageLogo.map((logo, index) => {
                   console.log(Object.keys(logo)[0]);
                   return (
-                    <StyledLogo
-                      key={index}
-                      src={process.env.PUBLIC_URL + Object.values(logo)[0]}
-                      alt={
-                        process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
-                      }
-                    />
+                    <div key={index}>
+                      <StyledLogoImg
+                        src={process.env.PUBLIC_URL + Object.values(logo)[0]}
+                        alt={
+                          process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
+                        }
+                      ></StyledLogoImg>
+                      <StyledExplain>
+                        만나게 될 사용자를 공감하며 긍정적인 인상을 남길 수 있는
+                      </StyledExplain>
+                    </div>
                   );
                 })}
               </StyledLogoData>
@@ -65,7 +69,7 @@ const Introduce = () => {
                 {designLogo.map((logo, index) => {
                   console.log(Object.keys(logo)[0]);
                   return (
-                    <StyledLogo
+                    <StyledLogoImg
                       key={index}
                       src={process.env.PUBLIC_URL + Object.values(logo)[0]}
                       alt={
@@ -79,13 +83,13 @@ const Introduce = () => {
                 {stateLogo.map((logo, index) => {
                   console.log(Object.keys(logo)[0]);
                   return (
-                    <StyledLogo
+                    <StyledLogoImg
                       key={index}
                       src={process.env.PUBLIC_URL + Object.values(logo)[0]}
                       alt={
                         process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
                       }
-                    />
+                    ></StyledLogoImg>
                   );
                 })}
               </StyledLogoData>
@@ -101,6 +105,8 @@ const StyledIntroduce = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
+  min-width: 1400px;
+  min-height: 700px;
 `;
 const StyledIntroduceWhite = styled.div`
   margin-left: 50vw;
@@ -113,7 +119,7 @@ const StyledIntroduceWhite = styled.div`
 const StyledHorizontalLine = styled.svg`
   position: absolute;
   top: 25px;
-  left: -4.5vw;
+  left: -110px;
 `;
 const StyledHorizontalPath = styled.path`
   stroke-dasharray: 500;
@@ -127,7 +133,7 @@ const IntroduceTitle = styled.div`
 `;
 const IntroduceContent = styled.div`
   color: #2f2f2f;
-  width: fit-content;
+  width: calc(1000px - 7vw);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 `;
 const TextBox = styled.div`
@@ -151,9 +157,30 @@ const StyledLogoData = styled.div`
   gap: 0.5vw;
   margin-top: 0.5vw;
 `;
-const StyledLogo = styled.img`
+const StyledLogoImg = styled.img`
   display: inline-block;
   width: 2.5vw;
   border-radius: 0.3vw;
+`;
+
+const StyledExplain = styled.div`
+  position: absolute;
+  max-width: 200px;
+  background: #2f2f2f;
+  border-radius: 8px;
+  color: #f8f8f8;
+  padding: 16px;
+  font-size: 0.85rem;
+  word-break: keep-all;
+  &::after {
+    content: "";
+    position: absolute;
+    top: -0.3vw;
+    left: 0.8vw;
+    width: 0.8vw;
+    height: 0.8vw;
+    transform: rotate(45deg);
+    background-color: #2f2f2f;
+  }
 `;
 export default Introduce;

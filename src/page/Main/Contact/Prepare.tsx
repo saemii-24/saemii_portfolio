@@ -17,6 +17,8 @@ const StyledPrepare = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
+  min-height: 700px;
+  min-width: 1400px;
   h4 {
     position: absolute;
     top: 50%;
@@ -25,6 +27,8 @@ const StyledPrepare = styled.div`
     font-size: 1.5rem;
     font-weight: 300;
     color: #f8f8f8;
+    word-break: keep-all;
+    text-align: center;
   }
 `;
 export default Prepare;

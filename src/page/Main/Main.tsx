@@ -212,6 +212,8 @@ const Main = () => {
 const StyledMain = styled.div`
   display: flex;
   width: max-content;
+  min-width: 1400px;
+  min-height: 700px;
 `;
 
 export default Main;

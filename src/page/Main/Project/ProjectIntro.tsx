@@ -25,10 +25,7 @@ const ProjectIntro = () => {
               key={project.id}
               className="introPreview type"
             >
-              <StyledProjectNumber>
-                PROJECT{" "}
-                {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
-              </StyledProjectNumber>
+              <StyledProjectName>{project.subTitle}</StyledProjectName>
               <StyledProjectContent>
                 {project.preview.split("\n").map((line: string) => (
                   <>
@@ -36,6 +33,12 @@ const ProjectIntro = () => {
                   </>
                 ))}
               </StyledProjectContent>
+              {/* <StyledProjectName>
+                개발에 사용된 언어/라이브러리
+              </StyledProjectName>
+              <StyledProjectLanguage>
+                {Object.values(project.develop[2])[0]}
+              </StyledProjectLanguage> */}
             </StyledProjectPreivew>
           );
         })}
@@ -52,6 +55,9 @@ const StyledProjectIntro = styled.div`
   background-color: #f8f8f8;
   padding: 10vh;
   justify-content: space-between;
+
+  min-width: 1400px;
+  min-height: 700px;
 `;
 
 const StyledTitle = styled.div`
@@ -68,29 +74,15 @@ const StyledGrid = styled.div`
   grid-template-rows: repeat(3, 1fr);
   width: 60%;
 `;
-const StyledProjectNumber = styled.h6`
+const StyledProjectName = styled.h6`
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 0.4rem;
   color: #f8f8f8;
   position: relative;
   width: fit-content;
-  /* cursor: pointer;
-  &::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 1px;
-    background-color: #f8f8f8;
-    bottom: -1px;
-    left: 0;
-    transition: all 500ms ease;
-  }
-  &:hover::after {
-    width: 100%;
-  } */
 `;
-const StyledSubTitle = styled(StyledProjectNumber)`
+const StyledSubTitle = styled(StyledProjectName)`
   margin-bottom: -20px;
   margin-left: 7px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
@@ -127,6 +119,13 @@ const StyledProjectContent = styled.p`
   line-height: 1.5rem;
   min-height: calc(4 * 1.5rem);
   font-weight: 200;
+  word-break: keep-all;
 `;
+// const StyledProjectLanguage = styled.p`
+//   color: #f8f8f8;
+//   line-height: 1.5rem;
+//   min-height: calc(4 * 1.5rem);
+//   font-weight: 200;
+// `;
 
 export default ProjectIntro;

@@ -1,6 +1,7 @@
 export interface DataType {
   id: number;
   subTitle: string;
+  projectTitle: string;
   preview: string;
   previewImg: string;
   active: boolean;
@@ -16,8 +17,9 @@ const originData: DataType[] = [
   {
     id: 0,
     subTitle: "식물 쇼핑몰",
+    projectTitle: "Planning",
     preview:
-      "'반려식물'을 주제로 한 가상의 식물 쇼핑몰입니다. HTML과 CSS, JavaScript를 활용하였고, 웹표준을 지켜 제작했습니다.",
+      "반려 식물'을 주제로 한 가상의 식물 쇼핑몰입니다. 웹 표준을 지켜 제작하였으며, 상품 카운트, 선택, 스크롤에 따른 내비게이션 변화 등의 효과를 주었습니다.",
     previewImg: "/image/project01.jpg",
     active: false,
     click: false,
@@ -33,10 +35,10 @@ const originData: DataType[] = [
     develop: [
       { 작업기간: "23.06.21 - 23.07.07" },
       { 기여도: "개인작업/100%" },
-      { "개발에 사용된 언어/라이브러리": "HTML, CSS, JavaScript" },
+      { "개발에 사용된 언어/라이브러리": "HTML, CSS, Javascript" },
       {
         "주요 기능":
-          "hover 애니메이션, 제품 선택 버튼, 가격·상품 카운트, 장바구니 모달, 버튼 클릭 후 이미지 변경, 내비게이션",
+          "hover 애니메이션, 제품 선택 버튼, 가격·상품 카운트, 장바구니 모달, 색상 버튼 클릭 시 이미지 변경, 페이지 내비게이션",
       },
       {
         "개발 비화":
@@ -57,51 +59,52 @@ const originData: DataType[] = [
         page: "main",
         name: "hover 애니메이션",
         content:
-          "오브젝트에 호버할 시 사용자가 해당 오브젝트에 접근할 수 있거나, 바르게 접근했다는 것을 알 수 있도록 다양한 hover 애니메이션을 주었습니다. ",
+          "사용자가 오브젝트에 호버할 시, 해당 오브젝트에 접근할 수 있으며 바르게 접근했다는 것을 인지할 수 있도록 다양한 hover 애니메이션을 주었습니다.",
         image: "/image/projectDetail/project01-hover.png",
       },
       {
         page: "sub",
         name: "제품 선택 버튼",
         content:
-          "상세페이지 상단에 찜버튼과 꽃잎 색상 버튼을 만들고, 사용자가 클릭했을 때 class를 이용해 반응할 수 있도록 구현했습니다. 배송방법의 경우 툴팁을 만들어 hover 한 경우 관련 내용이 등장하도록 했습니다.",
+          "상세 페이지 상단에 상품 찜 버튼과 꽃잎의 색상 버튼이 있어, 사용자가 클릭하면 class가 Toggle 되어 반응합니다. 배송 방법의 경우 툴 팁을 만들어 hover 했을 때 관련 내용을 볼 수 있도록 했습니다.",
         image: "/image/projectDetail/project01-subTop.png",
       },
       {
         page: "sub",
         name: "가격·상품 카운트",
         content:
-          "꽃잎 색상을 선택하면 구매 수량을 선택할 수 있는 박스가 등장합니다. 변동 된 가격은 주문금액 우측에 나타나며, 가격 정보 박스의 X버튼을 누를 경우  박스는 사라지며 색상 선택과 수량, 값은 초기화 됩니다.",
+          "꽃잎 색상을 선택하면 구매 수량을 조정할 수 있는 박스가 등장하며 +, - 버튼을 이용해 수량과 그에 따른 가격을 조정할 수 있습니다. X 버튼을 누를 시 박스가 사라지며 색상, 수량, 가격은 초기화됩니다.",
         image: "/image/projectDetail/project01-calculate.png",
       },
       {
         page: "sub",
         name: "장바구니 모달",
         content:
-          "장바구니 버튼을 클릭하면, 장바구니로 이동할 수 있는 모달이 표시 됩니다. 쇼핑 계속하기 혹은 X버튼을 클릭하면 모달이 닫힙니다.",
+          "장바구니 버튼을 클릭하면 장바구니로 이동할 수 있는 모달이 표시됩니다. 이때 '쇼핑 계속하기' 혹은 X 버튼을 클릭하면 모달이 닫힙니다.",
         image: "/image/projectDetail/project01-modal.png",
       },
       {
         page: "sub",
-        name: "버튼 클릭 후 이미지 변경",
+        name: "색상 버튼 클릭 시 이미지 변경",
         content:
-          "상세페이지 하단에서 사용자가 원하는 꽃잎 색상의 사진을 선택해서 볼 수 있도록 색상 버튼을 만들어, 꽃잎 색상을 선택하면 해당 색상의 이미지를 보여줄 수 있도록 구현했습니다.",
+          "사용자가 원하는 꽃잎 색상의 사진을 선택해서 볼 수 있도록 색상 버튼을 선택했습니다. 버튼을 클릭하면 해당하는 색상 꽃의 이미지를 볼 수 있습니다.",
         image: "/image/projectDetail/project01-selectColor.png",
       },
       {
         page: "sub",
-        name: "내비게이션",
+        name: "페이지 내비게이션",
         content:
-          "사용자가 현재 뷰포트를 통해 보고 있는 페이지의 위치를 파악하고, 내비게이션에서 표시합니다. 사용자가 클릭하거나, 스크롤 해도 동일하게 작동합니다.",
+          "사용자가 현재 뷰포트를 통해 보고 있는 페이지의 위치를 파악하고, 내비게이션 하단에 어느 지점을 보고 있는지 표시합니다. 사용자가 클릭하거나 스크롤 해도 동일하게 작동합니다. ",
         image: "/image/projectDetail/project01-navigation.png",
       },
     ],
   },
   {
     id: 1,
-    subTitle: "지브리 사이트",
+    subTitle: "스튜디오 지브리 사이트",
+    projectTitle: "Ghibli World",
     preview:
-      "'스튜디오 지브리'에 관련된 정보를 찾아볼 수 있는 웹사이트 입니다. HTML, CSS, JavaScript, jQuery가 사용되었고, 보다 동적인 사이트를 제작하고자 했습니다.",
+      "스튜디오 지브리'에 관련된 정보를 찾아볼 수 있는 웹사이트입니다. Intersection Observer를 이용해 사용자의 스크롤에 따른 애니메이션 효과를 주었고, youtube API를 이용해 관련 동영상을 함께 보여줍니다.",
     previewImg: "/image/project02.jpg",
     active: false,
     click: false,
@@ -118,7 +121,8 @@ const originData: DataType[] = [
       { 작업기간: "23.07.12 - 23.08.12" },
       { 기여도: "개인작업/100%" },
       {
-        "개발에 사용된 언어/라이브러리": "HTML, CSS, JavaScript, jQuery",
+        "개발에 사용된 언어/라이브러리":
+          "HTML, CSS Javascript, jQuery(슬라이드에 한함), Youtube API",
       },
       {
         "주요 기능":
@@ -140,36 +144,42 @@ const originData: DataType[] = [
     ],
     detail: [
       {
+        page: "main",
         name: "메인 이미지 스크롤 이벤트",
         content:
           "사용자의 스크롤 값에 따라 이미지가 커지면서 메인 페이지를 채웁니다. 이때 이미지로 인해 헤더가 잘보이지 않을 수 있어 헤더의 컬러도 적절히 변경해주었습니다.",
         image: "/image/projectDetail/project02-main.png",
       },
       {
+        page: "main",
         name: "애니메이션 페이지네이션",
         content:
           "CSS와 자바스크립트를 이용해 만든 가로 스크롤 애니메이션입니다. 스크롤에 맞춰 오른쪽에서 왼쪽으로 카드가 이동하며, 카드에 hover하면 연관있는 지브리 애니메이션 작품을 보여줍니다.",
         image: "/image/projectDetail/project02-pagination.png",
       },
       {
+        page: "main",
         name: "가로 스크롤 카드",
         content:
           "사용자의 스크롤이 일정 위치에 도달 하면 카드가 오른쪽에서 들어오며, 카드에 hover하면 카드가 회전하며 관련 애니메이션 작품을 보여줍니다.",
         image: "/image/projectDetail/project02-card.png",
       },
       {
+        page: "sub",
         name: "input range와 스크롤 연동",
         content:
           "input type='range'의 기본 디자인을 수정하고, input 태그의 value값을 이용해 사용자가 드래그 하거나 클릭해서 value값을 조정하면 그 값을 받아 계산 해 시놉시스 카드가 오른쪽에서 왼쪽으로 이동하며 보여집니다.",
         image: "/image/projectDetail/project02-synopsis.png",
       },
       {
+        page: "sub",
         name: "youtube API를 활용한 팝업창",
         content:
           "Youtube API를 활용해 재생 버튼을 누르면 팝업창이 올라오면서 관련 영상을 볼 수 있도록 했습니다. 화면 비율을 고려해 viewport 사이즈가 작은 경우에는 새 창의 Youtube로 연결됩니다.",
         image: "/image/projectDetail/project02-youtubeAPI.png",
       },
       {
+        page: "sub",
         name: "data를 이용한 캐릭터 설명",
         content:
           "각 캐릭터의 설명이 길지만, HTML 태그 구조는 동일하기 때문에 data.js 파일에 캐릭터 정보를 분리하고 JavaScript에서 태그를 만들어주었습니다. 사진을 클릭해 캐릭터의 다른 사진을 확인할 수 있고, 버튼을 눌러 다음 캐릭터로 이동할 수 있습니다.",
@@ -180,8 +190,9 @@ const originData: DataType[] = [
   {
     id: 2,
     subTitle: "호주 여행 사이트",
+    projectTitle: "걸어서 호주속으로",
     preview:
-      "팀프로젝트로 3명의 팀원이 함께 제작한 반응형 여행 사이트입니다. 저는 메인페이지를 담당했으며, 현재 호주의 날씨와 시간을 위해 Luxon 라이브러리와 Weather API를 활용했습니다. ",
+      "3명이 함께 만든 팀 프로젝트 사이트입니다. 저는 메인페이지를 담당했으며, Luxon라이브러리와 Weather API를 통해 도시별 여행지 추천과 함께 호주의 현재 시각, 서머타임 여부, 날씨를 보여줍니다.",
     previewImg: "/image/project03.jpg",
     active: false,
     click: false,
@@ -193,10 +204,10 @@ const originData: DataType[] = [
     ],
     develop: [
       { 작업기간: "23.08.21 - 23.08.30" },
-      { 기여도: "3인 팀 작업/35%(메인페이지 담당)" },
+      { 기여도: "3인 팀 작업/35%(header, footer 제외 메인페이지 담당)" },
       {
         "개발에 사용된 언어/라이브러리":
-          "HTML, CSS, JavaScript, jQuery, swiper, Luxon, weather API",
+          "HTML, CSS, JavaScript, swiper, Luxon, weather API",
       },
       {
         "주요 기능":
@@ -245,8 +256,9 @@ const originData: DataType[] = [
   {
     id: 3,
     subTitle: "교보문고 클론코딩",
+    projectTitle: "교보문고 eBook",
     preview:
-      "HTML, CSS, JAVASCIPT, jQuery, AJAX를 활용해 제작한 교보문고 Ebook의 클론코딩 사이트입니다. 책의 이미지는 모두 API를 활용해 제작하였으며, 메인, 서브, 서브2(미리보기)의 세 가지 페이지를 제작했습니다",
+      "Kakao API를 이용한 교보문고 eBook의 클론 사이트입니다. Swiper와 localStorage등을 이용해 최대한 본 사이트와 비슷하게 구현하고자 했습니다.",
     previewImg: "/image/project04.jpg",
     link: [
       { main: "/image/projectPreview/project01-main.png" },
@@ -314,8 +326,9 @@ const originData: DataType[] = [
   {
     id: 4,
     subTitle: "체크카드 검색 사이트",
+    projectTitle: "Card Check",
     preview:
-      "React와 Redux를 이용해 제작한 체크카드 검색 사이트 입니다. 스크롤 이벤트에는 GSAP을 활용했습니다.",
+      "사용자가 원하는 카드사와 혜택을 필터해 보여주는 체크카드 검색 사이트입니다. 카드 비교함에 카드를 담아 원하는 카드를 비교할 수도 있습니다.",
     previewImg: "/image/project05.jpg",
     link: [
       { page: "https://saemii-24.github.io/project_1/" },
@@ -335,7 +348,7 @@ const originData: DataType[] = [
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
-          "react, redux, react-router, react-parallax-tilt, react-bootstrap, SCSS, lodash, GSAP, Swiper",
+          "React, Redux, React-router, React-parallx-tilt, SCSS, Bootstrap, Lodash, Gsap, Swiper",
       },
       {
         "주요 기능":

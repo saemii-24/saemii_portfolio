@@ -20,6 +20,8 @@ const StyledVideoBox = styled.div`
   position: fixed;
   top: 0;
   z-index: -10;
+  min-width: 1400px;
+  min-height: 700px;
 `;
 const StyledVideo = styled.video`
   object-fit: cover;
