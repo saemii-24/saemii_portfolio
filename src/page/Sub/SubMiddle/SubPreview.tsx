@@ -2,16 +2,46 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/free-mode";
+// import "swiper/css/scrollbar";
+// import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
-  console.log(slide);
-  console.log(Object.keys(thisData.previewPage[slide]));
 
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>
-        <div className="mainImage">
+        {/* <Swiper
+          direction={"vertical"}
+          slidesPerView={"auto"}
+          freeMode={true}
+          scrollbar={true}
+          mousewheel={true}
+          modules={[FreeMode, Scrollbar, Mousewheel]}
+          className="mySwiper"
+          style={{
+            width: "calc(1400px * 0.8)",
+            height: "calc(1400px * 0.8 * 9 / 16)",
+            margin: "0 auto",
+          }}
+        >
+          <SwiperSlide>
+            <img
+              style={{ width: "100%" }}
+              src={
+                process.env.PUBLIC_URL +
+                Object.values(thisData.previewPage[slide])
+              }
+              alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
+            ></img>
+          </SwiperSlide>
+        </Swiper> */}
+        <ReactLenis className="mainImage">
+          {/* <div className="mainImage"> */}
           <img
             style={{ width: "100%" }}
             src={
@@ -20,7 +50,8 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
             }
             alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
           ></img>
-        </div>
+          {/* </div> */}
+        </ReactLenis>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
             return (
