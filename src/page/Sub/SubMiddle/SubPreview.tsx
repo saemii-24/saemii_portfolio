@@ -223,6 +223,7 @@ const StyledComment = styled.div`
     .languageDetail {
       font-weight: 300;
       width: 80%;
+      word-break: keep-all;
     }
   }
 `;

@@ -107,6 +107,7 @@ const StyledSubDetailBox = styled.div`
       width: 70%;
       word-break: keep-all;
       line-height: 155%;
+      margin-top: 1rem;
     }
   }
   .lastDetailBox {
@@ -115,7 +116,6 @@ const StyledSubDetailBox = styled.div`
 `;
 
 const StyledSubDetailBoxTitle = styled.div`
-  margin-bottom: 0.5rem;
   color: transparent;
   width: fit-content;
   background-clip: text !important;
@@ -123,7 +123,7 @@ const StyledSubDetailBoxTitle = styled.div`
   background-blend-mode: screen;
   font-weight: 600;
   font-size: 3rem;
-  margin-bottom: 1rem;
+  line-height: 4rem;
   word-break: keep-all;
 `;
 

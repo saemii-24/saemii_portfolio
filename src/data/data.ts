@@ -109,8 +109,8 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/projectPreview/project02-main.png" },
-      { 서브: "/image/projectPreview/project02-sub.png" },
+      { 메인: "/image/projectPreview/project02-main.jpg" },
+      { 서브: "/image/projectPreview/project02-sub.jpg" },
     ],
     link: [
       { page: "https://saemii-24.github.io/project_2/" },
@@ -122,24 +122,24 @@ const originData: DataType[] = [
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
-          "HTML, CSS Javascript, jQuery(슬라이드에 한함), Youtube API",
+          "HTML, CSS Javascript, jQuery(슬라이드), Youtube API",
       },
       {
         "주요 기능":
-          "메인 이미지 스크롤 이벤트, 대표 애니메이션의 페이지네이션, 가로 스크롤 카드, input range와 스크롤 연동, youtube API를 활용한 팝업창, data를 이용한 캐릭터 설명,",
+          "메인 이미지 스크롤 이벤트, 애니메이션 section pagination, 가로 스크롤 카드, input type='range'와 카드 이동,\n youtube API를 활용한 팝업창, 캐릭터 data를 이용한 태그 생성",
       },
       {
         "개발 비화":
-          "첫 반응형 작업이 이루어진 프로젝트입니다. 어떻게 하면 요소들을 동적으로 표현할 수 있을지, 세 가지 사이즈에서 어떤 식으로 CSS를 변경 해 사이즈에 적절하게 대응할 수 있을지 고민할 수 있었습니다. 처음 PC사이즈를 작업하고, 마지막으로 핸드폰 사이즈를 작업하면서 어떻게 구조를 만들어야 세 가지 사이즈에서 적절하게 CSS를 줄 수 있는지에 대한 고민이 부족하다는걸 느끼기도 했습니다. 적절한 모양을 만들 때 태그가 지나치게 많아지고, 이를 제대로 분리하지 못했다는 것에 아쉬움이 남았고, 다음 프로젝트에서는 코드를 줄이기 위한 고민이 늘어나는 계기가 되었습니다.",
+          "처음으로 세 가지 사이즈에 대응하는 반응형 사이트를 제작하며, 각 사이즈에 적절한 레이아웃을 설정하고,\n PC 사이즈에서 다양한 스크롤 애니메이션을 넣고자 했습니다. MOBILE 사이즈를 작업할 때 내용이 많거나\n 모바일에서 대응하기 어렵다고 판단되는 경우에는 애니메이션을 삭제하거나 대체했습니다. \n 이때 세 가지 사이즈를 제작하며 각 사이즈에 적절한 구조를 만들고자 태그를 추가하다 보니, 태그가 지나치게 많아져\n 코드를 수정하거나 이해하기 어렵다는 것을 깨달았습니다. 이를 제대로 분리하지 못했다는 것이 아쉬웠지만,\n 이후 프로젝트부터 어떻게 하면 코드를 줄일 수 있는지 고민해 볼 수 있는 계기가 되었습니다.",
       },
     ],
     language: [
       {
-        CSS: "Web, Tablet, Mobile 3가지 사이증에 맞춰 media query를 이용해 반응형 페이지를 제작했습니다.",
+        CSS: "media query를 이용해 Web, Tablet, Mobile 3가지 사이즈의 반응형 페이지를 제작했습니다.",
       },
       {
         JavaScript:
-          "사이트 전체적으로 IntersectionObserver을 이용해 요소가 화면에 들어온 경우 class명을 추가하거나 제거해 애니메이션을 주었습니다.",
+          "사이트를 보다 동적으로 표현하고자 IntersectionObserver을 이용해 요소가 화면에 들어온 경우 class 명을 추가하거나 제거해 애니메이션을 주었습니다.",
       },
     ],
     detail: [
@@ -147,42 +147,42 @@ const originData: DataType[] = [
         page: "main",
         name: "메인 이미지 스크롤 이벤트",
         content:
-          "사용자의 스크롤 값에 따라 이미지가 커지면서 메인 페이지를 채웁니다. 이때 이미지로 인해 헤더가 잘보이지 않을 수 있어 헤더의 컬러도 적절히 변경해주었습니다.",
+          "사용자의 스크롤 값에 따라 이미지의 크기가 변경되며 메인페이지를 채웁니다. 이때 이미지로 인해 헤더가 잘 보이지 않을 수 있어 헤더의 컬러도 적절히 변경해 주었습니다.",
         image: "/image/projectDetail/project02-main.png",
       },
       {
         page: "main",
-        name: "애니메이션 페이지네이션",
+        name: "애니메이션 section\n pagination",
         content:
-          "CSS와 자바스크립트를 이용해 만든 가로 스크롤 애니메이션입니다. 스크롤에 맞춰 오른쪽에서 왼쪽으로 카드가 이동하며, 카드에 hover하면 연관있는 지브리 애니메이션 작품을 보여줍니다.",
+          "대표 애니메이션 각각의 section으로 이동할 수 있는 pagination을 만들었습니다. 클릭하면 해당 section으로 이동하고, 클릭이 아닌 스크롤을 할 때도 적절한 위치에 도달하면 해당 section의 pagination을 컬러가 변경됩니다.",
         image: "/image/projectDetail/project02-pagination.png",
       },
       {
         page: "main",
         name: "가로 스크롤 카드",
         content:
-          "사용자의 스크롤이 일정 위치에 도달 하면 카드가 오른쪽에서 들어오며, 카드에 hover하면 카드가 회전하며 관련 애니메이션 작품을 보여줍니다.",
+          "CSS와 자바스크립트를 이용해 만든 가로 스크롤 애니메이션입니다. 스크롤에 맞춰 오른쪽에서 왼쪽으로 카드가 이동하며, 카드에 hover 하면 연관 있는 지브리 애니메이션 작품을 보여줍니다.",
         image: "/image/projectDetail/project02-card.png",
       },
       {
         page: "sub",
-        name: "input range와 스크롤 연동",
+        name: "input type='range'와\n 카드 이동",
         content:
-          "input type='range'의 기본 디자인을 수정하고, input 태그의 value값을 이용해 사용자가 드래그 하거나 클릭해서 value값을 조정하면 그 값을 받아 계산 해 시놉시스 카드가 오른쪽에서 왼쪽으로 이동하며 보여집니다.",
+          "input type='range'의 값과 시놉시스 카드들의 움직임을 연동했습니다. 사용자가 드래그하거나 클릭해서 input 값을 조정하면 그 값을 받아 시놉시스 section이 움직입니다.",
         image: "/image/projectDetail/project02-synopsis.png",
       },
       {
         page: "sub",
-        name: "youtube API를 활용한 팝업창",
+        name: "youtube API를\n 활용한 팝업창",
         content:
-          "Youtube API를 활용해 재생 버튼을 누르면 팝업창이 올라오면서 관련 영상을 볼 수 있도록 했습니다. 화면 비율을 고려해 viewport 사이즈가 작은 경우에는 새 창의 Youtube로 연결됩니다.",
+          "재생 버튼을 누르면 팝업창이 올라오며 해당 애니메이션의 관련 영상을 볼 수 있습니다. 해당 영상은 youtube API를 통해 삽입하였고, 화면 비율을 고려하여 작은 사이즈에서는 팝업이 아닌 해당 영상의 youtube site로 이동합니다.",
         image: "/image/projectDetail/project02-youtubeAPI.png",
       },
       {
         page: "sub",
-        name: "data를 이용한 캐릭터 설명",
+        name: "캐릭터 data를 이용한\n 태그 생성",
         content:
-          "각 캐릭터의 설명이 길지만, HTML 태그 구조는 동일하기 때문에 data.js 파일에 캐릭터 정보를 분리하고 JavaScript에서 태그를 만들어주었습니다. 사진을 클릭해 캐릭터의 다른 사진을 확인할 수 있고, 버튼을 눌러 다음 캐릭터로 이동할 수 있습니다.",
+          "각 캐릭터의 설명이 길지만, HTML 태그 구조는 동일하기 때문에 data.js 파일에 캐릭터 정보를 분리하고 JavaScript에서 태그를 만들어 주었습니다. 사진을 클릭해 캐릭터의 다른 사진을 확인할 수 있고, 버튼을 눌러 다음 캐릭터로 이동할 수 있습니다.",
         image: "/image/projectDetail/project02-character.png",
       },
     ],
@@ -196,7 +196,7 @@ const originData: DataType[] = [
     previewImg: "/image/project03.jpg",
     active: false,
     click: false,
-    previewPage: [{ 메인: "/image/projectPreview/project03-main.png" }],
+    previewPage: [{ 메인: "/image/projectPreview/project03-main.jpg" }],
     link: [
       { page: "https://saemii-24.github.io/project_1/" },
       { github: "https://github.com/saemii-24/project_1" },
@@ -261,64 +261,69 @@ const originData: DataType[] = [
       "Kakao API를 이용한 교보문고 eBook의 클론 사이트입니다. Swiper와 localStorage등을 이용해 최대한 본 사이트와 비슷하게 구현하고자 했습니다.",
     previewImg: "/image/project04.jpg",
     link: [
-      { main: "/image/projectPreview/project01-main.png" },
-      { sub1: "/image/projectPreview/project01-sub1.png" },
-      { sub2: "/image/projectPreview/project01-sub2.png" },
+      { page: "https://saemii-24.github.io/project_4/" },
+      { github: "https://github.com/saemii-24/project_4" },
+      { document: "https://saemii-24.github.io/project_1/" },
     ],
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/project01_main_01.png" },
-      { 서브1: "/image/project01_main_02.png" },
-      { 서브2: "/image/project01_main_03.png" },
+      { 메인: "/image/projectPreview/project04-main.png" },
+      { 서브1: "/image/projectPreview/project04-sub1.png" },
+      { 서브2: "/image/projectPreview/project04-sub2.png" },
     ],
     develop: [
       { 작업기간: "23.09.08 - 23.09.21" },
       { 기여도: "개인작업/100%" },
       {
-        "개발에 사용된 언어/라이브러리": "HTML, CSS, JavaScript, jQuery, AJAX",
+        "개발에 사용된 언어/라이브러리":
+          "HTML, CSS, JavaScript, jQuery, AJAX, Kakao Book API",
       },
       {
         "주요 기능":
-          "swiper를 이용한 다양한 슬라이더, 데이터 활용 리뷰 정렬, localStorage를 이용한 최근본 책, 미리보기 글자 크기 변경",
+          "swiper를 이용한 다양한 슬라이드, 가상의 데이터를 활용한 리뷰 정렬, localStorage를 이용한 최근 본 책, 미리보기 글자 크기 변경",
       },
       {
         "개발 비화":
-          "이번 프로젝트는 클론코딩인 만큼 교보문고 ebook 페이지와 여러 기능들을 직접 생각해서 구현해보는 것이 목표였습니다.\n 특히 swiper를 이용해 다양한 슬라이드를 만들며 swiper 라이브러리와 좀 더 익숙해지는 계기가 되었습니다.\n'최근본 책' 부분은 이전에 공부했던 localStorage를 실제로 활용해 볼 수 있는 좋은 기회였습니다. \n 사용자가 새로고침 하거나 다른 페이지로 이동해도 이전에 클릭했던 책의 데이터가 남을 수 있도록 할 수 있어 만족스러운 작업이었습니다. \n사이트 구성시에 동적으로 생성되어야 하는 tag가 많았는데 보안상 innerHTML 사용을 지양하고자 하니, 많은 tag들을 createElement, setAttribute등으로 생성해 코드의 가독성이 좋지 않다는 문제가 있었습니다.\n후반 부에는 이런 가독성 문제를 해결해보고자 jQuery를 사용했었는데, 코드 길이는 줄었지만 더 나은 방법은 없었을지 아쉬움이 남습니다.",
+          "이번 프로젝트는 클론 코딩인 만큼 교보문고 ebook 페이지의 여러 기능을 직접 구현해 보는 것이 목표였습니다. eBook 서점인 만큼, 방대한 책 데이터를 정리하기 위해 많은 슬라이드가 존재했고, swiper를 이용해 비슷한 형태를 만들며 다양한 슬라이드를 구현해 볼 수 있었습니다.\n '최근 본 책'을 담을 수 있는 부분은 사용자가 새로고침 하거나 다른 페이지로 이동해도 동일한 데이터를 유지하기 위해 localStorage를 활용했습니다. 코드를 구성하면서 동적으로 생성되어야 하는 tag가 많았는데 보안상 innerHTML 사용을 지양하고자 하니, createElement, setAttribute등으로 생성해 코드의 가독성이 좋지 않다는 문제가 있었습니다. 코드를 줄이기 위해 많이 고민했었고, 이러한 부분은 다음 리액트 프로젝트에서 해결할 수 있었습니다.",
       },
     ],
     language: [
       {
-        AJAX: "HTML, CSS, JavaScript, jQuery를 활용해 제작한 반응형 웹 사이트입니다. 스크롤 이벤트를 활용해 보다 동적인 사이트를 제작하고자 했습니다",
+        AJAX: "Kakao API에 데이터를 요청하고 응답받기 위해 사용했습니다.",
       },
       {
         "JS, jQuery":
-          "HTML, CSS, JavaScript, jQuery를 활용해 제작한 반응형 웹 사이트입니다. 스크롤 이벤트를 활용해 보다 동적인 사이트를 제작하고자 했습니다",
+          "코드를 동적으로 만드는 데 사용했습니다. 중반까지 JavaScript를 이용해 Tag를 생성했으나 가독성이 좋지 않아 후반에는 다소 코드를 줄일 수 있는 jQuery를 사용했습니다.",
       },
     ],
     detail: [
       {
-        name: "swiper의 다양한 슬라이드",
+        page: "main",
+        name: "swiper의\n 다양한 슬라이드",
         content:
           "swiper라이브러리를 사용해 ajax로 받은 책 데이터를 다양한 형태의 슬라이드에 적용했습니다.",
         image: "/image/projectDetail/project04-slide.png",
       },
       {
-        name: "데이터 활용 리뷰 정렬",
+        page: "sub1",
+        name: "가상의 데이터를\n 활용한 리뷰 정렬",
         content:
-          "가상의 리뷰 데이터를 만든 후, 그 데이터를 이용해 리뷰 section을 만들었습니다. 상단 탭과 좋아요/최신순의 정렬 기준, 하단의 페이지네이션을 클릭하면 해당하는 데이터의 내용을 Javascript로 계산해 업데이트 합니다.",
+          "가상의 리뷰 데이터를 만들어 리뷰 section을 구성했습니다. 상단 탭과 좋아요 순/최신순, 페이지네이션 각각을 클릭하면 해당하는 데이터를 filter, sort, 그룹화를 통해 업데이트합니다.",
         image: "/image/projectDetail/project04-reviewSort.png",
       },
       {
-        name: "최근본 책",
+        page: "all",
+        name: "최근 본 책",
         content:
-          "페이지가 변경되어도 최근본 상품을 유지할 수 있도록 localStorage를 이용했습니다. 메인/서브 페이지에 표시되어있는 책을 클릭하면 해당 책의 제목이 최대 5개까지 localStorage에 저장됩니다.",
+          "페이지가 변경되어도 최근 본 상품을 유지할 수 있도록 localStorage를 이용했습니다. 메인/서브 페이지의 책을 클릭하면 해당 책의 제목이 최대 5개까지 localStorage에 저장됩니다. 저장된 책의 제목을 이용해 가격, 책 표지를 요청하고, 얻은 데이터를 이용해 최근 본 상품을 구현했습니다.",
         image: "/image/projectDetail/project04-localStorage.png",
       },
       {
+        page: "sub2",
         name: "미리보기 글자 크기 변경",
         content:
-          "input창을 조절해 min~max값을 받아 글자 크기가 변경됩니다.  초기화를 눌러 원래 글자 크기로 돌아갈 수 있으며, 글자 크기가 변경되더라도 줄 간격이 적절하게 유지됩니다.",
+          "책 미리보기 페이지에서 input과 button을 이용해 글자 크기를 변경할 수 있습니다. input을 드래그하거나 양쪽의 버튼을 눌러 조정할 수 있으며, 초기화를 눌러 원래의 상태로 돌아갈 수 있습니다. 글자 크기가 변경되더라도 줄 간격이 적절하게 유지됩니다.",
         image: "/image/projectDetail/project04-fontSize.png",
       },
     ],
@@ -331,20 +336,20 @@ const originData: DataType[] = [
       "사용자가 원하는 카드사와 혜택을 필터해 보여주는 체크카드 검색 사이트입니다. 카드 비교함에 카드를 담아 원하는 카드를 비교할 수도 있습니다.",
     previewImg: "/image/project05.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
-      { github: "https://github.com/saemii-24/project_1" },
+      { page: "https://saemii-24.github.io/project_5/" },
+      { github: "https://github.com/saemii-24/project_5" },
       { document: "https://saemii-24.github.io/project_1/" },
     ],
     active: false,
     click: false,
     previewPage: [
-      { main: "/image/projectPreview/project05-main.png" },
-      { sub1: "/image/projectPreview/project05-sub1.png" },
+      { main: "/image/projectPreview/project05-main.jpg" },
+      { sub1: "/image/projectPreview/project05-sub1.jpg" },
       { sub2: "/image/projectPreview/project05-sub2.png" },
-      { sub3: "/image/projectPreview/project05-sub3.png" },
+      { sub3: "/image/projectPreview/project05-sub3.jpg" },
     ],
     develop: [
-      { 작업기간: "3주" },
+      { 작업기간: "23.10.04 - 23.10.20" },
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
@@ -352,11 +357,11 @@ const originData: DataType[] = [
       },
       {
         "주요 기능":
-          "랜덤 데이터 선택 후 노출, 카드 보관함 추가, 카드박스 중복/초과 팝업, 카드 보관함 삭제, 원하는 카드 필터, 카드 혜택보기",
+          "카드 혜택 랜덤 선택 후 노출, 카드 비교함 추가, 카드 비교함 중복/초과 팝업, 카드 비교함 삭제, 원하는 카드 필터, 카드 자세한 혜택 보기",
       },
       {
         "개발 비화":
-          "리액트를 통해 다양한 카드 정보에 대한 상세페이지를 한 번에 만들 수 있다는 점이 재밌었던 프로젝트입니다. 데이터를 만들고 사용하면서 객체 데이터는 어떻게 활용해야 할지, 배열 데이터는 또 어떻게 해야 할지 많은 고민이 있었습니다. 특히 카드사와 혜택을 설정해 필터하는 과정에서 다소 시간이 소요되었는데, every와 some 두 가지의 배열 메소드로 해결하며, 기존에 거의 사용하지 않았던 배열 메소드를 공부할 수 있었습니다.",
+          "리액트를 통해 다양한 카드 정보에 대한 상세페이지를 한 번에 만들 수 있다는 점이 재밌었던 프로젝트입니다.\n 데이터를 만들고 사용하면서 객체 데이터는 어떻게 활용해야 할지, 배열 데이터는 또 어떻게 해야 할지 많은 고민이 있었습니다. \n특히 카드사와 혜택을 설정해 필터하는 과정에서 다소 시간이 소요되었는데, every와 some 두 가지의 배열 메소드로 해결하며,\n 기존에 거의 사용하지 않았던 배열 메소드를 공부할 수 있었습니다.",
       },
     ],
     language: [
@@ -366,47 +371,51 @@ const originData: DataType[] = [
       },
       {
         Redux:
-          "사용자가 선택한 카드 데이터를 전역적으로 관리하기 위해 사용했습니다. 카드 보관함, 카드 비교, 중복/초과 팝업 등에 활용했습니다.",
+          "사용자가 선택한 카드 데이터를 전역적으로 관리하기 위해 사용했습니다. 카드 비교함, 카드 비교, 중복/초과 팝업 등에 활용했습니다.",
       },
       {
         GSAP: "페이지의 스크롤 애니메이션을 구현하기 위해 사용했습니다.",
       },
+      {
+        Bootstrap:
+          "반응형 페이지를 만들기 위한 레이아웃 설정과 버튼 제작에 활용했습니다.",
+      },
     ],
     detail: [
       {
-        name: "랜덤 데이터 선택 후 노출",
+        name: "카드 혜택\n 랜덤 선택 후 노출",
         content:
-          "홈페이지 접속 시 6가지의 카드 혜택 중 랜덤으로 혜택 한 가지를 보여주며, 해당 혜택을 가지고 있는 카드를 데이터에서 랜덤 3개를 선택해 보여줍니다. ‘더 많은 혜택 알아보기’를 클릭하면 해당 카드의 detail 페이지로 이동합니다.",
+          "홈페이지 접속 시 6가지의 카드 혜택 중 랜덤으로 혜택 한 가지가 선택됩니다. 이때 선택된 혜택과 어울리는 영상과 함께 해당 혜택을 가지고 있는 카드를 랜덤으로 3장 선택해 노출합니다.",
         image: "/image/projectDetail/project05-random.png",
       },
       {
-        name: "카드 보관함 추가",
+        name: "카드 비교함 추가",
         content:
-          "카드 비교를 선택하면 카드 보관함에 카드가 담깁니다. 이때 보관함은 Redux로 관리되어 다른 페이지에서도 접근할 수 있습니다. 카드 보관함에 카드를 담고 상세 혜택을 비교하는 페이지로 이동할 수 있습니다.",
+          "카드 비교를 선택하면 카드 비교함에 카드가 담깁니다. 이 비교함은 Redux로 관리되어 다른 페이지에서도 접근할 수 있습니다. 카드 비교함에 카드를 담고 상세 혜택을 비교하는 페이지로 이동할 수 있습니다.",
         image: "/image/projectDetail/project05-cardBoxPush.png",
       },
       {
-        name: "카드박스 중복/초과 팝업",
+        name: "카드 비교함\n 중복/초과 팝업",
         content:
           "사용자가 카드 비교를 시도할 때, 이미 해당 카드가 담겼다면 중복된 카드의 경우 중복되었다는 팝업을 표시합니다. 만약 중복되지 않은 카드이지만 현재 담긴 카드가 3장 이상이면 3장의 카드만 담을 수 있다는 팝업을 표시합니다.",
         image: "/image/projectDetail/project05-popup.png",
       },
       {
-        name: "카드 보관함 삭제",
+        name: "카드 비교함 삭제",
         content:
-          "우측 하단의 카드 비교함에서도 카드를 삭제할 수 있고, 페이지에서도 삭제할 수 있습니다. 이때 하단 카드 비교함과 카드 비교 페이지 모두 Redux로 상태를 공유하므로, 한 곳에서 삭제를 클릭하면 동시에 제거됩니다.",
+          "카드 비교함에서 카드를 삭제하고 싶다면 우측 하단에 표시되는 작은 비교함에서 삭제할 수 있으며, 비교하기 페이지 내에서도 삭제할 수 있습니다. 카드 비교함과 카드 비교 페이지 모두 Redux로 상태를 공유하므로, 한 곳에서 삭제를 클릭하면 동시에 제거됩니다.",
         image: "/image/projectDetail/project05-cardBoxRemove.png",
       },
       {
         name: "원하는 카드 필터",
         content:
-          "filter, every, some 등의 배열 메소드를 활용해 사용자가 선택한 카드사와 혜택을 충족하는 카드를 표시합니다. 이때 카드사는 선택한 카드사가 모두 검색되며, 혜택은 해당 혜택을 모두 가지고 있는 카드를 표시합니다.",
+          "filter, every, some 등의 배열 메소드를 활용해 사용자가 선택한 카드사와 혜택을 충족하는 카드를 표시합니다. 필터 기준은 사용자가 선택한 카드사의 카드 중 선택된 모든 혜택을 가지고 있는 카드입니다.",
         image: "/image/projectDetail/project05-cardFilter.png",
       },
       {
-        name: "카드 혜택보기",
+        name: "카드 자세한 혜택 보기",
         content:
-          "'자세한 혜택' 버튼을 클릭하면 해당 카드의 detail 페이지로 이동합니다. useParams를 이용해 데이터의 id를 찾고, 해당 id를 가진 데이터를 찾아 렌더링 합니다. 혜택을 나타내는 아이콘은 미리 정의해 둔 switch case 문을 이용했습니다.",
+          "'자세한 혜택' 버튼을 클릭하면 해당 카드의 detail 페이지로 이동합니다. useParams를 이용해 데이터의 id를 찾고, 해당 id를 가진 데이터를 찾아 렌더링합니다. 혜택을 나타내는 아이콘은 미리 정의해 둔 switch case 문을 이용했습니다.",
         image: "/image/projectDetail/project05-detail.png",
       },
     ],

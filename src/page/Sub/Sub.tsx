@@ -115,8 +115,8 @@ const Sub = () => {
         },
       }
     );
-    const detailCount = data[idNum].detail.length;
-    console.log(idNum);
+    const detailCount = thisData.detail.length;
+
     console.log(detailCount);
     //title컬러 채워지는 animation
     for (let i = 1; i <= detailCount; i++) {

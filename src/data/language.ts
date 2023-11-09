@@ -1,7 +1,6 @@
 export const languageLogo: object[] = [
   {
     HTML: "/image/language/HTML.jpg",
-    explain: "HTML의 태그를 이용해 웹사이트의 구조를 만들 수 있습니다.",
   },
   { CSS: "/image/language/CSS.jpg" },
   { SCSS: "/image/language/SCSS.jpg" },
