@@ -74,8 +74,8 @@ const StyledSubDetailTitle = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
   div {
-    font-size: 5rem;
-    font-weight: 200;
+    font-size: 3rem;
+    font-weight: 300;
   }
 `;
 

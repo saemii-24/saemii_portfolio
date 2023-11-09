@@ -17,8 +17,11 @@ const SubTopText = ({ thisData }: { thisData: DataType }) => {
                 <StyledContentTitle className="subTextContent">
                   {Object.values(data)[0]
                     .split("\n")
-                    .map((line: string, index: number) => (
-                      <span key={index}>{line}</span>
+                    .map((line: string, thisIndex: number) => (
+                      <span key={thisIndex}>
+                        {line}
+                        <br />
+                      </span>
                     ))}
                 </StyledContentTitle>
               </div>

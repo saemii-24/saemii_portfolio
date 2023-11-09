@@ -15,7 +15,7 @@ export interface DataType {
 const originData: DataType[] = [
   {
     id: 0,
-    subTitle: "식물\n 쇼핑몰",
+    subTitle: "식물 쇼핑몰",
     preview:
       "'반려식물'을 주제로 한 가상의 식물 쇼핑몰입니다. HTML과 CSS, JavaScript를 활용하였고, 웹표준을 지켜 제작했습니다.",
     previewImg: "/image/project01.jpg",
@@ -40,7 +40,7 @@ const originData: DataType[] = [
       },
       {
         "개발 비화":
-          "처음으로 제작한 웹사이트입니다. 레이아웃 디자인을 할 때 '이런 기능을 표현할 수 있었으면 좋겠다'라는 생각으로 디자인했고, 자바스크립트를 통해 실제로 구현하며 뿌듯함을 느낄 수 있었습니다.\n 한편으로는 스스로가 자바스크립트로 구현할 수 있는 정도가 한정되어 있어, 더 많은 기능을 생각하지 못한 것은 아닌지 아쉬움도 남는 프로젝트였습니다. 덕분에 더 멋진 웹을 위해 자바스크립트와 친해져야겠다는 목표를 세울 수 있었습니다.",
+          "처음으로 제작한 웹사이트입니다. 레이아웃 디자인을 할 때 '이런 기능을 표현할 수 있었으면 좋겠다'라는 생각으로 디자인했고,\n 자바스크립트를 통해 실제로 구현하며 뿌듯함을 느낄 수 있었습니다.\n 한편으로는 스스로가 자바스크립트로 구현할 수 있는 정도가 한정되어 있어, 더 많은 기능을 생각하지 못한 것은 아닌지 아쉬움도 남는 프로젝트였습니다. 덕분에 더 멋진 웹을 위해 자바스크립트와 친해져야겠다는 목표를 세울 수 있었습니다.",
       },
     ],
     language: [
@@ -106,8 +106,8 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/project01_main_01.png" },
-      { 서브1: "/image/project01_main_02.png" },
+      { 메인: "/image/projectPreview/project02-main.png" },
+      { 서브: "/image/projectPreview/project02-sub.png" },
     ],
     link: [
       { page: "https://saemii-24.github.io/project_2/" },
@@ -185,11 +185,7 @@ const originData: DataType[] = [
     previewImg: "/image/project03.jpg",
     active: false,
     click: false,
-    previewPage: [
-      { 메인: "/image/project01_main_01.png" },
-      { 서브1: "/image/project01_main_02.png" },
-      { 서브2: "/image/project01_main_03.png" },
-    ],
+    previewPage: [{ 메인: "/image/projectPreview/project03-main.png" }],
     link: [
       { page: "https://saemii-24.github.io/project_1/" },
       { github: "https://github.com/saemii-24/project_1" },
@@ -253,9 +249,9 @@ const originData: DataType[] = [
       "HTML, CSS, JAVASCIPT, jQuery, AJAX를 활용해 제작한 교보문고 Ebook의 클론코딩 사이트입니다. 책의 이미지는 모두 API를 활용해 제작하였으며, 메인, 서브, 서브2(미리보기)의 세 가지 페이지를 제작했습니다",
     previewImg: "/image/project04.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
-      { github: "https://github.com/saemii-24/project_1" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      { main: "/image/projectPreview/project01-main.png" },
+      { sub1: "/image/projectPreview/project01-sub1.png" },
+      { sub2: "/image/projectPreview/project01-sub2.png" },
     ],
     active: false,
     click: false,
@@ -276,7 +272,7 @@ const originData: DataType[] = [
       },
       {
         "개발 비화":
-          "법률은 특별한 규정이 없는 한 공포한 날로부터 20일을 경과함으로써 효력을 발생한다. 모든 국민은 직업선택의 자유를 가진다. 새로운 회계연도가 개시될 때까지 예산안이 의결되지 못한 때에는 정부는 국회에서 예산안이 의결될 때까지 다음의 목적을 위한 경비는 전년도 예산에 준하여 집행할 수 있다.",
+          "이번 프로젝트는 클론코딩인 만큼 교보문고 ebook 페이지와 여러 기능들을 직접 생각해서 구현해보는 것이 목표였습니다.\n 특히 swiper를 이용해 다양한 슬라이드를 만들며 swiper 라이브러리와 좀 더 익숙해지는 계기가 되었습니다.\n'최근본 책' 부분은 이전에 공부했던 localStorage를 실제로 활용해 볼 수 있는 좋은 기회였습니다. \n 사용자가 새로고침 하거나 다른 페이지로 이동해도 이전에 클릭했던 책의 데이터가 남을 수 있도록 할 수 있어 만족스러운 작업이었습니다. \n사이트 구성시에 동적으로 생성되어야 하는 tag가 많았는데 보안상 innerHTML 사용을 지양하고자 하니, 많은 tag들을 createElement, setAttribute등으로 생성해 코드의 가독성이 좋지 않다는 문제가 있었습니다.\n후반 부에는 이런 가독성 문제를 해결해보고자 jQuery를 사용했었는데, 코드 길이는 줄었지만 더 나은 방법은 없었을지 아쉬움이 남습니다.",
       },
     ],
     language: [
@@ -329,9 +325,10 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/project01_main_01.png" },
-      { 서브1: "/image/project01_main_02.png" },
-      { 서브2: "/image/project01_main_03.png" },
+      { main: "/image/projectPreview/project05-main.png" },
+      { sub1: "/image/projectPreview/project05-sub1.png" },
+      { sub2: "/image/projectPreview/project05-sub2.png" },
+      { sub3: "/image/projectPreview/project05-sub3.png" },
     ],
     develop: [
       { 작업기간: "3주" },

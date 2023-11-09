@@ -271,13 +271,13 @@ const StyledSubBottom = styled.div`
   gap: 20px;
   .moreProject {
     font-weight: 300;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 
 const StyledSubNav = styled.div`
   display: flex;
-  gap: 80px;
+  gap: 100px;
   div {
     display: flex;
     gap: 10px;

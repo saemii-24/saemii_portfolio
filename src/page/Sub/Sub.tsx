@@ -6,6 +6,7 @@ import SubTopText from "./SubTop/SubTopText";
 import SubPreview from "./SubMiddle/SubPreview";
 import SubDetail from "./SubMiddle/SubDetail";
 import SubBottom from "./SubBottom/SubBottom";
+import ToTop from "../../component/Scroll/ToTop";
 // import Scroll from "../../component/Scroll/Scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
@@ -155,6 +156,7 @@ const Sub = () => {
   return (
     <div ref={subRef} className="sub">
       <ReactLenis root>
+        <ToTop idNum={idNum} />
         <SubTop thisData={thisData} idNum={idNum} />
         <SubTopText thisData={thisData} />
         <SubPreview thisData={thisData} />
