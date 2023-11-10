@@ -85,7 +85,7 @@ const originData: DataType[] = [
       },
       {
         page: "sub",
-        name: "색상 버튼 클릭 시 이미지 변경",
+        name: "색상 버튼 클릭 시\n 이미지 변경",
         content:
           "사용자가 원하는 꽃잎 색상의 사진을 선택해서 볼 수 있도록 색상 버튼을 선택했습니다. 버튼을 클릭하면 해당하는 색상 꽃의 이미지를 볼 수 있습니다.",
         image: "/image/projectDetail/project01-selectColor.png",
@@ -234,7 +234,7 @@ const originData: DataType[] = [
     detail: [
       {
         page: "main",
-        name: "메인화면 문장·이미지 전환",
+        name: "메인화면\n 문장·이미지 전환",
         content:
           "자바스크립트 비동기 함수(setTimeout)를 이용해 한 단어씩 등장해 문장을 이루는 슬라이드를 구현했습니다. 이미지, 시간 bar, 문장이 짝을 이루고 있고, 0.3초 간격으로 단어가 등장한 다음, 총 5초가 지나면 다음 이미지와 문장을 보여줍니다.",
         image: "/image/projectDetail/project03-main.png",
@@ -255,7 +255,7 @@ const originData: DataType[] = [
       },
       {
         page: "main",
-        name: "서울과 호주의 날씨·시간 보드",
+        name: "서울과 호주의\n 날씨·시간 보드",
         content:
           "weather API와 luxon 라이브러리를 활용해 서울과 호주 각 도시의 날씨와 시간을 나타내는 보드를 구현했습니다. 서머타임을 시행하는 경우 시간 옆에 서머타임 아이콘이 표시됩니다. 각 도시의 날씨 데이터를 가져오기까지 시간이 다소 소요되므로, 사용성을 위해 로딩 스피너를 추가해 주었습니다.",
         image: "/image/projectDetail/project03-weather.png",
@@ -302,7 +302,7 @@ const originData: DataType[] = [
         AJAX: "Kakao API에 데이터를 요청하고 응답받기 위해 사용했습니다.",
       },
       {
-        "JS, jQuery":
+        "JavaScript, jQuery":
           "코드를 동적으로 만드는 데 사용했습니다. 중반까지 JavaScript를 이용해 Tag를 생성했으나 가독성이 좋지 않아 후반에는 다소 코드를 줄일 수 있는 jQuery를 사용했습니다.",
       },
     ],

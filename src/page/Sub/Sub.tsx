@@ -7,7 +7,6 @@ import SubPreview from "./SubMiddle/SubPreview";
 import SubDetail from "./SubMiddle/SubDetail";
 import SubBottom from "./SubBottom/SubBottom";
 import ToTop from "../../component/Scroll/ToTop";
-// import Scroll from "../../component/Scroll/Scroll";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -15,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Sub = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   let idNum = 0;
 
   if (id && typeof id === "string") {
@@ -117,7 +116,7 @@ const Sub = () => {
     );
     const detailCount = thisData.detail.length;
 
-    console.log(detailCount);
+    // console.log(detailCount);
     //title컬러 채워지는 animation
     for (let i = 1; i <= detailCount; i++) {
       gsap.fromTo(

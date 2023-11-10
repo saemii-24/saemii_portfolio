@@ -16,13 +16,17 @@ gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ReactLenis } from "@studio-freight/react-lenis";
+import ProjectIntroBg from "./Home/ProjectIntroBg";
 
 const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   // const sectionRef = useRef<HTMLDivElement[] | null[]>([]);
-  const bgActive = useSelector((state: RootState) => state.projectBgSlice);
+  const bgActive = useSelector(
+    (state: RootState) => state.projectBgSlice.stateData
+  );
+
   const now = bgActive.every((bg) => bg.active === false);
   console.log(now);
   //재활용할 gsap 함수
@@ -80,18 +84,18 @@ const Main = () => {
       );
 
       //project 애니메이션
+
       //배경 색 전환 (진입)
-      gsap.to(".projectIntro", {
-        backgroundColor: "#2f2f2f",
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".projectIntro",
-          containerAnimation: pin,
-          start: "top 90%",
-          toggleActions: "restart play restart restart",
-        },
-      });
+      // gsap.to(".projectIntro", {
+      //   backgroundColor: "#2f2f2f",
+      //   duration: 1,
+      //   ease: "power4.out",
+      //   scrollTrigger: {
+      //     trigger: ".projectIntro",
+      //     containerAnimation: pin,
+      //     start: "top 80%",
+      //   },
+      // });
       //타임라인
       const introTimeline = gsap.timeline({
         scrollTrigger: {
@@ -104,9 +108,16 @@ const Main = () => {
 
       introTimeline
         .fromTo(
+          ".projectIntro .imgBox",
+          { opacity: 0 },
+          { opacity: 1, duration: 1, ease: "power1.out" },
+          "first"
+        )
+        .fromTo(
           ".introSubTitle div",
           { y: 30 },
-          { y: 0, duration: 1, ease: "power1.out" }
+          { y: 0, duration: 1, ease: "power1.out" },
+          "first"
         )
         .fromTo(
           ".introMainTitle div",
@@ -203,6 +214,7 @@ const Main = () => {
           </StyledMain>
           <ProjectBg />
           <Background />
+          <ProjectIntroBg />
         </div>
       </ReactLenis>
     </div>

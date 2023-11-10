@@ -49,7 +49,6 @@ const Introduce = () => {
             <IntroduceContent className="introduce__content">
               <StyledLogoData>
                 {languageLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <div key={index}>
                       <StyledLogoImg
@@ -67,7 +66,6 @@ const Introduce = () => {
               </StyledLogoData>
               <StyledLogoData>
                 {designLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <StyledLogoImg
                       key={index}
@@ -81,7 +79,6 @@ const Introduce = () => {
               </StyledLogoData>
               <StyledLogoData>
                 {stateLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <StyledLogoImg
                       key={index}

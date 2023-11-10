@@ -16,7 +16,7 @@ const ProjectBg = () => {
   */
 
   const data: DataType[] = useSelector(
-    (state: RootState) => state.projectBgSlice
+    (state: RootState) => state.projectBgSlice.stateData
   );
 
   //이미지 경로

@@ -25,7 +25,9 @@ const Project = ({
 }) => {
   const dispatch = useDispatch();
 
-  const data = useSelector((state: RootState) => state.projectBgSlice);
+  const data = useSelector(
+    (state: RootState) => state.projectBgSlice.stateData
+  );
   const sortData: DataType[] = [...data].sort(function (
     a: DataType,
     b: DataType
@@ -96,13 +98,7 @@ const Project = ({
                 PROJECT{" "}
                 {project.id + 1 < 10 ? "0" + (project.id + 1) : project.id + 1}
               </StyledProejctSubTitle>
-              <StyledProjectTitle>
-                {project.subTitle.split("\n").map((line: string) => (
-                  <>
-                    {line} <br />
-                  </>
-                ))}
-              </StyledProjectTitle>
+              <StyledProjectTitle>{project.subTitle}</StyledProjectTitle>
             </StyledTitleBox>
           </StyledProjectOne>
         );

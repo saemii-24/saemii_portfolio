@@ -208,7 +208,7 @@ const StyledComment = styled.div`
   margin-top: 3rem;
   .language {
     font-size: 1.2rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     overflow: hidden;
     & > div {
