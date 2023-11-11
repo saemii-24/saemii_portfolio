@@ -74,7 +74,8 @@ const Main = () => {
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.7,
+          duration: 1,
+          ease: "power1.out",
           scrollTrigger: {
             trigger: ".introduce__content",
             containerAnimation: pin,
@@ -132,20 +133,20 @@ const Main = () => {
           "-=80%"
         );
       //배경 색 전환
-      gsap.fromTo(
-        ".projectIntro",
-        { backgroundColor: "#2F2F2F" },
-        {
-          backgroundColor: "#f8f8f8",
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: ".projectImg1",
-            containerAnimation: pin,
-            start: "top 20%",
-          },
-        }
-      );
+      // gsap.fromTo(
+      //   ".projectIntro",
+      //   { backgroundColor: "#2F2F2F" },
+      //   {
+      //     backgroundColor: "#f8f8f8",
+      //     duration: 1,
+      //     ease: "power4.out",
+      //     scrollTrigger: {
+      //       trigger: ".projectImg1",
+      //       containerAnimation: pin,
+      //       start: "top 20%",
+      //     },
+      //   }
+      // );
       //contact Animation
 
       splitChars("contactTitle");

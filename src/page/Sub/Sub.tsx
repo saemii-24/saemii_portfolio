@@ -37,6 +37,17 @@ const Sub = () => {
   //gsap Animation
   useEffect(() => {
     //subTop animation
+
+    gsap.fromTo(
+      ".subTop .mainPic",
+      { width: "100vw", height: "100vh" },
+      {
+        width: "70vw",
+        height: "85vh",
+        duration: 1,
+      }
+    );
+
     const subTopTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".subTop",
@@ -138,20 +149,20 @@ const Sub = () => {
     }
 
     //subBottom이 보이면 background color가 변경된다.
-    gsap.fromTo(
-      ".allDetailBox",
-      { backgroundColor: "#f8f8f8" },
-      {
-        backgroundColor: "#2f2f2f",
-        scrollTrigger: {
-          trigger: `.subBottomNav`,
-          start: "top 60%",
-          end: "bottom 40%",
-          scrub: 1,
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   ".allDetailBox",
+    //   { backgroundColor: "#f8f8f8" },
+    //   {
+    //     backgroundColor: "#2f2f2f",
+    //     scrollTrigger: {
+    //       trigger: `.subBottomNav`,
+    //       start: "top 60%",
+    //       end: "bottom 40%",
+    //       scrub: 1,
+    //       toggleActions: "play none none none",
+    //     },
+    //   }
+    // );
     //subBottom animation
     gsap.fromTo(
       ".subBottomNav",

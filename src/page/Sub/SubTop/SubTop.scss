@@ -13,38 +13,30 @@
 
 .subTop {
   position: relative;
-  .mainPic{
-    
-    width: 100vw;
-    height: 100vh;
+  .mainPic {
     position: absolute;
     top: 0;
     right: 0;
-    animation: animationSubTop 1s ease;
-    animation-fill-mode: forwards;
   }
   .mainPic.render {
     animation: animationSubTop 1s ease;
     animation-fill-mode: forwards;
-
   }
 }
 //SubTop Logo
 @keyframes animationSubLogo {
-0%{
-  opacity:0
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-100%{
-  opacity:1
-}
-}
-  
-.subLogo.render{
+
+.subLogo.render {
   animation: animationSubLogo 600ms 500ms ease-out;
   animation-fill-mode: both;
 }
-
-
 
 //atag 호버 애니메이션
 //goIcon

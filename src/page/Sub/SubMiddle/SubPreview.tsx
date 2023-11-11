@@ -142,7 +142,7 @@ const StyledContainer = styled.div`
   .mainImage::-webkit-scrollbar-thumb {
     background-color: #f8f8f8;
     border-radius: 100px;
-    border: 8px solid #2f2f2f;
+    border: 7px solid #2f2f2f;
   }
 `;
 

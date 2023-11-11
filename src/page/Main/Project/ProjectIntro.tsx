@@ -138,7 +138,7 @@ const StyledProjectIntro = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-color: #f8f8f8;
+  background-color: #2f2f2f;
   padding: 10vh;
   justify-content: space-between;
 
@@ -189,7 +189,7 @@ const StyledMainTitle = styled.div`
   margin-left: 5px;
   div {
     color: #f8f8f8;
-    margin-left: -3px;
+    margin-left: -5px;
   }
 `;
 
@@ -221,7 +221,7 @@ const StyledProjectImgBox = styled.div`
   width: 100%;
   max-width: 420px;
   height: 60%;
-  margin-bottom: 100px;
+  margin-bottom: 10vh;
   max-height: 450px;
   cursor: pointer;
 `;

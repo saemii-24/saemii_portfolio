@@ -23,7 +23,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   return (
     <StyledTop className="subTop">
       <StyledMainPic
-        className={"mainPic "}
+        className={"mainPic"}
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + thisData.previewImg
