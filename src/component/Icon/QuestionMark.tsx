@@ -28,15 +28,15 @@ const QuestionMark = () => {
 
 const StyledQuestionMark = styled.div`
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const StyledQuestionMarkIcon = styled.div`
   height: 25px;
   width: 25px;
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 const StyledQuestionMarkText = styled.h6`
   font-size: 1rem;
