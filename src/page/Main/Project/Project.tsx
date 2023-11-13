@@ -49,6 +49,7 @@ const Project = ({
     previousWidth + nowWidth;
   }, []);
 
+  //project를 클릭했을 때
   const clickMove = (index: number): void => {
     setIsClick(true);
     window.scroll({
@@ -59,7 +60,6 @@ const Project = ({
         1, //약간의 오차에 대비해 1을 더한다.
       behavior: "smooth",
     });
-
     dispatch(mouseClick(index));
   };
 

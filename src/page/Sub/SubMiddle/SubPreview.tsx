@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/free-mode";
-// import "swiper/css/scrollbar";
-// import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
 import { ReactLenis } from "@studio-freight/react-lenis";
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
-
+  console.log(slide);
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>

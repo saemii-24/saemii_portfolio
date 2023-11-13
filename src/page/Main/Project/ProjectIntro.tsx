@@ -187,6 +187,7 @@ const StyledMainTitle = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
   margin-left: 5px;
+  min-width: 410px;
   div {
     color: #f8f8f8;
     margin-left: -5px;

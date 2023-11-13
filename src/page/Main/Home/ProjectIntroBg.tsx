@@ -49,9 +49,7 @@ const StyledProjectIntroBg = styled.div`
   min-width: 1400px;
   min-height: 700px;
   opacity: 0;
-  transition:
-    backgroundImg 0s,
-    opacity 400ms ease-out;
+  transition: opacity 400ms ease-out;
 
   &.active {
     z-index: 100;

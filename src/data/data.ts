@@ -198,8 +198,8 @@ const originData: DataType[] = [
     click: false,
     previewPage: [{ 메인: "/image/projectPreview/project03-main.jpg" }],
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
-      { github: "https://github.com/saemii-24/project_1" },
+      { page: "https://saemii-24-australia.netlify.app/" },
+      { github: "https://github.com/saemii-24/australia_netlify_snowpack/" },
       { document: "https://saemii-24.github.io/project_1/" },
     ],
     develop: [

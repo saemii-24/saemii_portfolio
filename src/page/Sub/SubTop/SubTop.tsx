@@ -20,6 +20,8 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
     };
   }, [idNum]);
 
+  console.log(Object.values(thisData.link[1])[0]);
+
   return (
     <StyledTop className="subTop">
       <StyledMainPic
@@ -39,7 +41,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
         </StyledSubTitle>
         <StyledAtagBox>
           <StyledAtag
-            href="/"
+            href={Object.values(thisData.link[0])[0]}
             target="_blank"
             rel="noopener noreferrer"
             className="linkPage"
@@ -51,7 +53,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           </StyledAtag>
 
           <StyledAtag
-            href="/"
+            href={Object.values(thisData.link[1])[0]}
             target="_blank"
             rel="noopener noreferrer"
             className="linkPage"
@@ -62,7 +64,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             </div>
           </StyledAtag>
           <StyledAtag
-            href="/"
+            href={Object.values(thisData.link[2])[0]}
             target="_blank"
             rel="noopener noreferrer"
             className="linkPage"
