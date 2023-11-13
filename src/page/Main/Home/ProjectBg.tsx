@@ -26,7 +26,7 @@ const ProjectBg = () => {
 
   useEffect(() => {
     data.forEach((bg) => {
-      console.log(bg);
+      // console.log(bg);
       if (bg.active === true) {
         setPreviewImg(bg.previewImg);
       }

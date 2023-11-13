@@ -4,14 +4,18 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface InitialStateType {
   stateData: DataType[];
-  stateHoverImg: number;
-  isClick: boolean;
+  introHover: number;
+  introClick: boolean;
+  projectClick: boolean;
+  projectClickNum: number;
 }
 
 const initialState: InitialStateType = {
   stateData: data, //project, projectBg 컴포넌트에서 active, click에 주로 사용
-  stateHoverImg: 0, //projectIntro 컴포넌트에서 hover한 이미지 id 번호를 알아낼 때 사용
-  isClick: false, //projectIntro 컴포넌트에서 해당 내용을 클릭했는지 알아내기 위해 사용
+  introHover: 0, //projectIntro 컴포넌트에서 hover한 이미지 id 번호를 알아낼 때 사용
+  introClick: false, //projectIntro 컴포넌트에서 해당 내용을 클릭했는지 알아내기 위해 사용
+  projectClick: false, //project 컴포넌트에서 프로젝트를 클릭했는지 알아내기 위해 사용
+  projectClickNum: 0,
 };
 
 const projectBgSlice = createSlice({
@@ -52,10 +56,19 @@ const projectBgSlice = createSlice({
       state.stateData = newValue;
     },
     introHover: (state: InitialStateType, action: PayloadAction<number>) => {
-      state.stateHoverImg = action.payload;
+      state.introHover = action.payload;
     },
-    isClick: (state: InitialStateType) => {
-      state.isClick = !state.isClick;
+    introClick: (state: InitialStateType) => {
+      state.introClick = !state.introClick;
+    },
+    projectClick: (state: InitialStateType, action: PayloadAction<boolean>) => {
+      state.projectClick = action.payload;
+    },
+    projectClickNum: (
+      state: InitialStateType,
+      action: PayloadAction<number>
+    ) => {
+      state.projectClickNum = action.payload;
     },
   },
 });
@@ -66,6 +79,8 @@ export const {
   mouseClick,
   resetData,
   introHover,
-  isClick,
+  introClick,
+  projectClick,
+  projectClickNum,
 } = projectBgSlice.actions;
 export default projectBgSlice.reducer;

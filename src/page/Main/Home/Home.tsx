@@ -26,6 +26,13 @@ const Main = () => {
     });
     const subTitleLines: HTMLElement[] | null = subTitleSplitLines.lines;
 
+    //about Split
+    const aboutSplitLines: SplitType = new SplitType(".about", {
+      types: "lines",
+      lineClass: "splitChild",
+    });
+    const aboutLines: HTMLElement[] | null = aboutSplitLines.lines;
+
     //Gsap 애니메이션
     //homeTitle Animation
     gsap.fromTo(
@@ -61,14 +68,26 @@ const Main = () => {
       }
     );
 
+    // gsap.fromTo(
+    //   ".about .smallTitle__text",
+    //   { opacity: 0 },
+    //   {
+    //     opacity: 1,
+    //     duration: 0.4,
+    //     delay: 0.7,
+    //     ease: "power1.in",
+    //   }
+    // );
     gsap.fromTo(
-      ".about .smallTitle__text",
-      { opacity: 0 },
+      ".about span",
       {
-        opacity: 1,
-        duration: 0.4,
-        delay: 0.7,
-        ease: "power1.in",
+        y: 250,
+      },
+      {
+        y: 0,
+        stagger: 0.05,
+        duration: 2,
+        ease: "power4.out",
       }
     );
 
@@ -139,9 +158,13 @@ const Main = () => {
               </div>
             </SmallTitle>
             <AboutText className="about smallTitle__text">
-              안녕하세요. 새로운 것의 미학을 추구하는 신입 프론트엔드 개발자
-              새미입니다. 늘 업데이트 되는 프론트엔드 기술이 주는 새로움이란
-              즐거움에 푹 빠져있습니다.
+              <span>
+                안녕하세요. 새로운 것의 미학을 추구하는 신입 프론트엔드 개발자
+              </span>
+              <span>
+                새미입니다. 늘 업데이트 되는 프론트엔드 기술이 주는 새로움이란
+              </span>
+              <span>즐거움에 푹 빠져있습니다.</span>
             </AboutText>
           </div>
           <div className="update">

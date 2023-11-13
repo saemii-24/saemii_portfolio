@@ -22,18 +22,22 @@ const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  // const sectionRef = useRef<HTMLDivElement[] | null[]>([]);
-  const bgActive = useSelector(
-    (state: RootState) => state.projectBgSlice.stateData
-  );
 
-  const now = bgActive.every((bg) => bg.active === false);
-  console.log(now);
   //재활용할 gsap 함수
   //등장 함수
   const [allWidth, setAllWidth] = useState<number>(0);
   const [previousWidth, setPreviousWidth] = useState<number>(0);
   const [nowWidth, setNowWidth] = useState<number>(0);
+
+  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
+  const projectClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClick
+  );
+  const projectClickNum: number = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClickNum
+  );
+
+  //애니메이션 세팅
 
   useEffect(() => {
     setAllWidth(sectionRefs.current!.offsetWidth);
@@ -85,18 +89,6 @@ const Main = () => {
       );
 
       //project 애니메이션
-
-      //배경 색 전환 (진입)
-      // gsap.to(".projectIntro", {
-      //   backgroundColor: "#2f2f2f",
-      //   duration: 1,
-      //   ease: "power4.out",
-      //   scrollTrigger: {
-      //     trigger: ".projectIntro",
-      //     containerAnimation: pin,
-      //     start: "top 80%",
-      //   },
-      // });
       //타임라인
       const introTimeline = gsap.timeline({
         scrollTrigger: {
@@ -133,22 +125,7 @@ const Main = () => {
           "-=80%"
         );
       //배경 색 전환
-      // gsap.fromTo(
-      //   ".projectIntro",
-      //   { backgroundColor: "#2F2F2F" },
-      //   {
-      //     backgroundColor: "#f8f8f8",
-      //     duration: 1,
-      //     ease: "power4.out",
-      //     scrollTrigger: {
-      //       trigger: ".projectImg1",
-      //       containerAnimation: pin,
-      //       start: "top 20%",
-      //     },
-      //   }
-      // );
       //contact Animation
-
       splitChars("contactTitle");
       animationChars(
         ".contactTitle div",
@@ -181,11 +158,21 @@ const Main = () => {
         containerAnimation: pin,
         start: "top 80%",
       });
+
+      /*pin 애니메이션은 가로스크롤 애니메이션으로, 
+      projectClick이 false라면 지속하고, true일 경우 kill한다.*/
+      if (projectClick === true && sectionRefs.current !== null) {
+        pin.kill();
+        const moveTo = previousWidth + projectClickNum * 421.39 + 10;
+        console.log(moveTo);
+        sectionRefs.current.style.transform = `translate3d(-${moveTo}px, 0px, 0px)`;
+      }
     });
+
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [projectClick]);
 
   return (
     <div>
