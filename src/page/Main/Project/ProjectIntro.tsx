@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { data, DataType } from "../../../data/data";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { introHover, isClick } from "../../../redux/projectBgSlice";
+import { introHover, introClick } from "../../../redux/projectBgSlice";
 const ProjectIntro = () => {
   const dispatch = useDispatch();
 
@@ -26,12 +26,12 @@ const ProjectIntro = () => {
           className="imgBox"
           onClick={() => {
             dispatch(introHover(projectHover));
-            dispatch(isClick());
+            dispatch(introClick());
             setTimeout(() => {
               navigate(`/project/${projectHover}`);
-            }, 1500);
+            }, 1000);
             setTimeout(() => {
-              dispatch(isClick());
+              dispatch(introClick());
             }, 2000);
           }}
         >
@@ -114,12 +114,12 @@ const ProjectIntro = () => {
               }}
               onClick={() => {
                 dispatch(introHover(project.id));
-                dispatch(isClick());
+                dispatch(introClick());
                 setTimeout(() => {
                   navigate(`/project/${project.id}`);
                 }, 1500);
                 setTimeout(() => {
-                  dispatch(isClick());
+                  dispatch(introClick());
                 }, 2000);
               }}
             >

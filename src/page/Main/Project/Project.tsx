@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
@@ -8,12 +8,14 @@ import {
   mouseLeaveActive,
   mouseClick,
   resetData,
+  projectClick,
+  projectClickNum,
 } from "../../../redux/projectBgSlice";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
 const Project = ({
-  allWidth,
+  //  allWidth,
   previousWidth,
 
   nowWidth,
@@ -28,6 +30,10 @@ const Project = ({
   const data = useSelector(
     (state: RootState) => state.projectBgSlice.stateData
   );
+  // const projectClickState = useSelector(
+  //   (state: RootState) => state.projectBgSlice.projectClick
+  // );
+
   const sortData: DataType[] = [...data].sort(function (
     a: DataType,
     b: DataType
@@ -37,7 +43,7 @@ const Project = ({
 
   //props로 받아오는 값들을 제외하고, project 1개의 width값이 필요하다.
   const projectRef = useRef<HTMLDivElement | null>(null);
-  const [projectWidth, setProjectWidth] = useState<number>(0);
+  //  const [projectWidth, setProjectWidth] = useState<number>(0);
 
   //click 할 경우 project의 title과 subTitle opacity를 0으로 변경한다.
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -45,23 +51,22 @@ const Project = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    setProjectWidth(projectRef.current!.offsetWidth);
+    //setProjectWidth(projectRef.current!.offsetWidth);
     previousWidth + nowWidth;
   }, []);
 
   //project를 클릭했을 때
-  const clickMove = (index: number): void => {
-    setIsClick(true);
-    window.scroll({
-      /*스크롤 값은 100vw 이상부터 시작되므로, (전체길이 - 현재 화면크기)를 기준점으로 계산한다.*/
-      top:
-        (previousWidth / (allWidth - nowWidth)) * 6000 +
-        (index * (projectWidth * 6000)) / (allWidth - nowWidth) +
-        1, //약간의 오차에 대비해 1을 더한다.
-      behavior: "smooth",
-    });
-    dispatch(mouseClick(index));
-  };
+  // const clickMove = (index: number): void => {
+  //   setIsClick(true);
+  //   window.scroll({
+  //     top:
+  //       (previousWidth / (allWidth - nowWidth)) * 6000 +
+  //       (index * (projectWidth * 6000)) / (allWidth - nowWidth) +
+  //       1, //약간의 오차에 대비해 1을 더한다.
+  //     behavior: "smooth",
+  //   });
+  //   dispatch(mouseClick(index));
+  // };
 
   return (
     <StyledProject className="project">
@@ -81,8 +86,10 @@ const Project = ({
               dispatch(mouseLeaveActive(index));
             }}
             onClick={() => {
-              clickMove(index);
-
+              //clickMove(index); //스크롤을 이동한다.
+              dispatch(mouseClick(index));
+              dispatch(projectClick(true)); //projectClick이 되었음을 알린다.
+              dispatch(projectClickNum(index)); //projectClickNum을 이용해 원하는 정도를 이동한다.
               setTimeout(() => {
                 navigate(`/project/${project.id}`);
                 dispatch(resetData(index));
@@ -107,6 +114,14 @@ const Project = ({
   );
 };
 
+const StyledProjectAnimation = keyframes`
+  0%{
+    width: 22vw;
+  }100%{
+    width: 110vw;
+  }
+`;
+
 const StyledProject = styled.div`
   height: 100vh;
   flex-shrink: 0;
@@ -124,7 +139,9 @@ const StyledProjectOne = styled.div`
   cursor: pointer;
   transition: width 800ms ease-out 1s;
   &.click {
-    width: 110vw;
+    animation: ${StyledProjectAnimation} 1s;
+    animation-delay: 200ms;
+    animation-fill-mode: both;
     &::after {
       content: "";
       transition: none;

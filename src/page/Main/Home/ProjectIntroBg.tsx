@@ -8,11 +8,11 @@ import classNames from "classnames";
 const ProjectIntroBg = () => {
   //hover 한 id번호를 가지고 온다.
   const projectHover: number = useSelector(
-    (state: RootState) => state.projectBgSlice.stateHoverImg
+    (state: RootState) => state.projectBgSlice.introHover
   );
   //클릭 여부를 가지고 온다
   const isClick: boolean = useSelector(
-    (state: RootState) => state.projectBgSlice.isClick
+    (state: RootState) => state.projectBgSlice.introClick
   );
   //hover 한 id번호를 이용해 사용 될 데이터를 찾는다.
   const [hoverData, setHoverData] = useState<DataType>(data[0]);
@@ -28,7 +28,7 @@ const ProjectIntroBg = () => {
 
   return (
     <StyledProjectIntroBg
-      className={classNames({ active: isClick })}
+      className={classNames("projectIntroBg", { active: isClick })}
       style={{
         backgroundImage: `url(${
           process.env.PUBLIC_URL + hoverData.previewImg
@@ -49,7 +49,7 @@ const StyledProjectIntroBg = styled.div`
   min-width: 1400px;
   min-height: 700px;
   opacity: 0;
-  transition: opacity 400ms ease-out;
+  transition: opacity 300ms ease-out;
 
   &.active {
     z-index: 100;

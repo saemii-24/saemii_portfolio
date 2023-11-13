@@ -41,7 +41,7 @@ const StyledTextContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
   & > div {
-    padding-left: calc(30vw - ((100vw - 1400px - -17px) / 2));
+    padding-left: calc(30vw - ((100vw - 1400px - 17px) / 2));
     position: relative;
     right: 0;
   }
