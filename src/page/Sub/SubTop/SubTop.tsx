@@ -20,8 +20,6 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
     };
   }, [idNum]);
 
-  console.log(Object.values(thisData.link[1])[0]);
-
   return (
     <StyledTop className="subTop">
       <StyledMainPic
@@ -111,8 +109,8 @@ const StyledSubTitle = styled.div`
     color: transparent;
     background: linear-gradient(
       to right,
-      #2f2f2f calc(30vw - ((100vw - 1400px - 12px) / 2)),
-      rgb(248, 248, 248) calc(30vw - ((100vw - 1400px - 12px) / 2))
+      #2f2f2f calc(30vw - ((100vw - 1400px) / 2)),
+      rgb(248, 248, 248) calc(30vw - ((100vw - 1400px) / 2))
     );
     -webkit-background-clip: text;
     background-blend-mode: screen;

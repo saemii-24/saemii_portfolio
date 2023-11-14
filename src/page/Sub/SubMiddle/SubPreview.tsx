@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { ReactLenis } from "@studio-freight/react-lenis";
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
-  console.log(slide);
+
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>
@@ -17,8 +17,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
               Object.values(thisData.previewPage[slide])
             }
             alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
-          ></img>
-          {/* </div> */}
+          />
         </ReactLenis>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
@@ -96,14 +95,6 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
   );
 };
 
-const MainImageAnimation = keyframes`
-    0%{
-        opacity:0    
-    }
-    100%{
-
-opacity:1}
-`;
 const StyledSubPreview = styled.div`
   width: 100%;
   width: 100%;
@@ -127,7 +118,6 @@ const StyledContainer = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    animation: ${MainImageAnimation} 1s;
     overflow: overlay;
   }
 

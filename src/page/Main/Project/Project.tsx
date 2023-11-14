@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,25 +14,16 @@ import {
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
-const Project = ({
-  //  allWidth,
-  previousWidth,
-
-  nowWidth,
-}: {
-  allWidth: number;
-  previousWidth: number;
-
-  nowWidth: number;
-}) => {
+const Project = () => {
   const dispatch = useDispatch();
 
   const data = useSelector(
     (state: RootState) => state.projectBgSlice.stateData
   );
-  // const projectClickState = useSelector(
-  //   (state: RootState) => state.projectBgSlice.projectClick
-  // );
+  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
+  const projectClickState: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClick
+  );
 
   const sortData: DataType[] = [...data].sort(function (
     a: DataType,
@@ -43,30 +34,7 @@ const Project = ({
 
   //props로 받아오는 값들을 제외하고, project 1개의 width값이 필요하다.
   const projectRef = useRef<HTMLDivElement | null>(null);
-  //  const [projectWidth, setProjectWidth] = useState<number>(0);
-
-  //click 할 경우 project의 title과 subTitle opacity를 0으로 변경한다.
-  const [isClick, setIsClick] = useState<boolean>(false);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    //setProjectWidth(projectRef.current!.offsetWidth);
-    previousWidth + nowWidth;
-  }, []);
-
-  //project를 클릭했을 때
-  // const clickMove = (index: number): void => {
-  //   setIsClick(true);
-  //   window.scroll({
-  //     top:
-  //       (previousWidth / (allWidth - nowWidth)) * 6000 +
-  //       (index * (projectWidth * 6000)) / (allWidth - nowWidth) +
-  //       1, //약간의 오차에 대비해 1을 더한다.
-  //     behavior: "smooth",
-  //   });
-  //   dispatch(mouseClick(index));
-  // };
 
   return (
     <StyledProject className="project">
@@ -86,20 +54,20 @@ const Project = ({
               dispatch(mouseLeaveActive(index));
             }}
             onClick={() => {
-              //clickMove(index); //스크롤을 이동한다.
               dispatch(mouseClick(index));
               dispatch(projectClick(true)); //projectClick이 되었음을 알린다.
               dispatch(projectClickNum(index)); //projectClickNum을 이용해 원하는 정도를 이동한다.
               setTimeout(() => {
                 navigate(`/project/${project.id}`);
                 dispatch(resetData(index));
-                // project의 title과 subTitle opacity를 1로 변경.
-                setIsClick(false);
-              }, 3000);
+              }, 1800);
             }}
           >
             <StyledTitleBox
-              style={{ opacity: isClick && project.click === true ? 0 : 1 }}
+              // project의 title과 subTitle opacity를 1로 변경.
+              className={classNames({
+                active: project.click && projectClickState === true,
+              })}
             >
               <StyledProejctSubTitle>
                 PROJECT{" "}
@@ -175,6 +143,12 @@ const StyledProjectOne = styled.div`
     transition: all 800ms;
   }
 `;
+const StyledTitleBoxAnimation = keyframes`
+  0%{
+    opacity:1;
+  }100%{
+    opacity:0;
+  }`;
 const StyledTitleBox = styled.div`
   width: 100%;
   height: 100vh;
@@ -187,8 +161,11 @@ const StyledTitleBox = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  transition: all 800ms;
-  transition-delay: 300ms;
+  &.active {
+    opacity: 0;
+    animation: ${StyledTitleBoxAnimation} 300ms;
+    animation-fill-mode: forwards;
+  }
 `;
 const StyledProjectTitle = styled.h4`
   font-size: 4rem;

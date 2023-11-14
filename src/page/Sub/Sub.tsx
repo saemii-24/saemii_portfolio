@@ -11,6 +11,8 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import { useDispatch } from "react-redux";
+import { projectClick } from "../../redux/projectBgSlice";
 
 const Sub = () => {
   const { id } = useParams();
@@ -28,9 +30,12 @@ const Sub = () => {
   const subRef = useRef<HTMLDivElement>(null);
   const [subRefHeight, setSubRefHeight] = useState<number>(0);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (subRef.current) {
       setSubRefHeight(subRef.current.offsetHeight);
+      dispatch(projectClick(false)); //sub페이지가 열리면 false가 되어야 한다.
     }
   }, []);
 

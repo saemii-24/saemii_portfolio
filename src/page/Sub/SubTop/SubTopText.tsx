@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { DataType } from "../../../data/data";
 
 const SubTopText = ({ thisData }: { thisData: DataType }) => {
-  console.log(thisData);
   return (
     <StyledTextContainer>
       <div>
@@ -41,7 +40,7 @@ const StyledTextContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
   & > div {
-    padding-left: calc(30vw - ((100vw - 1400px - 17px) / 2));
+    padding-left: calc(30vw - ((100vw - 1400px) / 2));
     position: relative;
     right: 0;
   }

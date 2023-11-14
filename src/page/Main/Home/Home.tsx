@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Header from "component/Header/Header";
+// import Header from "component/Header/Header";
 import Up from "component/Icon/Up";
 import QuestionMark from "component/Icon/QuestionMark";
 import { gsap } from "gsap";
@@ -24,14 +22,10 @@ const Main = () => {
       types: "lines",
       lineClass: "splitChild",
     });
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     const subTitleLines: HTMLElement[] | null = subTitleSplitLines.lines;
 
     //about Split
-    const aboutSplitLines: SplitType = new SplitType(".about", {
-      types: "lines",
-      lineClass: "splitChild",
-    });
-    const aboutLines: HTMLElement[] | null = aboutSplitLines.lines;
 
     //Gsap 애니메이션
     //homeTitle Animation
@@ -68,26 +62,14 @@ const Main = () => {
       }
     );
 
-    // gsap.fromTo(
-    //   ".about .smallTitle__text",
-    //   { opacity: 0 },
-    //   {
-    //     opacity: 1,
-    //     duration: 0.4,
-    //     delay: 0.7,
-    //     ease: "power1.in",
-    //   }
-    // );
     gsap.fromTo(
       ".about span",
+      { opacity: 0 },
       {
-        y: 250,
-      },
-      {
-        y: 0,
-        stagger: 0.05,
-        duration: 2,
-        ease: "power4.out",
+        opacity: 1,
+        duration: 0.4,
+        delay: 0.7,
+        ease: "power1.in",
       }
     );
 
@@ -137,9 +119,9 @@ const Main = () => {
       >
         <path d="M0.513428 0V146.576" stroke="#2F2F2F" className="homeLine" />
       </HomeLine>
-      <div className="header">
+      {/* <div className="header">
         <Header />
-      </div>
+      </div> */}
       <div className="inner">
         <HomeTitle className="type homeTitle">PORTFOLIO</HomeTitle>
 
