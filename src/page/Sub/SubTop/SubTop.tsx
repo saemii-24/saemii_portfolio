@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
 import "./SubTop.scss";
 import { DataType } from "../../../data/data";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type IsRender = "" | "render";
@@ -20,10 +23,48 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
     };
   }, [idNum]);
 
+  //gsap animation
+  const mainPicRef = useRef<HTMLDivElement | null>(null);
+  const subTopRef = useRef<HTMLDivElement | null>(null);
+  const subTopTitleRef = useRef<HTMLDivElement | null>(null);
+  const aTagChildRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      mainPicRef.current,
+      { width: "100vw", height: "100vh" },
+      {
+        width: "70vw",
+        height: "85vh",
+        duration: 1,
+      }
+    );
+
+    const subTopTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: subTopRef.current,
+        start: "top bottom",
+      },
+    });
+    subTopTimeline
+      .fromTo(
+        subTopTitleRef.current,
+        { y: 150 },
+        { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+      )
+      .fromTo(
+        aTagChildRef.current,
+        { y: 150 },
+        { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
+        "-=80%"
+      );
+  }, [idNum]);
+
   return (
-    <StyledTop className="subTop">
+    <StyledTop className="subTop" ref={subTopRef}>
       <StyledMainPic
         className={"mainPic"}
+        ref={mainPicRef}
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + thisData.previewImg
@@ -35,7 +76,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           <Logo />
         </div>
         <StyledSubTitle className="subTopTitle">
-          <div>{thisData.subTitle}</div>
+          <div ref={subTopTitleRef}>{thisData.subTitle}</div>
         </StyledSubTitle>
         <StyledAtagBox>
           <StyledAtag
@@ -44,7 +85,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild">
+            <div className="atagChild" ref={aTagChildRef}>
               PAGE
               <Go />
             </div>

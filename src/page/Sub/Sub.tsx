@@ -47,77 +47,77 @@ const Sub = () => {
   useEffect(() => {
     //subTop animation
 
-    gsap.fromTo(
-      ".subTop .mainPic",
-      { width: "100vw", height: "100vh" },
-      {
-        width: "70vw",
-        height: "85vh",
-        duration: 1,
-      }
-    );
+    // gsap.fromTo(
+    //   ".subTop .mainPic",
+    //   { width: "100vw", height: "100vh" },
+    //   {
+    //     width: "70vw",
+    //     height: "85vh",
+    //     duration: 1,
+    //   }
+    // );
 
-    const subTopTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".subTop",
-        start: "top bottom",
-      },
-    });
-    subTopTimeline
-      .fromTo(
-        ".subTopTitle div",
-        { y: 150 },
-        { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
-      )
-      .fromTo(
-        ".linkPage .atagChild",
-        { y: 150 },
-        { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
-        "-=80%"
-      );
+    // const subTopTimeline = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".subTop",
+    //     start: "top bottom",
+    //   },
+    // });
+    // subTopTimeline
+    //   .fromTo(
+    //     ".subTopTitle div",
+    //     { y: 150 },
+    //     { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+    //   )
+    //   .fromTo(
+    //     ".linkPage .atagChild",
+    //     { y: 150 },
+    //     { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
+    //     "-=80%"
+    //   );
 
     //subText animation
-    gsap.fromTo(
-      ".subTextBox> div",
-      { y: 150, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power4.out",
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".subTextBox",
-          start: "top 80%",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   ".subTextBox> div",
+    //   { y: 150, opacity: 0 },
+    //   {
+    //     y: 0,
+    //     opacity: 1,
+    //     duration: 1.2,
+    //     ease: "power4.out",
+    //     stagger: 0.2,
+    //     scrollTrigger: {
+    //       trigger: ".subTextBox",
+    //       start: "top 80%",
+    //     },
+    //   }
+    // );
 
     //subPreview animation
-    gsap.to(".subPreview", {
-      backgroundColor: "#2f2f2f",
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: ".subPreview",
-        start: "top 80%",
-      },
-    });
+    // gsap.to(".subPreview", {
+    //   backgroundColor: "#2f2f2f",
+    //   duration: 0.5,
+    //   scrollTrigger: {
+    //     trigger: ".subPreview",
+    //     start: "top 80%",
+    //   },
+    // });
 
-    gsap.fromTo(
-      ".language > div",
-      { y: 150, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power4.out",
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".subPreview",
-          start: "top 30%",
-        },
-      }
-    );
+    // gsap.fromTo(
+    //   ".language > div",
+    //   { y: 150, opacity: 0 },
+    //   {
+    //     y: 0,
+    //     opacity: 1,
+    //     duration: 1,
+    //     ease: "power4.out",
+    //     stagger: 0.1,
+    //     scrollTrigger: {
+    //       trigger: ".subPreview",
+    //       start: "top 30%",
+    //     },
+    //   }
+    // );
 
     //subDetail animation
     gsap.fromTo(
@@ -158,20 +158,20 @@ const Sub = () => {
     }
 
     //subBottom animation
-    gsap.fromTo(
-      ".subBottomNav",
+    // gsap.fromTo(
+    //   ".subBottomNav",
 
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: ".subBottomBg",
-          start: "top 50%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    //   { opacity: 0 },
+    //   {
+    //     opacity: 1,
+    //     duration: 1,
+    //     scrollTrigger: {
+    //       trigger: ".subBottomBg",
+    //       start: "top 50%",
+    //       toggleActions: "play none none reverse",
+    //     },
+    //   }
+    // );
   }, [id]);
 
   return (
@@ -179,8 +179,8 @@ const Sub = () => {
       <ReactLenis root>
         <ToTop idNum={idNum} />
         <SubTop thisData={thisData} idNum={idNum} />
-        <SubTopText thisData={thisData} />
-        <SubPreview thisData={thisData} />
+        <SubTopText thisData={thisData} idNum={idNum} />
+        <SubPreview thisData={thisData} idNum={idNum} />
         <SubDetail thisData={thisData} />
         <SubBottom idNum={idNum} subRefHeight={subRefHeight} />
         <ToTop idNum={idNum} />

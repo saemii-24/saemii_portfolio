@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "../../../redux/store";
 import { DataType } from "../../../data/data";
-import "./Home.scss";
 type S$ImageProps = {
   $previewImg: string;
 };

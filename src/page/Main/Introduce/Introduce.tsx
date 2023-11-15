@@ -132,6 +132,10 @@ const IntroduceContent = styled.div`
   color: #2f2f2f;
   width: calc(1000px - 7vw);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  .introduce__content--child {
+    overflow: hidden;
+  }
 `;
 const TextBox = styled.div`
   width: 100%;

@@ -8,7 +8,6 @@ import ProjectBg from "page/Main/Home/ProjectBg";
 import Prepare from "./Contact/Prepare";
 import Contact from "./Contact/Contact";
 import styled from "styled-components";
-import "./Main.scss";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import { splitChars, animationChars, animationOpacity } from "./animation";

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Go from "../../../component/Icon/Go";
 import styled, { keyframes } from "styled-components";
 import { data, DataType } from "../../../data/data";
@@ -6,6 +6,9 @@ import "../SubTop/SubTop.scss";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { subBottomNavClick } from "../../../redux/projectBgSlice";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const SubBottom = ({
   idNum,
@@ -120,9 +123,29 @@ const SubBottom = ({
   //subBottomNav를 클릭하면 useDispatch는 true가 되어야 한다.
   const dispatch = useDispatch();
 
+  //gsap
+  const subBottomNavRef = useRef<HTMLDivElement | null>(null);
+  const subBottomBgRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    gsap.fromTo(
+      subBottomNavRef.current,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: subBottomBgRef.current,
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, [idNum]);
   return (
     <StyledSubBottom>
-      <div className="moreProject subBottomNav">MORE PROJECTS</div>
+      <div className="moreProject subBottomNav" ref={subBottomNavRef}>
+        MORE PROJECTS
+      </div>
       <StyledSubNav className="subBottomNav">
         <div
           className="prev"
@@ -172,6 +195,7 @@ const SubBottom = ({
       </StyledSubNav>
       <StyledBottomBg
         className="subBottomBg"
+        ref={subBottomBgRef}
         onMouseEnter={() => {
           setIsMouseEnter(true);
         }}

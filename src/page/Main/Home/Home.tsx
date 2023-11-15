@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 // import Header from "component/Header/Header";
 import Up from "component/Icon/Up";
 import QuestionMark from "component/Icon/QuestionMark";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import "./Home.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
@@ -119,9 +118,7 @@ const Main = () => {
       >
         <path d="M0.513428 0V146.576" stroke="#2F2F2F" className="homeLine" />
       </HomeLine>
-      {/* <div className="header">
-        <Header />
-      </div> */}
+
       <div className="inner">
         <HomeTitle className="type homeTitle">PORTFOLIO</HomeTitle>
 
@@ -180,10 +177,26 @@ const HomeCover = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 10%, 75% 10%, 75% 100%, 0 100%);
   z-index: -1;
 `;
+
+const StyledDrawLineAnimation = keyframes`
+    0% {
+        stroke-dashoffset: 500;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+
+`;
 const HomeLine = styled.svg`
   position: absolute;
   top: 0;
   right: 40%;
+  .homeLine {
+    stroke-dasharray: 500;
+    animation: ${StyledDrawLineAnimation} 1.8s
+      cubic-bezier(0.73, 0.18, 0.84, 0.58);
+  }
 `;
 const HomeTitle = styled.h1`
   font-size: 11rem;

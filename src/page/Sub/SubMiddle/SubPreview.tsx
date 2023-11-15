@@ -5,8 +5,17 @@ import classNames from "classnames";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
-const SubPreview = ({ thisData }: { thisData: DataType }) => {
+const SubPreview = ({
+  idNum,
+  thisData,
+}: {
+  idNum: number;
+  thisData: DataType;
+}) => {
   const [slide, setSlide] = useState<number>(0);
   //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
   const subBottomNavClick: boolean = useSelector(
@@ -26,8 +35,38 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
       mainImageRef.current.scrollTo(0, 0);
     }
   }, [slide]);
+
+  //gsap
+  const subPreviewRef = useRef<HTMLDivElement | null>(null);
+  const languageChildRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    gsap.to(subPreviewRef.current, {
+      backgroundColor: "#2f2f2f",
+      duration: 0.5,
+      scrollTrigger: {
+        trigger: subPreviewRef.current,
+        start: "top 80%",
+      },
+    });
+
+    gsap.fromTo(
+      languageChildRef.current,
+      { y: 150, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power4.out",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: subPreviewRef.current,
+          start: "top 30%",
+        },
+      }
+    );
+  }, [idNum]);
   return (
-    <StyledSubPreview className="subPreview">
+    <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
         <ReactLenis className="mainImage" ref={mainImageRef}>
           <img
@@ -94,7 +133,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
-                  <div>
+                  <div ref={languageChildRef}>
                     <div className="languageTitle" style={{ color: "#f8f8f8" }}>
                       {Object.keys(data)[0]}
                     </div>
