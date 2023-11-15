@@ -1,27 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Menu from "component/Icon/Menu";
 import styled from "styled-components";
-import classNames from "classnames";
-
-type S$clickProps = {
-  $click: boolean;
-};
 
 const Header = () => {
-  const [click, setClick] = useState<boolean>(false);
   return (
-    <StyledHeader
-      $click={click}
-      className={classNames("container", { headerClick: click })}
-    >
+    <StyledHeader>
       <div className="inner">
-        <Menu click={click} setClick={setClick} />
+        <Menu />
       </div>
     </StyledHeader>
   );
 };
 
-const StyledHeader = styled.div<S$clickProps>`
+const StyledHeader = styled.div`
   position: absolute;
   z-index: 100;
 `;

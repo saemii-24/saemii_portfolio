@@ -10,7 +10,7 @@ const Logo = () => {
   const dispatch = useDispatch();
   //Home을 클릭하면 data가 reset 되어야 한다. 이때 resetData함수는 id값을 받아야한다.
   const { id } = useParams();
-  let idNum = 0;
+  let idNum: number = 0;
 
   if (id && typeof id === "string") {
     idNum = parseInt(id);

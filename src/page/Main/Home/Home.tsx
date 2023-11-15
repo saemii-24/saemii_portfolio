@@ -140,13 +140,10 @@ const Main = () => {
               </div>
             </SmallTitle>
             <AboutText className="about smallTitle__text">
-              <span>
-                안녕하세요. 새로운 것의 미학을 추구하는 신입 프론트엔드 개발자
-              </span>
-              <span>
-                새미입니다. 늘 업데이트 되는 프론트엔드 기술이 주는 새로움이란
-              </span>
-              <span>즐거움에 푹 빠져있습니다.</span>
+              안녕하세요! 역동적인 현대를 사랑하는 신입 프론트엔드 개발자
+              <br />
+              새미입니다. 사용자를 생각하며 현대 기술의 가치를 표현하는 <br />
+              프론트엔드 개발을 좋아합니다.
             </AboutText>
           </div>
           <div className="update">
@@ -156,7 +153,7 @@ const Main = () => {
               </div>
             </SmallTitle>
             <div className="update smallTitle__text">
-              마지막 업데이트 2023.11.30.
+              마지막 업데이트 2023.11.15.
             </div>
           </div>
         </BottomText>

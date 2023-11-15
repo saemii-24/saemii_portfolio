@@ -4,6 +4,8 @@ import styled, { keyframes } from "styled-components";
 import { data, DataType } from "../../../data/data";
 import "../SubTop/SubTop.scss";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { subBottomNavClick } from "../../../redux/projectBgSlice";
 
 const SubBottom = ({
   idNum,
@@ -115,6 +117,9 @@ const SubBottom = ({
     };
   }, []);
 
+  //subBottomNav를 클릭하면 useDispatch는 true가 되어야 한다.
+  const dispatch = useDispatch();
+
   return (
     <StyledSubBottom>
       <div className="moreProject subBottomNav">MORE PROJECTS</div>
@@ -128,6 +133,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             handleBg("prevClick");
+            dispatch(subBottomNavClick(true));
           }}
         >
           <div className="prevIcon">
@@ -143,6 +149,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             navigate("/");
+            dispatch(subBottomNavClick(true));
           }}
         >
           HOME
@@ -156,6 +163,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             handleBg("nextClick");
+            dispatch(subBottomNavClick(true));
           }}
         >
           NEXT

@@ -25,7 +25,7 @@ const ProjectBg = () => {
   const [isClickNow, setIsClickNow] = useState<boolean>(false);
 
   useEffect(() => {
-    data.forEach((bg) => {
+    data.forEach((bg): void => {
       // console.log(bg);
       if (bg.active === true) {
         setPreviewImg(bg.previewImg);

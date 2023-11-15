@@ -15,10 +15,10 @@ const Scroll = ({
   const [nowHeight, setNowHeight] = useState<number>(0);
   const [thumbHeight, setThumbHeight] = useState<number>(0);
   useEffect(() => {
-    const viewPortHeight = window.innerHeight;
+    const viewPortHeight: number = window.innerHeight;
     setNowHeight(viewPortHeight);
 
-    const nowThumbHeight = parseInt(
+    const nowThumbHeight: number = parseInt(
       ((100 * nowHeight) / pageHeight).toFixed(0)
     );
     setThumbHeight(nowThumbHeight);

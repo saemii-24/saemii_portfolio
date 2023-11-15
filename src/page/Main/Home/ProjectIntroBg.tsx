@@ -18,7 +18,7 @@ const ProjectIntroBg = () => {
   const [hoverData, setHoverData] = useState<DataType>(data[0]);
 
   useEffect(() => {
-    const nowHoverData = [...data].filter(
+    const nowHoverData: DataType = [...data].filter(
       (thisData) => thisData.id === projectHover
     )[0];
     setHoverData(nowHoverData);

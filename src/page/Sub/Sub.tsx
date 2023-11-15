@@ -12,11 +12,10 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useDispatch } from "react-redux";
-import { projectClick } from "../../redux/projectBgSlice";
+import { projectClick, subBottomNavClick } from "../../redux/projectBgSlice";
 
 const Sub = () => {
   const { id } = useParams();
-  // console.log(id);
   let idNum = 0;
 
   if (id && typeof id === "string") {
@@ -38,6 +37,11 @@ const Sub = () => {
       dispatch(projectClick(false)); //sub페이지가 열리면 false가 되어야 한다.
     }
   }, []);
+
+  useEffect(() => {
+    //subBottom을 클릭하고 id가 변경되면 subBottomNavClick를 false로 변경한다.
+    dispatch(subBottomNavClick(false));
+  }, [id]);
 
   //gsap Animation
   useEffect(() => {
@@ -153,21 +157,6 @@ const Sub = () => {
       );
     }
 
-    //subBottom이 보이면 background color가 변경된다.
-    // gsap.fromTo(
-    //   ".allDetailBox",
-    //   { backgroundColor: "#f8f8f8" },
-    //   {
-    //     backgroundColor: "#2f2f2f",
-    //     scrollTrigger: {
-    //       trigger: `.subBottomNav`,
-    //       start: "top 60%",
-    //       end: "bottom 40%",
-    //       scrub: 1,
-    //       toggleActions: "play none none none",
-    //     },
-    //   }
-    // );
     //subBottom animation
     gsap.fromTo(
       ".subBottomNav",
@@ -179,6 +168,7 @@ const Sub = () => {
         scrollTrigger: {
           trigger: ".subBottomBg",
           start: "top 50%",
+          toggleActions: "play none none reverse",
         },
       }
     );
@@ -193,7 +183,7 @@ const Sub = () => {
         <SubPreview thisData={thisData} />
         <SubDetail thisData={thisData} />
         <SubBottom idNum={idNum} subRefHeight={subRefHeight} />
-        {/* <Scroll pageNow={"sub"} pageHeight={subRefHeight} /> */}
+        <ToTop idNum={idNum} />
       </ReactLenis>
     </div>
   );

@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
 import { ReactLenis } from "@studio-freight/react-lenis";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+
 const SubPreview = ({ thisData }: { thisData: DataType }) => {
   const [slide, setSlide] = useState<number>(0);
+  //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
+  const subBottomNavClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.subBottomNavClick
+  );
 
+  useEffect(() => {
+    if (subBottomNavClick === true) {
+      setSlide(0);
+    }
+  }, [subBottomNavClick]);
+
+  //slide가 변경되면 스크롤이 다시 위로 올라가게 할 것
+  const mainImageRef = useRef<HTMLDivElement | null>();
+  useEffect(() => {
+    if (mainImageRef.current) {
+      mainImageRef.current.scrollTo(0, 0);
+    }
+  }, [slide]);
   return (
     <StyledSubPreview className="subPreview">
       <StyledContainer>
-        <ReactLenis className="mainImage">
+        <ReactLenis className="mainImage" ref={mainImageRef}>
           <img
             style={{ width: "100%" }}
             src={
