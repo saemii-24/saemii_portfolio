@@ -55,6 +55,8 @@ const ToTop = ({ idNum }: { idNum: number }) => {
 const StyledToTop = styled.div`
   width: 3vw;
   height: 3vw;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   position: fixed;

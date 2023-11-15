@@ -61,6 +61,7 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
 
 const StyledSubDetail = styled.div`
   width: 100%;
+  min-width: 1400px;
   margin-top: 25vh;
   margin-bottom: 25vh;
 `;

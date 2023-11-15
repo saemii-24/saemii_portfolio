@@ -273,6 +273,7 @@ const SubBottom = ({
 
 const StyledSubBottom = styled.div`
   width: 100vw;
+  min-width: 1400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -321,6 +322,7 @@ const StyledSubNav = styled.div`
 
 const StyledSubBg = styled.div`
   width: 90vw;
+  min-width: 1400px;
   height: 50vh;
   background-size: cover;
   background-position: center;
@@ -334,8 +336,8 @@ const StyledSubBg = styled.div`
     position: fixed;
     background-size: cover;
     background-position: center;
-    right: calc(5vw - 17px);
-    bottom: 10vh;
+    right: 5vw;
+    bottom: 5vw;
     width: 90vw;
     height: 50vh;
     transition:
@@ -365,6 +367,7 @@ const StyledSubBg = styled.div`
 const StyledVideoBox = styled.div`
   width: 90vw;
   height: 50vh;
+  min-width: 1400px;
   position: relative;
   overflow: hidden;
   position: absolute;
@@ -374,14 +377,15 @@ const StyledVideo = styled.video`
   object-fit: cover;
   position: relative;
   width: 100%;
-  top: -50%;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const StyledBottomBg = styled.div`
   position: relative;
   width: 90vw;
   height: 50vh;
-  margin: 6vh auto 10vh;
+  margin: 6vh auto 5vw;
   cursor: none;
 `;
 
