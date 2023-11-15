@@ -1,12 +1,64 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
-const SubDetail = ({ thisData }: { thisData: DataType }) => {
+const SubDetail = ({
+  idNum,
+  thisData,
+}: {
+  idNum: number;
+  thisData: DataType;
+}) => {
+  //gsap
+  const subDetailTitleRef = useRef<HTMLDivElement | null>(null);
+  const detailNameRefs = useRef<(HTMLDivElement | null)[]>([]);
+  useEffect(() => {
+    gsap.fromTo(
+      subDetailTitleRef.current!.children,
+      { y: 150, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: subDetailTitleRef.current,
+          start: "top 90%",
+        },
+      }
+    );
+
+    //
+    const detailCount = thisData.detail.length;
+
+    // console.log(detailCount);
+    //title컬러 채워지는 animation
+    for (let i = 0; i <= detailCount - 1; i++) {
+      gsap.fromTo(
+        detailNameRefs.current[i],
+        {
+          background: "linear-gradient(to right,  #2f2f2f 0%, #ebebeb 0%)",
+        },
+        {
+          background: "linear-gradient(to right,  #2f2f2f 100%, #ebebeb 100%)",
+          scrollTrigger: {
+            trigger: detailNameRefs.current[i],
+            start: "top 90%",
+            end: "bottom 40%",
+            scrub: 1,
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+  }, [idNum]);
   return (
     <StyledSubDetail className="subDetail">
-      <StyledSubDetailTitle className="subDetailTitle">
+      <StyledSubDetailTitle className="subDetailTitle" ref={subDetailTitleRef}>
         <div>DETAIL</div>
       </StyledSubDetailTitle>
       <div className="allDetailBox">
@@ -25,14 +77,13 @@ const SubDetail = ({ thisData }: { thisData: DataType }) => {
                     .map((line: string, thisIndex: number) => (
                       <StyledSubDetailBoxTitle
                         key={thisIndex}
-                        className={"detailName " + `detailName${index + 1}`}
+                        className={"detailName"}
+                        ref={(el) => (detailNameRefs.current[index] = el)}
                       >
                         {line} <br />
                       </StyledSubDetailBoxTitle>
                     ))}
-                  <div
-                    className={`detailBoxContent detailBoxContent${index + 1}`}
-                  >
+                  <div className={`detailBoxContent`}>
                     {data.content
                       .split("\n")
                       .map((line: string, index: number) => (

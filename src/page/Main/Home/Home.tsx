@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 // import Header from "component/Header/Header";
 import Up from "component/Icon/Up";
@@ -9,106 +9,117 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
+  const homeTitleRef = useRef<HTMLDivElement | null>(null);
+  const subTitleRef = useRef<HTMLDivElement | null>(null);
+  // const subTitleChildrenRef = useRef<HTMLDivElement | null>(null);
+  const aboutChildRef = useRef<HTMLDivElement | null>(null);
+  const updateChildRef = useRef<HTMLDivElement | null>(null);
+  const homeCoverRef = useRef<HTMLDivElement | null>(null);
+  const homeRef = useRef<HTMLDivElement | null>(null);
+  const updateSmallTitleRef = useRef<HTMLDivElement | null>(null);
+  const aboutSmallTitleRef = useRef<HTMLDivElement | null>(null);
+
+  //gsap
   useEffect(() => {
     //homeTitle Split
-    const homeTitleChars: SplitType = new SplitType(".homeTitle", {
+    const homeTitleChars: SplitType = new SplitType(homeTitleRef.current!, {
       types: "chars",
     });
     const homeTitle: HTMLElement[] | null = homeTitleChars.chars;
 
-    //subTitle Split
-    const subTitleSplitLines: SplitType = new SplitType(".subtitle", {
+    const subTitleLine: SplitType = new SplitType(subTitleRef.current!, {
       types: "lines",
-      lineClass: "splitChild",
     });
-    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-    const subTitleLines: HTMLElement[] | null = subTitleSplitLines.lines;
+    const subTitle: HTMLElement[] | null = subTitleLine.lines;
 
-    //about Split
+    if (
+      subTitleRef.current &&
+      aboutChildRef.current &&
+      updateChildRef.current
+    ) {
+      //Gsap 애니메이션
+      //homeTitle Animation
+      gsap.fromTo(
+        homeTitle,
+        {
+          y: 250,
+        },
+        {
+          y: 0,
+          stagger: 0.05,
+          duration: 2,
+          ease: "power4.out",
+        }
+      );
+      //subTitle Animation
+      gsap.fromTo(
+        subTitle,
+        { y: 150 },
+        {
+          y: 0,
+          stagger: 0.2,
+          duration: 1.5,
+          ease: "power4.out",
+        }
+      );
+      gsap.fromTo(
+        aboutChildRef.current,
+        { y: 100 },
+        {
+          y: 0,
+          duration: 1.5,
+          ease: "power4.out",
+        }
+      );
 
-    //Gsap 애니메이션
-    //homeTitle Animation
-    gsap.fromTo(
-      homeTitle,
-      {
-        y: 250,
-      },
-      {
-        y: 0,
-        stagger: 0.05,
-        duration: 2,
-        ease: "power4.out",
-      }
-    );
-    //subTitle Animation
-    gsap.fromTo(
-      ".subtitle span",
-      { y: 150 },
-      {
-        y: 0,
-        stagger: 0.2,
-        duration: 1.5,
-        ease: "power4.out",
-      }
-    );
-    gsap.fromTo(
-      ".about .smallTitle__child",
-      { y: 100 },
-      {
-        y: 0,
-        duration: 1.5,
-        ease: "power4.out",
-      }
-    );
+      gsap.fromTo(
+        aboutSmallTitleRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.7,
+          ease: "power1.in",
+        }
+      );
 
-    gsap.fromTo(
-      ".about span",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.4,
-        delay: 0.7,
-        ease: "power1.in",
-      }
-    );
+      gsap.fromTo(
+        updateChildRef.current,
+        { y: 100 },
+        {
+          y: 0,
+          duration: 1.5,
+          ease: "power4.out",
+        }
+      );
 
-    gsap.fromTo(
-      ".update .smallTitle__child",
-      { y: 100 },
-      {
-        y: 0,
-        duration: 1.5,
-        ease: "power4.out",
-      }
-    );
+      gsap.fromTo(
+        updateSmallTitleRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.7,
+          ease: "power1.in",
+        }
+      );
 
-    gsap.fromTo(
-      ".update .smallTitle__text",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.4,
-        delay: 0.7,
-        ease: "power1.in",
-      }
-    );
+      const timeline = gsap.timeline({});
 
-    const tl: gsap.core.Timeline = gsap.timeline();
-    tl.to(".homeCover", {
-      // duration: 1,
-      ease: "power1.Out",
-      clipPath: "polygon(0 0, 100% 0, 100% 0%, 75% 0%, 75% 100%, 0 100%)",
-    });
-
-    ScrollTrigger.create({
-      trigger: ".home",
-      start: "top top",
-      animation: tl,
-    });
+      timeline.to(homeCoverRef.current, {
+        ease: "power1.Out",
+        clipPath: "polygon(0 0, 100% 0, 100% 0%, 75% 0%, 75% 100%, 0 100%)",
+        scrollTrigger: {
+          trigger: homeRef.current,
+          start: "top top",
+          scrub: true,
+        },
+      });
+    }
   }, []);
 
   return (
-    <StyledHome className="home">
+    <StyledHome className="home" ref={homeRef}>
       <HomeLine
         width="2"
         height="147"
@@ -120,11 +131,13 @@ const Main = () => {
       </HomeLine>
 
       <div className="inner">
-        <HomeTitle className="type homeTitle">PORTFOLIO</HomeTitle>
+        <HomeTitle className="type homeTitle" ref={homeTitleRef}>
+          PORTFOLIO
+        </HomeTitle>
 
         <BottomText>
           <div>
-            <SubTitle className="type subtitle">
+            <SubTitle className="type subtitle" ref={subTitleRef}>
               <span>FRONTEND</span>
               <br />
               <span>DEVELOPER</span>
@@ -132,11 +145,14 @@ const Main = () => {
           </div>
           <div className="about" style={{ maxWidth: "440px" }}>
             <SmallTitle className="smallTitle__parent">
-              <div className="smallTitle__child">
+              <div className="smallTitle__child" ref={aboutChildRef}>
                 <QuestionMark />
               </div>
             </SmallTitle>
-            <AboutText className="about smallTitle__text">
+            <AboutText
+              className="about smallTitle__text"
+              ref={aboutSmallTitleRef}
+            >
               안녕하세요! 역동적인 현대를 사랑하는 신입 프론트엔드 개발자
               <br />
               새미입니다. 사용자를 생각하며 현대 기술의 가치를 표현하는 <br />
@@ -145,17 +161,17 @@ const Main = () => {
           </div>
           <div className="update">
             <SmallTitle className="smallTitle__parent">
-              <div className="smallTitle__child">
+              <div className="smallTitle__child" ref={updateChildRef}>
                 <Up />
               </div>
             </SmallTitle>
-            <div className="update smallTitle__text">
+            <div className="update smallTitle__text" ref={updateSmallTitleRef}>
               마지막 업데이트 2023.11.15.
             </div>
           </div>
         </BottomText>
       </div>
-      <HomeCover className="homeCover" />
+      <HomeCover className="homeCover" ref={homeCoverRef} />
     </StyledHome>
   );
 };
@@ -210,7 +226,8 @@ const SubTitle = styled.div`
   font-size: 3.4rem;
   font-weight: 800;
   margin-top: -18px;
-  .splitChild {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  div {
     overflow: hidden;
     height: 66px;
     span {

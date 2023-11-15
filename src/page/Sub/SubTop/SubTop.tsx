@@ -27,37 +27,45 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   const mainPicRef = useRef<HTMLDivElement | null>(null);
   const subTopRef = useRef<HTMLDivElement | null>(null);
   const subTopTitleRef = useRef<HTMLDivElement | null>(null);
-  const aTagChildRef = useRef<HTMLDivElement | null>(null);
+  const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.fromTo(
-      mainPicRef.current,
-      { width: "100vw", height: "100vh" },
-      {
-        width: "70vw",
-        height: "85vh",
-        duration: 1,
-      }
-    );
-
-    const subTopTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: subTopRef.current,
-        start: "top bottom",
-      },
-    });
-    subTopTimeline
-      .fromTo(
-        subTopTitleRef.current,
-        { y: 150 },
-        { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
-      )
-      .fromTo(
-        aTagChildRef.current,
-        { y: 150 },
-        { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
-        "-=80%"
+    const ctx = gsap.context(() => {
+      //이미지 크기 조정
+      gsap.fromTo(
+        mainPicRef.current,
+        { width: "100vw", height: "100vh" },
+        {
+          width: "70vw",
+          height: "85vh",
+          duration: 1,
+        }
       );
+
+      //타이틀, page, github, document 링크 등장
+      const subTopTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: subTopRef.current,
+          start: "top bottom",
+        },
+      });
+      subTopTimeline
+        .fromTo(
+          subTopTitleRef.current,
+          { y: 150 },
+          { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+        )
+        .fromTo(
+          aTagChildRefs.current,
+          { y: 150 },
+          { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
+          "-=80%"
+        );
+    });
+
+    return () => {
+      ctx.revert();
+    };
   }, [idNum]);
 
   return (
@@ -85,7 +93,10 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild" ref={aTagChildRef}>
+            <div
+              className="atagChild"
+              ref={(el) => (aTagChildRefs.current[0] = el)}
+            >
               PAGE
               <Go />
             </div>
@@ -97,7 +108,10 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild">
+            <div
+              className="atagChild"
+              ref={(el) => (aTagChildRefs.current[1] = el)}
+            >
               GITHUB
               <Go />
             </div>
@@ -108,7 +122,10 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild">
+            <div
+              className="atagChild"
+              ref={(el) => (aTagChildRefs.current[2] = el)}
+            >
               DOCUMENT
               <Go />
             </div>

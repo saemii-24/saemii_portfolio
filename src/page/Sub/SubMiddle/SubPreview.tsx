@@ -40,30 +40,35 @@ const SubPreview = ({
   const subPreviewRef = useRef<HTMLDivElement | null>(null);
   const languageChildRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    gsap.to(subPreviewRef.current, {
-      backgroundColor: "#2f2f2f",
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: subPreviewRef.current,
-        start: "top 80%",
-      },
-    });
-
-    gsap.fromTo(
-      languageChildRef.current,
-      { y: 150, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power4.out",
-        stagger: 0.1,
+    const ctx = gsap.context(() => {
+      gsap.to(subPreviewRef.current, {
+        backgroundColor: "#2f2f2f",
+        duration: 0.3,
         scrollTrigger: {
           trigger: subPreviewRef.current,
-          start: "top 30%",
+          start: "top 80%",
         },
-      }
-    );
+      });
+
+      gsap.fromTo(
+        languageChildRef.current,
+        { y: 150, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: subPreviewRef.current,
+            start: "top 30%",
+          },
+        }
+      );
+    });
+    return () => {
+      ctx.revert();
+    };
   }, [idNum]);
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>

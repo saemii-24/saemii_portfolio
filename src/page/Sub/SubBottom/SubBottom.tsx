@@ -124,11 +124,11 @@ const SubBottom = ({
   const dispatch = useDispatch();
 
   //gsap
-  const subBottomNavRef = useRef<HTMLDivElement | null>(null);
+  const subBottomNavRefs = useRef<(HTMLDivElement | null)[]>([]);
   const subBottomBgRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     gsap.fromTo(
-      subBottomNavRef.current,
+      subBottomNavRefs.current,
       { opacity: 0 },
       {
         opacity: 1,
@@ -143,10 +143,16 @@ const SubBottom = ({
   }, [idNum]);
   return (
     <StyledSubBottom>
-      <div className="moreProject subBottomNav" ref={subBottomNavRef}>
+      <div
+        className="moreProject subBottomNav"
+        ref={(el) => (subBottomNavRefs.current[0] = el)}
+      >
         MORE PROJECTS
       </div>
-      <StyledSubNav className="subBottomNav">
+      <StyledSubNav
+        className="subBottomNav"
+        ref={(el) => (subBottomNavRefs.current[1] = el)}
+      >
         <div
           className="prev"
           onMouseEnter={() => {
