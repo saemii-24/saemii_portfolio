@@ -30,7 +30,10 @@ const originData: DataType[] = [
     link: [
       { page: "https://saemii-24.github.io/project_1/" },
       { github: "https://github.com/saemii-24/project_1" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1eQlawYZbuRUZa2IpkeyUk3mjzc57vFdl/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.06.21 - 23.07.07" },
@@ -115,7 +118,10 @@ const originData: DataType[] = [
     link: [
       { page: "https://saemii-24.github.io/project_2/" },
       { github: "https://github.com/saemii-24/project_2" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/17a3PlxHg3ENM9n1FOX7yNhoaAE7lSH_V/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.07.12 - 23.08.12" },
@@ -200,7 +206,10 @@ const originData: DataType[] = [
     link: [
       { page: "https://saemii-24-australia.netlify.app/" },
       { github: "https://github.com/saemii-24/australia_netlify_snowpack/" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1hqSbB3cX_WPD0mj5tinLQ9espqoOOY9e/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.08.21 - 23.08.30" },
@@ -272,7 +281,10 @@ const originData: DataType[] = [
     link: [
       { page: "https://saemii-24.github.io/project_4/" },
       { github: "https://github.com/saemii-24/project_4" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1MzWESmvjq-B8mDEzgTXcYpvS_b6yl0Sc/view?usp=sharing",
+      },
     ],
     active: false,
     click: false,
@@ -347,7 +359,10 @@ const originData: DataType[] = [
     link: [
       { page: "https://saemii-24.github.io/project_5/" },
       { github: "https://github.com/saemii-24/project_5" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1DBZ6h3c4cEG9VEyj7VlIALNR5_ZtuExk/view?usp=sharing",
+      },
     ],
     active: false,
     click: false,
