@@ -101,6 +101,8 @@ const Introduce = () => {
   );
 };
 
+Introduce.displayName = "Introduce";
+
 const StyledIntroduce = styled.div`
   width: 100vw;
   height: 100vh;
