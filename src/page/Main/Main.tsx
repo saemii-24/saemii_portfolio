@@ -10,7 +10,12 @@ import Contact from "./Contact/Contact";
 import styled from "styled-components";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { splitChars, animationChars, animationOpacity } from "./animation";
+import {
+  splitChars,
+  animationChars,
+  animationOpacity,
+  mainPinAnimation,
+} from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -37,28 +42,30 @@ const Main = () => {
     (state: RootState) => state.projectBgSlice.projectClickNum
   );
 
+  //gsap
   //애니메이션 세팅
-
   useEffect(() => {
     setPreviousWidth(sectionRef.current!.offsetWidth);
 
     const ctx = gsap.context(() => {
-      const pin = gsap.fromTo(
-        sectionRefs.current,
-        { x: 0 },
-        {
-          x:
-            -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top top",
-            end: "+=6000",
-            scrub: 1,
-            pin: true,
-          },
-        }
-      );
+      const pin = mainPinAnimation(sectionRefs.current!, triggerRef.current!);
+
+      // gsap.fromTo(
+      //   sectionRefs.current,
+      //   { x: 0 },
+      //   {
+      //     x:
+      //       -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
+      //     ease: "none",
+      //     scrollTrigger: {
+      //       trigger: triggerRef.current,
+      //       start: "top top",
+      //       end: "+=6000",
+      //       scrub: 1,
+      //       pin: true,
+      //     },
+      //   }
+      // );
       //introduce 애니메이션
       gsap.to(".introducePath", {
         strokeDashoffset: 0,

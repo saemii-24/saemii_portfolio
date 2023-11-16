@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { languageLogo, stateLogo, designLogo } from "../../../data/language";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 const Introduce = () => {
   return (
