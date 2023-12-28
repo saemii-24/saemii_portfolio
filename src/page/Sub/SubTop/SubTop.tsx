@@ -116,20 +116,22 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
               <Go />
             </div>
           </StyledAtag>
-          <StyledAtag
-            href={Object.values(thisData.link[2])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
-          >
-            <div
-              className="atagChild"
-              ref={(el) => (aTagChildRefs.current[2] = el)}
+          {thisData.link[2] && (
+            <StyledAtag
+              href={Object.values(thisData.link[2])[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkPage"
             >
-              DOCUMENT
-              <Go />
-            </div>
-          </StyledAtag>
+              <div
+                className="atagChild"
+                ref={(el) => (aTagChildRefs.current[2] = el)}
+              >
+                DOCUMENT
+                <Go />
+              </div>
+            </StyledAtag>
+          )}
         </StyledAtagBox>
       </StyledContainer>
     </StyledTop>

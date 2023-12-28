@@ -16,7 +16,9 @@ const SubDetail = ({
   //gsap
   const subDetailTitleRef = useRef<HTMLDivElement | null>(null);
   const detailNameRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   useEffect(() => {
+    console.log(detailNameRefs);
     gsap.fromTo(
       subDetailTitleRef.current!.children,
       { y: 150, opacity: 0 },
