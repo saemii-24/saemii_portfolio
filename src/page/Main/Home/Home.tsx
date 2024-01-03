@@ -166,7 +166,7 @@ const Main = () => {
               </div>
             </SmallTitle>
             <div className="update smallTitle__text" ref={updateSmallTitleRef}>
-              마지막 업데이트 2023.11.15.
+              마지막 업데이트 2024.01.03.
             </div>
           </div>
         </BottomText>
