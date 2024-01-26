@@ -1,58 +1,61 @@
 # 🪪saemii Portfolio
 
-#### **<a href="https://saemii-24.github.io/project_2/" target="_blank">:point_right:<u>배포페이지 바로가기</u></a>**
+#### **<a href="">:point_right:<u>포트폴리오</u></a>**
 
-새미의 포트폴리오 입니다!
+새미의 포트폴리오 입니다!<br/>
 포트폴리오에서 제가 작업한 페이지와, 각 페이지에 사용된 언어와 라이브러리, 구현 상세 내용을 확인하실 수 있습니다.
 
 ## 목차
 
 - [개요](#개요)
 - [사용된 기술](#사용된-기술)
-- [주요 기능](#주요기능)
+- [미리보기](#미리보기)
 - [기능별 설명](#기능별-설명)
-- [후기](#후기)
 
 ## 개요
 
-- **프로젝트 이름**: Saemii Portfolio🎆 (새미 포트폴리오)
-- **제작기간**: 23.10.27 - 23.11.17
+- **프로젝트 이름**: Saemii Portfolio🪪 (새미 포트폴리오)
+- **제작기간**: 23.10.27 - 23.11.17 + a (계속 업데이트)
 - **기여도**: 개인작업 / 100%
 
 ## 사용된 기술
-
+#### 📌언어/라이브러리
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+#### 📌애니메이션
 <img src="https://img.shields.io/badge/gsap-0AE448?style=for-the-badge&logo=gsap&logoColor=white">
 
-## 주요기능
+## 미리보기
 
 <table>
   <tr>
-    <th style="width:300px">메인 이미지 스크롤 이벤트</th>
-    <th style="width:300px">pagination</th>
-    <th style="width:300px">가로 스크롤 카드</th>
+    <th style="width:300px">홈</th>
+    <th style="width:300px">프로젝트 요약</th>
+    <th style="width:300px">프로젝트 썸네일/이동</th>
   </tr>
+
   <tr>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/289ca4f5-10d0-4b9d-8670-42eea3e84d68" alt="메인 이미지 스크롤 이벤트"></td>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/61337bd2-4d74-4d43-9ddd-84f1df4788c3" alt="pagination"></td>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/3f2e5da9-2542-451a-bd44-9ad95d574d61" alt="가로 스크롤 카드"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/f3999662-df81-4fa8-877c-cc1eb4dc0a4d" alt="홈"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/9718cb84-0310-442a-8e2d-eb21ed6b0c38" alt="프로젝트 요약"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/911d415a-d688-4a6c-9173-346c7106cc50" alt="프로젝트 썸네일/이동"></td>
   </tr>
 </table>
 
 <table>
   <tr>
-    <th style="width:300px">드래그 카드 이동</th>
-    <th style="width:300px">youtubeAPI 활용 팝업창</th>
-    <th style="width:300px">data를 이용한 태그 생성</th>
+    <th style="width:300px">프로젝트 페이지/깃허브 이동</th>
+    <th style="width:300px">프로젝트 개요</th>
+    <th style="width:300px">프로젝트 미리보기</th>
+    <th style="width:300px">구현 설명</th>
   </tr>
   <tr>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/849ba8f5-c6e4-49fa-9450-7687c111e33a" alt="드래그 카드 이동"></td>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/301f1101-397c-4b81-8439-ab53b49f2875" alt="youtubeAPI 활용 팝업창"></td>
-    <td><img style="width:300px" src="https://github.com/saemii-24/project_2/assets/139088277/7947258c-8159-4d52-89d6-8a4ebb2b19a1" alt="data를 이용한 태그 생성"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/e66aebdc-9117-4bad-8dc9-68ca75a70f51" alt="프로젝트 페이지/깃허브 이동"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/8fdbdb6c-dcc9-4123-9dbb-9b55c74e0214" alt="프로젝트 개요"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/4225983b-5103-4fb2-b114-3f72a77df00b" alt="프로젝트 미리보기"></td>
+    <td><img style="width:300px" src="https://github.com/saemii-24/saemii_portfolio/assets/139088277/93c2f259-95c4-4fb9-b5da-85977f0fb282" alt="구현 설명"></td>
   </tr>
 </table>
 
-## 기능별 설명
+## 포트폴리오 주요 포인트
 
 1. **메인 이미지 스크롤 이벤트**<br/>
    scrollEvent를 이용해 스크롤에 따라 이미지가 화면을 채우도록 고성했습니다. 이때 이미지로 인해 헤더가 잘 보이지 않을 수 있어 헤더의 컬러도 적절히 변경해 주었습니다.
@@ -72,11 +75,3 @@
 6. **data를 이용한 태그 생성**<br/>
    각 캐릭터의 정보 구조와 HTML 태그 구조가 동일하기 때문에 data.js 파일에 캐릭터 정보를 분리하고 JavaScript에서 태그를 만들어 주었습니다. 궁금한 캐릭터를 클릭하면 캐릭터의 정보와 사진이 등장하며, 사진을 클릭해 캐릭터의 다른 사진을 확인하거나 버튼을 눌러 다음 캐릭터로 이동할 수 있습니다.
 
-## 후기
-
-처음으로 세 가지 사이즈에 대응하는 반응형 사이트를 제작하며, 각 사이즈에 적절한 레이아웃을 설정하고, PC 사이즈에서 다양한 스크롤 애니메이션을 넣고자 했습니다.
-
-MOBILE 사이즈를 작업할 때 내용이 많거나
-모바일에서 대응하기 어렵다고 판단되는 경우에는 애니메이션을 삭제하거나 대체했습니다.
-
-이때 세 가지 사이즈를 제작하며 각 사이즈에 적절한 구조를 만들고자 태그를 추가하다 보니, 태그가 지나치게 많아져 코드를 수정하거나 이해하기 어렵다는 것을 깨달았습니다. 이를 제대로 분리하지 못했다는 것이 아쉬웠지만, 이후 프로젝트부터 어떻게 하면 코드를 줄일 수 있는지 고민해 볼 수 있는 계기가 되었습니다.
