@@ -28,7 +28,7 @@ const originData: DataType[] = [
       { 서브: "/image/projectPreview/project01-sub.png" },
     ],
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
+      { page: "https://saemii-24.github.io/Planning-Shopping-Sites/" },
       { github: "https://github.com/saemii-24/project_1" },
       {
         document:
@@ -116,7 +116,7 @@ const originData: DataType[] = [
       { 서브: "/image/projectPreview/project02-sub.jpg" },
     ],
     link: [
-      { page: "https://saemii-24.github.io/project_2/" },
+      { page: "https://saemii-24.github.io/Ghibli-World-Sites/" },
       { github: "https://github.com/saemii-24/project_2" },
       {
         document:
@@ -279,7 +279,7 @@ const originData: DataType[] = [
       "Kakao API를 이용한 교보문고 eBook의 클론 사이트입니다. Swiper와 localStorage등을 이용해 최대한 본 사이트와 비슷하게 구현하고자 했습니다.",
     previewImg: "/image/project04.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_4/" },
+      { page: "https://saemii-24.github.io/eBook-Sites/" },
       { github: "https://github.com/saemii-24/project_4" },
       {
         document:
@@ -357,7 +357,7 @@ const originData: DataType[] = [
       "사용자가 원하는 카드사와 혜택을 필터해 보여주는 체크카드 검색 사이트입니다. 카드 비교함에 카드를 담아 원하는 카드를 비교할 수도 있습니다.",
     previewImg: "/image/project05.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_5/" },
+      { page: "https://main--react-card-check.netlify.app/" },
       { github: "https://github.com/saemii-24/project_5" },
       {
         document:

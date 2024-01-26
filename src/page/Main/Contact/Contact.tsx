@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Github from "component/Icon/Github";
 import Mail from "component/Icon/Mail";
 import Call from "component/Icon/Call";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -33,18 +34,25 @@ const Contact = () => {
             </AboutText>
           </div>
           <div className="mail">
-            <SmallTitle className="smallTitle__parent">
-              <Mail />
-            </SmallTitle>
-            <AboutText className="mail smallTitle__text">
-              hims2419@gmail.com
-            </AboutText>
+            <Link
+              to="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hims2419@gmail.com"
+              target="_blank"
+            >
+              <SmallTitle className="smallTitle__parent">
+                <Mail />
+              </SmallTitle>
+              <AboutText className="mail smallTitle__text">
+                hims2419@gmail.com
+              </AboutText>
+            </Link>
           </div>
           <div className="github">
-            <SmallTitle className="smallTitle__parent">
-              <Github />
-            </SmallTitle>
-            <div className="github smallTitle__text">@saemii-24</div>
+            <Link to="https://github.com/saemii-24" target="_blank">
+              <SmallTitle className="smallTitle__parent">
+                <Github />
+              </SmallTitle>
+              <div className="github smallTitle__text">saemii-24</div>
+            </Link>
           </div>
         </BottomText>
       </div>
