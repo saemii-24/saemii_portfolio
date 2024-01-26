@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Github from "component/Icon/Github";
 import Mail from "component/Icon/Mail";
+import Call from "component/Icon/Call";
 
 const Contact = () => {
   return (
@@ -20,9 +21,17 @@ const Contact = () => {
         />
       </ContactLine>
       <div className="inner">
-        <ContactTitle className="type contactTitle">CONTACT</ContactTitle>
+        <ContactTitle className="type contactTitle">Thank you</ContactTitle>
 
         <BottomText>
+          <div className="call">
+            <SmallTitle className="smallTitle__parent">
+              <Call text={"PHONE"} />
+            </SmallTitle>
+            <AboutText className="mail smallTitle__text">
+              010.0000.0000
+            </AboutText>
+          </div>
           <div className="mail">
             <SmallTitle className="smallTitle__parent">
               <Mail />

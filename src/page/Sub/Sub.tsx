@@ -46,7 +46,6 @@ const Sub = () => {
   return (
     <div ref={subRef} className="sub">
       <ReactLenis root>
-        <ToTop idNum={idNum} />
         <SubTop thisData={thisData} idNum={idNum} />
         <SubTopText thisData={thisData} idNum={idNum} />
         <SubPreview thisData={thisData} idNum={idNum} />

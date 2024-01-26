@@ -7,7 +7,6 @@ import "./common.scss";
 import ScrollToTop from "./ScrollToTop";
 
 function App() {
-  console.log();
   return (
     <>
       <ScrollToTop />

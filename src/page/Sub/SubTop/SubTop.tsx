@@ -9,14 +9,28 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
-  type IsRender = "" | "render";
-  const [isRender, setIsRender] = useState<IsRender>("render");
+  type Render = "" | "render";
+  const [subTopRender, setSubTopRender] = useState<Render>("render");
+  const [mainPicRender, setMainPicRender] = useState<Render>("");
 
+  //subTop Opacity Animation
   useEffect(() => {
-    setIsRender("render");
+    setSubTopRender("render");
     const renderTimeout = setTimeout(() => {
-      setIsRender("");
+      setSubTopRender("");
     }, 1000);
+
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [idNum]);
+
+  //mainPic Animation
+  useEffect(() => {
+    setMainPicRender("");
+    const renderTimeout = setTimeout(() => {
+      setMainPicRender("render");
+    }, 10);
 
     return () => {
       clearTimeout(renderTimeout);
@@ -32,15 +46,15 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       //이미지 크기 조정
-      gsap.fromTo(
-        mainPicRef.current,
-        { width: "100vw", height: "100vh" },
-        {
-          width: "70vw",
-          height: "85vh",
-          duration: 1,
-        }
-      );
+      // gsap.fromTo(
+      //   mainPicRef.current,
+      //   { width: "100vw", height: "100vh" },
+      //   {
+      //     width: "70vw",
+      //     height: "85vh",
+      //     duration: 1,
+      //   }
+      // );
 
       //타이틀, page, github, document 링크 등장
       const subTopTimeline = gsap.timeline({
@@ -71,7 +85,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   return (
     <StyledTop className="subTop" ref={subTopRef}>
       <StyledMainPic
-        className={"mainPic"}
+        className={`mainPic ` + mainPicRender}
         ref={mainPicRef}
         style={{
           backgroundImage: `url(${
@@ -80,7 +94,11 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
         }}
       ></StyledMainPic>
       <StyledContainer>
-        <div style={{ marginBottom: "auto" }} className={`subLogo ` + isRender}>
+        <div
+          style={{ marginBottom: "auto" }}
+          className={`subLogo ` + subTopRender}
+        >
+          {/* <Logo /> */}
           <Logo />
         </div>
         <StyledSubTitle className="subTopTitle">

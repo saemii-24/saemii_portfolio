@@ -18,45 +18,48 @@ const SubDetail = ({
   const detailNameRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    console.log(detailNameRefs);
-    gsap.fromTo(
-      subDetailTitleRef.current!.children,
-      { y: 150, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: subDetailTitleRef.current,
-          start: "top 90%",
-        },
-      }
-    );
-
-    //
-    const detailCount = thisData.detail.length;
-
-    // console.log(detailCount);
-    //title컬러 채워지는 animation
-    for (let i = 0; i <= detailCount - 1; i++) {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
-        detailNameRefs.current[i],
+        subDetailTitleRef.current!.children,
+        { y: 150, opacity: 0 },
         {
-          background: "linear-gradient(to right,  #2f2f2f 0%, #ebebeb 0%)",
-        },
-        {
-          background: "linear-gradient(to right,  #2f2f2f 100%, #ebebeb 100%)",
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out",
           scrollTrigger: {
-            trigger: detailNameRefs.current[i],
+            trigger: subDetailTitleRef.current,
             start: "top 90%",
-            end: "bottom 40%",
-            scrub: 1,
-            toggleActions: "play none none none",
           },
         }
       );
-    }
+
+      //
+      const detailNames = document.querySelectorAll(".detailName");
+      const detailCount = detailNames.length;
+
+      //title컬러 채워지는 animation
+      for (let i = 0; i <= detailCount - 1; i++) {
+        gsap.fromTo(
+          detailNames[i],
+          {
+            background: "linear-gradient(to right,  #2f2f2f 0%, #ebebeb 0%)",
+          },
+          {
+            background:
+              "linear-gradient(to right,  #2f2f2f 100%, #ebebeb 100%)",
+            scrollTrigger: {
+              trigger: detailNames[i],
+              start: "top 90%",
+              end: "bottom 40%",
+              scrub: 1,
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+    return () => ctx.revert();
   }, [idNum]);
   return (
     <StyledSubDetail className="subDetail">
@@ -79,7 +82,7 @@ const SubDetail = ({
                     .map((line: string, thisIndex: number) => (
                       <StyledSubDetailBoxTitle
                         key={thisIndex}
-                        className={"detailName"}
+                        className={"detailName detailName" + thisIndex}
                         ref={(el) => (detailNameRefs.current[index] = el)}
                       >
                         {line} <br />

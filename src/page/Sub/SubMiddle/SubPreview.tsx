@@ -41,17 +41,17 @@ const SubPreview = ({
   const languageChildRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(subPreviewRef.current, {
+      gsap.to(".subPreview", {
         backgroundColor: "#2f2f2f",
         duration: 0.3,
         scrollTrigger: {
-          trigger: subPreviewRef.current,
+          trigger: ".subPreview",
           start: "top 80%",
         },
       });
 
       gsap.fromTo(
-        languageChildRef.current,
+        ".languageChild",
         { y: 150, opacity: 0 },
         {
           y: 0,
@@ -60,7 +60,7 @@ const SubPreview = ({
           ease: "power4.out",
           stagger: 0.1,
           scrollTrigger: {
-            trigger: subPreviewRef.current,
+            trigger: ".subPreview",
             start: "top 30%",
           },
         }
@@ -138,7 +138,7 @@ const SubPreview = ({
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
-                  <div ref={languageChildRef}>
+                  <div className="languageChild" ref={languageChildRef}>
                     <div className="languageTitle" style={{ color: "#f8f8f8" }}>
                       {Object.keys(data)[0]}
                     </div>

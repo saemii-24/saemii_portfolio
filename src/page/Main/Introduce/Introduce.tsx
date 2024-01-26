@@ -60,9 +60,6 @@ const Introduce = () => {
                           process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
                         }
                       ></StyledLogoImg>
-                      {/* <StyledExplain>
-                        만나게 될 사용자를 공감하며 긍정적인 인상을 남길 수 있는
-                      </StyledExplain> */}
                     </div>
                   );
                 })}
@@ -169,24 +166,4 @@ const StyledLogoImg = styled.img`
   border-radius: 0.3vw;
 `;
 
-// const StyledExplain = styled.div`
-//   position: absolute;
-//   max-width: 200px;
-//   background: #2f2f2f;
-//   border-radius: 8px;
-//   color: #f8f8f8;
-//   padding: 16px;
-//   font-size: 0.85rem;
-//   word-break: keep-all;
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     top: -0.3vw;
-//     left: 0.8vw;
-//     width: 0.8vw;
-//     height: 0.8vw;
-//     transform: rotate(45deg);
-//     background-color: #2f2f2f;
-//   }
-// `;
 export default Introduce;

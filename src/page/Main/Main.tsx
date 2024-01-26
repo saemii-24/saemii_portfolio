@@ -50,22 +50,6 @@ const Main = () => {
     const ctx = gsap.context(() => {
       const pin = mainPinAnimation(sectionRefs.current!, triggerRef.current!);
 
-      // gsap.fromTo(
-      //   sectionRefs.current,
-      //   { x: 0 },
-      //   {
-      //     x:
-      //       -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
-      //     ease: "none",
-      //     scrollTrigger: {
-      //       trigger: triggerRef.current,
-      //       start: "top top",
-      //       end: "+=6000",
-      //       scrub: 1,
-      //       pin: true,
-      //     },
-      //   }
-      // );
       //introduce 애니메이션
       gsap.to(".introducePath", {
         strokeDashoffset: 0,
@@ -151,6 +135,11 @@ const Main = () => {
           containerAnimation: pin,
           start: "top 20%",
         },
+      });
+      animationOpacity(".call", {
+        trigger: ".call",
+        containerAnimation: pin,
+        start: "top 80%",
       });
       animationOpacity(".mail", {
         trigger: ".mail",

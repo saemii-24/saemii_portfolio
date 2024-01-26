@@ -377,7 +377,7 @@ const originData: DataType[] = [
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
-          "React, Redux, React-router, React-parallx-tilt, SCSS, Bootstrap, Lodash, Gsap, Swiper",
+          "React, Redux, React-router, React-parallx-tilt, SCSS, Bootstrap, Gsap, Swiper",
       },
       {
         "주요 기능":

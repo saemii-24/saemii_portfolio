@@ -152,7 +152,6 @@ const StyledProjectIntro = styled.div`
   background-color: #2f2f2f;
   padding: 10vh;
   justify-content: space-between;
-
   min-width: 1400px;
   min-height: 700px;
 `;

@@ -127,19 +127,22 @@ const SubBottom = ({
   const subBottomNavRefs = useRef<(HTMLDivElement | null)[]>([]);
   const subBottomBgRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    gsap.fromTo(
-      subBottomNavRefs.current,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: subBottomBgRef.current,
-          start: "top 50%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        subBottomNavRefs.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: subBottomBgRef.current,
+            start: "top 50%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
   }, [idNum]);
   return (
     <StyledSubBottom>
@@ -262,7 +265,7 @@ const SubBottom = ({
         >
           <StyledVideo autoPlay muted loop>
             <source
-              src={process.env.PUBLIC_URL + "/image/test.mp4"}
+              src={process.env.PUBLIC_URL + "/image/background.mp4"}
               type="video/mp4"
             />
           </StyledVideo>

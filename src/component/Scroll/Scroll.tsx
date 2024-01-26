@@ -15,32 +15,33 @@ const Scroll = ({
   const [nowHeight, setNowHeight] = useState<number>(0);
   const [thumbHeight, setThumbHeight] = useState<number>(0);
   useEffect(() => {
-    const viewPortHeight: number = window.innerHeight;
-    setNowHeight(viewPortHeight);
+    const ctx = gsap.context(() => {
+      const viewPortHeight: number = window.innerHeight;
+      setNowHeight(viewPortHeight);
 
-    const nowThumbHeight: number = parseInt(
-      ((100 * nowHeight) / pageHeight).toFixed(0)
-    );
-    setThumbHeight(nowThumbHeight);
-    console.log(thumbHeight);
+      const nowThumbHeight: number = parseInt(
+        ((100 * nowHeight) / pageHeight).toFixed(0)
+      );
+      setThumbHeight(nowThumbHeight);
+      //gsap으로 스크롤의 역할을 만들어준다.
 
-    //gsap으로 스크롤의 역할을 만들어준다.
-
-    gsap.fromTo(
-      ".scrollThumb.sub",
-      { y: 0 },
-      {
-        y: nowHeight - (nowHeight * thumbHeight) / 100,
-        ease: "none",
-        scrollTrigger: {
-          start: "top top",
-          scrub: true,
-          markers: true,
-          //   trigger: ".sub",
-          toggleActions: "play reverse",
-        },
-      }
-    );
+      gsap.fromTo(
+        ".scrollThumb.sub",
+        { y: 0 },
+        {
+          y: nowHeight - (nowHeight * thumbHeight) / 100,
+          ease: "none",
+          scrollTrigger: {
+            start: "top top",
+            scrub: true,
+            markers: true,
+            //   trigger: ".sub",
+            toggleActions: "play reverse",
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
   }, [thumbHeight]);
 
   return (
