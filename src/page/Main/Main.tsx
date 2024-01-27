@@ -8,26 +8,31 @@ import ProjectBg from "page/Main/Home/ProjectBg";
 import Prepare from "./Contact/Prepare";
 import Contact from "./Contact/Contact";
 import styled from "styled-components";
-import "./Main.scss";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { splitChars, animationChars, animationOpacity } from "./animation";
+import {
+  splitChars,
+  animationChars,
+  animationOpacity,
+  mainPinAnimation,
+} from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import ProjectIntroBg from "./Home/ProjectIntroBg";
+import { data } from "../../data/data";
 
 const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const allProjectRef = useRef<HTMLDivElement | null>(null);
 
   //재활용할 gsap 함수
   //등장 함수
-  const [allWidth, setAllWidth] = useState<number>(0);
   const [previousWidth, setPreviousWidth] = useState<number>(0);
-  const [nowWidth, setNowWidth] = useState<number>(0);
+  const [nowTransform, setNowTransform] = useState<number>(0); //transform이 얼마나 되었는지 확인한다.
 
   //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
   const projectClick: boolean = useSelector(
@@ -37,30 +42,14 @@ const Main = () => {
     (state: RootState) => state.projectBgSlice.projectClickNum
   );
 
+  //gsap
   //애니메이션 세팅
-
   useEffect(() => {
-    setAllWidth(sectionRefs.current!.offsetWidth);
     setPreviousWidth(sectionRef.current!.offsetWidth);
-    setNowWidth(triggerRef.current!.offsetWidth);
 
     const ctx = gsap.context(() => {
-      const pin = gsap.fromTo(
-        sectionRefs.current,
-        { x: 0 },
-        {
-          x:
-            -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top top",
-            end: "+=6000",
-            scrub: 1,
-            pin: true,
-          },
-        }
-      );
+      const pin = mainPinAnimation(sectionRefs.current!, triggerRef.current!);
+
       //introduce 애니메이션
       gsap.to(".introducePath", {
         strokeDashoffset: 0,
@@ -124,7 +113,6 @@ const Main = () => {
           { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
           "-=80%"
         );
-      //배경 색 전환
       //contact Animation
       splitChars("contactTitle");
       animationChars(
@@ -148,6 +136,11 @@ const Main = () => {
           start: "top 20%",
         },
       });
+      animationOpacity(".call", {
+        trigger: ".call",
+        containerAnimation: pin,
+        start: "top 80%",
+      });
       animationOpacity(".mail", {
         trigger: ".mail",
         containerAnimation: pin,
@@ -163,14 +156,42 @@ const Main = () => {
       projectClick이 false라면 지속하고, true일 경우 kill한다.*/
       if (projectClick === true && sectionRefs.current !== null) {
         pin.kill();
-        const moveTo = previousWidth + projectClickNum * 421.39 + 10;
-        console.log(moveTo);
-        sectionRefs.current.style.transform = `translate3d(-${moveTo}px, 0px, 0px)`;
+        //스크롤 이동에 필요한 project 한개의 width값을 구한다.
+        const oneProjectWidth =
+          allProjectRef.current!.offsetWidth / data.length + 10; //오차대비 ;
+        //이전 컴포넌트들의 width + project*index width 값만큼 transform
+        const moveTo = previousWidth + projectClickNum * oneProjectWidth;
+        //얻은 값들로 gsap 애니메이션을 실행한다.
+        gsap.fromTo(
+          sectionRefs.current,
+          {
+            x: nowTransform,
+          },
+          { x: -moveTo, duration: 1 }
+        );
       }
     });
 
     return () => {
       ctx.revert();
+    };
+  }, [projectClick]);
+
+  //스크롤 할때마다 transform이 바뀐다.
+  const getTransformX = () => {
+    if (sectionRefs.current !== null) {
+      const nowTransformValue = window.getComputedStyle(
+        sectionRefs.current!
+      ).transform;
+      const matrix = new WebKitCSSMatrix(nowTransformValue); //이동 값을 구한다.
+      setNowTransform(matrix.m41); //matrix를 number로 변환한다.
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", getTransformX);
+    return () => {
+      window.removeEventListener("event", getTransformX);
     };
   }, [projectClick]);
 
@@ -190,12 +211,8 @@ const Main = () => {
                 <ProjectIntro />
               </div>
             </div>
-            <div>
-              <Project
-                allWidth={allWidth}
-                previousWidth={previousWidth}
-                nowWidth={nowWidth}
-              />
+            <div ref={allProjectRef}>
+              <Project />
             </div>
             <Prepare />
             <Contact />

@@ -1,15 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
 import { ReactLenis } from "@studio-freight/react-lenis";
-const SubPreview = ({ thisData }: { thisData: DataType }) => {
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const SubPreview = ({
+  idNum,
+  thisData,
+}: {
+  idNum: number;
+  thisData: DataType;
+}) => {
   const [slide, setSlide] = useState<number>(0);
-  console.log(slide);
+  //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
+  const subBottomNavClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.subBottomNavClick
+  );
+
+  useEffect(() => {
+    if (subBottomNavClick === true) {
+      setSlide(0);
+    }
+  }, [subBottomNavClick]);
+
+  //slide가 변경되면 스크롤이 다시 위로 올라가게 할 것
+  const mainImageRef = useRef<HTMLDivElement | null>();
+  useEffect(() => {
+    if (mainImageRef.current) {
+      mainImageRef.current.scrollTo(0, 0);
+    }
+  }, [slide]);
+
+  //gsap
+  const subPreviewRef = useRef<HTMLDivElement | null>(null);
+  const languageChildRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(".subPreview", {
+        backgroundColor: "#2f2f2f",
+        duration: 0.3,
+        scrollTrigger: {
+          trigger: ".subPreview",
+          start: "top 80%",
+        },
+      });
+
+      gsap.fromTo(
+        ".languageChild",
+        { y: 150, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".subPreview",
+            start: "top 30%",
+          },
+        }
+      );
+    });
+    return () => {
+      ctx.revert();
+    };
+  }, [idNum]);
   return (
-    <StyledSubPreview className="subPreview">
+    <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
-        <ReactLenis className="mainImage">
+        <ReactLenis className="mainImage" ref={mainImageRef}>
           <img
             style={{ width: "100%" }}
             src={
@@ -17,8 +81,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
               Object.values(thisData.previewPage[slide])
             }
             alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
-          ></img>
-          {/* </div> */}
+          />
         </ReactLenis>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
@@ -75,7 +138,7 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
-                  <div>
+                  <div className="languageChild" ref={languageChildRef}>
                     <div className="languageTitle" style={{ color: "#f8f8f8" }}>
                       {Object.keys(data)[0]}
                     </div>
@@ -96,14 +159,6 @@ const SubPreview = ({ thisData }: { thisData: DataType }) => {
   );
 };
 
-const MainImageAnimation = keyframes`
-    0%{
-        opacity:0    
-    }
-    100%{
-
-opacity:1}
-`;
 const StyledSubPreview = styled.div`
   width: 100%;
   width: 100%;
@@ -127,7 +182,6 @@ const StyledContainer = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    animation: ${MainImageAnimation} 1s;
     overflow: overlay;
   }
 

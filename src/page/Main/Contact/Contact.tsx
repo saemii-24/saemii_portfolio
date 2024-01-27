@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Github from "component/Icon/Github";
 import Mail from "component/Icon/Mail";
+import Call from "component/Icon/Call";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -20,22 +22,37 @@ const Contact = () => {
         />
       </ContactLine>
       <div className="inner">
-        <ContactTitle className="type contactTitle">CONTACT</ContactTitle>
+        <ContactTitle className="type contactTitle">Thank you</ContactTitle>
 
         <BottomText>
-          <div className="mail">
+          <div className="call">
             <SmallTitle className="smallTitle__parent">
-              <Mail />
+              <Call text={"PHONE"} />
             </SmallTitle>
             <AboutText className="mail smallTitle__text">
-              hims2419@gmail.com
+              010.0000.0000
             </AboutText>
           </div>
+          <div className="mail">
+            <Link
+              to="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hims2419@gmail.com"
+              target="_blank"
+            >
+              <SmallTitle className="smallTitle__parent">
+                <Mail />
+              </SmallTitle>
+              <AboutText className="mail smallTitle__text">
+                hims2419@gmail.com
+              </AboutText>
+            </Link>
+          </div>
           <div className="github">
-            <SmallTitle className="smallTitle__parent">
-              <Github />
-            </SmallTitle>
-            <div className="github smallTitle__text">@saemii-24</div>
+            <Link to="https://github.com/saemii-24" target="_blank">
+              <SmallTitle className="smallTitle__parent">
+                <Github />
+              </SmallTitle>
+              <div className="github smallTitle__text">saemii-24</div>
+            </Link>
           </div>
         </BottomText>
       </div>

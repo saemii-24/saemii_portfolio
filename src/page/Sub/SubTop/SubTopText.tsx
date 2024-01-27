@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { DataType } from "../../../data/data";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
-const SubTopText = ({ thisData }: { thisData: DataType }) => {
-  console.log(thisData);
+const SubTopText = ({
+  idNum,
+  thisData,
+}: {
+  idNum: number;
+  thisData: DataType;
+}) => {
+  const subTextBoxRef = useRef<HTMLDivElement | null>(null); //TODO ref배열로 불러오기
+  const subTextBoxRefChildren = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        subTextBoxRefChildren.current,
+        { y: 150, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: subTextBoxRef.current,
+            start: "top 100%",
+          },
+        }
+      );
+    });
+    return () => {
+      ctx.revert();
+    };
+  }, [idNum]);
   return (
     <StyledTextContainer>
       <div>
         {thisData.develop!.map((data, index) => {
           return (
-            <div key={index} className="subTextBox">
-              <div>
+            <div key={index} className="subTextBox" ref={subTextBoxRef}>
+              <div ref={(el) => (subTextBoxRefChildren.current[index] = el)}>
                 <StyledTextTitle className="subTextTitle">
                   {Object.keys(data)[0]}
                 </StyledTextTitle>
@@ -41,7 +74,7 @@ const StyledTextContainer = styled.div`
   margin: 0 auto;
   margin-top: 20px;
   & > div {
-    padding-left: calc(30vw - ((100vw - 1400px - 17px) / 2));
+    padding-left: calc(30vw - ((100vw - 1400px) / 2));
     position: relative;
     right: 0;
   }

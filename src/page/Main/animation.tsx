@@ -79,3 +79,24 @@ export function animationOpacity(
     }
   );
 }
+
+export function mainPinAnimation(
+  section: HTMLDivElement,
+  trigger: HTMLDivElement
+) {
+  return gsap.fromTo(
+    section,
+    { x: 0 },
+    {
+      x: -section!.offsetWidth + trigger.offsetWidth,
+      ease: "none",
+      scrollTrigger: {
+        trigger: trigger,
+        start: "top top",
+        end: "+=6000",
+        scrub: 1,
+        pin: true,
+      },
+    }
+  );
+}

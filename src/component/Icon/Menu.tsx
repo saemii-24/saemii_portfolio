@@ -1,15 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import "./Icon.scss";
 
-//styled Component props 타입지정
-type menuProps = {
-  click: boolean;
-  setClick: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const Menu = ({ click, setClick }: menuProps) => {
+const Menu = () => {
   return (
     <StyledMenu className="menu">
       <StyledMenuIcon>

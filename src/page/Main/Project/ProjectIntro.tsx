@@ -4,6 +4,10 @@ import { data, DataType } from "../../../data/data";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { introHover, introClick } from "../../../redux/projectBgSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import classNames from "classnames";
+
 const ProjectIntro = () => {
   const dispatch = useDispatch();
 
@@ -11,6 +15,11 @@ const ProjectIntro = () => {
   const [projectHover, setProjectHover] = useState<number>(0);
   const [hoverData, setHoverData] = useState<DataType>(data[0]);
   const navigate = useNavigate();
+
+  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
+  const projectClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClick
+  );
 
   useEffect(() => {
     const nowHoverData = [...data].filter(
@@ -108,7 +117,9 @@ const ProjectIntro = () => {
           return (
             <StyledProjectPreivew
               key={project.id}
-              className="introPreview type"
+              className={classNames("introPreview type", {
+                active: projectClick,
+              })}
               onMouseEnter={() => {
                 setProjectHover(project.id);
               }}
@@ -141,7 +152,6 @@ const StyledProjectIntro = styled.div`
   background-color: #2f2f2f;
   padding: 10vh;
   justify-content: space-between;
-
   min-width: 1400px;
   min-height: 700px;
 `;
@@ -194,6 +204,18 @@ const StyledMainTitle = styled.div`
   }
 `;
 
+const StyledPreviewAnimation = keyframes`
+  0%{
+    opacity:1;
+    transform: translate(0px); 
+    //gsap로 설정한 애니메이션로 발생하는 오차 수정
+  }
+  100%{
+    opacity:0;
+    transform: translate(0px); 
+    //gsap로 설정한 애니메이션로 발생하는 오차 수정
+  }
+`;
 const StyledProjectPreivew = styled.div`
   display: flex;
   flex-direction: column;
@@ -201,6 +223,9 @@ const StyledProjectPreivew = styled.div`
   justify-content: flex-end;
   padding: 0 3rem;
   cursor: pointer;
+  &.active {
+    animation: ${StyledPreviewAnimation} 300ms;
+  }
 `;
 
 const StyledProjectContent = styled.p`
@@ -210,12 +235,6 @@ const StyledProjectContent = styled.p`
   font-weight: 200;
   word-break: keep-all;
 `;
-// const StyledProjectLanguage = styled.p`
-//   color: #f8f8f8;
-//   line-height: 1.5rem;
-//   min-height: calc(4 * 1.5rem);
-//   font-weight: 200;
-// `;
 
 const StyledProjectImgBox = styled.div`
   position: relative;

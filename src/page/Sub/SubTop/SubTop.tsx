@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
 import "./SubTop.scss";
 import { DataType } from "../../../data/data";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
-  type IsRender = "" | "render";
-  const [isRender, setIsRender] = useState<IsRender>("render");
+  type Render = "" | "render";
+  const [subTopRender, setSubTopRender] = useState<Render>("render");
+  const [mainPicRender, setMainPicRender] = useState<Render>("");
 
+  //subTop Opacity Animation
   useEffect(() => {
-    setIsRender("render");
+    setSubTopRender("render");
     const renderTimeout = setTimeout(() => {
-      setIsRender("");
+      setSubTopRender("");
     }, 1000);
 
     return () => {
@@ -20,12 +25,68 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
     };
   }, [idNum]);
 
-  console.log(Object.values(thisData.link[1])[0]);
+  //mainPic Animation
+  useEffect(() => {
+    setMainPicRender("");
+    const renderTimeout = setTimeout(() => {
+      setMainPicRender("render");
+    }, 10);
+
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [idNum]);
+
+  //gsap animation
+  const mainPicRef = useRef<HTMLDivElement | null>(null);
+  const subTopRef = useRef<HTMLDivElement | null>(null);
+  const subTopTitleRef = useRef<HTMLDivElement | null>(null);
+  const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      //이미지 크기 조정
+      // gsap.fromTo(
+      //   mainPicRef.current,
+      //   { width: "100vw", height: "100vh" },
+      //   {
+      //     width: "70vw",
+      //     height: "85vh",
+      //     duration: 1,
+      //   }
+      // );
+
+      //타이틀, page, github, document 링크 등장
+      const subTopTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: subTopRef.current,
+          start: "top bottom",
+        },
+      });
+      subTopTimeline
+        .fromTo(
+          subTopTitleRef.current,
+          { y: 150 },
+          { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+        )
+        .fromTo(
+          aTagChildRefs.current,
+          { y: 150 },
+          { y: 0, duration: 1.2, ease: "power4.out", stagger: 0.1 },
+          "-=80%"
+        );
+    });
+
+    return () => {
+      ctx.revert();
+    };
+  }, [idNum]);
 
   return (
-    <StyledTop className="subTop">
+    <StyledTop className="subTop" ref={subTopRef}>
       <StyledMainPic
-        className={"mainPic"}
+        className={`mainPic ` + mainPicRender}
+        ref={mainPicRef}
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + thisData.previewImg
@@ -33,11 +94,15 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
         }}
       ></StyledMainPic>
       <StyledContainer>
-        <div style={{ marginBottom: "auto" }} className={`subLogo ` + isRender}>
+        <div
+          style={{ marginBottom: "auto" }}
+          className={`subLogo ` + subTopRender}
+        >
+          {/* <Logo /> */}
           <Logo />
         </div>
         <StyledSubTitle className="subTopTitle">
-          <div>{thisData.subTitle}</div>
+          <div ref={subTopTitleRef}>{thisData.subTitle}</div>
         </StyledSubTitle>
         <StyledAtagBox>
           <StyledAtag
@@ -46,7 +111,10 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild">
+            <div
+              className="atagChild"
+              ref={(el) => (aTagChildRefs.current[0] = el)}
+            >
               PAGE
               <Go />
             </div>
@@ -58,22 +126,30 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
             rel="noopener noreferrer"
             className="linkPage"
           >
-            <div className="atagChild">
+            <div
+              className="atagChild"
+              ref={(el) => (aTagChildRefs.current[1] = el)}
+            >
               GITHUB
               <Go />
             </div>
           </StyledAtag>
-          <StyledAtag
-            href={Object.values(thisData.link[2])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
-          >
-            <div className="atagChild">
-              DOCUMENT
-              <Go />
-            </div>
-          </StyledAtag>
+          {thisData.link[2] && (
+            <StyledAtag
+              href={Object.values(thisData.link[2])[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkPage"
+            >
+              <div
+                className="atagChild"
+                ref={(el) => (aTagChildRefs.current[2] = el)}
+              >
+                DOCUMENT
+                <Go />
+              </div>
+            </StyledAtag>
+          )}
         </StyledAtagBox>
       </StyledContainer>
     </StyledTop>
@@ -111,8 +187,8 @@ const StyledSubTitle = styled.div`
     color: transparent;
     background: linear-gradient(
       to right,
-      #2f2f2f calc(30vw - ((100vw - 1400px - 12px) / 2)),
-      rgb(248, 248, 248) calc(30vw - ((100vw - 1400px - 12px) / 2))
+      #2f2f2f calc(30vw - ((100vw - 1400px) / 2)),
+      rgb(248, 248, 248) calc(30vw - ((100vw - 1400px) / 2))
     );
     -webkit-background-clip: text;
     background-blend-mode: screen;

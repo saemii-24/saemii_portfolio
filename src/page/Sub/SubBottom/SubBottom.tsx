@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Go from "../../../component/Icon/Go";
 import styled, { keyframes } from "styled-components";
 import { data, DataType } from "../../../data/data";
 import "../SubTop/SubTop.scss";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { subBottomNavClick } from "../../../redux/projectBgSlice";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const SubBottom = ({
   idNum,
@@ -115,10 +120,42 @@ const SubBottom = ({
     };
   }, []);
 
+  //subBottomNav를 클릭하면 useDispatch는 true가 되어야 한다.
+  const dispatch = useDispatch();
+
+  //gsap
+  const subBottomNavRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const subBottomBgRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        subBottomNavRefs.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: subBottomBgRef.current,
+            start: "top 50%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, [idNum]);
   return (
     <StyledSubBottom>
-      <div className="moreProject subBottomNav">MORE PROJECTS</div>
-      <StyledSubNav className="subBottomNav">
+      <div
+        className="moreProject subBottomNav"
+        ref={(el) => (subBottomNavRefs.current[0] = el)}
+      >
+        MORE PROJECTS
+      </div>
+      <StyledSubNav
+        className="subBottomNav"
+        ref={(el) => (subBottomNavRefs.current[1] = el)}
+      >
         <div
           className="prev"
           onMouseEnter={() => {
@@ -128,6 +165,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             handleBg("prevClick");
+            dispatch(subBottomNavClick(true));
           }}
         >
           <div className="prevIcon">
@@ -143,6 +181,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             navigate("/");
+            dispatch(subBottomNavClick(true));
           }}
         >
           HOME
@@ -156,6 +195,7 @@ const SubBottom = ({
           onClick={() => {
             goBottom();
             handleBg("nextClick");
+            dispatch(subBottomNavClick(true));
           }}
         >
           NEXT
@@ -164,6 +204,7 @@ const SubBottom = ({
       </StyledSubNav>
       <StyledBottomBg
         className="subBottomBg"
+        ref={subBottomBgRef}
         onMouseEnter={() => {
           setIsMouseEnter(true);
         }}
@@ -224,7 +265,7 @@ const SubBottom = ({
         >
           <StyledVideo autoPlay muted loop>
             <source
-              src={process.env.PUBLIC_URL + "/image/test.mp4"}
+              src={process.env.PUBLIC_URL + "/image/background.mp4"}
               type="video/mp4"
             />
           </StyledVideo>
@@ -265,6 +306,7 @@ const SubBottom = ({
 
 const StyledSubBottom = styled.div`
   width: 100vw;
+  min-width: 1400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -313,6 +355,7 @@ const StyledSubNav = styled.div`
 
 const StyledSubBg = styled.div`
   width: 90vw;
+  min-width: 1400px;
   height: 50vh;
   background-size: cover;
   background-position: center;
@@ -326,8 +369,8 @@ const StyledSubBg = styled.div`
     position: fixed;
     background-size: cover;
     background-position: center;
-    right: calc(5vw - 17px);
-    bottom: 10vh;
+    right: 5vw;
+    bottom: 5vw;
     width: 90vw;
     height: 50vh;
     transition:
@@ -357,6 +400,7 @@ const StyledSubBg = styled.div`
 const StyledVideoBox = styled.div`
   width: 90vw;
   height: 50vh;
+  min-width: 1400px;
   position: relative;
   overflow: hidden;
   position: absolute;
@@ -366,14 +410,15 @@ const StyledVideo = styled.video`
   object-fit: cover;
   position: relative;
   width: 100%;
-  top: -50%;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const StyledBottomBg = styled.div`
   position: relative;
   width: 90vw;
   height: 50vh;
-  margin: 6vh auto 10vh;
+  margin: 6vh auto 5vw;
   cursor: none;
 `;
 

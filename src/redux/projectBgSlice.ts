@@ -8,6 +8,7 @@ interface InitialStateType {
   introClick: boolean;
   projectClick: boolean;
   projectClickNum: number;
+  subBottomNavClick: boolean;
 }
 
 const initialState: InitialStateType = {
@@ -15,7 +16,8 @@ const initialState: InitialStateType = {
   introHover: 0, //projectIntro 컴포넌트에서 hover한 이미지 id 번호를 알아낼 때 사용
   introClick: false, //projectIntro 컴포넌트에서 해당 내용을 클릭했는지 알아내기 위해 사용
   projectClick: false, //project 컴포넌트에서 프로젝트를 클릭했는지 알아내기 위해 사용
-  projectClickNum: 0,
+  projectClickNum: 0, //project 컴포넌트에서 몇 번째 프로젝트를 클릭했는지 알아내기 위해 사용
+  subBottomNavClick: false, //subBottomNav를 클릭해 이동했는지 알아내기 위해 사용
 };
 
 const projectBgSlice = createSlice({
@@ -70,6 +72,12 @@ const projectBgSlice = createSlice({
     ) => {
       state.projectClickNum = action.payload;
     },
+    subBottomNavClick: (
+      state: InitialStateType,
+      action: PayloadAction<boolean>
+    ) => {
+      state.subBottomNavClick = action.payload;
+    },
   },
 });
 
@@ -82,5 +90,6 @@ export const {
   introClick,
   projectClick,
   projectClickNum,
+  subBottomNavClick,
 } = projectBgSlice.actions;
 export default projectBgSlice.reducer;
