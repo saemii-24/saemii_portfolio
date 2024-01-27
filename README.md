@@ -10,7 +10,7 @@
 - [개요](#개요)
 - [사용된 기술](#사용된-기술)
 - [미리보기](#미리보기)
-- [기능별 설명](#기능별-설명)
+- [미리보기 설명](#미리보기-설명)
 
 ## 개요
 
@@ -19,9 +19,13 @@
 - **기여도**: 개인작업 / 100%
 
 ## 사용된 기술
+
 #### 📌언어/라이브러리
+
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+
 #### 📌애니메이션
+
 <img src="https://img.shields.io/badge/gsap-0AE448?style=for-the-badge&logo=gsap&logoColor=white">
 
 ## 미리보기
@@ -55,23 +59,18 @@
   </tr>
 </table>
 
-## 포트폴리오 주요 포인트
+## 미리보기 설명
 
-1. **메인 이미지 스크롤 이벤트**<br/>
-   scrollEvent를 이용해 스크롤에 따라 이미지가 화면을 채우도록 고성했습니다. 이때 이미지로 인해 헤더가 잘 보이지 않을 수 있어 헤더의 컬러도 적절히 변경해 주었습니다.
+1. **프로젝트 요약**<br/>
+   홈에서는 간단한 프로젝트 설명을 확인하실 수 있습니다. <br/>클릭하시면 해당 프로젝트의 상세 페이지에서 자세한 내용을 확인하실 수 있습니다.
    <br/>
-2. **pagination**<br/>
-   대표 애니메이션 각각의 section으로 이동할 수 있는 pagination을 만들었습니다. 클릭하면 해당 section으로 이동합니다. 클릭이 아닌 스크롤 해서, 해당 애니메이션이 화면에 들어오면 pagination을 컬러가 변경됩니다.
+2. **프로젝트 페이지/깃허브 이동**<br/>
+   좌측의 `PAGE`, `GITHUB`, `DOCUMENT` 버튼을 통해 구현된 페이지와 해당 프로젝트의 Github등을 확인하실 수 있습니다.
    <br/>
-3. **가로 스크롤 카드**<br/>
-   CSS와 자바스크립트를 이용해 만든 가로 스크롤 애니메이션입니다. 스크롤에 맞춰 오른쪽에서 왼쪽으로 카드가 이동하며, 카드에 hover 하면 연관 있는 지브리 애니메이션 작품을 보여줍니다.
+3. **프로젝트 개요**<br/>
+   프로젝트 제작 소요 기간, 기여도, 사용된 언어, 개발 비화가 작성되어 있습니다.
    <br/>
-4. **드래그 카드 이동**<br/>
-   input type='range'의 값과 시놉시스 카드들의 움직임을 연동했습니다. 사용자가 input 박스를 드래그하거나 클릭해서 조정하면 그 값을 받아 시놉시스 section이 움직입니다.
-   <br/>
-5. **youtubeAPI 활용 팝업창**<br/>
-   간단한 youtube API를 이용해 팝업창에서 원하는 영상이 재생 될 수 있도록 구성했습니다. 화면 비율을 고려하여 작은 사이즈에서는 팝업이 아닌 해당 영상의 youtube site로 이동합니다.
-   <br/>
-6. **data를 이용한 태그 생성**<br/>
-   각 캐릭터의 정보 구조와 HTML 태그 구조가 동일하기 때문에 data.js 파일에 캐릭터 정보를 분리하고 JavaScript에서 태그를 만들어 주었습니다. 궁금한 캐릭터를 클릭하면 캐릭터의 정보와 사진이 등장하며, 사진을 클릭해 캐릭터의 다른 사진을 확인하거나 버튼을 눌러 다음 캐릭터로 이동할 수 있습니다.
-
+4. **프로젝트 미리보기**<br/>
+   완성된 프로젝트를 페이지별로 확인하실 수 있습니다.
+5. **구현 설명**<br/>
+   각 프로젝트에서 스스로 구현했던 내용이 간략하게 작성 되어있습니다.<br/> 우측의 GIF 이미지를 통해 실제 어떻게 작동되는지 확인하실 수 있습니다.
