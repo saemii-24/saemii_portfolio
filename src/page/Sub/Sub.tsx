@@ -11,9 +11,8 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { projectClick, subBottomNavClick } from "../../redux/projectBgSlice";
-import { RootState } from "redux/store";
 
 const Sub = () => {
   const { id } = useParams();
@@ -43,12 +42,6 @@ const Sub = () => {
     //subBottom을 클릭하고 id가 변경되면 subBottomNavClick를 false로 변경한다.
     dispatch(subBottomNavClick(false));
   }, [id]);
-
-  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
-  const isClick: boolean = useSelector(
-    (state: RootState) => state.projectBgSlice.subBottomNavClick
-  );
-  console.log(isClick);
 
   return (
     <div ref={subRef} className="sub">
