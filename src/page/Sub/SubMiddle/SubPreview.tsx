@@ -16,6 +16,9 @@ const SubPreview = ({
   idNum: number;
   thisData: DataType;
 }) => {
+  console.log(thisData);
+  console.log(idNum);
+
   const [slide, setSlide] = useState<number>(0);
   //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
   const subBottomNavClick: boolean = useSelector(

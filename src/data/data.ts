@@ -26,8 +26,8 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/projectPreview/project01-main.png" },
-      { 서브: "/image/projectPreview/project01-sub.png" },
+      { 메인: "/image/projectPreview/project01-main.jpg" },
+      { 서브: "/image/projectPreview/project01-sub.jpg" },
     ],
     link: [
       { page: "https://saemii-24.github.io/Planning-Shopping-Sites/" },
@@ -294,9 +294,9 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { 메인: "/image/projectPreview/project04-main.png" },
-      { 서브1: "/image/projectPreview/project04-sub1.png" },
-      { 서브2: "/image/projectPreview/project04-sub2.png" },
+      { 메인: "/image/projectPreview/project04-main.jpg" },
+      { 서브1: "/image/projectPreview/project04-sub1.jpg" },
+      { 서브2: "/image/projectPreview/project04-sub2.jpg" },
     ],
     develop: [
       { 작업기간: "23.09.08 - 23.09.21" },
@@ -471,11 +471,11 @@ const originData: DataType[] = [
     active: false,
     click: false,
     previewPage: [
-      { main: "/image/projectPreview/project06-main.png" },
-      { myPage: "/image/projectPreview/project06-myPage.png" },
-      { about: "/image/projectPreview/project06-about.png" },
-      { login: "/image/projectPreview/project06-login.png" },
-      { signUp: "/image/projectPreview/project06-signUp.png" },
+      { main: "/image/projectPreview/project06-main.jpg" },
+      { myPage: "/image/projectPreview/project06-myPage.jpg" },
+      { about: "/image/projectPreview/project06-about.jpg" },
+      { login: "/image/projectPreview/project06-login.jpg" },
+      { signUp: "/image/projectPreview/project06-signUp.jpg" },
     ],
     develop: [
       { 작업기간: "23.11.28 - 23.12.24" },
