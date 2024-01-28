@@ -375,7 +375,7 @@ const originData: DataType[] = [
     previewPage: [
       { main: "/image/projectPreview/project05-main.jpg" },
       { sub1: "/image/projectPreview/project05-sub1.jpg" },
-      { sub2: "/image/projectPreview/project05-sub2.png" },
+      { sub2: "/image/projectPreview/project05-sub2.jpg" },
       { sub3: "/image/projectPreview/project05-sub3.jpg" },
     ],
     develop: [
