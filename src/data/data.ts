@@ -4,6 +4,7 @@ export interface DataType {
   projectTitle: string;
   preview: string;
   previewImg: string;
+  smallPreviewImg: string;
   active: boolean;
   click: boolean;
   previewPage: object[];
@@ -21,6 +22,7 @@ const originData: DataType[] = [
     preview:
       "반려 식물'을 주제로 한 가상의 식물 쇼핑몰입니다. 웹 표준을 지켜 제작하였으며, 상품 카운트, 선택, 스크롤에 따른 내비게이션 변화 등의 효과를 주었습니다.",
     previewImg: "/image/project01.jpg",
+    smallPreviewImg: "/image/small-project01.jpg",
     active: false,
     click: false,
     previewPage: [
@@ -28,9 +30,12 @@ const originData: DataType[] = [
       { 서브: "/image/projectPreview/project01-sub.png" },
     ],
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
+      { page: "https://saemii-24.github.io/Planning-Shopping-Sites/" },
       { github: "https://github.com/saemii-24/project_1" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1eQlawYZbuRUZa2IpkeyUk3mjzc57vFdl/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.06.21 - 23.07.07" },
@@ -85,7 +90,7 @@ const originData: DataType[] = [
       },
       {
         page: "sub",
-        name: "색상 버튼 클릭 시 이미지 변경",
+        name: "색상 버튼 클릭 시\n 이미지 변경",
         content:
           "사용자가 원하는 꽃잎 색상의 사진을 선택해서 볼 수 있도록 색상 버튼을 선택했습니다. 버튼을 클릭하면 해당하는 색상 꽃의 이미지를 볼 수 있습니다.",
         image: "/image/projectDetail/project01-selectColor.png",
@@ -106,6 +111,7 @@ const originData: DataType[] = [
     preview:
       "스튜디오 지브리'에 관련된 정보를 찾아볼 수 있는 웹사이트입니다. Intersection Observer를 이용해 사용자의 스크롤에 따른 애니메이션 효과를 주었고, youtube API를 이용해 관련 동영상을 함께 보여줍니다.",
     previewImg: "/image/project02.jpg",
+    smallPreviewImg: "/image/small-project02.jpg",
     active: false,
     click: false,
     previewPage: [
@@ -113,9 +119,12 @@ const originData: DataType[] = [
       { 서브: "/image/projectPreview/project02-sub.jpg" },
     ],
     link: [
-      { page: "https://saemii-24.github.io/project_2/" },
+      { page: "https://saemii-24.github.io/Ghibli-World-Sites/" },
       { github: "https://github.com/saemii-24/project_2" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/17a3PlxHg3ENM9n1FOX7yNhoaAE7lSH_V/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.07.12 - 23.08.12" },
@@ -194,13 +203,17 @@ const originData: DataType[] = [
     preview:
       "3명이 함께 만든 팀 프로젝트 사이트입니다. 저는 메인페이지를 담당했으며, Luxon라이브러리와 Weather API를 통해 도시별 여행지 추천과 함께 호주의 현재 시각, 서머타임 여부, 날씨를 보여줍니다.",
     previewImg: "/image/project03.jpg",
+    smallPreviewImg: "/image/small-project03.jpg",
     active: false,
     click: false,
     previewPage: [{ 메인: "/image/projectPreview/project03-main.jpg" }],
     link: [
-      { page: "https://saemii-24.github.io/project_1/" },
-      { github: "https://github.com/saemii-24/project_1" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      { page: "https://saemii-24-australia.netlify.app/" },
+      { github: "https://github.com/saemii-24/australia_netlify_snowpack/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1hqSbB3cX_WPD0mj5tinLQ9espqoOOY9e/view?usp=sharing",
+      },
     ],
     develop: [
       { 작업기간: "23.08.21 - 23.08.30" },
@@ -234,7 +247,7 @@ const originData: DataType[] = [
     detail: [
       {
         page: "main",
-        name: "메인화면 문장·이미지 전환",
+        name: "메인화면\n 문장·이미지 전환",
         content:
           "자바스크립트 비동기 함수(setTimeout)를 이용해 한 단어씩 등장해 문장을 이루는 슬라이드를 구현했습니다. 이미지, 시간 bar, 문장이 짝을 이루고 있고, 0.3초 간격으로 단어가 등장한 다음, 총 5초가 지나면 다음 이미지와 문장을 보여줍니다.",
         image: "/image/projectDetail/project03-main.png",
@@ -255,7 +268,7 @@ const originData: DataType[] = [
       },
       {
         page: "main",
-        name: "서울과 호주의 날씨·시간 보드",
+        name: "서울과 호주의\n 날씨·시간 보드",
         content:
           "weather API와 luxon 라이브러리를 활용해 서울과 호주 각 도시의 날씨와 시간을 나타내는 보드를 구현했습니다. 서머타임을 시행하는 경우 시간 옆에 서머타임 아이콘이 표시됩니다. 각 도시의 날씨 데이터를 가져오기까지 시간이 다소 소요되므로, 사용성을 위해 로딩 스피너를 추가해 주었습니다.",
         image: "/image/projectDetail/project03-weather.png",
@@ -269,10 +282,14 @@ const originData: DataType[] = [
     preview:
       "Kakao API를 이용한 교보문고 eBook의 클론 사이트입니다. Swiper와 localStorage등을 이용해 최대한 본 사이트와 비슷하게 구현하고자 했습니다.",
     previewImg: "/image/project04.jpg",
+    smallPreviewImg: "/image/small-project04.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_4/" },
+      { page: "https://saemii-24.github.io/eBook-Sites/" },
       { github: "https://github.com/saemii-24/project_4" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1MzWESmvjq-B8mDEzgTXcYpvS_b6yl0Sc/view?usp=sharing",
+      },
     ],
     active: false,
     click: false,
@@ -302,7 +319,7 @@ const originData: DataType[] = [
         AJAX: "Kakao API에 데이터를 요청하고 응답받기 위해 사용했습니다.",
       },
       {
-        "JS, jQuery":
+        "JavaScript, jQuery":
           "코드를 동적으로 만드는 데 사용했습니다. 중반까지 JavaScript를 이용해 Tag를 생성했으나 가독성이 좋지 않아 후반에는 다소 코드를 줄일 수 있는 jQuery를 사용했습니다.",
       },
     ],
@@ -344,10 +361,14 @@ const originData: DataType[] = [
     preview:
       "사용자가 원하는 카드사와 혜택을 필터해 보여주는 체크카드 검색 사이트입니다. 카드 비교함에 카드를 담아 원하는 카드를 비교할 수도 있습니다.",
     previewImg: "/image/project05.jpg",
+    smallPreviewImg: "/image/small-project05.jpg",
     link: [
-      { page: "https://saemii-24.github.io/project_5/" },
+      { page: "https://main--react-card-check.netlify.app/" },
       { github: "https://github.com/saemii-24/project_5" },
-      { document: "https://saemii-24.github.io/project_1/" },
+      {
+        document:
+          "https://drive.google.com/file/d/1DBZ6h3c4cEG9VEyj7VlIALNR5_ZtuExk/view?usp=sharing",
+      },
     ],
     active: false,
     click: false,
@@ -362,7 +383,7 @@ const originData: DataType[] = [
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
-          "React, Redux, React-router, React-parallx-tilt, SCSS, Bootstrap, Lodash, Gsap, Swiper",
+          "React, Redux, React-router, React-parallx-tilt, SCSS, Bootstrap, Gsap, Swiper",
       },
       {
         "주요 기능":
@@ -432,6 +453,119 @@ const originData: DataType[] = [
         content:
           "'자세한 혜택' 버튼을 클릭하면 해당 카드의 detail 페이지로 이동합니다. useParams를 이용해 데이터의 id를 찾고, 해당 id를 가진 데이터를 찾아 렌더링합니다. 혜택을 나타내는 아이콘은 미리 정의해 둔 switch case 문을 이용했습니다.",
         image: "/image/projectDetail/project05-detail.png",
+      },
+    ],
+  },
+  {
+    id: 5,
+    subTitle: "건강 대시보드",
+    projectTitle: "Be health",
+    preview:
+      "각 사용자의 건강 데이터를 바탕으로 운동 시간 관리, 근처 병원·약국 정보, 복용하는 약의 부작용 등 건강 관련 정보를 전달하는 웹 사이트입니다.",
+    previewImg: "/image/project06.jpg",
+    smallPreviewImg: "/image/small-project06.jpg",
+    link: [
+      { page: "https://behealth-bcab3.web.app/" },
+      { github: "https://github.com/saemii-24/BeHealth" },
+    ],
+    active: false,
+    click: false,
+    previewPage: [
+      { main: "/image/projectPreview/project06-main.png" },
+      { myPage: "/image/projectPreview/project06-myPage.png" },
+      { about: "/image/projectPreview/project06-about.png" },
+      { login: "/image/projectPreview/project06-login.png" },
+      { signUp: "/image/projectPreview/project06-signUp.png" },
+    ],
+    develop: [
+      { 작업기간: "23.11.28 - 23.12.24" },
+      {
+        기여도:
+          "2인 팀 작업/70% (Firebase, Firestore 연결, main page 일부와 나머지 페이지 담당",
+      },
+      {
+        "개발에 사용된 언어/라이브러리":
+          "React, TypeScript, Firebase, Axios, Swiper",
+      },
+      {
+        "주요 기능":
+          "회원가입, 로그인, 근처 병원·약국 검색, 약 부작용 검색, 건강 정보 안내, 일정 추가·표시, 프로필 추가, BMI계산, 운동 시간 그래프",
+      },
+      {
+        "개발 비화":
+          "그동안 사용자가 새로고침 하거나 페이지를 재접속하는 경우 데이터가 사라지는 문제를 해결하기 위해 local Storage 등을 이용했는데, \n더 많은 내용의 정보를 보관하고 활용하기 위해 Firebase와 Firestore를 도입해 사용자별로 개인화된 페이지를 제공할 수 있었습니다.\n main에서는 좀 더 일반적인 정보를 제공하기 위해 공공 데이터 포털에서 제공하는 Open API를 활용하였습니다. \n이때 응답받은 데이터를 렌더링하는 과정에서 발생할 수 있는 다양한 예외 사항을 고려하고, 각 상황에서 사용자에게 '정보가 없음', \n또는 '로딩 중' 등 적절한 내용을 표시하는 것을 고민할 수 있었습니다. \n 특히, 이번 프로젝트에서는 협업을 위해 Git flow와 Git hub를 적극 활용하였는데 이를 통해 보다 적은 충돌이 발생하였고, \n 정해진 규칙을 준수해 서로의 코드를 확인하며 효율적인 팀 프로젝트를 경험할 수 있었습니다. ",
+      },
+    ],
+    language: [
+      {
+        React:
+          "가장 익숙한 라이브러리로, 컴포넌트 단위의 협업을 위해 사용했습니다.",
+      },
+      {
+        Axios: "Promise를 기반으로 한 비동기 처리를 위해 사용했습니다. ",
+      },
+      {
+        "Context API":
+          "간단한 전역 상태관리를 위해 사용했습니다. 다수의 컴포넌트에서 사용자 정보에 접근하거나, 팝업이 중복해서 열리지 않도록 제한하기 위해 활용했습니다.",
+      },
+      {
+        Firebase:
+          "회원가입 기능을 구현해, 각 사용자에게 uid를 부여해 개인화 된 정보를 제공하기 위해 사용했습니다.",
+      },
+      {
+        Firestore:
+          "간단한 방법으로 사용자 정보를 DB에 저장하고, 사용자가 접속할 때마다 적절한 정보를 보여주는 데에 활용했습니다.",
+      },
+    ],
+    detail: [
+      {
+        page: "main",
+        name: "건강검진 대상자 확인",
+        content:
+          "사용자가 입력한 프로필의 나이를 바탕으로 이번년도 건강검진 대상자 여부를 판별 후 안내합니다.",
+        image: "/image/projectDetail/project06-age.png",
+      },
+      {
+        page: "main & my",
+        name: "Open API를\n 활용한 팝업창",
+        content:
+          "공공데이터포털의 Open API를 이용해 main페이지에서는 건강검진 병원과 근처 약국정보를, my Page에서는 약의 부작용과 주의사항을 찾아볼 수 있습니다.",
+        image: "/image/projectDetail/project06-api.png",
+      },
+      {
+        page: "my",
+        name: "프로필 설정",
+        content:
+          "my Page에서 나의 프로필을 업데이트 할 수 있습니다. 해당 정보는 firestore로 저장되며 Context API를 이용해 모든 컴포넌트에서 접근 할 수 있습니다. 수정 버튼을 누르면, 그 전에 작성했던 정보를 기본으로 보여주어 사용성을 높였습니다.",
+        image: "/image/projectDetail/project06-status.png",
+      },
+      {
+        page: "my",
+        name: "나의 BMI",
+        content:
+          "사용자가 기본 프로필을 업데이트 하면, 저장 된 키와 몸무게를 이용해 BMI를 계산하고, 그래프에 표시합니다.",
+        image: "/image/projectDetail/project06-bmi.png",
+      },
+      {
+        page: "main & my",
+        name: "오늘의 운동 추가,\n 이번주 운동 그래프",
+        content:
+          "오늘 운동을 추가하면 firestore에 저장 된 이번 주 운동 시간을 바탕으로 운동 시간 그래프가 변동됩니다. 운동 추가는 중복으로 다양한 운동을 추가할 수 있습니다.",
+        image: "/image/projectDetail/project06-exercise.png",
+      },
+      {
+        page: "main & my",
+        name: "일정 추가,\n 오늘 일정 보기",
+        content:
+          "my page에서 일정을 추가하면 firestore에 저장되며 좌측 달력 하단에 표시됩니다. 오늘 일정은 main 페이지에서 확인하거나 삭제할 수 있습니다.",
+        image: "/image/projectDetail/project06-schedule.png",
+      },
+      {
+        page: "signUp",
+        name: "회원가입, 로그인",
+        content:
+          "Firebase를 통해 이메일을 이용한 회원가입을 구현하여, 로그인, 로그아웃, 회원탈퇴가 가능하고 개인화 된 페이지를 제공합니다.",
+        image: "/image/projectDetail/project06-signup.png",
       },
     ],
   },

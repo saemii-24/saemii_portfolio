@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { languageLogo, stateLogo, designLogo } from "../../../data/language";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 const Introduce = () => {
   return (
@@ -49,7 +52,6 @@ const Introduce = () => {
             <IntroduceContent className="introduce__content">
               <StyledLogoData>
                 {languageLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <div key={index}>
                       <StyledLogoImg
@@ -58,16 +60,12 @@ const Introduce = () => {
                           process.env.PUBLIC_URL + Object.keys(logo)[0] + "로고"
                         }
                       ></StyledLogoImg>
-                      {/* <StyledExplain>
-                        만나게 될 사용자를 공감하며 긍정적인 인상을 남길 수 있는
-                      </StyledExplain> */}
                     </div>
                   );
                 })}
               </StyledLogoData>
               <StyledLogoData>
                 {designLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <StyledLogoImg
                       key={index}
@@ -81,7 +79,6 @@ const Introduce = () => {
               </StyledLogoData>
               <StyledLogoData>
                 {stateLogo.map((logo, index) => {
-                  console.log(Object.keys(logo)[0]);
                   return (
                     <StyledLogoImg
                       key={index}
@@ -100,6 +97,8 @@ const Introduce = () => {
     </StyledIntroduce>
   );
 };
+
+Introduce.displayName = "Introduce";
 
 const StyledIntroduce = styled.div`
   width: 100vw;
@@ -135,6 +134,10 @@ const IntroduceContent = styled.div`
   color: #2f2f2f;
   width: calc(1000px - 7vw);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  .introduce__content--child {
+    overflow: hidden;
+  }
 `;
 const TextBox = styled.div`
   width: 100%;
@@ -163,24 +166,4 @@ const StyledLogoImg = styled.img`
   border-radius: 0.3vw;
 `;
 
-// const StyledExplain = styled.div`
-//   position: absolute;
-//   max-width: 200px;
-//   background: #2f2f2f;
-//   border-radius: 8px;
-//   color: #f8f8f8;
-//   padding: 16px;
-//   font-size: 0.85rem;
-//   word-break: keep-all;
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     top: -0.3vw;
-//     left: 0.8vw;
-//     width: 0.8vw;
-//     height: 0.8vw;
-//     transform: rotate(45deg);
-//     background-color: #2f2f2f;
-//   }
-// `;
 export default Introduce;

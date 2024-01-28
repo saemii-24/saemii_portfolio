@@ -7,6 +7,7 @@ $black: #2f2f2f;
 //전역스타일
 body {
   background-color: $lightGray;
+  width: 100vw;
   overflow-x: hidden;
 }
 .container {
@@ -20,4 +21,19 @@ body {
 //splitType 흔들림 방지
 .type {
   font-kerning: none;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background-color: #f8f8f8;
+}
+body::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+  border-radius: 12px 12px 12px 12px;
+  border: 3px solid #f8f8f8;
+}
+a {
+  text-decoration: none;
 }

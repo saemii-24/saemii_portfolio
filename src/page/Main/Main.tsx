@@ -8,51 +8,48 @@ import ProjectBg from "page/Main/Home/ProjectBg";
 import Prepare from "./Contact/Prepare";
 import Contact from "./Contact/Contact";
 import styled from "styled-components";
-import "./Main.scss";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
-import { splitChars, animationChars, animationOpacity } from "./animation";
+import {
+  splitChars,
+  animationChars,
+  animationOpacity,
+  mainPinAnimation,
+} from "./animation";
 gsap.registerPlugin(ScrollTrigger);
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ReactLenis } from "@studio-freight/react-lenis";
+import ProjectIntroBg from "./Home/ProjectIntroBg";
+import { data } from "../../data/data";
 
 const Main = () => {
   const sectionRefs = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  // const sectionRef = useRef<HTMLDivElement[] | null[]>([]);
-  const bgActive = useSelector((state: RootState) => state.projectBgSlice);
-  const now = bgActive.every((bg) => bg.active === false);
-  console.log(now);
+  const allProjectRef = useRef<HTMLDivElement | null>(null);
+
   //재활용할 gsap 함수
   //등장 함수
-  const [allWidth, setAllWidth] = useState<number>(0);
   const [previousWidth, setPreviousWidth] = useState<number>(0);
-  const [nowWidth, setNowWidth] = useState<number>(0);
+  const [nowTransform, setNowTransform] = useState<number>(0); //transform이 얼마나 되었는지 확인한다.
 
+  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
+  const projectClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClick
+  );
+  const projectClickNum: number = useSelector(
+    (state: RootState) => state.projectBgSlice.projectClickNum
+  );
+
+  //gsap
+  //애니메이션 세팅
   useEffect(() => {
-    setAllWidth(sectionRefs.current!.offsetWidth);
     setPreviousWidth(sectionRef.current!.offsetWidth);
-    setNowWidth(triggerRef.current!.offsetWidth);
 
     const ctx = gsap.context(() => {
-      const pin = gsap.fromTo(
-        sectionRefs.current,
-        { x: 0 },
-        {
-          x:
-            -sectionRefs.current!.offsetWidth + triggerRef.current!.offsetWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top top",
-            end: "+=6000",
-            scrub: 1,
-            pin: true,
-          },
-        }
-      );
+      const pin = mainPinAnimation(sectionRefs.current!, triggerRef.current!);
+
       //introduce 애니메이션
       gsap.to(".introducePath", {
         strokeDashoffset: 0,
@@ -70,7 +67,8 @@ const Main = () => {
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.7,
+          duration: 1,
+          ease: "power1.out",
           scrollTrigger: {
             trigger: ".introduce__content",
             containerAnimation: pin,
@@ -80,18 +78,6 @@ const Main = () => {
       );
 
       //project 애니메이션
-      //배경 색 전환 (진입)
-      gsap.to(".projectIntro", {
-        backgroundColor: "#2f2f2f",
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".projectIntro",
-          containerAnimation: pin,
-          start: "top 90%",
-          toggleActions: "restart play restart restart",
-        },
-      });
       //타임라인
       const introTimeline = gsap.timeline({
         scrollTrigger: {
@@ -104,9 +90,16 @@ const Main = () => {
 
       introTimeline
         .fromTo(
+          ".projectIntro .imgBox",
+          { opacity: 0 },
+          { opacity: 1, duration: 1, ease: "power1.out" },
+          "first"
+        )
+        .fromTo(
           ".introSubTitle div",
           { y: 30 },
-          { y: 0, duration: 1, ease: "power1.out" }
+          { y: 0, duration: 1, ease: "power1.out" },
+          "first"
         )
         .fromTo(
           ".introMainTitle div",
@@ -120,23 +113,7 @@ const Main = () => {
           { y: 0, stagger: 0.05, opacity: 1, duration: 1, ease: "power1.out" },
           "-=80%"
         );
-      //배경 색 전환
-      gsap.fromTo(
-        ".projectIntro",
-        { backgroundColor: "#2F2F2F" },
-        {
-          backgroundColor: "#f8f8f8",
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: ".projectImg1",
-            containerAnimation: pin,
-            start: "top 20%",
-          },
-        }
-      );
       //contact Animation
-
       splitChars("contactTitle");
       animationChars(
         ".contactTitle div",
@@ -159,6 +136,11 @@ const Main = () => {
           start: "top 20%",
         },
       });
+      animationOpacity(".call", {
+        trigger: ".call",
+        containerAnimation: pin,
+        start: "top 80%",
+      });
       animationOpacity(".mail", {
         trigger: ".mail",
         containerAnimation: pin,
@@ -169,11 +151,49 @@ const Main = () => {
         containerAnimation: pin,
         start: "top 80%",
       });
+
+      /*pin 애니메이션은 가로스크롤 애니메이션으로, 
+      projectClick이 false라면 지속하고, true일 경우 kill한다.*/
+      if (projectClick === true && sectionRefs.current !== null) {
+        pin.kill();
+        //스크롤 이동에 필요한 project 한개의 width값을 구한다.
+        const oneProjectWidth =
+          allProjectRef.current!.offsetWidth / data.length + 10; //오차대비 ;
+        //이전 컴포넌트들의 width + project*index width 값만큼 transform
+        const moveTo = previousWidth + projectClickNum * oneProjectWidth;
+        //얻은 값들로 gsap 애니메이션을 실행한다.
+        gsap.fromTo(
+          sectionRefs.current,
+          {
+            x: nowTransform,
+          },
+          { x: -moveTo, duration: 1 }
+        );
+      }
     });
+
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [projectClick]);
+
+  //스크롤 할때마다 transform이 바뀐다.
+  const getTransformX = () => {
+    if (sectionRefs.current !== null) {
+      const nowTransformValue = window.getComputedStyle(
+        sectionRefs.current!
+      ).transform;
+      const matrix = new WebKitCSSMatrix(nowTransformValue); //이동 값을 구한다.
+      setNowTransform(matrix.m41); //matrix를 number로 변환한다.
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", getTransformX);
+    return () => {
+      window.removeEventListener("event", getTransformX);
+    };
+  }, [projectClick]);
 
   return (
     <div>
@@ -191,18 +211,15 @@ const Main = () => {
                 <ProjectIntro />
               </div>
             </div>
-            <div>
-              <Project
-                allWidth={allWidth}
-                previousWidth={previousWidth}
-                nowWidth={nowWidth}
-              />
+            <div ref={allProjectRef}>
+              <Project />
             </div>
             <Prepare />
             <Contact />
           </StyledMain>
           <ProjectBg />
           <Background />
+          <ProjectIntroBg />
         </div>
       </ReactLenis>
     </div>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "../../../redux/store";
 import { DataType } from "../../../data/data";
-import "./Home.scss";
 type S$ImageProps = {
   $previewImg: string;
 };
@@ -16,7 +15,7 @@ const ProjectBg = () => {
   */
 
   const data: DataType[] = useSelector(
-    (state: RootState) => state.projectBgSlice
+    (state: RootState) => state.projectBgSlice.stateData
   );
 
   //이미지 경로
@@ -25,8 +24,7 @@ const ProjectBg = () => {
   const [isClickNow, setIsClickNow] = useState<boolean>(false);
 
   useEffect(() => {
-    data.forEach((bg) => {
-      console.log(bg);
+    data.forEach((bg): void => {
       if (bg.active === true) {
         setPreviewImg(bg.previewImg);
       }

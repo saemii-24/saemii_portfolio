@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import classNames from "classnames";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const ToTop = ({ idNum }: { idNum: number }) => {
   const handleToTop = () => {
@@ -8,23 +10,27 @@ const ToTop = ({ idNum }: { idNum: number }) => {
   };
   const [isScroll, setIsScroll] = useState<number>(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      window.addEventListener("scroll", () => {
-        const scrollNow = window.scrollY;
-        setIsScroll(scrollNow);
-      });
-    };
+  const handleScroll = (): void => {
+    const scrollNow: number = window.scrollY;
+    setIsScroll(scrollNow);
+  };
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [idNum]);
 
+  //만약 사용자가 subBottomNav를 클릭하면 top 버튼이 사라져야 한다.
+  const subBottomNavClick: boolean = useSelector(
+    (state: RootState) => state.projectBgSlice.subBottomNavClick
+  );
+
   return (
     <StyledToTop
       onClick={handleToTop}
-      className={classNames({ active: isScroll > 200 })}
+      className={classNames({ active: !subBottomNavClick && isScroll > 500 })}
     >
       <svg
         width="19"
@@ -49,6 +55,8 @@ const ToTop = ({ idNum }: { idNum: number }) => {
 const StyledToTop = styled.div`
   width: 3vw;
   height: 3vw;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   position: fixed;
@@ -65,7 +73,7 @@ const StyledToTop = styled.div`
   opacity: 0;
   visibility: hidden;
   transform: translateY(50px);
-  transition: all 300ms ease;
+  transition: all 500ms ease;
   &.active {
     opacity: 1;
     visibility: visible;

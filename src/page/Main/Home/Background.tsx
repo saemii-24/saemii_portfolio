@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 const Background = () => {
   return (
-    <StyledVideoBox className="container">
+    <StyledVideoBox className="container videoBg">
       <StyledVideo autoPlay muted loop>
         <source
-          src={process.env.PUBLIC_URL + "/image/test.mp4"}
+          src={process.env.PUBLIC_URL + "/image/background.mp4"}
           type="video/mp4"
         />
       </StyledVideo>

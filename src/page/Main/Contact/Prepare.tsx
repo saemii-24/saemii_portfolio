@@ -5,7 +5,7 @@ const Prepare = () => {
   return (
     <StyledPrepare>
       <h4>
-        &ldquo;사용자에게 긍정적인 첫인상을 만들 수 있는 프론트엔드 개발자가
+        &ldquo;사용자에게 긍정적인 첫인상을 남길 수 있는 프론트엔드 개발자가
         되겠습니다.&rdquo;
       </h4>
     </StyledPrepare>

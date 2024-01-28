@@ -11,7 +11,6 @@ export const languageLogo: object[] = [
   { REACT: "/image/language/REACT.jpg" },
   { REDUX: "/image/language/REDUX.jpg" },
   { Bootstrap: "/image/language/Bootstrap.jpg" },
-  { GSAP: "/image/language/GSAP.jpg" },
 ];
 export const stateLogo: object[] = [
   { GIT: "/image/language/GIT.jpg" },
