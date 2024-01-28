@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { resetData } from "redux/projectBgSlice";
+import { resetData, subBottomNavClick } from "redux/projectBgSlice";
 import { useParams } from "react-router-dom";
 import cn from "classnames";
 
@@ -18,6 +18,9 @@ const Logo = () => {
   } else {
     idNum = 0;
   }
+
+  //subBottomNav를 클릭하면 useDispatch는 true가 되어야 한다.
+  //state초기화를 위해 사용
 
   return (
     <StyledLogo className="logo">
@@ -59,11 +62,14 @@ const Logo = () => {
             white: Number(id) == 0 || Number(id) == 3 || Number(id) == 4,
           })}
           onClick={() => {
-            if (Number(id) === 0) {
-              navigate(`/project/${5}`);
-            } else {
-              navigate(`/project/${Number(id) - 1}`);
-            }
+            dispatch(subBottomNavClick(true));
+            setTimeout(() => {
+              if (Number(id) === 0) {
+                navigate(`/project/${5}`);
+              } else {
+                navigate(`/project/${Number(id) - 1}`);
+              }
+            }, 100);
           }}
         >
           <StyledLogoText>PREV</StyledLogoText>
@@ -72,12 +78,15 @@ const Logo = () => {
           className={cn("nav__next", {
             white: Number(id) == 0 || Number(id) == 3 || Number(id) == 4,
           })}
-          onClick={() => {
-            if (Number(id) === 5) {
-              navigate(`/project/${0}`);
-            } else {
-              navigate(`/project/${Number(id) + 1}`);
-            }
+          onClick={async () => {
+            dispatch(subBottomNavClick(true));
+            setTimeout(() => {
+              if (Number(id) === 5) {
+                navigate(`/project/${0}`);
+              } else {
+                navigate(`/project/${Number(id) + 1}`);
+              }
+            }, 100);
           }}
         >
           <StyledLogoText>NEXT</StyledLogoText>

@@ -4,6 +4,7 @@ export interface DataType {
   projectTitle: string;
   preview: string;
   previewImg: string;
+  smallPreviewImg: string;
   active: boolean;
   click: boolean;
   previewPage: object[];
@@ -21,6 +22,7 @@ const originData: DataType[] = [
     preview:
       "반려 식물'을 주제로 한 가상의 식물 쇼핑몰입니다. 웹 표준을 지켜 제작하였으며, 상품 카운트, 선택, 스크롤에 따른 내비게이션 변화 등의 효과를 주었습니다.",
     previewImg: "/image/project01.jpg",
+    smallPreviewImg: "/image/small-project01.jpg",
     active: false,
     click: false,
     previewPage: [
@@ -109,6 +111,7 @@ const originData: DataType[] = [
     preview:
       "스튜디오 지브리'에 관련된 정보를 찾아볼 수 있는 웹사이트입니다. Intersection Observer를 이용해 사용자의 스크롤에 따른 애니메이션 효과를 주었고, youtube API를 이용해 관련 동영상을 함께 보여줍니다.",
     previewImg: "/image/project02.jpg",
+    smallPreviewImg: "/image/small-project02.jpg",
     active: false,
     click: false,
     previewPage: [
@@ -200,6 +203,7 @@ const originData: DataType[] = [
     preview:
       "3명이 함께 만든 팀 프로젝트 사이트입니다. 저는 메인페이지를 담당했으며, Luxon라이브러리와 Weather API를 통해 도시별 여행지 추천과 함께 호주의 현재 시각, 서머타임 여부, 날씨를 보여줍니다.",
     previewImg: "/image/project03.jpg",
+    smallPreviewImg: "/image/small-project03.jpg",
     active: false,
     click: false,
     previewPage: [{ 메인: "/image/projectPreview/project03-main.jpg" }],
@@ -278,6 +282,7 @@ const originData: DataType[] = [
     preview:
       "Kakao API를 이용한 교보문고 eBook의 클론 사이트입니다. Swiper와 localStorage등을 이용해 최대한 본 사이트와 비슷하게 구현하고자 했습니다.",
     previewImg: "/image/project04.jpg",
+    smallPreviewImg: "/image/small-project04.jpg",
     link: [
       { page: "https://saemii-24.github.io/eBook-Sites/" },
       { github: "https://github.com/saemii-24/project_4" },
@@ -356,6 +361,7 @@ const originData: DataType[] = [
     preview:
       "사용자가 원하는 카드사와 혜택을 필터해 보여주는 체크카드 검색 사이트입니다. 카드 비교함에 카드를 담아 원하는 카드를 비교할 수도 있습니다.",
     previewImg: "/image/project05.jpg",
+    smallPreviewImg: "/image/small-project05.jpg",
     link: [
       { page: "https://main--react-card-check.netlify.app/" },
       { github: "https://github.com/saemii-24/project_5" },
@@ -457,6 +463,7 @@ const originData: DataType[] = [
     preview:
       "각 사용자의 건강 데이터를 바탕으로 운동 시간 관리, 근처 병원·약국 정보, 복용하는 약의 부작용 등 건강 관련 정보를 전달하는 웹 사이트입니다.",
     previewImg: "/image/project06.jpg",
+    smallPreviewImg: "/image/small-project06.jpg",
     link: [
       { page: "https://behealth-bcab3.web.app/" },
       { github: "https://github.com/saemii-24/BeHealth" },

@@ -8,6 +8,8 @@ import { RootState } from "../../../redux/store";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import { useQuery } from "react-query";
+import Loading from "component/Icon/Loading";
 
 const SubPreview = ({
   idNum,
@@ -17,6 +19,7 @@ const SubPreview = ({
   thisData: DataType;
 }) => {
   const [slide, setSlide] = useState<number>(0);
+
   //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
   const subBottomNavClick: boolean = useSelector(
     (state: RootState) => state.projectBgSlice.subBottomNavClick
@@ -70,18 +73,34 @@ const SubPreview = ({
       ctx.revert();
     };
   }, [idNum]);
+
+  const { data, isLoading, refetch } = useQuery("image", async () => {
+    const res = await fetch(`${Object.values(thisData.previewPage[slide])[0]}`);
+    return res.url;
+  });
+
+  useEffect(() => {
+    refetch();
+  }, [slide, idNum]);
+
+  if (isLoading) {
+    console.log("로딩중");
+  } else {
+    console.log("로딩완료");
+  }
+
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
         <ReactLenis className="mainImage" ref={mainImageRef}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              process.env.PUBLIC_URL +
-              Object.values(thisData.previewPage[slide])
-            }
-            alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
-          />
+          {isLoading && <Loading />}
+          {data && (
+            <img
+              style={{ width: "100%" }}
+              src={data}
+              alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
+            />
+          )}
         </ReactLenis>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {

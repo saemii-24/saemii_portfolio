@@ -62,7 +62,6 @@ const Contact = () => {
 };
 
 const StyledContact = styled.div`
-  /* position: absolute; */
   right: 0;
   width: 100vw;
   height: 100vh;

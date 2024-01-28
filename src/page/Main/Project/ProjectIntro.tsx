@@ -78,7 +78,7 @@ const ProjectIntro = () => {
             style={{
               clipPath: "polygon(0px 10%, 23% 5%, 23% 90%, 0% 95%)",
               backgroundImage: `url(${
-                process.env.PUBLIC_URL + hoverData.previewImg
+                process.env.PUBLIC_URL + hoverData.smallPreviewImg
               })`,
             }}
           />
@@ -86,7 +86,7 @@ const ProjectIntro = () => {
             style={{
               clipPath: "polygon(26% 4%, 49% 0px, 49% 96%, 26% 100%)",
               backgroundImage: `url(${
-                process.env.PUBLIC_URL + hoverData.previewImg
+                process.env.PUBLIC_URL + hoverData.smallPreviewImg
               })`,
             }}
           />
@@ -94,7 +94,7 @@ const ProjectIntro = () => {
             style={{
               clipPath: "polygon(52% 10%, 75% 5%, 75% 95%, 52% 100%)",
               backgroundImage: `url(${
-                process.env.PUBLIC_URL + hoverData.previewImg
+                process.env.PUBLIC_URL + hoverData.smallPreviewImg
               })`,
             }}
           />
@@ -102,7 +102,7 @@ const ProjectIntro = () => {
             style={{
               clipPath: "polygon(78% 3%, 100% 8%, 100% 95%, 78% 90%)",
               backgroundImage: `url(${
-                process.env.PUBLIC_URL + hoverData.previewImg
+                process.env.PUBLIC_URL + hoverData.smallPreviewImg
               })`,
             }}
           />
