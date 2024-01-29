@@ -2,11 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
-import { ReactLenis } from "@studio-freight/react-lenis";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const SubPreview = ({
@@ -16,9 +17,6 @@ const SubPreview = ({
   idNum: number;
   thisData: DataType;
 }) => {
-  console.log(thisData);
-  console.log(idNum);
-
   const [slide, setSlide] = useState<number>(0);
   //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
   const subBottomNavClick: boolean = useSelector(
@@ -30,14 +28,6 @@ const SubPreview = ({
       setSlide(0);
     }
   }, [subBottomNavClick]);
-
-  //slide가 변경되면 스크롤이 다시 위로 올라가게 할 것
-  const mainImageRef = useRef<HTMLDivElement | null>();
-  useEffect(() => {
-    if (mainImageRef.current) {
-      mainImageRef.current.scrollTo(0, 0);
-    }
-  }, [slide]);
 
   //gsap
   const subPreviewRef = useRef<HTMLDivElement | null>(null);
@@ -73,19 +63,21 @@ const SubPreview = ({
       ctx.revert();
     };
   }, [idNum]);
+
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
-        <ReactLenis className="mainImage" ref={mainImageRef}>
-          <img
+        <div className="mainImage">
+          <LazyLoadImage
             style={{ width: "100%" }}
+            effect="blur"
             src={
               process.env.PUBLIC_URL +
               Object.values(thisData.previewPage[slide])
             }
             alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
           />
-        </ReactLenis>
+        </div>
         <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
             return (
@@ -185,7 +177,6 @@ const StyledContainer = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    overflow: overlay;
   }
 
   .mainImage::-webkit-scrollbar {
