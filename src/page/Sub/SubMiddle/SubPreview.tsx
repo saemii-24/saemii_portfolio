@@ -265,6 +265,7 @@ const StyledComment = styled.div`
     .languageDetail {
       font-weight: 300;
       width: 80%;
+      padding-right: 10%;
       word-break: keep-all;
     }
   }

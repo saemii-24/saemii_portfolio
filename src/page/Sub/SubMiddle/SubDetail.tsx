@@ -150,6 +150,7 @@ const StyledSubDetailBox = styled.div`
       justify-content: center;
       font-weight: 300;
       font-size: 1.2rem;
+      flex-grow: 1;
     }
     .detailImg {
       width: 40vw;
