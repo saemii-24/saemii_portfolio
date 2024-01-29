@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,9 +67,8 @@ const SubPreview = ({
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
         <div className="mainImage">
-          <LazyLoadImage
+          <img
             style={{ width: "100%" }}
-            effect="blur"
             src={
               process.env.PUBLIC_URL +
               Object.values(thisData.previewPage[slide])
