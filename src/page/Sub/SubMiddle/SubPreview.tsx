@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
@@ -65,6 +65,16 @@ const SubPreview = ({
     };
   }, [idNum]);
 
+  let [imageSrc, setImageSrc] = useState<string>(
+    process.env.PUBLIC_URL + Object.values(thisData.previewPage[0])
+  );
+
+  useLayoutEffect(() => {
+    let thisSrc =
+      process.env.PUBLIC_URL + Object.values(thisData.previewPage[0]);
+    setImageSrc(thisSrc);
+  }, [idNum]);
+
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
@@ -72,9 +82,7 @@ const SubPreview = ({
           <div className="mainImage">
             <img
               style={{ width: "100%" }}
-              src={
-                process.env.PUBLIC_URL + Object.values(thisData.previewPage[0])
-              }
+              src={imageSrc}
               alt={Object.keys(thisData.previewPage[0]) + " 페이지"}
             />
           </div>
