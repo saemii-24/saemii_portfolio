@@ -7,7 +7,7 @@ export interface DataType {
   smallPreviewImg: string;
   active: boolean;
   click: boolean;
-  previewPage: object[];
+  previewPage: string;
   develop: object[];
   language: object[];
   detail: { page?: string; name: string; content: string; image: string }[];
@@ -25,10 +25,7 @@ const originData: DataType[] = [
     smallPreviewImg: "/image/small-project01.jpg",
     active: false,
     click: false,
-    previewPage: [
-      { 메인: "/image/projectPreview/project01-main.jpg" },
-      { 서브: "/image/projectPreview/project01-sub.jpg" },
-    ],
+    previewPage: "/image/projectPreview/project01-main.jpg",
     link: [
       { page: "https://saemii-24.github.io/Planning-Shopping-Sites/" },
       { github: "https://github.com/saemii-24/project_1" },
@@ -114,10 +111,7 @@ const originData: DataType[] = [
     smallPreviewImg: "/image/small-project02.jpg",
     active: false,
     click: false,
-    previewPage: [
-      { 메인: "/image/projectPreview/project02-main.jpg" },
-      { 서브: "/image/projectPreview/project02-sub.jpg" },
-    ],
+    previewPage: "/image/projectPreview/project02-main.jpg",
     link: [
       { page: "https://saemii-24.github.io/Ghibli-World-Sites/" },
       { github: "https://github.com/saemii-24/project_2" },
@@ -206,7 +200,7 @@ const originData: DataType[] = [
     smallPreviewImg: "/image/small-project03.jpg",
     active: false,
     click: false,
-    previewPage: [{ 메인: "/image/projectPreview/project03-main.jpg" }],
+    previewPage: "/image/projectPreview/project03-main.jpg",
     link: [
       { page: "https://saemii-24-australia.netlify.app/" },
       { github: "https://github.com/saemii-24/australia_netlify_snowpack/" },
@@ -293,11 +287,8 @@ const originData: DataType[] = [
     ],
     active: false,
     click: false,
-    previewPage: [
-      { 메인: "/image/projectPreview/project04-main.jpg" },
-      { 서브1: "/image/projectPreview/project04-sub1.jpg" },
-      { 서브2: "/image/projectPreview/project04-sub2.jpg" },
-    ],
+    previewPage: "/image/projectPreview/project04-main.jpg",
+
     develop: [
       { 작업기간: "23.09.08 - 23.09.21" },
       { 기여도: "개인작업/100%" },
@@ -372,12 +363,8 @@ const originData: DataType[] = [
     ],
     active: false,
     click: false,
-    previewPage: [
-      { main: "/image/projectPreview/project05-main.jpg" },
-      { sub1: "/image/projectPreview/project05-sub1.jpg" },
-      { sub2: "/image/projectPreview/project05-sub2.jpg" },
-      { sub3: "/image/projectPreview/project05-sub3.jpg" },
-    ],
+    previewPage: "/image/projectPreview/project05-main.jpg",
+
     develop: [
       { 작업기간: "23.10.04 - 23.10.20" },
       { 기여도: "개인작업/100%" },
@@ -470,13 +457,7 @@ const originData: DataType[] = [
     ],
     active: false,
     click: false,
-    previewPage: [
-      { main: "/image/projectPreview/project06-main.jpg" },
-      { myPage: "/image/projectPreview/project06-myPage.jpg" },
-      { about: "/image/projectPreview/project06-about.jpg" },
-      { login: "/image/projectPreview/project06-login.jpg" },
-      { signUp: "/image/projectPreview/project06-signUp.jpg" },
-    ],
+    previewPage: "/image/projectPreview/project06-main.jpg",
     develop: [
       { 작업기간: "23.11.28 - 23.12.24" },
       {
