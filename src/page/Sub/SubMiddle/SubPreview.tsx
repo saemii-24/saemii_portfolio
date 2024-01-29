@@ -1,12 +1,14 @@
+/* eslint-disable */
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
-import { ReactLenis } from "@studio-freight/react-lenis";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const SubPreview = ({
@@ -27,14 +29,6 @@ const SubPreview = ({
       setSlide(0);
     }
   }, [subBottomNavClick]);
-
-  //slide가 변경되면 스크롤이 다시 위로 올라가게 할 것
-  const mainImageRef = useRef<HTMLDivElement | null>();
-  useEffect(() => {
-    if (mainImageRef.current) {
-      mainImageRef.current.scrollTo(0, 0);
-    }
-  }, [slide]);
 
   //gsap
   const subPreviewRef = useRef<HTMLDivElement | null>(null);
@@ -70,20 +64,22 @@ const SubPreview = ({
       ctx.revert();
     };
   }, [idNum]);
+
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
       <StyledContainer>
-        <ReactLenis className="mainImage" ref={mainImageRef}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              process.env.PUBLIC_URL +
-              Object.values(thisData.previewPage[slide])
-            }
-            alt={Object.keys(thisData.previewPage[slide]) + " 페이지"}
-          />
-        </ReactLenis>
-        <StyledPagination>
+        <Link to={Object.values(thisData.link[0])[0]} target="_blank">
+          <div className="mainImage">
+            <img
+              style={{ width: "100%" }}
+              src={
+                process.env.PUBLIC_URL + Object.values(thisData.previewPage[0])
+              }
+              alt={Object.keys(thisData.previewPage[0]) + " 페이지"}
+            />
+          </div>
+        </Link>
+        {/* <StyledPagination>
           {thisData.previewPage!.map((data, index) => {
             return (
               <div
@@ -125,7 +121,7 @@ const SubPreview = ({
               </div>
             );
           })}
-        </StyledPagination>
+        </StyledPagination> */}
       </StyledContainer>
 
       <StyledContainer style={{ height: "fit-content" }}>
@@ -182,7 +178,6 @@ const StyledContainer = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    overflow: overlay;
   }
 
   .mainImage::-webkit-scrollbar {
@@ -195,60 +190,60 @@ const StyledContainer = styled.div`
   }
 `;
 
-const paginationLineAnimation = keyframes`
-    0%{
-        stroke-dasharray: 100;
-        stroke-dashoffset:100;
-    }
-    100%{
-        stroke-dasharray: 100;
-        stroke-dashoffset:0;
-    }
-`;
+// const paginationLineAnimation = keyframes`
+//     0%{
+//         stroke-dasharray: 100;
+//         stroke-dashoffset:100;
+//     }
+//     100%{
+//         stroke-dasharray: 100;
+//         stroke-dashoffset:0;
+//     }
+// `;
 
-const StyledPagination = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  top: 2vh;
-  left: 4%;
-  cursor: pointer;
-  div {
-    display: flex;
-    /* z-index: -1; */
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .pagination {
-    font-weight: 500;
-    cursor: pointer;
-    color: #f8f8f8;
-    display: flex;
-    gap: 1rem;
-    &.active {
-      color: #aa8c5a;
-    }
-  }
-  .paginationLine {
-    z-index: -1;
-    &.active {
-      z-index: 0;
-      path {
-        animation: ${paginationLineAnimation} 1s ease;
-      }
-      circle {
-        transform: rotate(180deg);
-        transform-origin: 88%;
-        animation: ${paginationLineAnimation} 2s 0.3s ease;
-        stroke-dasharray: 100;
-        stroke-dashoffset: 100;
-        animation-fill-mode: both;
-      }
-    }
-  }
-`;
+// const StyledPagination = styled.div`
+//   position: absolute;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.8rem;
+//   top: 2vh;
+//   left: 4%;
+//   cursor: pointer;
+//   div {
+//     display: flex;
+//     /* z-index: -1; */
+//     align-items: center;
+//     justify-content: space-between;
+//     gap: 1rem;
+//   }
+//   .pagination {
+//     font-weight: 500;
+//     cursor: pointer;
+//     color: #f8f8f8;
+//     display: flex;
+//     gap: 1rem;
+//     &.active {
+//       color: #aa8c5a;
+//     }
+//   }
+//   .paginationLine {
+//     z-index: -1;
+//     &.active {
+//       z-index: 0;
+//       path {
+//         animation: ${paginationLineAnimation} 1s ease;
+//       }
+//       circle {
+//         transform: rotate(180deg);
+//         transform-origin: 88%;
+//         animation: ${paginationLineAnimation} 2s 0.3s ease;
+//         stroke-dasharray: 100;
+//         stroke-dashoffset: 100;
+//         animation-fill-mode: both;
+//       }
+//     }
+//   }
+// `;
 
 const StyledComment = styled.div`
   width: calc(1400px * 0.8);
