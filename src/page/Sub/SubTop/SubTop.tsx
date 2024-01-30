@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type Render = "" | "render";
   const [subTopRender, setSubTopRender] = useState<Render>("render");
-  const [mainPicRender, setMainPicRender] = useState<Render>("");
+  // const [mainPicRender, setMainPicRender] = useState<Render>("");
 
   //subTop Opacity Animation
   useEffect(() => {
@@ -26,16 +26,16 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   //mainPic Animation
-  useEffect(() => {
-    setMainPicRender("");
-    const renderTimeout = setTimeout(() => {
-      setMainPicRender("render");
-    }, 10);
+  // useEffect(() => {
+  //   setMainPicRender("");
+  //   const renderTimeout = setTimeout(() => {
+  //     setMainPicRender("render");
+  //   }, 10);
 
-    return () => {
-      clearTimeout(renderTimeout);
-    };
-  }, [idNum]);
+  //   return () => {
+  //     clearTimeout(renderTimeout);
+  //   };
+  // }, [idNum]);
 
   //gsap animation
   const mainPicRef = useRef<HTMLDivElement | null>(null);
@@ -46,15 +46,15 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       //이미지 크기 조정
-      // gsap.fromTo(
-      //   mainPicRef.current,
-      //   { width: "100vw", height: "100vh" },
-      //   {
-      //     width: "70vw",
-      //     height: "85vh",
-      //     duration: 1,
-      //   }
-      // );
+      gsap.fromTo(
+        mainPicRef.current,
+        { width: "100vw", height: "100vh" },
+        {
+          width: "70vw",
+          height: "85vh",
+          duration: 1,
+        }
+      );
 
       //타이틀, page, github, document 링크 등장
       const subTopTimeline = gsap.timeline({
@@ -85,7 +85,10 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   return (
     <StyledTop className="subTop" ref={subTopRef}>
       <StyledMainPic
-        className={`mainPic ` + mainPicRender}
+        className={
+          `mainPic `
+          // + mainPicRender
+        }
         ref={mainPicRef}
         style={{
           backgroundImage: `url(${

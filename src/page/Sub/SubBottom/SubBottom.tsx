@@ -42,6 +42,12 @@ const SubBottom = ({
   });
 
   //이전/다음 이미지와 id번호를 관리한다.
+
+  useEffect(() => {
+    handlePrevImg();
+    handleNextImg();
+  }, [idNum]);
+
   const handlePrevImg = () => {
     if (idNum === 0) {
       const bgImg = sortData[sortData.length - 1].previewImg;
@@ -232,7 +238,6 @@ const SubBottom = ({
           }}
           onMouseEnter={() => {
             setSelect("prev");
-            handlePrevImg();
           }}
           onClick={() => {
             goBottom();
@@ -280,7 +285,6 @@ const SubBottom = ({
           }}
           onMouseEnter={() => {
             setSelect("next");
-            handleNextImg();
           }}
           onClick={() => {
             goBottom();
