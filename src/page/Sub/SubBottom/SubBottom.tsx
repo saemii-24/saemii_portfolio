@@ -357,8 +357,8 @@ const StyledSubBg = styled.div`
   width: 90vw;
   min-width: 1400px;
   height: 50vh;
+  background-position: right center;
   background-size: cover;
-  background-position: center;
   position: absolute;
   transition: opacity 600ms ease;
   &::after {

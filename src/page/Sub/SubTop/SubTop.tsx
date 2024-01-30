@@ -53,6 +53,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           width: "70vw",
           height: "85vh",
           duration: 1,
+          delay: 0.3,
         }
       );
 
@@ -67,7 +68,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
         .fromTo(
           subTopTitleRef.current,
           { y: 150 },
-          { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+          { y: 0, duration: 1, ease: "power4.out", delay: 0.8 }
         )
         .fromTo(
           aTagChildRefs.current,
