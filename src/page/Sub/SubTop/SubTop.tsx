@@ -53,6 +53,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           width: "70vw",
           height: "85vh",
           duration: 1,
+          delay: 0.1,
         }
       );
 
@@ -167,7 +168,7 @@ const StyledMainPic = styled.div`
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  background-position: right center;
+  background-position: center;
   z-index: 100;
 `;
 const StyledContainer = styled.div`

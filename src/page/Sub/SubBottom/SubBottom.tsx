@@ -367,27 +367,28 @@ const StyledSubBg = styled.div`
   transition: opacity 600ms ease;
   &::after {
     content: "";
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
+    z-index: 300;
     background-image: inherit;
     position: fixed;
     background-size: cover;
     background-position: center;
-    right: 5vw;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 400ms ease;
+    /* right: calc(5vw - 13px);
     bottom: 5vw;
     width: 90vw;
     height: 50vh;
-    transition:
-      all 400ms ease-out,
-      opacity 0s;
-    z-index: -3;
+    transition: none; */
   }
   &.nextClick,
   &.prevClick {
     &::after {
       content: "";
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
       background-image: inherit;
       position: fixed;
       background-size: cover;
@@ -396,7 +397,6 @@ const StyledSubBg = styled.div`
       bottom: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 100;
     }
   }
 `;
