@@ -88,16 +88,16 @@ const SubBottom = ({
   const handleBg = (clickWhat: ClickSelect): void => {
     if (clickWhat === "prevClick") {
       setPrevClick("prevClick"); //className을 컨트롤
-      setTimeout(() => {
-        navigate(`/project/${prevNum}`); //이동
-        setPrevClick("");
-      }, 1200);
+      //setTimeout(() => {
+      navigate(`/project/${prevNum}`); //이동
+      setPrevClick("");
+      //}, 1200);
     } else if (clickWhat === "nextClick") {
       setNextClick("nextClick"); //className을 컨트롤
-      setTimeout(() => {
-        navigate(`/project/${nextNum}`); //이동
-        setNextClick("");
-      }, 1200);
+      //setTimeout(() => {
+      navigate(`/project/${nextNum}`); //이동
+      setNextClick("");
+      //}, 1200);
     }
     setIsMouseEnter(false);
   };
@@ -365,23 +365,22 @@ const StyledSubBg = styled.div`
   background-position: center;
   position: absolute;
   transition: opacity 600ms ease;
-  &::after {
+  /* &::after {
     content: "";
+    z-index: 300;
     opacity: 0;
     visibility: hidden;
-    z-index: 300;
     background-image: inherit;
     position: fixed;
     background-size: cover;
     background-position: center;
     width: 100vw;
     height: 100vh;
-    transition: opacity 400ms ease;
-    /* right: calc(5vw - 13px);
+    transition: opacity 200ms ease;
+    right: 5vw;
     bottom: 5vw;
     width: 90vw;
     height: 50vh;
-    transition: none; */
   }
   &.nextClick,
   &.prevClick {
@@ -397,8 +396,9 @@ const StyledSubBg = styled.div`
       bottom: 0;
       width: 100vw;
       height: 100vh;
-    }
-  }
+      transition: all 400ms ease;
+    } 
+  }*/
 `;
 
 const StyledVideoBox = styled.div`
