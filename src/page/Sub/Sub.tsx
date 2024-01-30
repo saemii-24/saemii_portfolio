@@ -13,6 +13,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useDispatch } from "react-redux";
 import { projectClick, subBottomNavClick } from "../../redux/projectBgSlice";
+import ScrollToTop from "ScrollToTop";
 
 const Sub = () => {
   const { id } = useParams();
@@ -45,6 +46,7 @@ const Sub = () => {
 
   return (
     <div ref={subRef} className="sub">
+      <ScrollToTop />
       <ReactLenis root>
         <SubTop thisData={thisData} idNum={idNum} />
         <SubTopText thisData={thisData} idNum={idNum} />

@@ -7,6 +7,7 @@ import { DataType } from "../../../data/data";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import ScrollToTop from "ScrollToTop";
 
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type Render = "" | "render";
@@ -53,11 +54,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           width: "70vw",
           height: "85vh",
           duration: 1,
-<<<<<<< HEAD
-          delay: 0.3,
-=======
           delay: 0.1,
->>>>>>> dev
         }
       );
 
@@ -88,79 +85,82 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   return (
-    <StyledTop className="subTop" ref={subTopRef}>
-      <StyledMainPic
-        className={
-          `mainPic `
-          // + mainPicRender
-        }
-        ref={mainPicRef}
-        style={{
-          backgroundImage: `url(${
-            process.env.PUBLIC_URL + thisData.previewImg
-          })`,
-        }}
-      ></StyledMainPic>
-      <StyledContainer>
-        <div
-          style={{ marginBottom: "auto" }}
-          className={`subLogo ` + subTopRender}
-        >
-          {/* <Logo /> */}
-          <Logo />
-        </div>
-        <StyledSubTitle className="subTopTitle">
-          <div ref={subTopTitleRef}>{thisData.subTitle}</div>
-        </StyledSubTitle>
-        <StyledAtagBox>
-          <StyledAtag
-            href={Object.values(thisData.link[0])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
+    <>
+      <ScrollToTop />
+      <StyledTop className="subTop" ref={subTopRef}>
+        <StyledMainPic
+          className={
+            `mainPic `
+            // + mainPicRender
+          }
+          ref={mainPicRef}
+          style={{
+            backgroundImage: `url(${
+              process.env.PUBLIC_URL + thisData.previewImg
+            })`,
+          }}
+        ></StyledMainPic>
+        <StyledContainer>
+          <div
+            style={{ marginBottom: "auto" }}
+            className={`subLogo ` + subTopRender}
           >
-            <div
-              className="atagChild"
-              ref={(el) => (aTagChildRefs.current[0] = el)}
-            >
-              PAGE
-              <Go />
-            </div>
-          </StyledAtag>
-
-          <StyledAtag
-            href={Object.values(thisData.link[1])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
-          >
-            <div
-              className="atagChild"
-              ref={(el) => (aTagChildRefs.current[1] = el)}
-            >
-              GITHUB
-              <Go />
-            </div>
-          </StyledAtag>
-          {thisData.link[2] && (
+            {/* <Logo /> */}
+            <Logo />
+          </div>
+          <StyledSubTitle className="subTopTitle">
+            <div ref={subTopTitleRef}>{thisData.subTitle}</div>
+          </StyledSubTitle>
+          <StyledAtagBox>
             <StyledAtag
-              href={Object.values(thisData.link[2])[0]}
+              href={Object.values(thisData.link[0])[0]}
               target="_blank"
               rel="noopener noreferrer"
               className="linkPage"
             >
               <div
                 className="atagChild"
-                ref={(el) => (aTagChildRefs.current[2] = el)}
+                ref={(el) => (aTagChildRefs.current[0] = el)}
               >
-                DOCUMENT
+                PAGE
                 <Go />
               </div>
             </StyledAtag>
-          )}
-        </StyledAtagBox>
-      </StyledContainer>
-    </StyledTop>
+
+            <StyledAtag
+              href={Object.values(thisData.link[1])[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkPage"
+            >
+              <div
+                className="atagChild"
+                ref={(el) => (aTagChildRefs.current[1] = el)}
+              >
+                GITHUB
+                <Go />
+              </div>
+            </StyledAtag>
+            {thisData.link[2] && (
+              <StyledAtag
+                href={Object.values(thisData.link[2])[0]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkPage"
+              >
+                <div
+                  className="atagChild"
+                  ref={(el) => (aTagChildRefs.current[2] = el)}
+                >
+                  DOCUMENT
+                  <Go />
+                </div>
+              </StyledAtag>
+            )}
+          </StyledAtagBox>
+        </StyledContainer>
+      </StyledTop>
+    </>
   );
 };
 
