@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
@@ -43,7 +43,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   const subTopTitleRef = useRef<HTMLDivElement | null>(null);
   const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       //이미지 크기 조정
       gsap.fromTo(

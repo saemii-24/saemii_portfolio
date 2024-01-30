@@ -18,17 +18,7 @@ const SubPreview = ({
   idNum: number;
   thisData: DataType;
 }) => {
-  const [slide, setSlide] = useState<number>(0);
-  //만약 사용자가 subBottomNav를 클릭하면 (true라면) slide는 0이 되어야 한다.
-  const subBottomNavClick: boolean = useSelector(
-    (state: RootState) => state.projectBgSlice.subBottomNavClick
-  );
-
-  useEffect(() => {
-    if (subBottomNavClick === true) {
-      setSlide(0);
-    }
-  }, [subBottomNavClick]);
+  const subLanguageTitleRef = useRef<HTMLDivElement | null>(null);
 
   //gsap
   const subPreviewRef = useRef<HTMLDivElement | null>(null);
@@ -43,6 +33,21 @@ const SubPreview = ({
           start: "top 80%",
         },
       });
+
+      gsap.fromTo(
+        subLanguageTitleRef.current!.children,
+        { y: 150, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: subLanguageTitleRef.current,
+            start: "top 90%",
+          },
+        }
+      );
 
       gsap.fromTo(
         ".languageChild",
@@ -67,68 +72,15 @@ const SubPreview = ({
 
   return (
     <StyledSubPreview className="subPreview" ref={subPreviewRef}>
-      <StyledContainer>
-        <Link to={Object.values(thisData.link[0])[0]} target="_blank">
-          <div className="mainImage">
-            <img
-              style={{ width: "100%" }}
-              src={process.env.PUBLIC_URL + thisData.previewPage}
-              alt={thisData.subTitle + " 미리보기 페이지"}
-            />
-          </div>
-        </Link>
-        {/* <StyledPagination>
-          {thisData.previewPage!.map((data, index) => {
-            return (
-              <div
-                key={index}
-                onClick={() => {
-                  setSlide(index);
-                }}
-              >
-                <h3
-                  className={classNames("pagination", {
-                    active: slide === index,
-                  })}
-                >
-                  {Object.keys(data)[0]}
-                </h3>
-                <svg
-                  width="76"
-                  height="18"
-                  viewBox="0 0 76 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={classNames("paginationLine", {
-                    active: slide === index,
-                  })}
-                >
-                  <path
-                    d="M0.677734 9.15723H67.4536"
-                    stroke={slide === index ? "#AA8C5A" : "#f8f8f8"}
-                  />
-                  {slide === index && (
-                    <circle
-                      cx="67.4531"
-                      cy="9.15723"
-                      r="7.6875"
-                      stroke="#AA8C5A"
-                    />
-                  )}
-                </svg>
-              </div>
-            );
-          })}
-        </StyledPagination> */}
-      </StyledContainer>
-
       <StyledContainer style={{ height: "fit-content" }}>
         <StyledComment>
-          <div>
-            <StyledLanguageTitles>
-              <div>language/library</div>
-              <div>사용 이유</div>
-            </StyledLanguageTitles>
+          <StyledSubLanguageTitle
+            className="subLanguageTitle"
+            ref={subLanguageTitleRef}
+          >
+            <div>Language / Library</div>
+          </StyledSubLanguageTitle>
+          <StyledSubLanguageContent>
             {thisData.language!.map((data, index) => {
               return (
                 <div key={index} className="language">
@@ -146,7 +98,7 @@ const SubPreview = ({
                 </div>
               );
             })}
-          </div>
+          </StyledSubLanguageContent>
         </StyledComment>
       </StyledContainer>
     </StyledSubPreview>
@@ -164,7 +116,6 @@ const StyledSubPreview = styled.div`
 `;
 const StyledContainer = styled.div`
   width: 1400px;
-  height: calc(1400px * 0.8 * 9 / 16);
   margin: 0 auto;
   position: relative;
   .mainImage {
@@ -188,66 +139,29 @@ const StyledContainer = styled.div`
   }
 `;
 
-// const paginationLineAnimation = keyframes`
-//     0%{
-//         stroke-dasharray: 100;
-//         stroke-dashoffset:100;
-//     }
-//     100%{
-//         stroke-dasharray: 100;
-//         stroke-dashoffset:0;
-//     }
-// `;
+const StyledSubLanguageTitle = styled.div`
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 5vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
+  div {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #f8f8f8;
+  }
+`;
 
-// const StyledPagination = styled.div`
-//   position: absolute;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.8rem;
-//   top: 2vh;
-//   left: 4%;
-//   cursor: pointer;
-//   div {
-//     display: flex;
-//     /* z-index: -1; */
-//     align-items: center;
-//     justify-content: space-between;
-//     gap: 1rem;
-//   }
-//   .pagination {
-//     font-weight: 500;
-//     cursor: pointer;
-//     color: #f8f8f8;
-//     display: flex;
-//     gap: 1rem;
-//     &.active {
-//       color: #aa8c5a;
-//     }
-//   }
-//   .paginationLine {
-//     z-index: -1;
-//     &.active {
-//       z-index: 0;
-//       path {
-//         animation: ${paginationLineAnimation} 1s ease;
-//       }
-//       circle {
-//         transform: rotate(180deg);
-//         transform-origin: 88%;
-//         animation: ${paginationLineAnimation} 2s 0.3s ease;
-//         stroke-dasharray: 100;
-//         stroke-dashoffset: 100;
-//         animation-fill-mode: both;
-//       }
-//     }
-//   }
-// `;
+const StyledSubLanguageContent = styled.div`
+  border-top: 1px solid #f8f8f8;
+  padding-top: 5vh;
+`;
 
 const StyledComment = styled.div`
   width: calc(1400px * 0.8);
   margin: 0 auto;
-  /* background-color: orange; */
-  margin-top: 3rem;
   .language {
     font-size: 1.2rem;
     margin-top: 1rem;

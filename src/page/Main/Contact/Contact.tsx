@@ -30,7 +30,7 @@ const Contact = () => {
               <Call text={"PHONE"} />
             </SmallTitle>
             <AboutText className="mail smallTitle__text">
-              010.0000.0000
+              010.7150.9032
             </AboutText>
           </div>
           <div className="mail">
