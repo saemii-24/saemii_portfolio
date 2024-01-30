@@ -53,7 +53,11 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
           width: "70vw",
           height: "85vh",
           duration: 1,
+<<<<<<< HEAD
           delay: 0.3,
+=======
+          delay: 0.1,
+>>>>>>> dev
         }
       );
 
@@ -88,7 +92,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
       <StyledMainPic
         className={
           `mainPic `
-          //+ mainPicRender
+          // + mainPicRender
         }
         ref={mainPicRef}
         style={{
@@ -168,8 +172,8 @@ const StyledMainPic = styled.div`
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  background-position: right center;
-  z-index: -1;
+  background-position: center;
+  z-index: 100;
 `;
 const StyledContainer = styled.div`
   position: absolute;
@@ -177,8 +181,10 @@ const StyledContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   height: 85vh;
+  min-height: max-content;
   display: flex;
   flex-direction: column;
+  z-index: 200;
 `;
 
 const StyledSubTitle = styled.div`

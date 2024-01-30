@@ -42,6 +42,12 @@ const SubBottom = ({
   });
 
   //이전/다음 이미지와 id번호를 관리한다.
+
+  useEffect(() => {
+    handlePrevImg();
+    handleNextImg();
+  }, [idNum]);
+
   const handlePrevImg = () => {
     if (idNum === 0) {
       const bgImg = sortData[sortData.length - 1].previewImg;
@@ -82,16 +88,16 @@ const SubBottom = ({
   const handleBg = (clickWhat: ClickSelect): void => {
     if (clickWhat === "prevClick") {
       setPrevClick("prevClick"); //className을 컨트롤
-      setTimeout(() => {
-        navigate(`/project/${prevNum}`); //이동
-        setPrevClick("");
-      }, 1200);
+      //setTimeout(() => {
+      navigate(`/project/${prevNum}`); //이동
+      setPrevClick("");
+      //}, 1200);
     } else if (clickWhat === "nextClick") {
       setNextClick("nextClick"); //className을 컨트롤
-      setTimeout(() => {
-        navigate(`/project/${nextNum}`); //이동
-        setNextClick("");
-      }, 1200);
+      //setTimeout(() => {
+      navigate(`/project/${nextNum}`); //이동
+      setNextClick("");
+      //}, 1200);
     }
     setIsMouseEnter(false);
   };
@@ -232,7 +238,6 @@ const SubBottom = ({
           }}
           onMouseEnter={() => {
             setSelect("prev");
-            handlePrevImg();
           }}
           onClick={() => {
             goBottom();
@@ -280,7 +285,6 @@ const SubBottom = ({
           }}
           onMouseEnter={() => {
             setSelect("next");
-            handleNextImg();
           }}
           onClick={() => {
             goBottom();
@@ -361,29 +365,29 @@ const StyledSubBg = styled.div`
   background-size: cover;
   position: absolute;
   transition: opacity 600ms ease;
-  &::after {
+  /* &::after {
     content: "";
-    visibility: hidden;
+    z-index: 300;
     opacity: 0;
+    visibility: hidden;
     background-image: inherit;
     position: fixed;
     background-size: cover;
     background-position: center;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 200ms ease;
     right: 5vw;
     bottom: 5vw;
     width: 90vw;
     height: 50vh;
-    transition:
-      all 400ms ease-out,
-      opacity 0s;
-    z-index: -3;
   }
   &.nextClick,
   &.prevClick {
     &::after {
       content: "";
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
       background-image: inherit;
       position: fixed;
       background-size: cover;
@@ -392,9 +396,9 @@ const StyledSubBg = styled.div`
       bottom: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 100;
-    }
-  }
+      transition: all 400ms ease;
+    } 
+  }*/
 `;
 
 const StyledVideoBox = styled.div`
