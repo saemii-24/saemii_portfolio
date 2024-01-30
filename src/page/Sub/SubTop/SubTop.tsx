@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type Render = "" | "render";
   const [subTopRender, setSubTopRender] = useState<Render>("render");
-  // const [mainPicRender, setMainPicRender] = useState<Render>("");
+  const [mainPicRender, setMainPicRender] = useState<Render>("");
 
   //subTop Opacity Animation
   useEffect(() => {
@@ -26,16 +26,16 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   //mainPic Animation
-  // useEffect(() => {
-  //   setMainPicRender("");
-  //   const renderTimeout = setTimeout(() => {
-  //     setMainPicRender("render");
-  //   }, 10);
+  useEffect(() => {
+    setMainPicRender("");
+    const renderTimeout = setTimeout(() => {
+      setMainPicRender("render");
+    }, 10);
 
-  //   return () => {
-  //     clearTimeout(renderTimeout);
-  //   };
-  // }, [idNum]);
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [idNum]);
 
   //gsap animation
   const mainPicRef = useRef<HTMLDivElement | null>(null);
@@ -43,18 +43,18 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   const subTopTitleRef = useRef<HTMLDivElement | null>(null);
   const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       //이미지 크기 조정
-      gsap.fromTo(
-        mainPicRef.current,
-        { width: "100vw", height: "100vh" },
-        {
-          width: "70vw",
-          height: "85vh",
-          duration: 1,
-        }
-      );
+      // gsap.fromTo(
+      //   mainPicRef.current,
+      //   { width: "100vw", height: "100vh" },
+      //   {
+      //     width: "70vw",
+      //     height: "85vh",
+      //     duration: 1,
+      //   }
+      // );
 
       //타이틀, page, github, document 링크 등장
       const subTopTimeline = gsap.timeline({
@@ -85,10 +85,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   return (
     <StyledTop className="subTop" ref={subTopRef}>
       <StyledMainPic
-        className={
-          `mainPic `
-          //+ mainPicRender
-        }
+        className={`mainPic ` + mainPicRender}
         ref={mainPicRef}
         style={{
           backgroundImage: `url(${
@@ -168,7 +165,7 @@ const StyledMainPic = styled.div`
   height: 100vh;
   background-size: cover;
   background-position: right center;
-  z-index: -1;
+  z-index: 100;
 `;
 const StyledContainer = styled.div`
   position: absolute;
@@ -176,8 +173,10 @@ const StyledContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   height: 85vh;
+  min-height: max-content;
   display: flex;
   flex-direction: column;
+  z-index: 200;
 `;
 
 const StyledSubTitle = styled.div`

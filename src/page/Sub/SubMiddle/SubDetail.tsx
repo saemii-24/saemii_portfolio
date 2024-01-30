@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
 import { gsap } from "gsap";
@@ -115,11 +115,23 @@ const SubDetail = ({
   );
 };
 
+const StyledSubDetailAnimation = keyframes`
+    0% {
+        opacity:0;
+    }
+
+    100% {
+        opacity:1;
+    }
+
+`;
+
 const StyledSubDetail = styled.div`
   width: 100%;
   min-width: 1400px;
   margin-top: 25vh;
   margin-bottom: 25vh;
+  animation: ${StyledSubDetailAnimation} 300ms linear;
 `;
 
 const StyledSubDetailTitle = styled.div`

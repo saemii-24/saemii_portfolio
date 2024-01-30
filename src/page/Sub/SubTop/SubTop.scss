@@ -3,8 +3,8 @@
   0% {
     width: 100vw;
     height: 100vh;
+    min-height: max-content;
   }
-
   100% {
     width: 70vw;
     height: 85vh;
@@ -17,12 +17,16 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 100;
   }
   .mainPic.render {
     animation: animationSubTop 1s ease;
+    animation-delay: 100ms;
     animation-fill-mode: forwards;
+    z-index: -1;
   }
 }
+
 //SubTop Logo
 @keyframes animationSubLogo {
   0% {
