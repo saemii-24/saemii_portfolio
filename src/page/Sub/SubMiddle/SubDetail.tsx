@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const SubDetail = ({
   idNum,
@@ -101,18 +100,12 @@ const SubDetail = ({
                 </div>
                 <div
                   className={"detailImg " + `detailImg${index + 1}`}
-                  // style={{
-                  //   backgroundImage: `url(${
-                  //     process.env.PUBLIC_URL + data.image
-                  //   })`,
-                  // }}
-                >
-                  <LazyLoadImage
-                    alt={data.name}
-                    src={process.env.PUBLIC_URL + data.image}
-                    effect="blur"
-                  />
-                </div>
+                  style={{
+                    backgroundImage: `url(${
+                      process.env.PUBLIC_URL + data.image
+                    })`,
+                  }}
+                ></div>
               </div>
             </StyledSubDetailBox>
           );

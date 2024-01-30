@@ -29,8 +29,8 @@ const Introduce = () => {
             </IntroduceTitle>
             <IntroduceContent className="introduce__content">
               안녕하세요! 주니어 프론트엔드 개발자 박새힘입니다.
-              <br /> 주로 React를 사용하며, 새로운 기술을 두려워하지 않고
-              <br /> 꾸준히 공부하고있습니다.
+              <br /> 주로 React를 사용하며, 새로운 기술을 꾸준히
+              <br /> 공부하고있습니다.
               <br />
               <br />
               사용자와의 첫인상을 결정할 프론트엔드 개발자로서,
