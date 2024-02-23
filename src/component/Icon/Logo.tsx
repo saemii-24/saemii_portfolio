@@ -19,7 +19,6 @@ const Logo = () => {
     idNum = 0;
   }
 
-  console.log(data);
   const handleNextBtn = () => {
     if (idNum === data.length - 1) {
       navigate("/project/0");

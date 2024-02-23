@@ -95,18 +95,18 @@ const Main = () => {
           { opacity: 1, duration: 1, ease: "power1.out" },
           "first"
         )
-        .fromTo(
-          ".introSubTitle div",
-          { y: 30 },
-          { y: 0, duration: 1, ease: "power1.out" },
-          "first"
-        )
-        .fromTo(
-          ".introMainTitle div",
-          { y: 130 },
-          { y: 0, stagger: 0.05, duration: 1, ease: "power4.out" },
-          "-=50%"
-        )
+        // .fromTo(
+        //   ".introSubTitle div",
+        //   { y: 30 },
+        //   { y: 0, duration: 1, ease: "power1.out" },
+        //   "first"
+        // )
+        // .fromTo(
+        //   ".introMainTitle div",
+        //   { y: 130 },
+        //   { y: 0, stagger: 0.05, duration: 1, ease: "power4.out" },
+        //   "-=50%"
+        // )
         .fromTo(
           ".introPreview",
           { y: 50, opacity: 0 },

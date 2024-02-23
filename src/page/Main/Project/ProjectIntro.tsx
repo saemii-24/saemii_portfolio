@@ -239,7 +239,7 @@ const StyledProjectNumber = styled.p`
   border-bottom: 1px solid #f8f8f8;
 `;
 
-const StyledProjectLanguage = styled.p`
+const StyledProjectLanguage = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
