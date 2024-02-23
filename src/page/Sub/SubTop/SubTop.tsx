@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
@@ -12,10 +12,10 @@ import ScrollToTop from "ScrollToTop";
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type Render = "" | "render";
   const [subTopRender, setSubTopRender] = useState<Render>("render");
-  // const [mainPicRender, setMainPicRender] = useState<Render>("");
+  const [mainPicRender, setMainPicRender] = useState<Render>("");
 
   //subTop Opacity Animation
-  useEffect(() => {
+  useLayoutEffect(() => {
     setSubTopRender("render");
     const renderTimeout = setTimeout(() => {
       setSubTopRender("");
@@ -27,16 +27,16 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   //mainPic Animation
-  // useEffect(() => {
-  //   setMainPicRender("");
-  //   const renderTimeout = setTimeout(() => {
-  //     setMainPicRender("render");
-  //   }, 10);
+  useLayoutEffect(() => {
+    setMainPicRender("");
+    const renderTimeout = setTimeout(() => {
+      setMainPicRender("render");
+    }, 10);
 
-  //   return () => {
-  //     clearTimeout(renderTimeout);
-  //   };
-  // }, [idNum]);
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [idNum]);
 
   //gsap animation
   const mainPicRef = useRef<HTMLDivElement | null>(null);
@@ -44,19 +44,19 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   const subTopTitleRef = useRef<HTMLDivElement | null>(null);
   const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      //이미지 크기 조정
-      gsap.fromTo(
-        mainPicRef.current,
-        { width: "100vw", height: "100vh" },
-        {
-          width: "70vw",
-          height: "85vh",
-          duration: 1,
-          delay: 0.1,
-        }
-      );
+      // //이미지 크기 조정
+      // gsap.fromTo(
+      //   mainPicRef.current,
+      //   { width: "100vw", height: "100vh" },
+      //   {
+      //     width: "70vw",
+      //     height: "85vh",
+      //     duration: 1,
+      //     delay: 0.1,
+      //   }
+      // );
 
       //타이틀, page, github, document 링크 등장
       const subTopTimeline = gsap.timeline({
@@ -89,10 +89,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
       <ScrollToTop />
       <StyledTop className="subTop" ref={subTopRef}>
         <StyledMainPic
-          className={
-            `mainPic `
-            // + mainPicRender
-          }
+          className={`mainPic ` + mainPicRender}
           ref={mainPicRef}
           style={{
             backgroundImage: `url(${

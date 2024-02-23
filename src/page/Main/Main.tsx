@@ -90,7 +90,7 @@ const Main = () => {
 
       introTimeline
         .fromTo(
-          ".projectIntro .imgBox",
+          ".projectIntro .title",
           { opacity: 0 },
           { opacity: 1, duration: 1, ease: "power1.out" },
           "first"

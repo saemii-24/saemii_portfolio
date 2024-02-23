@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import classNames from "classnames";
 import { RootState } from "../../redux/store";
@@ -15,7 +15,7 @@ const ToTop = ({ idNum }: { idNum: number }) => {
     setIsScroll(scrollNow);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
