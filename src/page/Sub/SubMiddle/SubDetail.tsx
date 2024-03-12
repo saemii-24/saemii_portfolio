@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { DataType } from "../../../data/data";
 import classNames from "classnames";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import ImageLoad from "component/Icon/ImageLoad";
 gsap.registerPlugin(ScrollTrigger);
 
 const SubDetail = ({
@@ -98,14 +99,18 @@ const SubDetail = ({
                       ))}
                   </div>
                 </div>
-                <div
+                <ImageLoad
+                  addClass={"detailImg " + `detailImg${index + 1}`}
+                  url={process.env.PUBLIC_URL + data.image}
+                />
+                {/* <div
                   className={"detailImg " + `detailImg${index + 1}`}
                   style={{
                     backgroundImage: `url(${
                       process.env.PUBLIC_URL + data.image
                     })`,
                   }}
-                ></div>
+                ></div> */}
               </div>
             </StyledSubDetailBox>
           );
@@ -115,11 +120,23 @@ const SubDetail = ({
   );
 };
 
+const StyledSubDetailAnimation = keyframes`
+    0% {
+        opacity:0;
+    }
+
+    100% {
+        opacity:1;
+    }
+
+`;
+
 const StyledSubDetail = styled.div`
   width: 100%;
   min-width: 1400px;
   margin-top: 25vh;
   margin-bottom: 25vh;
+  animation: ${StyledSubDetailAnimation} 300ms linear;
 `;
 
 const StyledSubDetailTitle = styled.div`
@@ -140,6 +157,10 @@ const StyledSubDetailBox = styled.div`
   width: 1400px;
   margin: 0 auto;
   position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+  }
   .detailText {
     display: flex;
     padding: 10vh 0;
@@ -150,6 +171,7 @@ const StyledSubDetailBox = styled.div`
       justify-content: center;
       font-weight: 300;
       font-size: 1.2rem;
+      flex-grow: 1;
     }
     .detailImg {
       width: 40vw;

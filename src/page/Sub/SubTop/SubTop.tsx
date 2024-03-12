@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import Go from "../../../component/Icon/Go";
 import Logo from "../../../component/Icon/Logo";
 import styled from "styled-components";
@@ -7,14 +7,15 @@ import { DataType } from "../../../data/data";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import ScrollToTop from "ScrollToTop";
 
 const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   type Render = "" | "render";
   const [subTopRender, setSubTopRender] = useState<Render>("render");
-  // const [mainPicRender, setMainPicRender] = useState<Render>("");
+  const [mainPicRender, setMainPicRender] = useState<Render>("");
 
   //subTop Opacity Animation
-  useEffect(() => {
+  useLayoutEffect(() => {
     setSubTopRender("render");
     const renderTimeout = setTimeout(() => {
       setSubTopRender("");
@@ -26,16 +27,16 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   //mainPic Animation
-  // useEffect(() => {
-  //   setMainPicRender("");
-  //   const renderTimeout = setTimeout(() => {
-  //     setMainPicRender("render");
-  //   }, 10);
+  useLayoutEffect(() => {
+    setMainPicRender("");
+    const renderTimeout = setTimeout(() => {
+      setMainPicRender("render");
+    }, 10);
 
-  //   return () => {
-  //     clearTimeout(renderTimeout);
-  //   };
-  // }, [idNum]);
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [idNum]);
 
   //gsap animation
   const mainPicRef = useRef<HTMLDivElement | null>(null);
@@ -43,18 +44,19 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   const subTopTitleRef = useRef<HTMLDivElement | null>(null);
   const aTagChildRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      //이미지 크기 조정
-      gsap.fromTo(
-        mainPicRef.current,
-        { width: "100vw", height: "100vh" },
-        {
-          width: "70vw",
-          height: "85vh",
-          duration: 1,
-        }
-      );
+      // //이미지 크기 조정
+      // gsap.fromTo(
+      //   mainPicRef.current,
+      //   { width: "100vw", height: "100vh" },
+      //   {
+      //     width: "70vw",
+      //     height: "85vh",
+      //     duration: 1,
+      //     delay: 0.1,
+      //   }
+      // );
 
       //타이틀, page, github, document 링크 등장
       const subTopTimeline = gsap.timeline({
@@ -67,7 +69,7 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
         .fromTo(
           subTopTitleRef.current,
           { y: 150 },
-          { y: 0, duration: 1, ease: "power4.out", delay: 0.5 }
+          { y: 0, duration: 1, ease: "power4.out", delay: 0.8 }
         )
         .fromTo(
           aTagChildRefs.current,
@@ -83,79 +85,79 @@ const Sub = ({ thisData, idNum }: { thisData: DataType; idNum: number }) => {
   }, [idNum]);
 
   return (
-    <StyledTop className="subTop" ref={subTopRef}>
-      <StyledMainPic
-        className={
-          `mainPic `
-          //+ mainPicRender
-        }
-        ref={mainPicRef}
-        style={{
-          backgroundImage: `url(${
-            process.env.PUBLIC_URL + thisData.previewImg
-          })`,
-        }}
-      ></StyledMainPic>
-      <StyledContainer>
-        <div
-          style={{ marginBottom: "auto" }}
-          className={`subLogo ` + subTopRender}
-        >
-          {/* <Logo /> */}
-          <Logo />
-        </div>
-        <StyledSubTitle className="subTopTitle">
-          <div ref={subTopTitleRef}>{thisData.subTitle}</div>
-        </StyledSubTitle>
-        <StyledAtagBox>
-          <StyledAtag
-            href={Object.values(thisData.link[0])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
+    <>
+      <ScrollToTop />
+      <StyledTop className="subTop" ref={subTopRef}>
+        <StyledMainPic
+          className={`mainPic ` + mainPicRender}
+          ref={mainPicRef}
+          style={{
+            backgroundImage: `url(${
+              process.env.PUBLIC_URL + thisData.previewImg
+            })`,
+          }}
+        ></StyledMainPic>
+        <StyledContainer>
+          <div
+            style={{ marginBottom: "auto" }}
+            className={`subLogo ` + subTopRender}
           >
-            <div
-              className="atagChild"
-              ref={(el) => (aTagChildRefs.current[0] = el)}
-            >
-              PAGE
-              <Go />
-            </div>
-          </StyledAtag>
-
-          <StyledAtag
-            href={Object.values(thisData.link[1])[0]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="linkPage"
-          >
-            <div
-              className="atagChild"
-              ref={(el) => (aTagChildRefs.current[1] = el)}
-            >
-              GITHUB
-              <Go />
-            </div>
-          </StyledAtag>
-          {thisData.link[2] && (
+            {/* <Logo /> */}
+            <Logo />
+          </div>
+          <StyledSubTitle className="subTopTitle">
+            <div ref={subTopTitleRef}>{thisData.subTitle}</div>
+          </StyledSubTitle>
+          <StyledAtagBox>
             <StyledAtag
-              href={Object.values(thisData.link[2])[0]}
+              href={Object.values(thisData.link[0])[0]}
               target="_blank"
               rel="noopener noreferrer"
               className="linkPage"
             >
               <div
                 className="atagChild"
-                ref={(el) => (aTagChildRefs.current[2] = el)}
+                ref={(el) => (aTagChildRefs.current[0] = el)}
               >
-                DOCUMENT
+                PAGE
                 <Go />
               </div>
             </StyledAtag>
-          )}
-        </StyledAtagBox>
-      </StyledContainer>
-    </StyledTop>
+
+            <StyledAtag
+              href={Object.values(thisData.link[1])[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="linkPage"
+            >
+              <div
+                className="atagChild"
+                ref={(el) => (aTagChildRefs.current[1] = el)}
+              >
+                GITHUB
+                <Go />
+              </div>
+            </StyledAtag>
+            {thisData.link[2] && (
+              <StyledAtag
+                href={Object.values(thisData.link[2])[0]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkPage"
+              >
+                <div
+                  className="atagChild"
+                  ref={(el) => (aTagChildRefs.current[2] = el)}
+                >
+                  DOCUMENT
+                  <Go />
+                </div>
+              </StyledAtag>
+            )}
+          </StyledAtagBox>
+        </StyledContainer>
+      </StyledTop>
+    </>
   );
 };
 
@@ -168,7 +170,7 @@ const StyledMainPic = styled.div`
   height: 100vh;
   background-size: cover;
   background-position: center;
-  z-index: -1;
+  z-index: 100;
 `;
 const StyledContainer = styled.div`
   position: absolute;
@@ -176,8 +178,10 @@ const StyledContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   height: 85vh;
+  min-height: max-content;
   display: flex;
   flex-direction: column;
+  z-index: 200;
 `;
 
 const StyledSubTitle = styled.div`

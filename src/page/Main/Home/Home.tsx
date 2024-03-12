@@ -103,7 +103,7 @@ const Main = () => {
                 <StyledContact>Github</StyledContact> saemii-24
               </Link>
               <p>
-                <StyledContact>Phone</StyledContact> 010.000.0000
+                <StyledContact>Phone</StyledContact> 010.7150.9032
               </p>
               <Link
                 to="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hims2419@gmail.com"
@@ -134,7 +134,7 @@ const Main = () => {
               </div>
             </SmallTitle>
             <div className="update smallTitle__text under__text">
-              2024.01.26. ver
+              2024.03.12. ver
             </div>
           </div>
         </BottomText>

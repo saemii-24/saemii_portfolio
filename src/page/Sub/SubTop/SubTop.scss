@@ -3,8 +3,8 @@
   0% {
     width: 100vw;
     height: 100vh;
+    min-height: max-content;
   }
-
   100% {
     width: 70vw;
     height: 85vh;
@@ -14,15 +14,27 @@
 .subTop {
   position: relative;
   .mainPic {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    z-index: 300;
+    width: 100vw;
+    height: 100vh;
+    min-height: max-content;
+    right: -12px;
   }
   .mainPic.render {
+    width: 70vw;
+    height: 85vh;
+    position: absolute;
     animation: animationSubTop 1s ease;
-    animation-fill-mode: forwards;
+    // animation-delay: 100ms;
+    animation-fill-mode: both;
+    z-index: 100;
+    right: 0px;
   }
 }
+
 //SubTop Logo
 @keyframes animationSubLogo {
   0% {
@@ -33,11 +45,14 @@
   }
 }
 
-.subLogo.render {
-  animation: animationSubLogo 600ms 500ms ease-out;
-  animation-fill-mode: both;
+.subLogo {
+  opacity: 1;
+  &.render {
+    opacity: 0;
+    animation-fill-mode: backwards;
+    animation: animationSubLogo 600ms 800ms ease-out;
+  }
 }
-
 //atag 호버 애니메이션
 //goIcon
 @keyframes goIconArrow1 {

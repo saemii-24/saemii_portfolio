@@ -7,6 +7,7 @@ import { introHover, introClick } from "../../../redux/projectBgSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import classNames from "classnames";
+import { GoArrowRight } from "react-icons/go";
 
 const ProjectIntro = () => {
   const dispatch = useDispatch();
@@ -107,10 +108,15 @@ const ProjectIntro = () => {
             }}
           />
         </StyledProjectImgBox>
-        <StyledSubTitle className="introSubTitle">
-          <div>PREVIEW</div>
-        </StyledSubTitle>
-        <StyledMainTitle className="introMainTitle">PROJECT</StyledMainTitle>
+        <StyledProjectName>{hoverData.subTitle}</StyledProjectName>
+        <StyledProjectLanguage>
+          {hoverData.language.map((lan, index) => (
+            <div key={index}>{Object.keys(lan)}</div>
+          ))}
+        </StyledProjectLanguage>
+        <StyledProjectIntroContent>
+          {hoverData.preview}
+        </StyledProjectIntroContent>
       </StyledTitle>
       <StyledGrid>
         {data.map((project: DataType) => {
@@ -125,17 +131,36 @@ const ProjectIntro = () => {
               }}
               onClick={() => {
                 dispatch(introHover(project.id));
-                dispatch(introClick());
-                setTimeout(() => {
-                  navigate(`/project/${project.id}`);
-                }, 1500);
-                setTimeout(() => {
-                  dispatch(introClick());
-                }, 2000);
               }}
             >
-              <StyledProjectName>{project.subTitle}</StyledProjectName>
-              <StyledProjectContent>{project.preview}</StyledProjectContent>
+              <StyledProjectNumber>
+                PROJECT 0{project.id + 1}
+              </StyledProjectNumber>
+
+              <StyledButtonContainer>
+                <StyledLink
+                  href={Object.values(project.link[0])[0]}
+                  target="_blank"
+                >
+                  Page
+                  <GoArrowRight />
+                </StyledLink>
+                <StyledLink
+                  href={Object.values(project.link[1])[0]}
+                  target="_blank"
+                >
+                  Github
+                  <GoArrowRight />
+                </StyledLink>
+                <div
+                  onClick={() => {
+                    navigate(`/project/${project.id}`);
+                  }}
+                >
+                  Detail
+                  <GoArrowRight />
+                </div>
+              </StyledButtonContainer>
             </StyledProjectPreivew>
           );
         })}
@@ -143,6 +168,89 @@ const ProjectIntro = () => {
     </StyledProjectIntro>
   );
 };
+
+const StyledProjectIntroContent = styled.p`
+  color: #f8f8f8;
+`;
+const StyledButtonContainer = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  margin-top: 10px;
+  gap: 10px;
+  width: 100%;
+  svg {
+    fill: #f8f8f8;
+    border: 1px solid #f8f8f8;
+    border-radius: 50%;
+    transition: all 200ms;
+  }
+  div {
+    color: #f8f8f8;
+    font-weight: 500;
+    padding: 2px 10px;
+    border: 1px solid #f8f8f8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 200ms;
+    &:hover {
+      color: #2f2f2f;
+      background-color: #f8f8f8;
+      border: 1px solid #2f2f2f;
+      svg {
+        fill: #2f2f2f;
+        border: 1px solid #2f2f2f;
+      }
+    }
+  }
+`;
+
+const StyledLink = styled.a`
+  color: #f8f8f8;
+  font-weight: 500;
+  padding: 2px 10px;
+  background-color: #2f2f2f;
+  border: 1px solid #f8f8f8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  font-size: 1rem;
+  transition: all 200ms;
+  &:hover {
+    color: #2f2f2f;
+    background-color: #f8f8f8;
+    border: 1px solid #2f2f2f;
+    svg {
+      fill: #2f2f2f;
+      border: 1px solid #2f2f2f;
+    }
+  }
+`;
+
+const StyledProjectNumber = styled.p`
+  color: #f8f8f8;
+  padding-bottom: 4px;
+  width: 95%;
+  font-weight: 700;
+  border-bottom: 1px solid #f8f8f8;
+`;
+
+const StyledProjectLanguage = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  div {
+    background-color: #f8f8f8;
+    padding: 0 5px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+`;
 
 const StyledProjectIntro = styled.div`
   margin-left: 50vw;
@@ -172,47 +280,23 @@ const StyledGrid = styled.div`
   width: 60%;
 `;
 const StyledProjectName = styled.h6`
-  font-size: 1.2rem;
+  font-size: 1.8em;
   font-weight: 500;
   margin-bottom: 0.4rem;
   color: #f8f8f8;
   position: relative;
   width: fit-content;
+  margin-top: auto;
 `;
-const StyledSubTitle = styled(StyledProjectName)`
-  margin-bottom: -20px;
-  margin-left: 7px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  overflow: hidden;
-  position: relative;
-  div {
-    color: #f8f8f8;
-  }
-`;
-
-const StyledMainTitle = styled.div`
-  color: #f8f8f8;
-  font-size: 6rem;
-  font-weight: 200;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  overflow: hidden;
-  margin-left: 5px;
-  min-width: 410px;
-  div {
-    color: #f8f8f8;
-    margin-left: -5px;
-  }
-`;
-
 const StyledPreviewAnimation = keyframes`
   0%{
     opacity:1;
-    transform: translate(0px); 
+    transform: translate(0px);
     //gsap로 설정한 애니메이션로 발생하는 오차 수정
   }
   100%{
     opacity:0;
-    transform: translate(0px); 
+    transform: translate(0px);
     //gsap로 설정한 애니메이션로 발생하는 오차 수정
   }
 `;
@@ -220,28 +304,21 @@ const StyledProjectPreivew = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 0 3rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   &.active {
     animation: ${StyledPreviewAnimation} 300ms;
   }
-`;
-
-const StyledProjectContent = styled.p`
-  color: #f8f8f8;
-  line-height: 1.5rem;
-  min-height: calc(4 * 1.5rem);
-  font-weight: 200;
-  word-break: keep-all;
 `;
 
 const StyledProjectImgBox = styled.div`
   position: relative;
   width: 100%;
   max-width: 420px;
+  margin-top: 4vh;
   height: 60%;
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
   max-height: 450px;
   cursor: pointer;
 `;
