@@ -17,7 +17,7 @@ const ProjectIntro = () => {
   const [hoverData, setHoverData] = useState<DataType>(data[0]);
   const navigate = useNavigate();
 
-  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지 boolean값
+  //프로젝트 컴포넌트에서 프로젝트를 클릭했는지에 관한 boolean값
   const projectClick: boolean = useSelector(
     (state: RootState) => state.projectBgSlice.projectClick
   );
