@@ -4,6 +4,7 @@ import { DataType } from "../../../data/data";
 import classNames from "classnames";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import ImageLoad from "component/Icon/ImageLoad";
 gsap.registerPlugin(ScrollTrigger);
 
 const SubDetail = ({
@@ -98,14 +99,18 @@ const SubDetail = ({
                       ))}
                   </div>
                 </div>
-                <div
+                <ImageLoad
+                  addClass={"detailImg " + `detailImg${index + 1}`}
+                  url={process.env.PUBLIC_URL + data.image}
+                />
+                {/* <div
                   className={"detailImg " + `detailImg${index + 1}`}
                   style={{
                     backgroundImage: `url(${
                       process.env.PUBLIC_URL + data.image
                     })`,
                   }}
-                ></div>
+                ></div> */}
               </div>
             </StyledSubDetailBox>
           );
