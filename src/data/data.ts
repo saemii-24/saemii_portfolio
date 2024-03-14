@@ -478,7 +478,7 @@ const originData: DataType[] = [
     click: false,
     previewPage: "/image/projectPreview/project06-main.jpg",
     develop: [
-      { 작업기간: "23.11.28 - 23.12.24" },
+      { 작업기간: "23.11.24 - 23.12.24" },
       {
         기여도:
           "2인 팀 작업/70% (Firebase, Firestore 연결, main page 일부와 나머지 페이지 담당",
