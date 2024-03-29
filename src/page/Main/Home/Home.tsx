@@ -134,7 +134,7 @@ const Main = () => {
               </div>
             </SmallTitle>
             <div className="update smallTitle__text under__text">
-              2024.03.14. ver
+              2024.03.29. ver
             </div>
           </div>
         </BottomText>

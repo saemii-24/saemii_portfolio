@@ -124,7 +124,7 @@ const originData: DataType[] = [
       },
     ],
     develop: [
-      { 작업기간: "23.07.12 - 23.08.12" },
+      { 작업기간: "23.07.12 - 23.08.11" },
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리": "HTML, CSS JavaScript, jQuery",
@@ -216,7 +216,7 @@ const originData: DataType[] = [
       },
     ],
     develop: [
-      { 작업기간: "23.08.21 - 23.08.30" },
+      { 작업기간: "23.08.21 - 23.09.03" },
       { 기여도: "3인 팀 작업/35%(header, footer 제외 메인페이지 담당)" },
       {
         "개발에 사용된 언어/라이브러리":
@@ -384,7 +384,7 @@ const originData: DataType[] = [
     previewPage: "/image/projectPreview/project05-main.jpg",
 
     develop: [
-      { 작업기간: "23.10.04 - 23.10.20" },
+      { 작업기간: "23.10.04 - 23.10.23" },
       { 기여도: "개인작업/100%" },
       {
         "개발에 사용된 언어/라이브러리":
