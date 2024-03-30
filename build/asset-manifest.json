@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/saemii_portfolio/static/css/main.c877ed84.css",
+    "main.js": "/saemii_portfolio/static/js/main.39892210.js",
+    "static/js/787.7da95b79.chunk.js": "/saemii_portfolio/static/js/787.7da95b79.chunk.js",
+    "index.html": "/saemii_portfolio/index.html",
+    "main.c877ed84.css.map": "/saemii_portfolio/static/css/main.c877ed84.css.map",
+    "main.39892210.js.map": "/saemii_portfolio/static/js/main.39892210.js.map",
+    "787.7da95b79.chunk.js.map": "/saemii_portfolio/static/js/787.7da95b79.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c877ed84.css",
+    "static/js/main.39892210.js"
+  ]
+}
