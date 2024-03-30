@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <BrowserRouter basename="saemii_portfolio">
+    <BrowserRouter basename="/saemii_portfolio">
       <App />
     </BrowserRouter>
   </Provider>
