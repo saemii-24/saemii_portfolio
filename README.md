@@ -1,6 +1,7 @@
 # 🪪saemii Portfolio
-### **<a href="https://nf-page--saemii-portfolio.netlify.app/" target="_blank">:point_right:<u>포트폴리오 바로가기(netlify / 권장)</u></a>**
-#### <a href="https://saemii-24.github.io/saemii_portfolio/" target="_blank"><u>포트폴리오 바로가기(github Page)</u></a>
+### **<a href="https://nf-page--saemii-portfolio.netlify.app/" target="_blank">:point_right:<u>포트폴리오 바로가기(netlify)</u></a>**
+(Github pages 오류로 현재 수정 중에 있습니다)
+<!--  #### <a href="https://saemii-24.github.io/saemii_portfolio/" target="_blank"><u>포트폴리오 바로가기(github Page)</u></a> -->
 
 새미의 포트폴리오 입니다!<br/>
 포트폴리오에서 제가 작업한 페이지와, 각 페이지에 사용된 언어와 라이브러리,<br/> 구현 상세 내용을 확인하실 수 있습니다.
