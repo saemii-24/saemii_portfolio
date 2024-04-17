@@ -17,95 +17,6 @@ export interface DataType {
 const originData: DataType[] = [
   {
     id: 0,
-    subTitle: "식물 쇼핑몰",
-    projectTitle: "Planning",
-    preview:
-      "반려 식물'을 주제로 한 가상의 식물 쇼핑몰입니다. 웹 표준을 지켜 제작하였으며, CSS와 JavaScript를 이용해 상품 카운트, 상품 선택, 스크롤에 따른 내비게이션 선 색 변화 등의 효과를 주었습니다.",
-    previewImg: "/image/project01.jpg",
-    smallPreviewImg: "/image/small-project01.jpg",
-    active: false,
-    click: false,
-    previewPage: "/image/projectPreview/project01-main.jpg",
-    link: [
-      { page: "https://saemii-24.github.io/Planning-Shopping-Sites/" },
-      { github: "https://github.com/saemii-24/project_1" },
-      {
-        document:
-          "https://drive.google.com/file/d/1eQlawYZbuRUZa2IpkeyUk3mjzc57vFdl/view?usp=sharing",
-      },
-    ],
-    develop: [
-      { 작업기간: "23.06.21 - 23.07.11" },
-      { 기여도: "개인작업/100%" },
-      { "개발에 사용된 언어/라이브러리": "HTML, CSS, JavaScript" },
-      {
-        "주요 기능":
-          "hover 애니메이션, 제품 선택 버튼, 가격·상품 카운트, 장바구니 모달, 버튼 클릭 시 이미지 변경, 페이지 내비게이션",
-      },
-      {
-        "개발 비화":
-          "저에게 코딩의 매력과 재미를 느낄 수 있게 해준 첫 프로젝트입니다. 기획 당시에는 HTML과 CSS 두 가지를 활용한 페이지였으나, 버튼을 만들고 좋아요를 구현하는 등 보다 동적인 기능을 추가하고자 JavaScript를 공부하며 하나씩 적용할 수 있었습니다.\n 이런 기능은 기존 쇼핑몰에서 자주 보았던 것을 우선적으로 생각해보며 적용한 것이었는데, 더 많은 웹 페이지를 살펴보면서\n 어떤 기능이 있는지, 어떻게 구현할 수 있는지 공부한다면 그만큼 구현할 수 있는 상상력을 키울 수 있을 것이라 생각했고,\n 계속해서 성장해 나가는 것을 다짐하는 계기가 되었습니다.",
-      },
-    ],
-    language: [
-      {
-        HTML: "웹표준을 지키며, 웹 페이지의 구조를 정의하기 위해 사용했습니다.",
-      },
-      {
-        CSS: "CSS의 hover의사 클래스를 통해 다양한 효과를 주었습니다.",
-      },
-      {
-        JavaScript:
-          "JavaScript를 활용해 버튼 클릭효과와 상품 카운트, 내비게이션 등을 구현했습니다.",
-      },
-    ],
-    detail: [
-      {
-        page: "main",
-        name: "hover 애니메이션",
-        content:
-          "사용자가 오브젝트에 hover 했을 때, 해당 오브젝트가 접근할 수 있는 오브젝트이며, 사용자가 바르게 접근했다는 것을 인지할 수 있도록 다양한 hover 애니메이션을 주었습니다.",
-        image: "/image/projectDetail/project01-hover.png",
-      },
-      {
-        page: "sub",
-        name: "제품 선택 버튼",
-        content:
-          "상세 페이지 상단에 좋아요 버튼과 색상 선택 버튼이 있어, 사용자의 클릭에 따라 class가 Toggle 되며 반응합니다.",
-        image: "/image/projectDetail/project01-subTop.png",
-      },
-      {
-        page: "sub",
-        name: "가격·상품 카운트",
-        content:
-          "꽃잎 색상을 선택하면 구매 수량을 조정할 수 있는 박스가 등장합니다. +, - 버튼을 이용해 수량을 조정하면 그에 따라 상품 총 가격이 변동됩니다. 닫기 버튼을 누르면 박스가 사라지고 색상, 수량, 가격은 초기화됩니다.",
-        image: "/image/projectDetail/project01-calculate.png",
-      },
-      {
-        page: "sub",
-        name: "장바구니 모달",
-        content:
-          "장바구니 버튼을 클릭하면 장바구니로 이동할 수 있는 모달이 표시됩니다. 이때 '쇼핑 계속하기' 혹은 닫기 버튼을 클릭해 모달을 닫을 수 있습니다.",
-        image: "/image/projectDetail/project01-modal.png",
-      },
-      {
-        page: "sub",
-        name: "색상 버튼 클릭 시\n 이미지 변경",
-        content:
-          "사용자가 원하는 꽃잎 색상 버튼을 클릭하면 해당 색상의 꽃잎 사진을 볼 수 있습니다. ",
-        image: "/image/projectDetail/project01-selectColor.png",
-      },
-      {
-        page: "sub",
-        name: "페이지 내비게이션",
-        content:
-          "getBoundingClientRect()을 이용해 사용자가 바라보고 있는 페이지의 위치를 파악합니다. 이때 특정 위치에 도달하면, 내비게이션 하단 초록색 선을 통해 현재 사용자가 보고 있는 부분이 어떤 내용에 관한 것인지 표시합니다. ",
-        image: "/image/projectDetail/project01-navigation.png",
-      },
-    ],
-  },
-  {
-    id: 1,
     subTitle: "스튜디오 지브리 사이트",
     projectTitle: "Ghibli World",
     preview:
@@ -197,7 +108,7 @@ const originData: DataType[] = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     subTitle: "호주 여행 사이트",
     projectTitle: "걸어서 호주속으로",
     preview:
@@ -281,7 +192,7 @@ const originData: DataType[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     subTitle: "교보문고 클론코딩",
     projectTitle: "교보문고 eBook",
     preview:
@@ -364,7 +275,7 @@ const originData: DataType[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     subTitle: "체크카드 검색 사이트",
     projectTitle: "Card Check",
     preview:
@@ -463,7 +374,7 @@ const originData: DataType[] = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     subTitle: "건강 대시보드",
     projectTitle: "Be health",
     preview:
@@ -570,6 +481,136 @@ const originData: DataType[] = [
         content:
           "Firebase를 통해 이메일을 이용한 회원가입을 구현하여, 로그인, 로그아웃, 회원탈퇴가 가능하고 개인화 된 페이지를 제공합니다.",
         image: "/image/projectDetail/project06-signup.png",
+      },
+    ],
+  },
+  {
+    id: 5,
+    subTitle: "음악 번역 사이트",
+    projectTitle: "Music PT",
+    preview: "음악을 번역하고 공부할 수 있는 웹사이트 입니다.",
+    previewImg: "/image/project-musicPT.jpg",
+    smallPreviewImg: "/image/small-project-musicPT.jpg",
+    active: false,
+    click: false,
+    previewPage: "/image/projectPreview/project01-main.jpg",
+    link: [
+      { page: "https://music-pt.vercel.app/" },
+      { github: "https://github.com/saemii-24/Music-PT" },
+    ],
+    develop: [
+      { 작업기간: "23.02.19 - 23.04.16" },
+      { 기여도: "개인작업/100%" },
+      {
+        "개발에 사용된 언어/라이브러리":
+          "Next.js, TypeScript, Recoil, TanstackQuery, React-Hook-Form, Tailwind, Supabase, Prisma",
+      },
+      {
+        "주요 기능":
+          "hover 애니메이션, 제품 선택 버튼, 가격·상품 카운트, 장바구니 모달, 버튼 클릭 시 이미지 변경, 페이지 내비게이션",
+      },
+      {
+        "개발 비화":
+          "프로젝트의 핵심은 Next.js를 기반으로한 풀스택 웹 어플리케이션을 구축하는 것이었습니다. Next.js와 함께상태 관리 및 비동기 처리를 위해 recoil과 tanstack query 같은 라이브러리를 도입하여 데이터 로딩 중에는 skeleton UI를 통해 사용자 경험을 향상시킬 수 있었습니다.\n Next.js를 이용해 직접 RESTful한 API를 이해하고, 직접 작성해 DB와 상호작용하고, 다양한 SNS 로그인 기능을 next-auth를 통해 구현해보며 OAuth의 로그인 방식을 이해할 수 있었습니다. 마지막으로, react-hook-form, tailwind CSS 등의 라이브러리를 활용하기 위해 공식 문서의 예제를 통해 학습하고, 이해한 내용을 블로그에 정리하며, 학습 효율성을 높일 수 있었습니다.",
+      },
+    ],
+    language: [
+      {
+        "Next.js":
+          "SSR, SSG 생성을 통한 SEO 향상과 13버전에서 도입된 app router를 이용한 간단한 라우팅 처리를 위해 Next.js를 사용했습니다.",
+      },
+      {
+        TypeScript:
+          "코드 작성 중 의도치 않은 오류를 예방하기 위해 정적 타입언어인 Typescript를 도입했습니다.",
+      },
+      {
+        Recoil:
+          "React Hook과 비슷한 코드를 통해 상태관리를 할 수 있어, Recoil을 선택하였고, 이를 활용해 다국어 처리를 위한 상태 관리를 구현하였습니다.",
+      },
+      {
+        TanstackQuery:
+          "Next.js로 작성한 다양한 API를 통해 데이터베이스와 비동기 통신을 효율적으로 처리하고, 무한 스크롤을 구현하기 위해 React Query(Tanstack Query)를 도입했습니다.",
+      },
+      {
+        "React-Hook-Form":
+          "폼 데이터를 관리하고, 유효성 검사와 에러처리를 간편하게 처리하기 위해 사용했습니다.",
+      },
+      {
+        Tailwind:
+          "Next.js에서 추천하는 스타일링 작성 방식을 도입하고자 하였고, 클래스 기반의 스타일링을 통해 속도와 생산성을 향상시키고, 이를 활용해 반응형 웹 제작과 라이트/다크 모드를 구현하고자 Tailwind CSS를 선택했습니다.",
+      },
+      {
+        Supabase:
+          "프론트엔드단에서 간단하게 DB를 사용하기 위해 Supabase를 선택하였습니다.",
+      },
+      {
+        Prisma:
+          "Prisma ORM기능을 통해 SQL 쿼리가 아닌, JavaScript 작성방식으로, DB와 상호작용하였습니다.",
+      },
+    ],
+    detail: [
+      {
+        page: "main",
+        name: "음악 좋아요",
+        content:
+          "좋아요 버튼을 클릭하면, Like Table에 userID 와 musicID가 등록됩니다. 해당 데이터를 활용하여 좋아요 수가 카운트 되고, 마이페이지에서 사용자가 좋아요 한 음악을 한 눈에 살펴볼 수 있습니다.",
+        image: "/image/projectDetail/project-musicPT-like.png",
+      },
+      {
+        page: "addMusic",
+        name: "음악 추가",
+        content:
+          "한 번에 한국어 버전과 일본어 버전 음악을 등록할 수 있습니다. React-Hook-Form 라이브러리를 활용하여 해당 폼 내용이 유효성 검사에 어긋나는 경우, 사용자에게 에러 메세지를 안내합니다.",
+        image: "/image/projectDetail/project-musicPT-add.png",
+      },
+      {
+        page: "searchMusic",
+        name: "음악 목록/검색",
+        content:
+          "등록되어 있는 음악 목록을 검색합니다. 사용자는 '제목', '가수' 두 가지 기준을 선택하여 음악을 검색하거나 '모두 보기'를 통해 모든 음악을 확인할 수 있습니다.",
+        image: "/image/projectDetail/project-musicPT-search.png",
+      },
+      {
+        page: "editMusic",
+        name: "음악 수정",
+        content:
+          "기존 업로드 된 음악 데이터를 수정할 수 있습니다. 이전 데이터를 활용하여 보다 쉽게 데이터를 수정할 수 있도록 했습니다.",
+        image: "/image/projectDetail/project-musicPT-edit.png",
+      },
+      {
+        page: "addLyrics · addTranslate · editLyrics · editTranslate",
+        name: "가사·번역 추가/수정",
+        content:
+          "사용자가 업로드한 음악의 가사 혹은 음악 번역 내용을 추가하거나 수정할 수 있습니다. Next.js의 layout 기능을 활용해 관련한 모든 페이지에서 현재 수정하고 있는 음악 데이터를 볼 수 있도록 하였고, input을 활용하여 한 줄 씩 편리하게 내용을 수정할 수 있습니다.",
+        image: "/image/projectDetail/project-musicPT-lyrics.png",
+      },
+      {
+        page: "login",
+        name: "SNS 로그인",
+        content:
+          "Next-Auth를 활용하여 Google, Kakao, Naver 로그인 버튼을 구현했습니다. 제공받은 사용자 정보를 활용하여 myPage가 꾸며집니다.",
+        image: "/image/projectDetail/project-musicPT-login.png",
+      },
+      {
+        page: "all",
+        name: "라이트/다크 모드",
+        content:
+          "Tailwind를 이용해 라이트/다크 모드를 구현했습니다. localStorage를 활용하여, 사용자가 원하는 모드를 저장해두었다가 웹사이트 접속시 적용 될 수 있도록 했습니다.",
+        image: "/image/projectDetail/project-musicPT-mode.png",
+      },
+      {
+        page: "all",
+        name: "한국어/일본어 모드",
+        content:
+          "기본 언어는 한국어이며, navigator.languages 메소드를 사용해 사용자가 선호하는 언어가 '일본어'일 경우는 일본어가 기본적으로 표시 됩니다. 웹 사이트 접속시 수동으로 원하는 언어를 선택할 수 있습니다.",
+        image: "/image/projectDetail/project-musicPT-language.png",
+      },
+      {
+        page: "all",
+        name: "반응형 웹",
+        content:
+          "Tailwind를 이용해 반응형 웹을 제작했고, 각 사이즈에 적절한 레이아웃을 적용했습니다.",
+        image: "/image/projectDetail/project-musicPT-responsive.png",
       },
     ],
   },

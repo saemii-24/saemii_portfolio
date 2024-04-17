@@ -9,6 +9,7 @@ export const languageLogo: object[] = [
   { jQuery: "/image/language/jQuery.jpg" },
   { AJAX: "/image/language/AJAX.jpg" },
   { REACT: "/image/language/REACT.jpg" },
+  { Next: "/image/language/NEXT.jpg" },
   { REDUX: "/image/language/REDUX.jpg" },
   { Bootstrap: "/image/language/Bootstrap.jpg" },
 ];
