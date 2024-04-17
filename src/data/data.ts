@@ -512,7 +512,7 @@ const originData: DataType[] = [
       },
       {
         "개발 비화":
-          "프로젝트의 핵심은 Next.js를 기반으로한 풀스택 웹 어플리케이션을 구축하는 것이었습니다. Next.js와 함께상태 관리 및 비동기 처리를 위해 recoil과 tanstack query 같은 라이브러리를 도입하여 데이터 로딩 중에는 skeleton UI를 통해 사용자 경험을 향상시킬 수 있었습니다.\n Next.js를 이용해 직접 RESTful한 API를 이해하고, 직접 작성해 DB와 상호작용하고, 다양한 SNS 로그인 기능을 next-auth를 통해 구현해보며 OAuth의 로그인 방식을 이해할 수 있었습니다. 마지막으로, react-hook-form, tailwind CSS 등의 라이브러리를 활용하기 위해 공식 문서의 예제를 통해 학습하고, 이해한 내용을 블로그에 정리하며, 학습 효율성을 높일 수 있었습니다.",
+          "프로젝트의 최종 목표는 Next.js를 기반으로한 풀스택 웹 어플리케이션을 구축하는 것이었습니다.\n Next.js와 함께 상태 관리 및 비동기 처리를 위해 recoil과 tanstack query와 같은 라이브러리를 도입하여\n 데이터 로딩 중에는 skeleton UI를 통해 더 나은 사용자 경험을 제공하고자 했습니다.\n Next.js를 이용해 직접 RESTful한 API를 작성해 DB와 상호작용하고, Next-Auth를 통해 SNS 로그인 기능을 구현해보며\n OAuth를 이용한 로그인 방식에 대해 학습할 수 있었습니다. 마지막으로, react-hook-form, tailwind CSS 등의 라이브러리를 활용하기 위해 공식 문서의 예제를 통해 학습하고, 이해한 내용을 블로그에 정리하며, 학습 효율성을 높일 수 있었습니다.",
       },
     ],
     language: [
