@@ -28,9 +28,9 @@ const Introduce = () => {
               <div>안녕하세요! 새미입니다.</div>
             </IntroduceTitle>
             <IntroduceContent className="introduce__content">
-              안녕하세요! 주니어 프론트엔드 개발자 박새힘입니다.
-              <br /> 주로 React를 사용하며, 새로운 기술을 꾸준히
-              <br /> 공부하고있습니다.
+              안녕하세요! 예비 프론트엔드 개발자 박새힘입니다.
+              <br /> 최근에는 Next.js와 React를 활용한 웹 제작에 흥미를 갖고
+              <br /> 관련 내용을 꾸준히 학습하고 있습니다.
               <br />
               <br />
               사용자와의 첫인상을 결정할 프론트엔드 개발자로서,
@@ -42,7 +42,10 @@ const Introduce = () => {
           </TextBox>
           <TextBox>
             <IntroduceTitle className="introduce__title type">
-              <div>이런 기술을 사용할 수 있어요.</div>
+              <div>
+                이런 기술을 활용해 프로젝트를
+                <br /> 진행해 본 경험이 있어요.
+              </div>
             </IntroduceTitle>
             <IntroduceContent className="introduce__content">
               <StyledLogoData>

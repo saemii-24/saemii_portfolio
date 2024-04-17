@@ -70,13 +70,13 @@ const Logo = () => {
       </StyledLogoContainer>
       <StyledNav>
         <StyledNavText
-          style={{ color: idNum === 1 || idNum === 2 ? "#2f2f2f" : "#f8f8f8" }}
+          style={{ color: idNum === 0 || idNum === 1 ? "#2f2f2f" : "#f8f8f8" }}
           onClick={handlePrevBtn}
         >
           PREV
         </StyledNavText>
         <StyledNavText
-          style={{ color: idNum === 1 || idNum === 2 ? "#2f2f2f" : "#f8f8f8" }}
+          style={{ color: idNum === 0 || idNum === 1 ? "#2f2f2f" : "#f8f8f8" }}
           onClick={handleNextBtn}
         >
           NEXT

@@ -120,11 +120,10 @@ const Main = () => {
               </div>
             </SmallTitle>
             <AboutText className="about smallTitle__text under__text">
-              안녕하세요! 역동적인 현대를 사랑하는 주니어 프론트엔드
+              안녕하세요! 인간의 한계를 뛰어넘어, 풍요로운
               <br />
-              개발자 새미입니다. 사용자를 생각하며 현대 기술의 가치를
-              <br />
-              표현하는 프론트엔드 개발을 좋아합니다.
+              미래를 만들어 가는 <strong>기술의 가치</strong>를 펼치고 싶은
+              <br /> 예비 프론트엔드 개발자 새미입니다.
             </AboutText>
           </div>
           <div className="update">
@@ -134,7 +133,7 @@ const Main = () => {
               </div>
             </SmallTitle>
             <div className="update smallTitle__text under__text">
-              2024.03.29. ver
+              2024.04.17. ver
             </div>
           </div>
         </BottomText>

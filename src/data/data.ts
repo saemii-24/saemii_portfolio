@@ -488,7 +488,8 @@ const originData: DataType[] = [
     id: 5,
     subTitle: "음악 번역 사이트",
     projectTitle: "Music PT",
-    preview: "음악을 번역하고 공부할 수 있는 웹사이트 입니다.",
+    preview:
+      "음악을 번역하고 비교해보며 언어를 공부할 수 있는 웹사이트 입니다. Next.js와 Supabase를 이용해 풀스택 웹을 제작했습니다.",
     previewImg: "/image/project-musicPT.jpg",
     smallPreviewImg: "/image/small-project-musicPT.jpg",
     active: false,

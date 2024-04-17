@@ -4,6 +4,7 @@ import Github from "component/Icon/Github";
 import Mail from "component/Icon/Mail";
 import Call from "component/Icon/Call";
 import { Link } from "react-router-dom";
+import Blog from "component/Icon/Blog";
 
 const Contact = () => {
   return (
@@ -51,7 +52,15 @@ const Contact = () => {
               <SmallTitle className="smallTitle__parent">
                 <Github />
               </SmallTitle>
-              <div className="github smallTitle__text">saemii-24</div>
+              <div className="github smallTitle__text">@saemii-24</div>
+            </Link>
+          </div>
+          <div className="blog">
+            <Link to="https://saemii-24.github.io/" target="_blank">
+              <SmallTitle className="smallTitle__parent">
+                <Blog />
+              </SmallTitle>
+              <div className="blog smallTitle__text">saemii blog</div>
             </Link>
           </div>
         </BottomText>

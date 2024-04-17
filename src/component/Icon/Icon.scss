@@ -257,3 +257,34 @@
     background-color: #eeeeee;
   }
 }
+
+//blog Icon
+@keyframes blogPenAnimation {
+  0% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes blogLineAnimation {
+  0% {
+    stroke-dashoffset: 15;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.blog {
+  &:hover {
+    .pen {
+      animation: blogPenAnimation 2s ease infinite;
+    }
+    .line {
+      stroke-dasharray: 15;
+      stroke-dashoffset: 15;
+      animation: blogLineAnimation 2s ease infinite;
+    }
+  }
+}

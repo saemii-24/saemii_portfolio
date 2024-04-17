@@ -151,6 +151,11 @@ const Main = () => {
         containerAnimation: pin,
         start: "top 80%",
       });
+      animationOpacity(".blog", {
+        trigger: ".blog",
+        containerAnimation: pin,
+        start: "top 80%",
+      });
 
       /*pin 애니메이션은 가로스크롤 애니메이션으로, 
       projectClick이 false라면 지속하고, true일 경우 kill한다.*/
